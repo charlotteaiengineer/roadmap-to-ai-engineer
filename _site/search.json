@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "charlotteai.engineer",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html",
+    "href": "learning-journey/week-2025-10-13.html",
+    "title": "Week of Oct 13, 2025",
+    "section": "",
+    "text": "Understand how and when to use sets, tuples, and dictionaries\nExplain mutability vs. immutability and implications for hashing\nApply tuple unpacking safely and predictably"
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html#what-i-focused-on",
+    "href": "learning-journey/week-2025-10-13.html#what-i-focused-on",
+    "title": "Week of Oct 13, 2025",
+    "section": "What I focused on",
+    "text": "What I focused on\n\nPython core data structures: sets, tuples, dictionaries\nMutability vs. immutability and how it relates to hashability\nTuple packing/unpacking patterns and pitfalls"
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html#notes-bits-i-picked-up",
+    "href": "learning-journey/week-2025-10-13.html#notes-bits-i-picked-up",
+    "title": "Week of Oct 13, 2025",
+    "section": "Notes / Bits I picked up",
+    "text": "Notes / Bits I picked up\n\nEmpty set literal is set(), not {} (that’s an empty dict).\nSets are unordered, unique collections; you cannot index into a set.\nTuples are immutable; beware stray trailing commas creating tuples unexpectedly.\nTuple unpacking requires counts to match; use _ for values you do not need.\nDictionaries are keyed mappings; use in to check key existence.\nHashable typically implies immutable; lists/dicts/sets are unhashable, tuples/ints/str are hashable."
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html#resources",
+    "href": "learning-journey/week-2025-10-13.html#resources",
+    "title": "Week of Oct 13, 2025",
+    "section": "Resources",
+    "text": "Resources\n\nFrontend Masters — Practical Guide to Python (full course): https://frontendmasters.com/courses/practical-python/"
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html#demos-experiments",
+    "href": "learning-journey/week-2025-10-13.html#demos-experiments",
+    "title": "Week of Oct 13, 2025",
+    "section": "Demos / Experiments",
+    "text": "Demos / Experiments\n\nQuick REPL exercises for constructing sets from lists, tuple unpacking, and dict updates."
+  },
+  {
+    "objectID": "learning-journey/week-template.html#notes-bits-i-picked-up",
+    "href": "learning-journey/week-template.html#notes-bits-i-picked-up",
+    "title": "Week of <Mon, MMM DD, YYYY>",
+    "section": "Notes / Bits I picked up",
+    "text": "Notes / Bits I picked up"
+  },
+  {
+    "objectID": "learning-journey/week-template.html#resources",
+    "href": "learning-journey/week-template.html#resources",
+    "title": "Week of <Mon, MMM DD, YYYY>",
+    "section": "Resources",
+    "text": "Resources"
+  },
+  {
+    "objectID": "learning-journey/week-template.html#demos-experiments",
+    "href": "learning-journey/week-template.html#demos-experiments",
+    "title": "Week of <Mon, MMM DD, YYYY>",
+    "section": "Demos / Experiments",
+    "text": "Demos / Experiments"
+  },
+  {
+    "objectID": "learning-journey/index.html",
+    "href": "learning-journey/index.html",
+    "title": "Learning Journey",
+    "section": "",
+    "text": "This is a living, outcome-driven curriculum for becoming an AI Engineer. Each week is a self-contained module with learning outcomes, curated resources, exercises, and a readiness checklist so others can follow along or adapt it to their own path. Open any week below.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nDescription\n\n\n\n\n\n\n\n\nInvalid Date\n\n\nWeek of &lt;Mon, MMM DD, YYYY&gt;\n\n\n\n\n\n\n\n\n\nOct 13, 2025\n\n\nWeek of Oct 13, 2025\n\n\nWeek 1 — Practical Python: sets, tuples, dictionaries, mutability & hashing.\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html#completed",
+    "href": "learning-journey/week-2025-10-13.html#completed",
+    "title": "Week of Oct 13, 2025",
+    "section": "",
+    "text": "Finished the Frontend Masters Practical Guide to Python lesson on Sets, Tuples, & Dictionaries (course link)."
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html#learning-outcomes",
+    "href": "learning-journey/week-2025-10-13.html#learning-outcomes",
+    "title": "Week of Oct 13, 2025",
+    "section": "",
+    "text": "Understand how and when to use sets, tuples, and dictionaries\nExplain mutability vs. immutability and implications for hashing\nApply tuple unpacking safely and predictably"
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html#key-notes",
+    "href": "learning-journey/week-2025-10-13.html#key-notes",
+    "title": "Week of Oct 13, 2025",
+    "section": "Key notes",
+    "text": "Key notes\n\nEmpty set literal is set(), not {} (that’s an empty dict).\nSets are unordered, unique collections; you cannot index into a set.\nTuples are immutable; beware stray trailing commas creating tuples unexpectedly.\nTuple unpacking requires counts to match; use _ for values you do not need.\nDictionaries are keyed mappings; use in to check key existence.\nHashable typically implies immutable; lists/dicts/sets are unhashable, tuples/ints/str are hashable."
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html#exercises",
+    "href": "learning-journey/week-2025-10-13.html#exercises",
+    "title": "Week of Oct 13, 2025",
+    "section": "Exercises",
+    "text": "Exercises\n\nPractice in REPL: construct sets from lists, perform tuple unpacking, and update dicts."
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html#readiness-checklist",
+    "href": "learning-journey/week-2025-10-13.html#readiness-checklist",
+    "title": "Week of Oct 13, 2025",
+    "section": "Readiness checklist",
+    "text": "Readiness checklist\n\nCan create and manipulate sets, and explain why they are unordered\nCan define tuples and avoid accidental tuple creation via trailing commas\nCan unpack tuples defensively and handle mismatched lengths\nCan use dictionaries idiomatically (membership checks, updates)"
+  },
+  {
+    "objectID": "learning-journey/week-2025-10-13.html#examples",
+    "href": "learning-journey/week-2025-10-13.html#examples",
+    "title": "Week of Oct 13, 2025",
+    "section": "Examples",
+    "text": "Examples\n\nNumbers and booleans\na = 2\nb = 3.5\ntotal = a + b\nis_equal = (a == 2)\ntruthy = True and (1 &lt; 2)\nfalsy = False or (2 &gt; 5)\nnot_val = not False\n\nprint(a, type(a))\nprint(b, type(b))\nprint(total)\nprint(is_equal, truthy, falsy, not_val)\n2 &lt;class 'int'&gt;\n3.5 &lt;class 'float'&gt;\n5.5\nTrue True False True\n\n\nStrings and f-strings\nname = \"Charlotte\"\nlang = \"Python\"\nmsg = f\"Hi {name}, welcome to {lang}!\"\n\nprint(name.upper())\nprint(len(name))\nprint(\"thon\" in lang)\nprint(msg)\nCHARLOTTE\n9\nTrue\nHi Charlotte, welcome to Python!\n\n\nLists\nnums = [1, 2, 3]\nnums.append(4)\nsliced = nums[1:3]\ndoubled = [x * 2 for x in nums]\n\nprint(nums)\nprint(sliced)\nprint(doubled)\n[1, 2, 3, 4]\n[2, 3]\n[2, 4, 6, 8]\n\n\nTuples\nt = (1, \"a\", True)\nsingle = (42,)\npacked = 1, 2  # tuple without parentheses\nx, y = (10, 20)  # unpacking\n\nprint(t)\nprint(single)\nprint(packed)\nprint(x, y)\n\n# t[0] = 99  # TypeError: 'tuple' object does not support item assignment\n(1, 'a', True)\n(42,)\n(1, 2)\n10 20\n\n\nDictionaries\nuser = {\"name\": \"Charlotte\", \"role\": \"AI Engineer\"}\nuser[\"city\"] = \"Ipswich\"\n\nprint(user[\"name\"])       # indexing by key\nprint(\"role\" in user)      # membership check on keys\nprint(user)\nCharlotte\nTrue\n{'name': 'Charlotte', 'role': 'AI Engineer', 'city': 'Ipswich'}\n\n\nSets\nnames = [\"alice\", \"bob\", \"alice\"]\ns = set(names)\ns.add(\"carol\")\n\nprint(s)\nprint(\"alice\" in s)\n{'alice', 'bob', 'carol'}  # order not guaranteed\nTrue\n\n\nHash function and hashability\nprint(hash((\"a\", 1)))  # tuples are hashable if their items are hashable\nprint(hash(\"abc\"))\n\n# hash([1, 2])   # TypeError: unhashable type: 'list'\n# hash({\"k\": 1}) # TypeError: unhashable type: 'dict'\n&lt;some integer&gt;\n&lt;some integer&gt;\n\n\nLogic: and / or / in\nprint(True and False)\nprint(True or False)\nprint(False or 0)\nprint(0 or \"fallback\")\nprint(\"x\" and \"y\")      # returns last truthy operand\nprint(\"py\" in \"python\")  # substring membership\nFalse\nTrue\n0\nfallback\ny\nTrue"
+  }
+]

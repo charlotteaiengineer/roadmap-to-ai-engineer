@@ -1,0 +1,15 @@
+---
+title: "Learning Journey"
+page-layout: full
+listing:
+  contents: .
+  sort: "date desc"
+  type: table
+  fields: [date, title, description]
+  categories: true
+  filter-ui: true
+---
+
+This section tracks weekly progress, notes, and resources. Open any week below.
+
+

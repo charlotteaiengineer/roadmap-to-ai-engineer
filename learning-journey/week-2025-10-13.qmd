@@ -1,0 +1,194 @@
+---
+title: "Week of Oct 13, 2025"
+description: "Week 1 — Practical Python: sets, tuples, dictionaries, mutability & hashing."
+date: 2025-10-13
+categories: [Week, 2025]
+---
+
+## Learning outcomes
+
+- Understand how and when to use sets, tuples, and dictionaries
+- Explain mutability vs. immutability and implications for hashing
+- Apply tuple unpacking safely and predictably
+
+## Key notes
+
+- Empty set literal is `set()`, not `{}` (that’s an empty dict).
+- Sets are unordered, unique collections; you cannot index into a set.
+- Tuples are immutable; beware stray trailing commas creating tuples unexpectedly.
+- Tuple unpacking requires counts to match; use `_` for values you do not need.
+- Dictionaries are keyed mappings; use `in` to check key existence.
+- Hashable typically implies immutable; lists/dicts/sets are unhashable, tuples/ints/str are hashable.
+
+## Resources
+
+- Frontend Masters — Practical Guide to Python (full course): <https://frontendmasters.com/courses/practical-python/>
+
+## Exercises
+
+- Practice in REPL: construct sets from lists, perform tuple unpacking, and update dicts.
+
+## Readiness checklist
+
+- [ ] Can create and manipulate sets, and explain why they are unordered
+- [ ] Can define tuples and avoid accidental tuple creation via trailing commas
+- [ ] Can unpack tuples defensively and handle mismatched lengths
+- [ ] Can use dictionaries idiomatically (membership checks, updates)
+
+
+## Examples
+
+### Numbers and booleans
+
+```python
+a = 2
+b = 3.5
+total = a + b
+is_equal = (a == 2)
+truthy = True and (1 < 2)
+falsy = False or (2 > 5)
+not_val = not False
+
+print(a, type(a))
+print(b, type(b))
+print(total)
+print(is_equal, truthy, falsy, not_val)
+```
+
+```
+2 <class 'int'>
+3.5 <class 'float'>
+5.5
+True True False True
+```
+
+### Strings and f-strings
+
+```python
+name = "Charlotte"
+lang = "Python"
+msg = f"Hi {name}, welcome to {lang}!"
+
+print(name.upper())
+print(len(name))
+print("thon" in lang)
+print(msg)
+```
+
+```
+CHARLOTTE
+9
+True
+Hi Charlotte, welcome to Python!
+```
+
+### Lists
+
+```python
+nums = [1, 2, 3]
+nums.append(4)
+sliced = nums[1:3]
+doubled = [x * 2 for x in nums]
+
+print(nums)
+print(sliced)
+print(doubled)
+```
+
+```
+[1, 2, 3, 4]
+[2, 3]
+[2, 4, 6, 8]
+```
+
+### Tuples
+
+```python
+t = (1, "a", True)
+single = (42,)
+packed = 1, 2  # tuple without parentheses
+x, y = (10, 20)  # unpacking
+
+print(t)
+print(single)
+print(packed)
+print(x, y)
+
+# t[0] = 99  # TypeError: 'tuple' object does not support item assignment
+```
+
+```
+(1, 'a', True)
+(42,)
+(1, 2)
+10 20
+```
+
+### Dictionaries
+
+```python
+user = {"name": "Charlotte", "role": "AI Engineer"}
+user["city"] = "Ipswich"
+
+print(user["name"])       # indexing by key
+print("role" in user)      # membership check on keys
+print(user)
+```
+
+```
+Charlotte
+True
+{'name': 'Charlotte', 'role': 'AI Engineer', 'city': 'Ipswich'}
+```
+
+### Sets
+
+```python
+names = ["alice", "bob", "alice"]
+s = set(names)
+s.add("carol")
+
+print(s)
+print("alice" in s)
+```
+
+```
+{'alice', 'bob', 'carol'}  # order not guaranteed
+True
+```
+
+### Hash function and hashability
+
+```python
+print(hash(("a", 1)))  # tuples are hashable if their items are hashable
+print(hash("abc"))
+
+# hash([1, 2])   # TypeError: unhashable type: 'list'
+# hash({"k": 1}) # TypeError: unhashable type: 'dict'
+```
+
+```
+<some integer>
+<some integer>
+```
+
+### Logic: and / or / in
+
+```python
+print(True and False)
+print(True or False)
+print(False or 0)
+print(0 or "fallback")
+print("x" and "y")      # returns last truthy operand
+print("py" in "python")  # substring membership
+```
+
+```
+False
+True
+0
+fallback
+y
+True
+```
+

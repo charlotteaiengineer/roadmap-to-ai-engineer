@@ -1,0 +1,15 @@
+---
+title: "Learning Journey"
+page-layout: full
+listing:
+  contents: .
+  sort: "date desc"
+  type: table
+  fields: [date, title, description]
+  categories: true
+  filter-ui: true
+---
+
+This is a living, outcome-driven curriculum for becoming an AI Engineer. Each week is a self-contained module with learning outcomes, curated resources, exercises, and a readiness checklist so others can follow along or adapt it to their own path. Open any week below.
+
+

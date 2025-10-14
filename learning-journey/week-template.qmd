@@ -1,0 +1,24 @@
+---
+title: "Week of <Mon, MMM DD, YYYY>"
+description: "<One-line theme or focus for the week>"
+date: YYYY-MM-DD
+categories: [Week, YYYY]
+---
+
+## What I focused on
+
+- 
+
+## Notes / Bits I picked up
+
+- 
+
+## Resources
+
+- 
+
+## Demos / Experiments
+
+- 
+
+
