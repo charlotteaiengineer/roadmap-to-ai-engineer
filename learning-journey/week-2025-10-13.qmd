@@ -152,16 +152,158 @@ my_function()
 
 ```{python}
 
-def my_function(x):
+def my_other_function(x):
    return x * 2
 
-my_function(21312)
+my_other_function(21312)
 ```
 
 ```{python}
 
 def another_cat(x, y, z=12):
-   return z + 2
+   return z + (x + y)
 
 another_cat(1, 2)
 ```
+
+### Conditionals
+
+```{python}
+
+def my_dogs(x, one, two):
+    if x == 2:
+        return f"my doggos are {one} and {two}"
+    elif x > 2:
+        return "Soon! soon we will have them all!"
+    else: 
+        return "Got no doggos"
+
+my_dogs(1, "Annie", "Anubis")
+
+```
+
+```{python}
+
+def fizzbuzz(number):
+    if (number % 3 == 0) and (number % 5 == 0):
+        print("fizz")
+    else: print("buzz")
+
+fizzbuzz(15)
+fizzbuzz(5)
+```
+
+### Loops
+
+```{python}
+
+family = ["Annie", "Anubis", "Alex", "Charlotte"]
+
+for family_member in family:
+    print(f"My name is {family_member}!")
+
+print(f"outside of the loop {family_member}")
+
+list(enumerate(family))
+```
+
+enumerate returns list of tuples , first item index, second item the value
+
+```{python}
+
+colours = ["Red", "Yellow", "Pink", "Green", "Orange", "Purple", "Blue"]
+
+for index, colour in enumerate(colours):
+    print(f"this is the greatest colour {colour} number {index}")
+
+```
+
+```{python}
+
+concepts_to_learn = {
+    "Python": "Language",
+    "TensorFlow": "Execution Env",
+    "Pytorch": "differnt exectuion place",
+    "Deep Learning": "Neural networks and that"
+}
+
+for foo in concepts_to_learn:
+    print(foo)
+
+```
+
+```{python}
+
+concepts_to_learn.items()
+```
+
+```{python}
+
+for key, value in concepts_to_learn.items():
+    print(key) 
+    print("----")
+    print(value)
+
+```
+
+```{python}
+
+x = 0
+while x < 5:
+    print(x)
+    x += 1
+```
+
+```{python}
+
+names = ["Lisa", "Bob", "Jeremy", "Django", "Mario"]
+
+def return_target(target="Jeremy"):
+    for name in names:
+        print(name)
+        if name == target:
+            print(f"we found {target}!")
+            return name
+```
+
+### List comprehensions
+
+```{python}
+
+names = ["Lisa", "Bob", "Jeremy", "Django", "Mario"]
+my_list = []
+
+for name in names:
+    my_list.append(len(name))
+
+print("First way: ", my_list)
+
+print("Shorter way:", [len(name) for name in names])
+```
+
+```{python}
+
+nums = [0, 1, 2, 3, 4]
+
+[num * 2 for num in nums] 
+```
+
+### Slicing
+
+```{python}
+
+my_cake = "Hey this is a big cake!"
+my_cake[14:22]
+
+my_cake[:18]
+my_cake[19:]
+my_cake[-1]
+```
+
+### files
+
+-   `open("my_file.txt")`
+
+-   `open("my_file.txt", "w")`
+
+-   `open("my_file.txt", "a")`
