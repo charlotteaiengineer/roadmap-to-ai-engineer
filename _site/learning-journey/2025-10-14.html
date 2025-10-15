@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-10-14">
 
-<title>Intro to Large Language Models – charlotteai.engineer</title>
+<title>Intro to Large Language Models &amp;&amp; Deep Dive into LLMs like ChatGPT – charlotteai.engineer</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#resources" id="toc-resources" class="nav-link active" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#transformer-neural-net-architecture" id="toc-transformer-neural-net-architecture" class="nav-link active" data-scroll-target="#transformer-neural-net-architecture">Transformer Neural Net Architecture</a></li>
+  <li><a href="#training-the-assistant---finetuning" id="toc-training-the-assistant---finetuning" class="nav-link" data-scroll-target="#training-the-assistant---finetuning">Training the assistant - Finetuning</a></li>
   </ul>
 </nav>
     </div>
@@ -122,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intro to Large Language Models</h1>
+<h1 class="title">Intro to Large Language Models &amp;&amp; Deep Dive into LLMs like ChatGPT</h1>
   <div class="quarto-categories">
     <div class="quarto-category">deep-learning</div>
     <div class="quarto-category">generative-ai</div>
@@ -150,13 +151,39 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/zjkBMFhNj_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+<iframe width="800" height="450" src="https://www.youtube.com/embed/zjkBMFhNj_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
 </iframe>
-<p><code>parameters</code> <code>bytes</code> <code>mathematically there is a very close relationship between prediction and compression</code> <code>artifact</code> <code>Neural Network</code> <code>compressed into the weights</code> <code>sample</code> <code>model inference</code> <code>feeding back in</code> <code>run the neural network - or as we say  perform inference</code> <code>dreaming, mimicking, hallucinating</code></p>
-<!-- The spelled-out intro to neural networks and backpropagation: building micrograd
- -  by Andrej Karpathy: <https://www.youtube.com/watch?v=VMj-3S1tku0><iframe width="560" height="315" src="https://www.youtube.com/embed/VMj-3S1tku0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+<p>Mathematically there is a very close relationship between prediction and compression</p>
+<p><code>parameters</code> <code>bytes</code> <code>artifact</code> <code>Neural Network</code> <code>compressed into the weights</code> <code>sample</code> <code>model inference</code> <code>feeding back in</code> <code>perform inference</code></p>
+<p>Run the neural network - or as we say perform inference</p>
+<p><code>dreaming/mimicking/hallucinating</code></p>
+<p>It’s parroting the training set distribution</p>
+<p><code>lossy compression of the internet</code></p>
+<section id="transformer-neural-net-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="transformer-neural-net-architecture">Transformer Neural Net Architecture</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://deeprevision.github.io/posts/001-transformer/transformer.png" class="img-fluid figure-img"></p>
+<figcaption>Transformer Neural Net Architecture - https://deeprevision.github.io/posts/001-transformer/</figcaption>
+</figure>
+</div>
+<p>100 billion parameters are dispersed throughout the entire Neural Net and all we know is how to <strong>adjust</strong> these parameters <strong>iteratively</strong> to make the network as a whole better at the next word prediction task - BUT we don’t actually know what these 100 billion parameters are doing.</p>
+<p>We can measure that it’s getting better to next word prediction, but <strong>we don’t know how these parameters collaborate to actually perform that</strong></p>
+<p><code>knowledge isnt stored in traditional sense</code></p>
+<p>All we can really measure is whether it works or not and the probability that it works.</p>
+<p><code>come from a long process of optimization</code> <code>interpretability or mechanistic interpretability</code> <code>empirical artifacts</code></p>
+<p>We can give them some inputs and can measure the outputs. We can measure their behaviour - this requires <strong>corresponsively sophisticated evaluations</strong> to work with these models because they’re mostly empirical (evidence based).</p>
+</section>
+<section id="training-the-assistant---finetuning" class="level3">
+<h3 class="anchored" data-anchor-id="training-the-assistant---finetuning">Training the assistant - Finetuning</h3>
+<p>Quality is prefered over quantity in this stage.</p>
+<p><code>Fine tuning creates an Assistant Model</code></p>
+<p>This assisstant model now <strong>suscribes to the form</strong> of its new training documents.</p>
+<p><code>Retrieval Augmented Generation</code> - ChatGPT can browse the files that you upload and can use them as reference inforamtion for creating its answers</p>
+<p>Think of LLMs as the kernel process of an emerging operating system - this process is coordiatng many different processes be they memory or computational tools for problemsolving.</p>
+<p><code>Context window</code> <code>suffix</code> <code>jailbreaking</code> <code>prompt injection</code> <code>Poisioned model/Corrupted model</code></p>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/7xTGNNLPyMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
 
 
 </section>

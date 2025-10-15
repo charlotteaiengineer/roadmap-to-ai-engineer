@@ -1,43 +1,17 @@
 ---
-title: "Practical Python"
+title: "Practical Python - Nina Zakharenko"
 description: "sets, tuples, dictionaries, mutability & hashing."
 date: 2025-10-13
 jupyter: python3
 categories: [python, data-structures, tuples, sets, dictionaries, fundamentals]
-image: https://practical.learnpython.dev/images/logo.png
+image: https://static.frontendmasters.com/assets/courses/2020-12-22-practical-python/posterframe.webp
 ---
 
-## Learning outcomes
 
--   Understand how and when to use sets, tuples, and dictionaries
--   Explain mutability vs. immutability and implications for hashing
--   Apply tuple unpacking safely and predictably
 
-## Key notes
-
--   Empty set literal is `set()`, not `{}` (that’s an empty dict).
--   Sets are unordered, unique collections; you cannot index into a set.
--   Tuples are immutable; beware stray trailing commas creating tuples unexpectedly.
--   Tuple unpacking requires counts to match; use `_` for values you do not need.
--   Dictionaries are keyed mappings; use `in` to check key existence.
--   Hashable typically implies immutable; lists/dicts/sets are unhashable, tuples/ints/str are hashable.
-
-## Resources
 
 -   Frontend Masters — Practical Guide to Python (full course) by Nina Zakharenko: <https://frontendmasters.com/courses/practical-python/>
 
-## Exercises
-
--   Practice in REPL: construct sets from lists, perform tuple unpacking, and update dicts.
-
-## Readiness checklist
-
--   [ ] Can create and manipulate sets, and explain why they are unordered
--   [ ] Can define tuples and avoid accidental tuple creation via trailing commas
--   [ ] Can unpack tuples defensively and handle mismatched lengths
--   [ ] Can use dictionaries idiomatically (membership checks, updates)
-
-## Examples
 
 ### Numbers and booleans
 

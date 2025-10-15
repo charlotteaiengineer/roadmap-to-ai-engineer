@@ -1,0 +1,59 @@
+---
+title: "Intro to Large Language Models && Deep Dive into LLMs like ChatGPT"
+date: 2025-10-14
+jupyter: python3
+categories: [deep-learning, generative-ai, llm]
+image: https://i3.ytimg.com/vi/zjkBMFhNj_g/maxresdefault.jpg
+---
+
+
+<iframe  width="800" height="450" src="https://www.youtube.com/embed/zjkBMFhNj_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+Mathematically there is a very close relationship between prediction and compression
+
+`parameters`
+`bytes` `artifact` `Neural Network` `compressed into the weights` `sample` `model inference` `feeding back in` `perform inference`
+
+Run the neural network - or as we say  perform inference
+
+ `dreaming/mimicking/hallucinating` 
+
+ It's parroting the training set distribution
+
+ `lossy compression of the internet` 
+
+### Transformer Neural Net Architecture
+
+ ![Transformer Neural Net Architecture - https://deeprevision.github.io/posts/001-transformer/](https://deeprevision.github.io/posts/001-transformer/transformer.png)
+
+ 100 billion parameters are dispersed throughout the entire Neural Net and all we know is how to **adjust** these parameters **iteratively** to make the network as a whole better at the next word prediction task - BUT we don't actually know what these 100 billion parameters are doing.
+
+ We can measure that it's getting better to next word prediction, but **we don't know how these parameters collaborate to actually perform that**
+
+ `knowledge isnt stored in traditional sense` 
+
+ All we can really measure is whether it works or not and the probability that it works.
+
+ `come from a long process of optimization` `interpretability or mechanistic interpretability` `empirical artifacts` 
+
+ We can give them some inputs and can measure the outputs. We can measure their behaviour - this requires **corresponsively sophisticated evaluations** to work with these models because they're mostly empirical (evidence based).
+
+### Training the assistant - Finetuning
+
+Quality is prefered over quantity in this stage. 
+
+`Fine tuning creates an Assistant Model`
+
+This assisstant model now **suscribes to the form** of its new training documents. 
+
+
+`Retrieval Augmented Generation` - ChatGPT can browse the files that you upload and can use them as reference inforamtion for creating its answers
+
+Think of LLMs as the kernel process of an emerging operating system - this process is coordiatng many different processes be they memory or computational tools for problemsolving.
+
+`Context window` `suffix` `jailbreaking` `prompt injection` `Poisioned model/Corrupted model`
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/7xTGNNLPyMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
