@@ -300,10 +300,160 @@ my_cake[19:]
 my_cake[-1]
 ```
 
-### files
+### files - reading, writing, appending, and JSON
 
--   `open("my_file.txt")`
+Below are executable examples that will run in this page's kernel. They demonstrate different `open()` modes and working with a small JSON file stored alongside this page at `learning-journey/data/example.json`.
 
--   `open("my_file.txt", "w")`
+```{python}
+# Write: creates or truncates file
+with open("my_file.txt", "w", encoding="utf-8") as f:
+    f.write("first line\n")
+    f.write("second line\n")
 
--   `open("my_file.txt", "a")`
+# Append: adds to end of file
+with open("my_file.txt", "a", encoding="utf-8") as f:
+    f.write("appended line\n")
+
+# Read entire file
+with open("my_file.txt", "r", encoding="utf-8") as f:
+    contents = f.read()
+contents
+```
+
+```{python}
+# Read line-by-line
+with open("my_file.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        print(line.rstrip())
+```
+
+
+```{python}
+# Explicit open/close (less preferred vs. context manager)
+f = open("my_file.txt", "r", encoding="utf-8")
+try:
+    print(f.readline().rstrip())
+finally:
+    f.close()
+```
+
+```{python}
+# pathlib usage
+from pathlib import Path
+
+path = Path("my_file.txt")
+path.write_text("overwritten via pathlib\n", encoding="utf-8")
+print(path.read_text(encoding="utf-8"))
+```
+
+
+### Classes
+
+```{python}
+
+class Car:
+    runs = True
+
+    def start(self):
+        if self.runs:
+            print("The car starts.")
+        else:
+            print("The car is broken.")
+
+my_car = Car()
+my_car.start()
+my_car.runs = False
+my_car.start()
+
+my_other_car = Car()
+my_other_car.start()
+```
+
+
+### isinstance 
+
+```{python}
+
+print(isinstance(my_car, Car))
+print(isinstance(my_car, str))
+print(isinstance("Hallo there", str))
+print(isinstance(12, int))
+```
+
+### initializing classes
+
+```{python}
+
+class Supersupercar:
+    runs = True
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def start(self):
+        if self.runs:
+            print(f"The {self.make} {self.model} {self.year} starts.")
+        else:
+            print(f"The {self.make} {self.model} {self.year} is broken.")
+
+my_car = Supersupercar("Toyota", "Corolla", 2020)
+my_car.start()
+
+my_better_car = Supersupercar("Mustang", "GT", 2025)
+my_better_car.start()
+
+
+```
+
+![Mustang GT](https://pictures.dealer.com/a/autonationkatyfordfd/1234/3f1b1dbb615643a59dcc8b14a1bfd707.png?impolicy=downsize_bkpt&w=380)
+
+
+### inheritance
+
+```{python}
+
+
+class Mustang(Supersupercar):
+    def __init__(self, make, model, year, color):
+        super().__init__(make, model, year)
+        self.color = color
+
+my_jaguar = Mustang("Jaguar", "2027", 2027, "Green")
+my_jaguar.start()
+
+```
+
+![Jaguar 2027](https://s1.cdn.autoevolution.com/images/news/virtual-artist-morphs-jaguar-type-00-design-vision-concept-into-a-proper-four-door-gt-244298_1.jpg)
+
+### Exceptions
+
+```{python}
+
+try:
+    print(10 / 0)
+except ZeroDivisionError:
+    print("You can't divide by zero!")
+
+try:
+    print(10 / 2)
+except ValueError:
+    print("You can divide by two!")
+```
+
+
+### requests
+
+```{python}
+
+# import requests
+
+# response = requests.get("https://ur-api.....")
+
+# print(response.status_code)
+# print(response.json())
+
+```
+
+
+
