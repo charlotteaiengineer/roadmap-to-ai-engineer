@@ -1,9 +1,10 @@
 ---
-title: "Week of Oct 13, 2025"
-description: "Week 1 — Practical Python: sets, tuples, dictionaries, mutability & hashing."
+title: "Practical Python"
+description: "sets, tuples, dictionaries, mutability & hashing."
 date: 2025-10-13
-categories: [Week, 2025]
 jupyter: python3
+categories: [python, data-structures, tuples, sets, dictionaries, fundamentals]
+image: https://practical.learnpython.dev/images/logo.png
 ---
 
 ## Learning outcomes
@@ -23,7 +24,7 @@ jupyter: python3
 
 ## Resources
 
--   Frontend Masters — Practical Guide to Python (full course): <https://frontendmasters.com/courses/practical-python/>
+-   Frontend Masters — Practical Guide to Python (full course) by Nina Zakharenko: <https://frontendmasters.com/courses/practical-python/>
 
 ## Exercises
 

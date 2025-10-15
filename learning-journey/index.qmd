@@ -4,8 +4,11 @@ page-layout: full
 listing:
   contents: .
   sort: "date desc"
-  type: table
-  fields: [date, title, description]
+  type: default
+  image-align: left
+  sort-ui: true
+  page-size: 30
+  fields: [image, title, description, date, categories]
   categories: true
   filter-ui: true
 ---

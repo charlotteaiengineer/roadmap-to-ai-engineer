@@ -5,11 +5,9 @@ execute-dir: project
 
 website:
   title: "charlotteai.engineer"
+
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
       - text: Learning Journey
         href: learning-journey/index.qmd
 
