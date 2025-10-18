@@ -1,9 +1,9 @@
 ---
-title: "Intro to Large Language Models && Deep Dive into LLMs like ChatGPT"
+title: "Intro to Large Language Models"
 date: 2025-10-14
 jupyter: python3
 categories: [deep-learning, generative-ai, llm]
-image: https://i3.ytimg.com/vi/zjkBMFhNj_g/maxresdefault.jpg
+image: https://i.ytimg.com/vi/zjkBMFhNj_g/maxresdefault.jpg
 ---
 
 
@@ -54,6 +54,4 @@ This assisstant model now **suscribes to the form** of its new training document
 Think of LLMs as the kernel process of an emerging operating system - this process is coordiatng many different processes be they memory or computational tools for problemsolving.
 
 `Context window` `suffix` `jailbreaking` `prompt injection` `Poisioned model/Corrupted model`
-
-<iframe width="800" height="450" src="https://www.youtube.com/embed/7xTGNNLPyMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

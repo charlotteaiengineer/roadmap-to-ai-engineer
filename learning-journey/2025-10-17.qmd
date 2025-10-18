@@ -1,0 +1,247 @@
+---
+title: "Deep Dive into LLMs like ChatGPT"
+date: 2025-10-17
+jupyter: python3
+categories: [deep-learning, generative-ai, llm]
+image: https://i.ytimg.com/vi/7xTGNNLPyMI/maxresdefault.jpg
+---
+
+
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/7xTGNNLPyMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[🍷 FineWeb: decanting the web for the finest text data at scale](https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1)
+
+## Step 1. Pretraining 
+
+Download and `preprocess` the internet. We want a huge quantity of high quality documents, with large diversity.
+Huggingface made FineWeb which is a new, large-scale (15-trillion tokens, 44TB disk space) [dataset for LLM pretraining](https://huggingface.co/datasets/HuggingFaceFW/fineweb). They used [Common Crawl](https://commoncrawl.org/) as their source of data. OpenAI and Anthrophic crawl themselves [OpenAI Crawlers](https://platform.openai.com/docs/bots), heres [Claudebot](https://darkvisitors.com/agents/claudebot)
+
+![](https://huggingfacefw-blogpost-fineweb-v1.static.hf.space/assets/images/fineweb-recipe.png)
+
+- **URL filtering** - Firstly data needs filtering. Loads of websites are not included from categories like adult stuff. BLocklists are [lists of urls](https://dsi.ut-capitole.fr/blacklists/index_en.php) to block.
+- **text extraction** - Raw HTML is what the crawlers save. We only want the text content.
+- **language filtering** - There's a guess (using a classifier) which rules out non english pages, keeping pages that score above 65% confidence it is English.
+- **gopher filtering** Gopher is an LLM Transformer model. The architecture is same as GPT2. It uses a huge dataset. Templates were used to prompt the model to try to stop biases in the data, sentiment analysers were used to stop biased content.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nO653U-Pb5c?si=ZcM6LSjzn2d1_6vH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+- **Minhash deduplication** - This is a technique to remove duplicate documents from the dataset. It's a hashing technique that is used to identify duplicate documents.
+- **C4 filters** 
+- **Custom fitlers** 
+- **PII Removal** - Personal Identifiable Information is detected and removed like addresses, phone numbers, emails, etc.
+
+## Step 2. Tokenization
+
+The way the technology works for these neural nets is that they expect a `one dimesional sequence of symbols`.
+They want a `finite set of symbols` that are possible. We have to decide what the symbols are, then have to represent our data as a one dimensional sequence of symbols.
+
+### Text → bytes → bits (roundtrip, compact and readable)
+
+```{python}
+text = "I'm enjoying learning about how ChatGPT works from the inside. It's pretty difficult to understand, but I'm sure I'll get the hang of it if I stick around and carry on"
+
+# Text → bytes (UTF-8)
+utf8_bytes = text.encode("utf-8")
+print("chars:", len(text))
+print("bytes:", len(utf8_bytes))
+print("first 16 bytes (int):", list(utf8_bytes[:16]))
+print("first 16 bytes (hex):", utf8_bytes[:16].hex())
+
+# Bytes → bits (grouped in 8)
+def bytes_to_bits(data: bytes) -> str:
+    return " ".join(f"{b:08b}" for b in data)
+
+bits = bytes_to_bits(utf8_bytes)
+preview_bits = " ".join(bits.split(" ")[:12])  # first 12 bytes as bits
+print("bits (first 12 bytes):", preview_bits, "...")
+print("total bits:", len(utf8_bytes) * 8)
+
+# Bits → bytes → text (roundtrip)
+def bits_to_bytes(bits_str: str) -> bytes:
+    cleaned = bits_str.replace(" ", "")
+    assert len(cleaned) % 8 == 0
+    return bytes(int(cleaned[i:i+8], 2) for i in range(0, len(cleaned), 8))
+
+roundtrip_bytes = bits_to_bytes(bits)
+print("roundtrip matches bytes:", roundtrip_bytes == utf8_bytes)
+print("decoded:", roundtrip_bytes.decode("utf-8"))
+```
+
+### Per-character view (code point → UTF‑8 bytes)
+
+We want more symbols and shorter sequences. Let's compress the binary sequence. **A group of 8 bits are a byte**. 
+
+
+```{python}
+sample = text[:8]
+print(f"{'char':<6}{'codepoint':<12}{'hex':<20}{'bin'}")
+for ch in sample:
+    b = ch.encode('utf-8')
+    hx = " ".join(f"{x:02x}" for x in b)
+    bn = " ".join(f"{x:08b}" for x in b)
+    print(f"{repr(ch):<6}{ord(ch):<12}{hx:<20}{bn}")
+```
+
+
+
+
+
+
+
+### Byte Pair Encoding (BPE) — learn merges and tokenize
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HEikzVL-lZU?si=cRWfRvEtko61Vnbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+We’ll train a tiny BPE on a short corpus, learn a few merges, then tokenize a sentence.
+
+```{python}
+from collections import Counter
+
+corpus = (
+    "I'm enjoying learning about how ChatGPT works from the inside. It's pretty difficult to understand, but I'm sure I'll get the hang of it if I stick around and carry on"
+).lower()
+
+def build_vocab(text: str):
+    vocab = Counter()
+    for word in text.split():
+        symbols = tuple(list(word) + ['</w>'])
+        vocab[symbols] += 1
+    return vocab
+
+def get_stats(vocab: Counter):
+    pairs = Counter()
+    for symbols, freq in vocab.items():
+        for a, b in zip(symbols, symbols[1:]):
+            pairs[(a, b)] += freq
+    return pairs
+
+def merge_vocab(pair, vocab: Counter):
+    a, b = pair
+    merged = Counter()
+    for symbols, freq in vocab.items():
+        i = 0
+        new = []
+        while i < len(symbols):
+            if i < len(symbols)-1 and (symbols[i], symbols[i+1]) == (a, b):
+                new.append(a + b)
+                i += 2
+            else:
+                new.append(symbols[i])
+                i += 1
+        merged[tuple(new)] += freq
+    return merged
+
+vocab = build_vocab(corpus)
+merges = []
+for _ in range(20):  # learn up to 20 merges
+    stats = get_stats(vocab)
+    if not stats:
+        break
+    best = max(stats, key=stats.get)
+    merges.append(best)
+    vocab = merge_vocab(best, vocab)
+
+print("top merges:", merges[:10])
+
+rank = {pair: i for i, pair in enumerate(merges)}
+
+def bpe_tokenize(word: str):
+    symbols = list(word) + ['</w>']
+    while True:
+        pairs = [(symbols[i], symbols[i+1]) for i in range(len(symbols)-1)]
+        ranked = [(rank.get(p, 1e9), p) for p in pairs]
+        best_rank, best_pair = min(ranked, default=(1e9, None))
+        if best_pair is None or best_rank == 1e9:
+            break
+        i = 0
+        new = []
+        while i < len(symbols):
+            if i < len(symbols)-1 and (symbols[i], symbols[i+1]) == best_pair:
+                new.append(symbols[i] + symbols[i+1])
+                i += 2
+            else:
+                new.append(symbols[i])
+                i += 1
+        symbols = new
+    return [s for s in symbols if s != '</w>']
+
+sentence = "Viewing single post from Spoilers of the week Lil".lower()
+char_tokens = sum((list(w) for w in sentence.split()), [])
+bpe_tokens = []
+for w in sentence.split():
+    bpe_tokens.extend(bpe_tokenize(w))
+
+print("char-level token count:", len(char_tokens))
+print("bpe token count:", len(bpe_tokens))
+print("bpe tokens (first 30):", bpe_tokens[:30])
+```
+
+We **mint a symbol** for each unique byte pair in the corpus. There are 100,277 symbols in GPT4
+
+- [GPT2 Tokenizer](https://tiktokenizer.vercel.app/?model=gpt2)
+
+![TikTokenizer](https://pbs.twimg.com/media/F4J_u6ZXQAAe3Fi.jpg)
+
+This token sequence is what GPT4 will 'see' the text as.
+
+## Step 3: Neural Network Training
+ 
+Now we are trying to predict the next token in the sequence. Currently there are 100,277 probabilities for the next token. The neural network is going to output exactly 100,277 numbers, and of those numbers, correspond to the probablility of that token as coming next in the sequence
+
+In the beginning the Nural Network is randomly initialised, random probabilities.
+We've `sampled` this `window` from our dataset.
+
+We know the correct next token for this sentence, so we need a mathematical process to update the weights on the network - `tuning it`. (Making the **probability** of the correct next token as high as possible, and making the other potential answers lower.)
+
+We mathematically adjust the neural network so that the correct answer has a slightly higher probability.
+
+`input sequence tokens`
+
+iteratively updating the neural network = training the neural network.
+
+## [Visualization of LLM in 3D](https://bbycroft.net/llm)
+
+Try not to think of these LLM neurons like the ones in our brain, our biological ones have complex dynamical processes that have memory. There'sno memory in LLM neurons, it's **stateless** input and output.
+
+The LLM in basic terms is a mathematical function. It it parameterised by some fixed set of parameters (85,584) it is a way of **transforming inputs to outputs as we twiddle the parameters we are getting different kinds of predictions, and then we need to find a good setting of these parameters so they match up with the patterns seen in the training set**
+
+
+# Inference
+
+In inference, we are generating new data from the model. We want to see what patterns it has internalised in the paramteres of its network.
+
+`probability vector`, `probability distribution`, `sample a token based on the probability distribution`
+
+We check if we can reproduce the data in the initial training set.
+
+When we are "talking to" the model, it is inference. We are giving it tokens, and it is completing token sequences with its fixed parameters.
+
+Generative Pretrained Transformer (GPT)
+
+We run inference on the model to generate new data, we check the loss value of the model to see how well it is doing. GPUs are needed because they can run many processes in parallel. At the end of this expensive process we get a `Base Model`.
+
+Base models are only step one, you cannot communicate directly.
+
+The following code is describing the `forward-pass` of the neural network.
+This plus the parameters is the `Base Model`.
+
+The sequence of steps taken by the neural network for training is shown for GPT-2 [here](https://github.com/openai/gpt-2/blob/master/src/model.py)
+
+At this stage it is just a vague recollection fo the training data set, with sometimes exact **regurgitation**. These models can be extremely good at memorisation - this is not what we want them for.
+
+Although...the Base model can still be utilised in practical applications even at this stage. These models have `in context learning` capabilities. IT understands to continue patterns such as translations.
+
+With a prompt, you can get the base model to mimic an assistant model. By copying and pasting in the beginning of a back and forth conversation, you can get the base model to mimic an assistant model and reply in the correct tone and length of characters.
+
+# Post Training
+
+Humans write out ideal responses, then we have the model train on those responses to hopefully mimic the human responses. 
+
+**Same algorithm, same everything as pre training stage. We are just swapping out the data set for conversations.**
+
+Next problem is turning conversations into tokens.
+
+![Image of Tiktokeniser](https://substackcdn.com/image/fetch/$s_!Ly-S!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8bfb8c02-5d35-4474-a6ad-70d76e0d65f3_1076x911.png)
+
+Our conversations get turned into a **sequences of one dimesional tokens**.

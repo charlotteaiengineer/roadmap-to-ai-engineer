@@ -1,13 +1,11 @@
 ---
-title: "Practical Python - Nina Zakharenko"
+title: "Practical Python: Beginner's Guide"
 description: "sets, tuples, dictionaries, mutability & hashing."
 date: 2025-10-13
 jupyter: python3
 categories: [python, data-structures, tuples, sets, dictionaries, fundamentals]
 image: https://static.frontendmasters.com/assets/courses/2020-12-22-practical-python/posterframe.webp
 ---
-
-
 
 
 -   Frontend Masters — Practical Guide to Python (full course) by Nina Zakharenko: <https://frontendmasters.com/courses/practical-python/>
