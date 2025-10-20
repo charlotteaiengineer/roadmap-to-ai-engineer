@@ -159,6 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#visualization-of-llm-in-3d" id="toc-visualization-of-llm-in-3d" class="nav-link" data-scroll-target="#visualization-of-llm-in-3d">Visualization of LLM in 3D</a></li>
   <li><a href="#inference" id="toc-inference" class="nav-link" data-scroll-target="#inference">Inference</a></li>
   <li><a href="#post-training" id="toc-post-training" class="nav-link" data-scroll-target="#post-training">Post Training</a></li>
+  <li><a href="#post-training-reinforcement-learning" id="toc-post-training-reinforcement-learning" class="nav-link" data-scroll-target="#post-training-reinforcement-learning">Post-Training Reinforcement Learning</a></li>
   </ul>
 </nav>
     </div>
@@ -222,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The way the technology works for these neural nets is that they expect a <code>one dimesional sequence of symbols</code>. They want a <code>finite set of symbols</code> that are possible. We have to decide what the symbols are, then have to represent our data as a one dimensional sequence of symbols.</p>
 <section id="text-bytes-bits-roundtrip-compact-and-readable" class="level3">
 <h3 class="anchored" data-anchor-id="text-bytes-bits-roundtrip-compact-and-readable">Text → bytes → bits (roundtrip, compact and readable)</h3>
-<div id="92d31769" class="cell" data-execution_count="1">
+<div id="2d670349" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"I'm enjoying learning about how ChatGPT works from the inside. It's pretty difficult to understand, but I'm sure I'll get the hang of it if I stick around and carry on"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Text → bytes (UTF-8)</span></span>
@@ -265,7 +266,7 @@ decoded: I'm enjoying learning about how ChatGPT works from the inside. It's pre
 <section id="per-character-view-code-point-utf8-bytes" class="level3">
 <h3 class="anchored" data-anchor-id="per-character-view-code-point-utf8-bytes">Per-character view (code point → UTF‑8 bytes)</h3>
 <p>We want more symbols and shorter sequences. Let’s compress the binary sequence. <strong>A group of 8 bits are a byte</strong>.</p>
-<div id="55984020" class="cell" data-execution_count="2">
+<div id="6d9d4aed" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> text[:<span class="dv">8</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'char'</span><span class="sc">:&lt;6}{</span><span class="st">'codepoint'</span><span class="sc">:&lt;12}{</span><span class="st">'hex'</span><span class="sc">:&lt;20}{</span><span class="st">'bin'</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ch <span class="kw">in</span> sample:</span>
@@ -291,7 +292,7 @@ decoded: I'm enjoying learning about how ChatGPT works from the inside. It's pre
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HEikzVL-lZU?si=cRWfRvEtko61Vnbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
 </iframe>
 <p>We’ll train a tiny BPE on a short corpus, learn a few merges, then tokenize a sentence.</p>
-<div id="1f811fac" class="cell" data-execution_count="3">
+<div id="5ed7a12f" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> (</span>
@@ -433,7 +434,44 @@ bpe tokens (first 30): ['v', 'i', 'e', 'w', 'ing&lt;/w&gt;', 's', 'in', 'g', 'l'
 </div>
 <p>Our conversations get turned into a <strong>sequences of one dimesional tokens</strong>.</p>
 <p>We cannot possibilty cover all potential prompts a user might ask in our training dataset. However we can make a few different examples of how the model should respond in a helpful way. It’s all programmed by example.</p>
+<section id="high-level-overview-of-how-chatgpt-works" class="level4">
+<h4 class="anchored" data-anchor-id="high-level-overview-of-how-chatgpt-works">High level overview of how ChatGPT works</h4>
 <p><strong>We are programming the system by example and the system adopts statistically this persona of this helpful truthful assistant which is reflected in the labelling instructions that the company creates.</strong></p>
+<p>When talking to ChatGPT, it isn’t some magical AI. It is like speaking with a simulation of an average highly skilled labeller. It is NOT a magical AI that has gone out and researched all the answers to all the questions as you ask them. <strong>ChatGPT is a statistical simulation of a labeller hired by OpenAI</strong></p>
+<p><strong>Pre training knowledge is combined with the Post Training data set that results in this imitation of emergent behaviour.</strong></p>
+</section>
+<section id="hallucinations-and-how-they-happen" class="level4">
+<h4 class="anchored" data-anchor-id="hallucinations-and-how-they-happen">Hallucinations and how they happen</h4>
+<p>Labellers have a confident tone of answer when they label their data - they’ve gone out and researched and know something to be definively true. Therefore when the model hallucinates, it is because it is trying to mimic the labeller’s tone of answer.</p>
+<p>The assistant will not tell you it doesn’t know because the style of the majority of the training data examples is a helpful answer, confidently stated. The answer you get is a statistical best guess. The model is just sampling through the probabilities and coming up with random answers.</p>
+<p>Hallucinations have been improved over time. Meta used an interrogation technique, asking the same question multiple times and then comparing the answers to the correct answer. If this keeps coming up as incorrect, we’ve found what the model doesn’t know. We add a new conversation to the training set, with the answer “I’m sorry, I don’t know”. <strong>When this neurons uncertainty is high, then state “I don’t know”.</strong></p>
+<p>A better way is to allow the model to query the internet. <code>&lt;SEARCH_START&gt;</code> and <code>&lt;SEARCH_END&gt;</code> are special tokens that tell the model to search the internet. The text from the web search is now inside the <code>Context Window</code> - directly available to the model. So now the model can reference this exact text in its response.</p>
+<p>When providing the text of reference within the prompt, the model has full access to it within its Context Window. Therefore the output will be of high quality, rather than vague recollection of the training data.</p>
+</section>
+<section id="knowledge-of-self" class="level4">
+<h4 class="anchored" data-anchor-id="knowledge-of-self">Knowledge of self</h4>
+<p>Asking the model about itself doesn’t make sense, it will make this up. It will hallucinate. It has zero sense of self. The model understands it is taking on the personality of a AI assistant and can infer and guess with high statistical probability that it was created by OpenAI.</p>
+<p>Sometimes you can add something called a <strong>system message</strong> to the beginning of the conversation. This is a message that the model will see first and it will use to guide its behaviour.</p>
+<p>Distributing the computation across the answer is how a good maths question is answered. A well trained model spreads out its reasoning and spread out its computation across the tokens. Then it’ll have all the previous results wihtin its working memory. It is really bad to make the model do all calculation from a singular token.</p>
+<p>“working out” the answer is better than just “the answer is…”. The model can break the problem down into steps and refer to them as it goes.</p>
+<p><code>A single forward pass of the network</code> is not sufficient for the work of doing mathematics.</p>
+<p>Models can’t count, and they struggle to do arithmetic.</p>
+<p>Models don’t see characters, they see tokens - therefore they’re not great at spelling.</p>
+</section>
+</section>
+<section id="post-training-reinforcement-learning" class="level1">
+<h1>Post-Training Reinforcement Learning</h1>
+<p><em>An assistant model trained by supervised fine-tuning</em></p>
+<p>We generated 15 solutions:</p>
+<ul>
+<li>Only 4 of them got the right answer.</li>
+<li>Take the top solution (each right short answer).</li>
+<li>Train on it to make it better at the task.</li>
+<li>repeat</li>
+<li>repeat</li>
+</ul>
+<p>After the parameter update, the model will be slightly more likely to choose the right answer.</p>
+<p>The model is discovering <em>for itself</em> what kind of token sequences lead it to correct answers. No human annotator in this part.</p>
 
 
 </section>

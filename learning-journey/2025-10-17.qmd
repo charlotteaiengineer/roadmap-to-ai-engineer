@@ -248,4 +248,58 @@ Our conversations get turned into a **sequences of one dimesional tokens**.
 
 We cannot possibilty cover all potential prompts a user might ask in our training dataset. However we can make a few different examples of how the model should respond in a helpful way. It's all programmed by example.
 
+#### High level overview of how ChatGPT works
+
 **We are programming the system by example and the system adopts statistically this persona of this helpful truthful assistant which is reflected in the labelling instructions that the company creates.**
+
+When talking to ChatGPT, it isn't some magical AI. It is like speaking with a simulation of an average highly skilled labeller. It is NOT a magical AI that has gone out and researched all the answers to all the questions as you ask them. **ChatGPT is a statistical simulation of a labeller hired by OpenAI** 
+
+**Pre training knowledge is combined with the Post Training data set that results in this imitation of emergent behaviour.**
+
+#### Hallucinations and how they happen
+
+Labellers have a confident tone of answer when they label their data - they've gone out and researched and know something to be definively true. Therefore when the model hallucinates, it is because it is trying to mimic the labeller's tone of answer.
+
+The assistant will not tell you it doesn't know because the style of the majority of the training data examples is a helpful answer, confidently stated. The answer you get is a statistical best guess. The model is just sampling through the probabilities and coming up with random answers.
+
+Hallucinations have been improved over time. Meta used an interrogation technique, asking the same question multiple times and then comparing the answers to the correct answer. If this keeps coming up as incorrect, we've found what the model doesn't know. We add a new conversation to the training set, with the answer "I'm sorry, I don't know". **When this neurons uncertainty is high, then state "I don't know".**
+
+A better way is to allow the model to query the internet. `<SEARCH_START>` and `<SEARCH_END>` are special tokens that tell the model to search the internet. The text from the web search is now inside the `Context Window` - directly available to the model. So now the model can reference this exact text in its response.
+
+
+When providing the text of reference within the prompt, the model has full access to it within its Context Window. Therefore the output will be of high quality, rather than vague recollection of the training data. 
+
+#### Knowledge of self
+
+Asking the model about itself doesn't make sense, it will make this up. It will hallucinate. It has zero sense of self.  The model understands it is taking on the personality of a AI assistant and can infer and guess with high statistical probability that it was created by OpenAI.
+
+Sometimes you can add something called a **system message** to the beginning of the conversation. This is a message that the model will see first and it will use to guide its behaviour. 
+
+Distributing the computation across the answer is how a good maths question is answered. A well trained model spreads out its reasoning and spread out its computation across the tokens. Then it'll have all the previous results wihtin its working memory. It is really bad to make the model do all calculation from a singular token.
+
+"working out" the answer is better than just "the answer is...". The model can break the problem down into steps and refer to them as it goes.
+
+`A single forward pass of the network` is not sufficient for the work of doing mathematics.
+
+Models can't count, and they struggle to do arithmetic.
+
+Models don't see characters, they see tokens - therefore they're not great at spelling.
+
+
+# Post-Training Reinforcement Learning
+
+*An assistant model trained by supervised fine-tuning*
+
+We generated 15 solutions: 
+
+- Only 4 of them got the right answer. 
+- Take the top solution (each right short answer).
+- Train on it to make it better at the task.
+- repeat
+- repeat
+ 
+ After the parameter update, the model will be slightly more likely to choose the right answer. 
+
+ The model is discovering *for itself* what kind of token sequences lead it to correct answers. No human annotator in this part.
+
+ 
