@@ -160,6 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#inference" id="toc-inference" class="nav-link" data-scroll-target="#inference">Inference</a></li>
   <li><a href="#post-training" id="toc-post-training" class="nav-link" data-scroll-target="#post-training">Post Training</a></li>
   <li><a href="#post-training-reinforcement-learning" id="toc-post-training-reinforcement-learning" class="nav-link" data-scroll-target="#post-training-reinforcement-learning">Post-Training Reinforcement Learning</a></li>
+  <li><a href="#rlhf---reinforcement-learning-from-human-feedback" id="toc-rlhf---reinforcement-learning-from-human-feedback" class="nav-link" data-scroll-target="#rlhf---reinforcement-learning-from-human-feedback">RLHF - Reinforcement Learning from Human Feedback</a></li>
   </ul>
 </nav>
     </div>
@@ -223,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The way the technology works for these neural nets is that they expect a <code>one dimesional sequence of symbols</code>. They want a <code>finite set of symbols</code> that are possible. We have to decide what the symbols are, then have to represent our data as a one dimensional sequence of symbols.</p>
 <section id="text-bytes-bits-roundtrip-compact-and-readable" class="level3">
 <h3 class="anchored" data-anchor-id="text-bytes-bits-roundtrip-compact-and-readable">Text → bytes → bits (roundtrip, compact and readable)</h3>
-<div id="2d670349" class="cell" data-execution_count="1">
+<div id="f39f16a4" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"I'm enjoying learning about how ChatGPT works from the inside. It's pretty difficult to understand, but I'm sure I'll get the hang of it if I stick around and carry on"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Text → bytes (UTF-8)</span></span>
@@ -266,7 +267,7 @@ decoded: I'm enjoying learning about how ChatGPT works from the inside. It's pre
 <section id="per-character-view-code-point-utf8-bytes" class="level3">
 <h3 class="anchored" data-anchor-id="per-character-view-code-point-utf8-bytes">Per-character view (code point → UTF‑8 bytes)</h3>
 <p>We want more symbols and shorter sequences. Let’s compress the binary sequence. <strong>A group of 8 bits are a byte</strong>.</p>
-<div id="6d9d4aed" class="cell" data-execution_count="2">
+<div id="b94e90f3" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> text[:<span class="dv">8</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'char'</span><span class="sc">:&lt;6}{</span><span class="st">'codepoint'</span><span class="sc">:&lt;12}{</span><span class="st">'hex'</span><span class="sc">:&lt;20}{</span><span class="st">'bin'</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ch <span class="kw">in</span> sample:</span>
@@ -292,7 +293,7 @@ decoded: I'm enjoying learning about how ChatGPT works from the inside. It's pre
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HEikzVL-lZU?si=cRWfRvEtko61Vnbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
 </iframe>
 <p>We’ll train a tiny BPE on a short corpus, learn a few merges, then tokenize a sentence.</p>
-<div id="5ed7a12f" class="cell" data-execution_count="3">
+<div id="8a96db5b" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> (</span>
@@ -472,6 +473,41 @@ bpe tokens (first 30): ['v', 'i', 'e', 'w', 'ing&lt;/w&gt;', 's', 'in', 'g', 'l'
 </ul>
 <p>After the parameter update, the model will be slightly more likely to choose the right answer.</p>
 <p>The model is discovering <em>for itself</em> what kind of token sequences lead it to correct answers. No human annotator in this part.</p>
+<p>Companies don’t share information about this stage usually so it was a surprise to see this paper - <a href="https://arxiv.org/pdf/2501.12948">DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</a></p>
+<p>The models made improvement on solving mathematical problems, discovering how to solve them.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.researchgate.net/publication/395582429/figure/fig1/AS:11431281640049975@1758250476126/Accuracy-and-output-length-of-DeepSeek-R1-Zero-throughout-the-training-process-a-AIME.png" class="img-fluid figure-img"></p>
+<figcaption>DeepSeek-R1 Accuracy and output length throughout the training process</figcaption>
+</figure>
+</div>
+<p>The model learns to make very long solutions. It’s like the model is “thinking” about the problem and then “working out” the answer.</p>
+<p><code>Wait, wait. Wait. That’s an aha moment I can flag here....</code> <code>Let’s reevaluate this step-by-step to identify if the correct sum can be ...</code></p>
+<p>This has been discovered by the model, this was not an addition or taught by labellers. The model is learning to reason and discover how to solve problems.</p>
+<section id="alpha-go" class="level4">
+<h4 class="anchored" data-anchor-id="alpha-go">Alpha Go</h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WXuK6gekU1Y?si=xLVk0tTMIyYOkMWq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<p>Here they compare the strength of a model trained by Reinforcement Learning to a model trained by Supervised Learning. Reinforcement Learning is significantly more powerful. It played against itself and learned to play better, trialing many different solutions to the problem.</p>
+<p>Reinforcement Learning is NOT constrained by human knowledge and abilities.</p>
+<p>Move 37 was a move that no humna experert would play. In retrospect it was brilliant. Move 37 proved that the model was able to reason and discover how to play the game better.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1639502365311/OiDB9gSUf.png?auto=compress,format&amp;format=webp" class="img-fluid figure-img"></p>
+<figcaption>Alpha go</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="rlhf---reinforcement-learning-from-human-feedback" class="level1">
+<h1>RLHF - Reinforcement Learning from Human Feedback</h1>
+<p>We train a <code>Reward Model</code> - a scoring model, based on ranked answers by humans. We compare the reward model’s answers to the model’s answers and then we train the model to get a higher reward score.</p>
+<p>The weights of the model become tuned to the human feedback</p>
+<p>We want the reward model scoring to reflect the human feedback ordering.</p>
+<p>Humans can far easier discriminate between answers than gnerate answers.</p>
+<p>In RHLF the system discovers the answers that would be graded well by humans.</p>
+<p>Downside is we are doing Reinforcement learning with respect to a <code>lossy simulation of humans</code> - could be misleading. RL can also find ways to game the system to get a higher reward score - e.g the answer could become nonsensical but still get a high reward score. <strong>This is a problem because the model is not learning to reason and discover how to solve problems, it is learning to game the system to get a higher reward score.</strong></p>
+<p>Therefore RHLF is fine tuning, it’s seen as ‘not real RL’ because the scoring is gameable. It’s a little improvement, fine tune.</p>
 
 
 </section>

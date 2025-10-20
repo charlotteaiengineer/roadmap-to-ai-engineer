@@ -302,4 +302,44 @@ We generated 15 solutions:
 
  The model is discovering *for itself* what kind of token sequences lead it to correct answers. No human annotator in this part.
 
- 
+Companies don't share information about this stage usually so it was a surprise to see this paper - [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via
+Reinforcement Learning](https://arxiv.org/pdf/2501.12948) 
+
+The models made improvement on solving mathematical problems, discovering how to solve them.
+
+![DeepSeek-R1 Accuracy and output length throughout the training process](https://www.researchgate.net/publication/395582429/figure/fig1/AS:11431281640049975@1758250476126/Accuracy-and-output-length-of-DeepSeek-R1-Zero-throughout-the-training-process-a-AIME.png)
+
+The model learns to make very long solutions. It's like the model is "thinking" about the problem and then "working out" the answer.
+
+`Wait, wait. Wait. That’s an aha moment I can flag here....`
+`Let’s reevaluate this step-by-step to identify if the correct sum can be ... `
+
+This has been discovered by the model, this was not an addition or taught by labellers. The model is learning to reason and discover how to solve problems.
+
+#### Alpha Go
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WXuK6gekU1Y?si=xLVk0tTMIyYOkMWq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Here they compare the strength of a model trained by Reinforcement Learning to a model trained by Supervised Learning. Reinforcement Learning is significantly more powerful. It played against itself and learned to play better, trialing many different solutions to the problem. 
+
+Reinforcement Learning is NOT constrained by human knowledge and abilities. 
+
+Move 37 was a move that no humna experert would play. In retrospect it was brilliant. Move 37 proved that the model was able to reason and discover how to play the game better.
+
+![Alpha go ](https://cdn.hashnode.com/res/hashnode/image/upload/v1639502365311/OiDB9gSUf.png?auto=compress,format&format=webp)
+
+# RLHF - Reinforcement Learning from Human Feedback
+
+We train a `Reward Model` - a scoring model, based on ranked answers by humans. We compare the reward model's answers to the model's answers and then we train the model to get a higher reward score.
+
+The weights of the model become tuned to the human feedback
+
+We want the reward model scoring to reflect the human feedback ordering. 
+
+Humans can far easier discriminate between answers than gnerate answers.
+
+In RHLF the system discovers the answers that would be graded well by humans.
+
+Downside is we are doing Reinforcement learning with respect to a `lossy simulation of humans` - could be misleading. RL can also find ways to game the system to get a higher reward score - e.g the answer could become nonsensical but still get a high reward score. **This is a problem because the model is not learning to reason and discover how to solve problems, it is learning to game the system to get a higher reward score.**
+
+Therefore RHLF is fine tuning, it's seen as 'not real RL' because the scoring is gameable. It's a little improvement, fine tune.
