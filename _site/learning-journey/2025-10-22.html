@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-10-20">
+<meta name="dcterms.date" content="2025-10-22">
 
-<title>Transformers and Attention – charlotteai.engineer</title>
+<title>Ai Engineering – charlotteai.engineer</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,10 +116,11 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Transformers and Attention</h1>
+<h1 class="title">Ai Engineering</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">transformers</div>
-    <div class="quarto-category">attention</div>
+    <div class="quarto-category">deep-learning</div>
+    <div class="quarto-category">generative-ai</div>
+    <div class="quarto-category">llm</div>
   </div>
   </div>
 
@@ -131,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 20, 2025</p>
+      <p class="date">October 22, 2025</p>
     </div>
   </div>
   
@@ -143,39 +144,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This video is very information dense and heavy and far beyond currrent full understanding. Just watch to familiarise yourself with the concepts loosely.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KJtZARuO3JY?si=OPYkvBBVcuYc5muq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<p><code>Attention pattern</code>, <code>Weighted Sum</code>, <code>Dot Product</code>, <code>Sequence of Vectors</code>, <code>Multi-Headed Attention</code>, <code>Multilayer Perceptron</code></p>
-<p>Context is revelant to updating meanings.</p>
-<p>Why is this technique as effective as it is? One lesson is that <strong>scale alone matters</strong>. Simply making things bigger and simply giving them more training data can sometimes give <strong>qualititivie improvements to the model performance</strong>.</p>
-<p>For a given size of the model, for a given amount of training that you do — what’s the cost function going to look like? If that cost function is going down, that typically responds to improvements in the model performance that are qualitativley visable - a chatbot that behaves better.</p>
-<p>The attention mechanism allows things to talk to eachother without sequential processing - it means they can take in the whole text passage at once, letting all the different embeddings talk to eachother as it does. This way it can effectively do <strong>more floating point operations in a given amount of time</strong>.</p>
-<p>You can alos train on a huge amount of data that doesnt require human labelling. You can just give it massive amounts of data wihtout being restrained by human feedback.</p>
-<p><strong>You can Tokenise essentially anything and then embed those as vectors. This means you can have lots of distinct data types working in conjunction with each other.</strong></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UZDiGooFs54?si=5tcj1lYP05y_5w9z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<section id="under-the-hood-of-chatgptransformer" class="level4">
-<h4 class="anchored" data-anchor-id="under-the-hood-of-chatgptransformer">Under the hood of ChatGP(Transformer)</h4>
-<p><strong>Each Transformer performs a set of fixed matrix operations on an input matrix of data and typically returns an output matrix of the same size.</strong></p>
-<p>To figure out what it’s going to say next, ChatGPT breaks apart what you ask it into words and word fragments, <strong>maps each of these to a vector</strong> and stacks all these vectors together into a matrix.</p>
-<p>This matrix is then passed into the first transformer block which returns a new matrix of the same size. This operation is repeated again and again.</p>
-<p>The next word is the final column of its final output matrix mapped from a vector back to text.</p>
-<p>Then this final word is appended to the end of the input sequence and the process is repeated again and again. With one new column appended to the end of the input matrix each time.</p>
-<p>ChatGPT slowly morphs the input you give it into the output it returns.</p>
-<p><code>Convolutional Blocks</code>, <code>Kernel</code>, <code>Activation Maps</code>. Activations maps are stacked together to form a <code>Tensor</code> that become the input to the Convolutional Compute Block.</p>
-<p>Dot Product can be thought of as a similarity score.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzsy3fP0QZLP53OxNTQPF66jPfXXxokJunOA1UuLf6qpJyt1d29NDEnlFVXyz8H-13RFNAf120mg6MkrWH_Tkl1UgEOqFcRwg_lPPJ4p2T4NaGuZvzUeuSOIZf6U62Ma7Y2-Ma5xQvAUTSYQ7qooYsbuo0E-QWR6GG0HpkDYs12UsfpBg58gSEDZfiyHwF/w582-h328-rw/CNN%20Architecutre%20(1).png" class="img-fluid figure-img"></p>
-<figcaption>Convolutional Block Architecture</figcaption>
-</figure>
-</div>
-<p><code>Latent/Embedding Space</code> is the space of all the possible vectors that the model can output. Distance but Directionality in these latent spaces is meaningful.</p>
-<p>To de-age an image for example, you can use the latent space to find the closest image to the original image and then apply a transformation (literally moving the point in the age direction) to the latent space to make the image younger/older. Then mapping the modified vector back into an image.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

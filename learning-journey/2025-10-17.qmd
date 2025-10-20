@@ -245,3 +245,7 @@ Next problem is turning conversations into tokens.
 ![Image of Tiktokeniser](https://substackcdn.com/image/fetch/$s_!Ly-S!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8bfb8c02-5d35-4474-a6ad-70d76e0d65f3_1076x911.png)
 
 Our conversations get turned into a **sequences of one dimesional tokens**.
+
+We cannot possibilty cover all potential prompts a user might ask in our training dataset. However we can make a few different examples of how the model should respond in a helpful way. It's all programmed by example.
+
+**We are programming the system by example and the system adopts statistically this persona of this helpful truthful assistant which is reflected in the labelling instructions that the company creates.**

@@ -60,7 +60,7 @@
     "href": "learning-journey/index.html",
     "title": "Learning Journey",
     "section": "",
-    "text": "This is a living, outcome-driven curriculum for becoming an AI Engineer. Each week is a self-contained module with learning outcomes, curated resources, exercises, and a readiness checklist so others can follow along or adapt it to their own path. Open any week below.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nAi Engineering\n\n\n\ndeep-learning\n\ngenerative-ai\n\nllm\n\n\n\n\n\n\n\n\n\nOct 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nGenerative AI with Python and PyTorch — Second Edition\n\n\n\npython\n\npytorch\n\ndeep-learning\n\ngenerative-ai\n\nllm\n\ntransformers\n\n\n\nStudy outline, exercises, and examples based on Babcock & Bali (O’Reilly, 2025).\n\n\n\n\n\nOct 18, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Dive into LLMs like ChatGPT\n\n\n\ndeep-learning\n\ngenerative-ai\n\nllm\n\n\n\n\n\n\n\n\n\nOct 17, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nIntro to Large Language Models\n\n\n\ndeep-learning\n\ngenerative-ai\n\nllm\n\n\n\n\n\n\n\n\n\nOct 14, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Python: Beginner’s Guide\n\n\n\npython\n\ndata-structures\n\ntuples\n\nsets\n\ndictionaries\n\nfundamentals\n\n\n\nsets, tuples, dictionaries, mutability & hashing.\n\n\n\n\n\nOct 13, 2025\n\n\n\n\n\nNo matching items"
+    "text": "This is a living, outcome-driven curriculum for becoming an AI Engineer. The dates are simply the day I began that course. Some parts can take a long time to complete, often I went back and forth into different topics to get a better understanding.\n\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nAi Engineering\n\n\n\ndeep-learning\n\ngenerative-ai\n\nllm\n\n\n\n\n\n\n\n\n\nOct 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nGenerative AI with Python and PyTorch — Second Edition\n\n\n\npython\n\npytorch\n\ndeep-learning\n\ngenerative-ai\n\nllm\n\ntransformers\n\n\n\nStudy outline, exercises, and examples based on Babcock & Bali (O’Reilly, 2025).\n\n\n\n\n\nOct 21, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nTransformers and Attention\n\n\n\ntransformers\n\nattention\n\n\n\n\n\n\n\n\n\nOct 20, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Dive into LLMs like ChatGPT\n\n\n\ndeep-learning\n\ngenerative-ai\n\nllm\n\n\n\n\n\n\n\n\n\nOct 17, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nIntro to Large Language Models\n\n\n\ndeep-learning\n\ngenerative-ai\n\nllm\n\n\n\n\n\n\n\n\n\nOct 14, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nPractical Python: Beginner’s Guide\n\n\n\npython\n\ndata-structures\n\ntuples\n\nsets\n\ndictionaries\n\nfundamentals\n\n\n\nsets, tuples, dictionaries, mutability & hashing.\n\n\n\n\n\nOct 13, 2025\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "learning-journey/week-2025-10-13.html",
@@ -467,5 +467,110 @@
     "title": "Deep Dive into LLMs like ChatGPT",
     "section": "Inference",
     "text": "Inference\nIn inference, we are generating new data from the model. We want to see what patterns it has internalised in the paramteres of its network.\nprobability vector, probability distribution, sample a token based on the probability distribution\nWe check if we can reproduce the data in the initial training set."
+  },
+  {
+    "objectID": "learning-journey/2025-10-20.html",
+    "href": "learning-journey/2025-10-20.html",
+    "title": "Transformers and Attention",
+    "section": "",
+    "text": "This video is very information dense and heavy and far beyond currrent full understanding. Just watch to familiarise yourself with the concepts loosely.\n\n\nAttention pattern, Weighted Sum, Dot Product, Sequence of Vectors, Multi-Headed Attention, Multilayer Perceptron\nContext is revelant to updating meanings.\nWhy is this technique as effective as it is? One lesson is that scale alone matters. Simply making things bigger and simply giving them more training data can sometimes give qualititivie improvements to the model performance.\nFor a given size of the model, for a given amount of training that you do — what’s the cost function going to look like? If that cost function is going down, that typically responds to improvements in the model performance that are qualitativley visable - a chatbot that behaves better.\nThe attention mechanism allows things to talk to eachother without sequential processing - it means they can take in the whole text passage at once, letting all the different embeddings talk to eachother as it does. This way it can effectively do more floating point operations in a given amount of time.\nYou can alos train on a huge amount of data that doesnt require human labelling. You can just give it massive amounts of data wihtout being restrained by human feedback.\nYou can Tokenise essentially anything and then embed those as vectors. This means you can have lots of distinct data types working in conjunction with each other.\n\n\n\nUnder the hood of ChatGP(Transformer)\nEach Transformer performs a set of fixed matrix operations on an input matrix of data and typically returns an output matrix of the same size.\nTo figure out what it’s going to say next, ChatGPT breaks apart what you ask it into words and word fragments, maps each of these to a vector and stacks all these vectors together into a matrix.\nThis matrix is then passed into the first transformer block which returns a new matrix of the same size. This operation is repeated again and again.\nThe next word is the final column of its final output matrix mapped from a vector back to text.\nThen this final word is appended to the end of the input sequence and the process is repeated again and again. With one new column appended to the end of the input matrix each time.\nChatGPT slowly morphs the input you give it into the output it returns.\nConvolutional Blocks, Kernel, Activation Maps. Activations maps are stacked together to form a Tensor that become the input to the Convolutional Compute Block.\nDot Product can be thought of as a similarity score.\n\n\n\nConvolutional Block Architecture\n\n\nLatent/Embedding Space is the space of all the possible vectors that the model can output. Distance but Directionality in these latent spaces is meaningful.\nTo de-age an image for example, you can use the latent space to find the closest image to the original image and then apply a transformation (literally moving the point in the age direction) to the latent space to make the image younger/older. Then mapping the modified vector back into an image."
+  },
+  {
+    "objectID": "learning-journey/2025-10-20-1.html",
+    "href": "learning-journey/2025-10-20-1.html",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "",
+    "text": "Explain the difference between discriminative and generative models\nDescribe transformer basics (attention, positional encodings) at a high level\nCompare decoding strategies (greedy vs sampling; top-k intuition)\nApply prompt-engineering fundamentals to steer model outputs\nOutline a minimal LLM app stack (prompting, logging, tooling)"
+  },
+  {
+    "objectID": "learning-journey/2025-10-20-1.html#learning-outcomes",
+    "href": "learning-journey/2025-10-20-1.html#learning-outcomes",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "",
+    "text": "Explain the difference between discriminative and generative models\nDescribe transformer basics (attention, positional encodings) at a high level\nCompare decoding strategies (greedy vs sampling; top-k intuition)\nApply prompt-engineering fundamentals to steer model outputs\nOutline a minimal LLM app stack (prompting, logging, tooling)"
+  },
+  {
+    "objectID": "learning-journey/2025-10-20-1.html#todays-syllabus",
+    "href": "learning-journey/2025-10-20-1.html#todays-syllabus",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "Today’s syllabus",
+    "text": "Today’s syllabus\n\nIntroduction to Generative AI (motivation, generative vs discriminative)\nTransformer refresher (attention and positional encoding intuition)\nText generation strategies (greedy vs sampling)\nPrompt engineering fundamentals and safety\nLightweight LLM app scaffolding and tooling overview"
+  },
+  {
+    "objectID": "learning-journey/2025-10-20-1.html#resources",
+    "href": "learning-journey/2025-10-20-1.html#resources",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "Resources",
+    "text": "Resources\n\nGenerative AI with Python and PyTorch — Second Edition, Joseph Babcock & Raghav Bali, 2025: https://learning.oreilly.com/library/view/generative-ai-with/9781835884447/"
+  },
+  {
+    "objectID": "learning-journey/2025-10-20-1.html#exercises",
+    "href": "learning-journey/2025-10-20-1.html#exercises",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "Exercises",
+    "text": "Exercises\n\nSummarize generative vs discriminative in 3 sentences with one concrete example of each.\nSketch the data flow of attention for 2 tokens (Q, K, V), labeling shapes.\nImplement a tiny decoder that picks tokens via greedy vs top-k sampling from fake logits."
+  },
+  {
+    "objectID": "learning-journey/2025-10-20-1.html#readiness-checklist",
+    "href": "learning-journey/2025-10-20-1.html#readiness-checklist",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "Readiness checklist",
+    "text": "Readiness checklist\n\nI can define discriminative vs generative models and give an example of each.\nI can explain attention at a high level and what positional encodings do.\nI can describe greedy vs sampling (and why top-k/top-p exist).\nI can write an effective system and user prompt for a concrete task.\nI can outline components of a minimal LLM app (prompting, logging, tooling)."
+  },
+  {
+    "objectID": "learning-journey/2025-10-20-1.html#examples",
+    "href": "learning-journey/2025-10-20-1.html#examples",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "Examples",
+    "text": "Examples\n\nGreedy vs sampling with softmax (no external libs)\n\nimport math, random\n\ndef softmax(logits):\n    m = max(logits)\n    exps = [math.exp(x - m) for x in logits]\n    s = sum(exps)\n    return [e / s for e in exps]\n\ndef greedy_sample(logits, vocab):\n    idx = max(range(len(logits)), key=lambda i: logits[i])\n    return vocab[idx]\n\ndef top_k_sample(logits, vocab, k=2):\n    # keep top-k, renormalize, sample\n    idxs = sorted(range(len(logits)), key=lambda i: logits[i], reverse=True)[:k]\n    kept = [logits[i] for i in idxs]\n    probs = softmax(kept)\n    r = random.random()\n    cum = 0.0\n    for i, p in enumerate(probs):\n        cum += p\n        if r &lt;= cum:\n            return vocab[idxs[i]]\n\nvocab = [\"the\", \"a\", \"an\", \"cat\", \"dog\"]\nfake_logits = [1.0, 0.7, 0.2, 0.9, 0.6]  # pretend model scores\n\nprint(\"greedy:\", greedy_sample(fake_logits, vocab))\nprint(\"top-k (k=2):\", [top_k_sample(fake_logits, vocab, k=2) for _ in range(5)])\n\ngreedy: the\ntop-k (k=2): ['the', 'the', 'the', 'the', 'cat']\n\n\n\n\nTiny attention intuition with two tokens (toy numbers)\n\n# Two token embeddings (dim=2), toy Q,K,V projections\nimport math\n\nX = [[1.0, 0.0],  # token 1\n     [0.5, 0.5]]  # token 2\n\nW_Q = [[1.0, 0.0],[0.0, 1.0]]\nW_K = [[0.5, 0.5],[0.5, 0.5]]\nW_V = [[1.0, 0.0],[0.0, 1.0]]\n\ndef matmul(A, B):\n    return [[sum(a*b for a, b in zip(row, col)) for col in zip(*B)] for row in A]\n\nQ = matmul(X, W_Q)\nK = matmul(X, W_K)\nV = matmul(X, W_V)\n\ndef dot(a, b):\n    return sum(x*y for x, y in zip(a, b))\n\ndef attention_weights(q_i, K):\n    scores = [dot(q_i, k) for k in K]\n    m = max(scores)\n    exps = [math.exp(s - m) for s in scores]\n    Z = sum(exps)\n    return [e/Z for e in exps]\n\nweights_0 = attention_weights(Q[0], K)\nout_0 = [sum(w*v for w, v in zip(weights_0, col)) for col in zip(*V)]\n\nweights_1 = attention_weights(Q[1], K)\nout_1 = [sum(w*v for w, v in zip(weights_1, col)) for col in zip(*V)]\n\nprint(\"weights token0:\", weights_0)\nprint(\"attended token0:\", out_0)\nprint(\"weights token1:\", weights_1)\nprint(\"attended token1:\", out_1)\n\nweights token0: [0.5, 0.5]\nattended token0: [0.75, 0.25]\nweights token1: [0.5, 0.5]\nattended token1: [0.75, 0.25]\n\n\n\n\nPrompt templating (system + user)\n\ntask = \"Summarize discriminative vs generative models with examples.\"\nsystem = \"You are a precise assistant. Keep answers under 100 words.\"\nuser = f\"Task: {task}\\nConstraints: 3 sentences max.\"\n\nprint(\"SYSTEM:\\n\" + system)\nprint(\"USER:\\n\" + user)\n\nSYSTEM:\nYou are a precise assistant. Keep answers under 100 words.\nUSER:\nTask: Summarize discriminative vs generative models with examples.\nConstraints: 3 sentences max."
+  },
+  {
+    "objectID": "learning-journey/2025-10-21.html",
+    "href": "learning-journey/2025-10-21.html",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "",
+    "text": "Explain the difference between discriminative and generative models\nDescribe transformer basics (attention, positional encodings) at a high level\nCompare decoding strategies (greedy vs sampling; top-k intuition)\nApply prompt-engineering fundamentals to steer model outputs\nOutline a minimal LLM app stack (prompting, logging, tooling)"
+  },
+  {
+    "objectID": "learning-journey/2025-10-21.html#learning-outcomes",
+    "href": "learning-journey/2025-10-21.html#learning-outcomes",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "",
+    "text": "Explain the difference between discriminative and generative models\nDescribe transformer basics (attention, positional encodings) at a high level\nCompare decoding strategies (greedy vs sampling; top-k intuition)\nApply prompt-engineering fundamentals to steer model outputs\nOutline a minimal LLM app stack (prompting, logging, tooling)"
+  },
+  {
+    "objectID": "learning-journey/2025-10-21.html#todays-syllabus",
+    "href": "learning-journey/2025-10-21.html#todays-syllabus",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "Today’s syllabus",
+    "text": "Today’s syllabus\n\nIntroduction to Generative AI (motivation, generative vs discriminative)\nTransformer refresher (attention and positional encoding intuition)\nText generation strategies (greedy vs sampling)\nPrompt engineering fundamentals and safety\nLightweight LLM app scaffolding and tooling overview"
+  },
+  {
+    "objectID": "learning-journey/2025-10-21.html#resources",
+    "href": "learning-journey/2025-10-21.html#resources",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "Resources",
+    "text": "Resources\n\nGenerative AI with Python and PyTorch — Second Edition, Joseph Babcock & Raghav Bali, 2025: https://learning.oreilly.com/library/view/generative-ai-with/9781835884447/"
+  },
+  {
+    "objectID": "learning-journey/2025-10-21.html#exercises",
+    "href": "learning-journey/2025-10-21.html#exercises",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "Exercises",
+    "text": "Exercises\n\nSummarize generative vs discriminative in 3 sentences with one concrete example of each.\nSketch the data flow of attention for 2 tokens (Q, K, V), labeling shapes.\nImplement a tiny decoder that picks tokens via greedy vs top-k sampling from fake logits."
+  },
+  {
+    "objectID": "learning-journey/2025-10-21.html#readiness-checklist",
+    "href": "learning-journey/2025-10-21.html#readiness-checklist",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "Readiness checklist",
+    "text": "Readiness checklist\n\nI can define discriminative vs generative models and give an example of each.\nI can explain attention at a high level and what positional encodings do.\nI can describe greedy vs sampling (and why top-k/top-p exist).\nI can write an effective system and user prompt for a concrete task.\nI can outline components of a minimal LLM app (prompting, logging, tooling)."
+  },
+  {
+    "objectID": "learning-journey/2025-10-21.html#examples",
+    "href": "learning-journey/2025-10-21.html#examples",
+    "title": "Generative AI with Python and PyTorch — Second Edition",
+    "section": "Examples",
+    "text": "Examples\n\nGreedy vs sampling with softmax (no external libs)\n\nimport math, random\n\ndef softmax(logits):\n    m = max(logits)\n    exps = [math.exp(x - m) for x in logits]\n    s = sum(exps)\n    return [e / s for e in exps]\n\ndef greedy_sample(logits, vocab):\n    idx = max(range(len(logits)), key=lambda i: logits[i])\n    return vocab[idx]\n\ndef top_k_sample(logits, vocab, k=2):\n    # keep top-k, renormalize, sample\n    idxs = sorted(range(len(logits)), key=lambda i: logits[i], reverse=True)[:k]\n    kept = [logits[i] for i in idxs]\n    probs = softmax(kept)\n    r = random.random()\n    cum = 0.0\n    for i, p in enumerate(probs):\n        cum += p\n        if r &lt;= cum:\n            return vocab[idxs[i]]\n\nvocab = [\"the\", \"a\", \"an\", \"cat\", \"dog\"]\nfake_logits = [1.0, 0.7, 0.2, 0.9, 0.6]  # pretend model scores\n\nprint(\"greedy:\", greedy_sample(fake_logits, vocab))\nprint(\"top-k (k=2):\", [top_k_sample(fake_logits, vocab, k=2) for _ in range(5)])\n\ngreedy: the\ntop-k (k=2): ['the', 'the', 'cat', 'the', 'the']\n\n\n\n\nTiny attention intuition with two tokens (toy numbers)\n\n# Two token embeddings (dim=2), toy Q,K,V projections\nimport math\n\nX = [[1.0, 0.0],  # token 1\n     [0.5, 0.5]]  # token 2\n\nW_Q = [[1.0, 0.0],[0.0, 1.0]]\nW_K = [[0.5, 0.5],[0.5, 0.5]]\nW_V = [[1.0, 0.0],[0.0, 1.0]]\n\ndef matmul(A, B):\n    return [[sum(a*b for a, b in zip(row, col)) for col in zip(*B)] for row in A]\n\nQ = matmul(X, W_Q)\nK = matmul(X, W_K)\nV = matmul(X, W_V)\n\ndef dot(a, b):\n    return sum(x*y for x, y in zip(a, b))\n\ndef attention_weights(q_i, K):\n    scores = [dot(q_i, k) for k in K]\n    m = max(scores)\n    exps = [math.exp(s - m) for s in scores]\n    Z = sum(exps)\n    return [e/Z for e in exps]\n\nweights_0 = attention_weights(Q[0], K)\nout_0 = [sum(w*v for w, v in zip(weights_0, col)) for col in zip(*V)]\n\nweights_1 = attention_weights(Q[1], K)\nout_1 = [sum(w*v for w, v in zip(weights_1, col)) for col in zip(*V)]\n\nprint(\"weights token0:\", weights_0)\nprint(\"attended token0:\", out_0)\nprint(\"weights token1:\", weights_1)\nprint(\"attended token1:\", out_1)\n\nweights token0: [0.5, 0.5]\nattended token0: [0.75, 0.25]\nweights token1: [0.5, 0.5]\nattended token1: [0.75, 0.25]\n\n\n\n\nPrompt templating (system + user)\n\ntask = \"Summarize discriminative vs generative models with examples.\"\nsystem = \"You are a precise assistant. Keep answers under 100 words.\"\nuser = f\"Task: {task}\\nConstraints: 3 sentences max.\"\n\nprint(\"SYSTEM:\\n\" + system)\nprint(\"USER:\\n\" + user)\n\nSYSTEM:\nYou are a precise assistant. Keep answers under 100 words.\nUSER:\nTask: Summarize discriminative vs generative models with examples.\nConstraints: 3 sentences max."
   }
 ]

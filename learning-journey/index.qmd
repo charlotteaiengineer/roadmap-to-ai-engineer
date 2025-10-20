@@ -13,6 +13,6 @@ listing:
   filter-ui: true
 ---
 
-This is a living, outcome-driven curriculum for becoming an AI Engineer. Each week is a self-contained module with learning outcomes, curated resources, exercises, and a readiness checklist so others can follow along or adapt it to their own path. Open any week below.
+This is a living, outcome-driven curriculum for becoming an AI Engineer. The dates are simply the day I began that course. Some parts can take a long time to complete, often I went back and forth into different topics to get a better understanding.
 
 
