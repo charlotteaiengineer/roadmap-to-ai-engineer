@@ -2,6 +2,12 @@
   "listingMap": {
     "learning-journey/index.qmd": [
       "."
+    ],
+    "index.qmd": [
+      "learning-journey"
+    ],
+    "blog/index.qmd": [
+      "."
     ]
   }
 }

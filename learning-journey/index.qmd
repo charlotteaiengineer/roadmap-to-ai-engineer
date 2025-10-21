@@ -1,5 +1,5 @@
 ---
-title: "Learning Journey"
+title: "AI Engineer Learning Journey"
 page-layout: full
 listing:
   contents: .
@@ -14,5 +14,7 @@ listing:
 ---
 
 This is a living, outcome-driven curriculum for becoming an AI Engineer. The dates are simply the day I began that course. Some parts can take a long time to complete, often I went back and forth into different topics to get a better understanding.
+
+Check out what I've been learning this week, or change the ordering to 'Oldest' to start from scratch too.
 
 

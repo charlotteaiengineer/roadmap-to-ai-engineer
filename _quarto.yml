@@ -4,12 +4,16 @@ project:
 execute-dir: project
 
 website:
-  title: "charlotteai.engineer"
+  title: "prophecy.engineer"
 
   navbar:
     left:
-      - text: Learning Journey
-        href: learning-journey/index.qmd
+      # - text: Home
+      #   href: index.qmd
+      - text: About
+        href: about.qmd
+      - text: Blog
+        href: blog/index.qmd
 
 format:
   html:

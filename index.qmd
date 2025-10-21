@@ -1,5 +1,16 @@
 ---
 title: "A roadmap to becoming an AI Engineer"
+page-layout: full
+listing:
+  contents: learning-journey
+  sort: "date desc"
+  type: default
+  image-align: left
+  sort-ui: true
+  page-size: 30
+  fields: [image, title, description, date, categories]
+  categories: true
+  filter-ui: true
 ---
 
 

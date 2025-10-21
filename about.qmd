@@ -1,0 +1,81 @@
+---
+page-layout: full
+image: me.jpeg
+---
+
+::: {.columns}
+::: {.column width="65%"}
+Hey there — I’m Charlotte Bondarev, a Frontend‑focused Product Developer who loves building fast, elegant, and accessible web experiences. I dive deep, move quickly, and use strong workflows to ship pixel‑perfect UI.
+
+I started by asking “can I build this?” and dove head‑first into full‑stack projects. Today I lean frontend, collaborate closely with design, and sweat the details that make products feel alive.
+
+**Focus areas**
+- Pixel‑perfect UI and component systems
+- Rapid, feedback‑driven iteration
+- Performance, accessibility, and DX
+:::
+::: {.column width="35%"}
+
+![](me.jpeg)
+
+Ipswich, UK  
+[LinkedIn](https://www.linkedin.com/in/charlotte-bondarev-4962a5264/) · [GitHub](https://github.com/prophecyengineer)  
+<!-- Phone: +44 7827 3XXXX -->
+:::
+:::
+
+### Skills
+**Core**: TypeScript, React, Next.js, JavaScript, UI/UX, Testing (Playwright)  
+**UI Systems**: shadcn/ui, TailwindCSS, design systems, atomic design  
+**Backend/Infra**: Node.js, GraphQL/REST, Serverless, AWS (S3, Lambda, DynamoDB, Amplify), Docker, Netlify  
+**CMS**: Contentful, Payload CMS  
+**Data/DB**: MongoDB, SQL, PostgreSQL  
+**Tooling**: Git, Figma, Linear, Adobe Analytics, Prisma, Heroku, Railway  
+
+### Experience
+**Frontend Engineer · Hargreaves Lansdown** (03/2023 — current)  
+- Led rebuild of main and dropdown menus on `hl.co.uk` with Next.js and Contentful  
+- Built new Help Docs and News & Insights from scratch; promoted to Pensions team  
+- Owned calculators and high‑traffic apps; integrated Adobe Analytics  
+- Migrated UI to an internal library; TDD; sole manager of three repos  
+- Mentored two apprentices; taught Playwright/Next.js; wrote technical docs
+
+**Frontend Engineer · Munch** (01/2021 — 01/2023)  
+- Mobile‑first website builder with complex multi‑touch interactions  
+- Rebuilt the entire menu system for responsiveness and configurability  
+- Improved productivity via modular architecture and clear routing/naming  
+- Migrated frontend from Craft.js to Google Web Stories in one weekend; desktop/mobile editor up within a week
+
+**CPO · Kynk** (04/2019 — 08/2020)  
+- Product discovery and UX; user research into user stories and flows  
+- Pitched scope and product vision to engineering team  
+- Explored payments for creator‑safe platform
+
+**WordPress Developer · Lella.co** (01/2019 — 06/2019)  
+- Built and maintained the site; advised on product positioning
+
+### Selected projects
+**Marketplace buildout** — ultra‑fast marketplaces with non‑technical creator tools  
+Stack: Medusa.js + Next.js; Vendure; later Qwik; Docker; Railway; PostgreSQL  
+- Rebuilt three times to optimize DX/perf; pitched to VCs; interviewed early users
+
+**Engineer Learning Roadmap** — curated learning hub  
+Prior: Clerk auth, Next.js + TypeScript, Payload CMS (MongoDB, PlanetScale, Prisma)  
+Current: Docusaurus; planned progression tracking and starter code
+
+**Social media prototype** — deep dive first project  
+GetStream‑based social feeds; Amplify, Serverless, Heroku, Mantine, Next.js  
+- Solved media‑hosting costs via IPFS/web3.storage; working prototype with auth/feeds
+
+**Realtime character rig** — motion‑tracked 3D avatar  
+Unity, Blender, Rokoko; custom retargeting, facial rig mapping, live web integration
+
+### Currently exploring
+- AI companion to support autistic people (React/Next.js)  
+- In‑browser OS (Tauri/React Native)  
+- AliveUI — rapidly composable UI library  
+- Product planning with Figma and Linear
+
+### Get in touch
+If you’re building ambitious, design‑led products and want to ship fast with quality, let’s talk.
+
