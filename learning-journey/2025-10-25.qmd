@@ -1,0 +1,8 @@
+---
+title: "Ai Engineering"
+date: 2025-10-25
+jupyter: python3
+categories: [deep-learning, generative-ai, llm]
+image: https://learning.oreilly.com/covers/urn:orm:book:9781098166298/400w/
+---
+

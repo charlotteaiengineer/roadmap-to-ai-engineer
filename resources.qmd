@@ -13,7 +13,8 @@ Quick access to frequently used links. Add/edit freely.
 ## LLMs / GenAI
 
 - [Andrej Karpathy's Youtube](https://www.youtube.com/@AndrejKarpathy)
-- 
+- [3 Blue 1 Brown Youtube](https://www.youtube.com/@3blue1brown)
+- [Hugging Face Youtube](https://www.youtube.com/@HuggingFace)
 
 ## Python / Data
 

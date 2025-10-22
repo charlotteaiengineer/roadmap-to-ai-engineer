@@ -1,8 +1,60 @@
 ---
-title: "Ai Engineering"
+title: "What we mean by a network 'learning' is the minimisation of the cost function"
+description: "Getting through my tabs"
 date: 2025-10-22
 jupyter: python3
-categories: [deep-learning, generative-ai, llm]
-image: https://learning.oreilly.com/covers/urn:orm:book:9781098166298/400w/
+categories: [neural-networks, machine-learning, deep-learning]
+image: https://i.ytimg.com/vi/aircAruvnKk/maxresdefault.jpg
 ---
 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aircAruvnKk?si=yJ-HPTYt_vQwpM0D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+`Neurons` , `Activation`, `Layer`, `Hidden Layers`, `Parameters`
+
+a Weight is assigned to each connection between neurons. These weights are floating point numbers. Then take all the activations from the previous layer and compute their weighted sum according to the weights.
+
+We want the Activations to be a value between 0 and 1. This is called a `sigmoid` function.
+
+> The Activation of the Neuron is a measure of how positive the weighted sum is.
+
+We also want a bias for inactivity. (bias - how high the weighted sum needs to be before the neuron is meaningfully active)
+
+> Learning:  Getting the computer to find a valid settings for all the weights and biases so that it will actually solve the problem at hand
+
+`Vector`, `Matrix`, `Transistion of Activations`
+
+Taking the `Weighted sum` of the `Activations` in the first layer according to these weights corresponds to one of the turns in a `Matrix Vector Product`
+
+Think of Neurons as `Functions` that take in the outputs of all the neurons of the previous layer and spits out a number between 0 and 1. The entire network is a complex function that is a composition of many simple functions.
+
+The Network learns the appropriate weights and biases to solve the problem just by looking at data.
+
+`ReLU` is used now moreso than `Sigmoid` because its much easier to train. Rather than a wavy line its a straight line which reflects the idea 'is it active or not' rather than warmth or coldness. If the value passes a certain threshold it is active, otherwise it is not. - ReLU is Rectified Linear Unit, a simplification
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IHZwWFHWa-w?si=9Qp28eflSYOtWwOW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+`Gradient Descent` 
+
+A **Cost Function** is how far off (in values) the prediction is from the actual value. Average cost - a measure for how bad the network performs.
+
+The Cost Function takes the weights and biases as its input, it outputs a single number (the cost), and the way its defined depends on the networks behaviour over thousands of pieces of training data.
+
+![](https://cdn.analyticsvidhya.com/wp-content/uploads/2024/09/631731_P7z2BKhd0R-9uyn9ThDasA.webp)
+
+Finding an input that minimises the cost function is called `Gradient Descent`. Remember it could be 13,394 inputs... how do you find the input value that minimises the output value of the cost function. 
+
+`Local minima` = doable. `Global minima` = crazy hard.
+
+
+![](https://lh6.ggpht.com/-5RFMcz2bzWI/VA9NuUkB_vI/AAAAAAAAAdM/_DqqYO0nbX4/im2_thumb%25255B1%25255D.png)
+
+`Gradient` - the direction of **steepest increase**
+
+[Gradient Descent - Robert Constable](https://machinelearningnotepad.wordpress.com/2018/04/15/gradient-descent/)
+
+> 
+> Gradient descent is an iterative optimisation algorithm, which is used in machine learning to train models, by finding the parameters which minimise a cost function. Gradient descent is essential where the exhaustive calculation of best parameters would be unfeasible, for example in the training of neural networks. 
+
+
+What we mean by a network 'learning' is **the minimisation of the cost function**
