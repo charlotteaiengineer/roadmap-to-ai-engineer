@@ -1,243 +1,499 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content="quarto-1.8.25" />
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="dcterms.date" content="2025-10-17" />
 
-<meta name="dcterms.date" content="2025-10-17">
+    <title>Deep Dive into LLMs like ChatGPT – charlotteai.engineer</title>
+    <style>
+      code {
+        white-space: pre-wrap;
+      }
+      span.smallcaps {
+        font-variant: small-caps;
+      }
+      div.columns {
+        display: flex;
+        gap: min(4vw, 1.5em);
+      }
+      div.column {
+        flex: auto;
+        overflow-x: auto;
+      }
+      div.hanging-indent {
+        margin-left: 1.5em;
+        text-indent: -1.5em;
+      }
+      ul.task-list {
+        list-style: none;
+      }
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      pre > code.sourceCode {
+        white-space: pre;
+        position: relative;
+      }
+      pre > code.sourceCode > span {
+        display: inline-block;
+        line-height: 1.25;
+      }
+      pre > code.sourceCode > span:empty {
+        height: 1.2em;
+      }
+      .sourceCode {
+        overflow: visible;
+      }
+      code.sourceCode > span {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      div.sourceCode {
+        margin: 1em 0;
+      }
+      pre.sourceCode {
+        margin: 0;
+      }
+      @media screen {
+        div.sourceCode {
+          overflow: auto;
+        }
+      }
+      @media print {
+        pre > code.sourceCode {
+          white-space: pre-wrap;
+        }
+        pre > code.sourceCode > span {
+          text-indent: -5em;
+          padding-left: 5em;
+        }
+      }
+      pre.numberSource code {
+        counter-reset: source-line 0;
+      }
+      pre.numberSource code > span {
+        position: relative;
+        left: -4em;
+        counter-increment: source-line;
+      }
+      pre.numberSource code > span > a:first-child::before {
+        content: counter(source-line);
+        position: relative;
+        left: -1em;
+        text-align: right;
+        vertical-align: baseline;
+        border: none;
+        display: inline-block;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        padding: 0 4px;
+        width: 4em;
+      }
+      pre.numberSource {
+        margin-left: 3em;
+        padding-left: 4px;
+      }
+      div.sourceCode {
+      }
+      @media screen {
+        pre > code.sourceCode > span > a:first-child::before {
+          text-decoration: underline;
+        }
+      }
+    </style>
 
-<title>Deep Dive into LLMs like ChatGPT – prophecy.engineer</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-</style>
+    <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+    <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+    <script src="../site_libs/clipboard/clipboard.min.js"></script>
+    <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+    <script src="../site_libs/quarto-search/fuse.min.js"></script>
+    <script src="../site_libs/quarto-search/quarto-search.js"></script>
+    <meta name="quarto:offset" content="../" />
+    <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+    <script
+      src="../site_libs/quarto-html/tabsets/tabsets.js"
+      type="module"
+    ></script>
+    <script
+      src="../site_libs/quarto-html/axe/axe-check.js"
+      type="module"
+    ></script>
+    <script src="../site_libs/quarto-html/popper.min.js"></script>
+    <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+    <script src="../site_libs/quarto-html/anchor.min.js"></script>
+    <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet" />
+    <link
+      href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css"
+      rel="stylesheet"
+      id="quarto-text-highlighting-styles"
+    />
+    <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+    <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link
+      href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css"
+      rel="stylesheet"
+      append-hash="true"
+      id="quarto-bootstrap"
+      data-mode="light"
+    />
+    <script id="quarto-search-options" type="application/json">
+      {
+        "location": "navbar",
+        "copy-button": false,
+        "collapse-after": 3,
+        "panel-placement": "end",
+        "type": "overlay",
+        "limit": 50,
+        "keyboard-shortcut": ["f", "/", "s"],
+        "show-item-context": false,
+        "language": {
+          "search-no-results-text": "No results",
+          "search-matching-documents-text": "matching documents",
+          "search-copy-link-title": "Copy link to search",
+          "search-hide-matches-text": "Hide additional matches",
+          "search-more-match-text": "more match in this document",
+          "search-more-matches-text": "more matches in this document",
+          "search-clear-button-title": "Clear",
+          "search-text-placeholder": "",
+          "search-detached-cancel-button-title": "Cancel",
+          "search-submit-button-title": "Submit",
+          "search-label": "Search"
+        }
+      }
+    </script>
 
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
-
-
-<link rel="stylesheet" href="../styles.css">
-</head>
-
-<body class="nav-fixed quarto-light">
-
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">prophecy.engineer</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
+  <body class="nav-fixed quarto-light">
+    <div id="quarto-search-results"></div>
+    <header id="quarto-header" class="headroom fixed-top">
+      <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+        <div class="navbar-container container-fluid">
+          <div class="navbar-brand-container mx-auto">
+            <a href="../index.html" class="navbar-brand navbar-brand-logo"> </a>
+            <a class="navbar-brand" href="../index.html">
+              <span class="navbar-title">charlotteai.engineer</span>
+            </a>
+          </div>
+          <div id="quarto-search" class="" title="Search"></div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            role="menu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../learning-journey/index.html"> 
-<span class="menu-text">Learning Journey</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../resources.html"> 
-<span class="menu-text">Resources</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../blog/index.html"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+              <li class="nav-item">
+                <a class="nav-link" href="../learning-journey/index.html">
+                  <span class="menu-text">Learning Journey</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../resources.html">
+                  <span class="menu-text">Resources</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../blog/index.html">
+                  <span class="menu-text">Blog</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../about.html">
+                  <span class="menu-text">About</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- /navcollapse -->
+          <div class="quarto-navbar-tools"></div>
+        </div>
+        <!-- /container-fluid -->
+      </nav>
+    </header>
+    <!-- content -->
+    <div
+      id="quarto-content"
+      class="quarto-container page-columns page-rows-contents page-layout-article page-navbar"
+    >
+      <!-- sidebar -->
+      <!-- margin-sidebar -->
+      <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#step-1.-pretraining" id="toc-step-1.-pretraining" class="nav-link active" data-scroll-target="#step-1.-pretraining">Step 1. Pretraining</a></li>
-  <li><a href="#step-2.-tokenization" id="toc-step-2.-tokenization" class="nav-link" data-scroll-target="#step-2.-tokenization">Step 2. Tokenization</a>
-  <ul class="collapse">
-  <li><a href="#text-bytes-bits-roundtrip-compact-and-readable" id="toc-text-bytes-bits-roundtrip-compact-and-readable" class="nav-link" data-scroll-target="#text-bytes-bits-roundtrip-compact-and-readable">Text → bytes → bits (roundtrip, compact and readable)</a></li>
-  <li><a href="#per-character-view-code-point-utf8-bytes" id="toc-per-character-view-code-point-utf8-bytes" class="nav-link" data-scroll-target="#per-character-view-code-point-utf8-bytes">Per-character view (code point → UTF‑8 bytes)</a></li>
-  <li><a href="#byte-pair-encoding-bpe-learn-merges-and-tokenize" id="toc-byte-pair-encoding-bpe-learn-merges-and-tokenize" class="nav-link" data-scroll-target="#byte-pair-encoding-bpe-learn-merges-and-tokenize">Byte Pair Encoding (BPE) — learn merges and tokenize</a></li>
-  </ul></li>
-  <li><a href="#step-3-neural-network-training" id="toc-step-3-neural-network-training" class="nav-link" data-scroll-target="#step-3-neural-network-training">Step 3: Neural Network Training</a></li>
-  <li><a href="#visualization-of-llm-in-3d" id="toc-visualization-of-llm-in-3d" class="nav-link" data-scroll-target="#visualization-of-llm-in-3d">Visualization of LLM in 3D</a></li>
-  <li><a href="#inference" id="toc-inference" class="nav-link" data-scroll-target="#inference">Inference</a></li>
-  <li><a href="#post-training" id="toc-post-training" class="nav-link" data-scroll-target="#post-training">Post Training</a></li>
-  <li><a href="#post-training-reinforcement-learning" id="toc-post-training-reinforcement-learning" class="nav-link" data-scroll-target="#post-training-reinforcement-learning">Post-Training Reinforcement Learning</a></li>
-  <li><a href="#rlhf---reinforcement-learning-from-human-feedback" id="toc-rlhf---reinforcement-learning-from-human-feedback" class="nav-link" data-scroll-target="#rlhf---reinforcement-learning-from-human-feedback">RLHF - Reinforcement Learning from Human Feedback</a></li>
-  </ul>
-</nav>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
+          <h2 id="toc-title">On this page</h2>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Deep Dive into LLMs like ChatGPT</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">deep-learning</div>
-    <div class="quarto-category">generative-ai</div>
-    <div class="quarto-category">llm</div>
-  </div>
-  </div>
+          <ul>
+            <li>
+              <a
+                href="#step-1.-pretraining"
+                id="toc-step-1.-pretraining"
+                class="nav-link active"
+                data-scroll-target="#step-1.-pretraining"
+                >Step 1. Pretraining</a
+              >
+            </li>
+            <li>
+              <a
+                href="#step-2.-tokenization"
+                id="toc-step-2.-tokenization"
+                class="nav-link"
+                data-scroll-target="#step-2.-tokenization"
+                >Step 2. Tokenization</a
+              >
+              <ul class="collapse">
+                <li>
+                  <a
+                    href="#text-bytes-bits-roundtrip-compact-and-readable"
+                    id="toc-text-bytes-bits-roundtrip-compact-and-readable"
+                    class="nav-link"
+                    data-scroll-target="#text-bytes-bits-roundtrip-compact-and-readable"
+                    >Text → bytes → bits (roundtrip, compact and readable)</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#per-character-view-code-point-utf8-bytes"
+                    id="toc-per-character-view-code-point-utf8-bytes"
+                    class="nav-link"
+                    data-scroll-target="#per-character-view-code-point-utf8-bytes"
+                    >Per-character view (code point → UTF‑8 bytes)</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#byte-pair-encoding-bpe-learn-merges-and-tokenize"
+                    id="toc-byte-pair-encoding-bpe-learn-merges-and-tokenize"
+                    class="nav-link"
+                    data-scroll-target="#byte-pair-encoding-bpe-learn-merges-and-tokenize"
+                    >Byte Pair Encoding (BPE) — learn merges and tokenize</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a
+                href="#step-3-neural-network-training"
+                id="toc-step-3-neural-network-training"
+                class="nav-link"
+                data-scroll-target="#step-3-neural-network-training"
+                >Step 3: Neural Network Training</a
+              >
+            </li>
+            <li>
+              <a
+                href="#visualization-of-llm-in-3d"
+                id="toc-visualization-of-llm-in-3d"
+                class="nav-link"
+                data-scroll-target="#visualization-of-llm-in-3d"
+                >Visualization of LLM in 3D</a
+              >
+            </li>
+            <li>
+              <a
+                href="#inference"
+                id="toc-inference"
+                class="nav-link"
+                data-scroll-target="#inference"
+                >Inference</a
+              >
+            </li>
+            <li>
+              <a
+                href="#post-training"
+                id="toc-post-training"
+                class="nav-link"
+                data-scroll-target="#post-training"
+                >Post Training</a
+              >
+            </li>
+            <li>
+              <a
+                href="#post-training-reinforcement-learning"
+                id="toc-post-training-reinforcement-learning"
+                class="nav-link"
+                data-scroll-target="#post-training-reinforcement-learning"
+                >Post-Training Reinforcement Learning</a
+              >
+            </li>
+            <li>
+              <a
+                href="#rlhf---reinforcement-learning-from-human-feedback"
+                id="toc-rlhf---reinforcement-learning-from-human-feedback"
+                class="nav-link"
+                data-scroll-target="#rlhf---reinforcement-learning-from-human-feedback"
+                >RLHF - Reinforcement Learning from Human Feedback</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- main -->
+      <main class="content" id="quarto-document-content">
+        <header id="title-block-header" class="quarto-title-block default">
+          <div class="quarto-title">
+            <h1 class="title">Deep Dive into LLMs like ChatGPT</h1>
+            <div class="quarto-categories">
+              <div class="quarto-category">deep-learning</div>
+              <div class="quarto-category">generative-ai</div>
+              <div class="quarto-category">llm</div>
+            </div>
+          </div>
 
+          <div class="quarto-title-meta">
+            <div>
+              <div class="quarto-title-meta-heading">Published</div>
+              <div class="quarto-title-meta-contents">
+                <p class="date">October 17, 2025</p>
+              </div>
+            </div>
+          </div>
+        </header>
 
-
-<div class="quarto-title-meta">
-
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">October 17, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<iframe width="800" height="450" src="https://www.youtube.com/embed/7xTGNNLPyMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<p><a href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1">🍷 FineWeb: decanting the web for the finest text data at scale</a></p>
-<section id="step-1.-pretraining" class="level2">
-<h2 class="anchored" data-anchor-id="step-1.-pretraining">Step 1. Pretraining</h2>
-<p>Download and <code>preprocess</code> the internet. We want a huge quantity of high quality documents, with large diversity. Huggingface made FineWeb which is a new, large-scale (15-trillion tokens, 44TB disk space) <a href="https://huggingface.co/datasets/HuggingFaceFW/fineweb">dataset for LLM pretraining</a>. They used <a href="https://commoncrawl.org/">Common Crawl</a> as their source of data. OpenAI and Anthrophic crawl themselves <a href="https://platform.openai.com/docs/bots">OpenAI Crawlers</a>, heres <a href="https://darkvisitors.com/agents/claudebot">Claudebot</a></p>
-<p><img src="https://huggingfacefw-blogpost-fineweb-v1.static.hf.space/assets/images/fineweb-recipe.png" class="img-fluid"></p>
-<ul>
-<li><strong>URL filtering</strong> - Firstly data needs filtering. Loads of websites are not included from categories like adult stuff. BLocklists are <a href="https://dsi.ut-capitole.fr/blacklists/index_en.php">lists of urls</a> to block.</li>
-<li><strong>text extraction</strong> - Raw HTML is what the crawlers save. We only want the text content.</li>
-<li><strong>language filtering</strong> - There’s a guess (using a classifier) which rules out non english pages, keeping pages that score above 65% confidence it is English.</li>
-<li><strong>gopher filtering</strong> Gopher is an LLM Transformer model. The architecture is same as GPT2. It uses a huge dataset. Templates were used to prompt the model to try to stop biases in the data, sentiment analysers were used to stop biased content.</li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nO653U-Pb5c?si=ZcM6LSjzn2d1_6vH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<ul>
-<li><strong>Minhash deduplication</strong> - This is a technique to remove duplicate documents from the dataset. It’s a hashing technique that is used to identify duplicate documents.</li>
-<li><strong>C4 filters</strong></li>
-<li><strong>Custom fitlers</strong></li>
-<li><strong>PII Removal</strong> - Personal Identifiable Information is detected and removed like addresses, phone numbers, emails, etc.</li>
-</ul>
-</section>
-<section id="step-2.-tokenization" class="level2">
-<h2 class="anchored" data-anchor-id="step-2.-tokenization">Step 2. Tokenization</h2>
-<p>The way the technology works for these neural nets is that they expect a <code>one dimesional sequence of symbols</code>. They want a <code>finite set of symbols</code> that are possible. We have to decide what the symbols are, then have to represent our data as a one dimensional sequence of symbols.</p>
-<section id="text-bytes-bits-roundtrip-compact-and-readable" class="level3">
-<h3 class="anchored" data-anchor-id="text-bytes-bits-roundtrip-compact-and-readable">Text → bytes → bits (roundtrip, compact and readable)</h3>
-<div id="d7f515b3" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"I'm enjoying learning about how ChatGPT works from the inside. It's pretty difficult to understand, but I'm sure I'll get the hang of it if I stick around and carry on"</span></span>
+        <iframe
+          width="800"
+          height="450"
+          src="https://www.youtube.com/embed/7xTGNNLPyMI"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen=""
+        >
+        </iframe>
+        <p>
+          <a
+            href="https://huggingface.co/spaces/HuggingFaceFW/blogpost-fineweb-v1"
+            >🍷 FineWeb: decanting the web for the finest text data at scale</a
+          >
+        </p>
+        <section id="step-1.-pretraining" class="level2">
+          <h2 class="anchored" data-anchor-id="step-1.-pretraining">
+            Step 1. Pretraining
+          </h2>
+          <p>
+            Download and <code>preprocess</code> the internet. We want a huge
+            quantity of high quality documents, with large diversity.
+            Huggingface made FineWeb which is a new, large-scale (15-trillion
+            tokens, 44TB disk space)
+            <a href="https://huggingface.co/datasets/HuggingFaceFW/fineweb"
+              >dataset for LLM pretraining</a
+            >. They used <a href="https://commoncrawl.org/">Common Crawl</a> as
+            their source of data. OpenAI and Anthrophic crawl themselves
+            <a href="https://platform.openai.com/docs/bots">OpenAI Crawlers</a>,
+            heres
+            <a href="https://darkvisitors.com/agents/claudebot">Claudebot</a>
+          </p>
+          <p>
+            <img
+              src="https://huggingfacefw-blogpost-fineweb-v1.static.hf.space/assets/images/fineweb-recipe.png"
+              class="img-fluid"
+            />
+          </p>
+          <ul>
+            <li>
+              <strong>URL filtering</strong> - Firstly data needs filtering.
+              Loads of websites are not included from categories like adult
+              stuff. BLocklists are
+              <a href="https://dsi.ut-capitole.fr/blacklists/index_en.php"
+                >lists of urls</a
+              >
+              to block.
+            </li>
+            <li>
+              <strong>text extraction</strong> - Raw HTML is what the crawlers
+              save. We only want the text content.
+            </li>
+            <li>
+              <strong>language filtering</strong> - There’s a guess (using a
+              classifier) which rules out non english pages, keeping pages that
+              score above 65% confidence it is English.
+            </li>
+            <li>
+              <strong>gopher filtering</strong> Gopher is an LLM Transformer
+              model. The architecture is same as GPT2. It uses a huge dataset.
+              Templates were used to prompt the model to try to stop biases in
+              the data, sentiment analysers were used to stop biased content.
+            </li>
+          </ul>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/nO653U-Pb5c?si=ZcM6LSjzn2d1_6vH"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen=""
+          >
+          </iframe>
+          <ul>
+            <li>
+              <strong>Minhash deduplication</strong> - This is a technique to
+              remove duplicate documents from the dataset. It’s a hashing
+              technique that is used to identify duplicate documents.
+            </li>
+            <li><strong>C4 filters</strong></li>
+            <li><strong>Custom fitlers</strong></li>
+            <li>
+              <strong>PII Removal</strong> - Personal Identifiable Information
+              is detected and removed like addresses, phone numbers, emails,
+              etc.
+            </li>
+          </ul>
+        </section>
+        <section id="step-2.-tokenization" class="level2">
+          <h2 class="anchored" data-anchor-id="step-2.-tokenization">
+            Step 2. Tokenization
+          </h2>
+          <p>
+            The way the technology works for these neural nets is that they
+            expect a <code>one dimesional sequence of symbols</code>. They want
+            a <code>finite set of symbols</code> that are possible. We have to
+            decide what the symbols are, then have to represent our data as a
+            one dimensional sequence of symbols.
+          </p>
+          <section
+            id="text-bytes-bits-roundtrip-compact-and-readable"
+            class="level3"
+          >
+            <h3
+              class="anchored"
+              data-anchor-id="text-bytes-bits-roundtrip-compact-and-readable"
+            >
+              Text → bytes → bits (roundtrip, compact and readable)
+            </h3>
+            <div id="087a3795" class="cell" data-execution_count="1">
+              <div class="code-copy-outer-scaffold">
+                <div class="sourceCode cell-code" id="cb1">
+                  <pre
+                    class="sourceCode python code-with-copy"
+                  ><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"I'm enjoying learning about how ChatGPT works from the inside. It's pretty difficult to understand, but I'm sure I'll get the hang of it if I stick around and carry on"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Text → bytes (UTF-8)</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>utf8_bytes <span class="op">=</span> text.encode(<span class="st">"utf-8"</span>)</span>
@@ -263,9 +519,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>roundtrip_bytes <span class="op">=</span> bits_to_bytes(bits)</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"roundtrip matches bytes:"</span>, roundtrip_bytes <span class="op">==</span> utf8_bytes)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"decoded:"</span>, roundtrip_bytes.decode(<span class="st">"utf-8"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>chars: 167
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"decoded:"</span>, roundtrip_bytes.decode(<span class="st">"utf-8"</span>))</span></code></pre>
+                </div>
+                <button title="Copy to Clipboard" class="code-copy-button">
+                  <i class="bi"></i>
+                </button>
+              </div>
+              <div class="cell-output cell-output-stdout">
+                <pre><code>chars: 167
 bytes: 167
 first 16 bytes (int): [73, 39, 109, 32, 101, 110, 106, 111, 121, 105, 110, 103, 32, 108, 101, 97]
 first 16 bytes (hex): 49276d20656e6a6f79696e67206c6561
@@ -273,22 +534,39 @@ bits (first 12 bytes): 01001001 00100111 01101101 00100000 01100101 01101110 011
 total bits: 1336
 roundtrip matches bytes: True
 decoded: I'm enjoying learning about how ChatGPT works from the inside. It's pretty difficult to understand, but I'm sure I'll get the hang of it if I stick around and carry on</code></pre>
-</div>
-</div>
-</section>
-<section id="per-character-view-code-point-utf8-bytes" class="level3">
-<h3 class="anchored" data-anchor-id="per-character-view-code-point-utf8-bytes">Per-character view (code point → UTF‑8 bytes)</h3>
-<p>We want more symbols and shorter sequences. Let’s compress the binary sequence. <strong>A group of 8 bits are a byte</strong>.</p>
-<div id="6e98d88c" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> text[:<span class="dv">8</span>]</span>
+              </div>
+            </div>
+          </section>
+          <section id="per-character-view-code-point-utf8-bytes" class="level3">
+            <h3
+              class="anchored"
+              data-anchor-id="per-character-view-code-point-utf8-bytes"
+            >
+              Per-character view (code point → UTF‑8 bytes)
+            </h3>
+            <p>
+              We want more symbols and shorter sequences. Let’s compress the
+              binary sequence. <strong>A group of 8 bits are a byte</strong>.
+            </p>
+            <div id="4aded295" class="cell" data-execution_count="2">
+              <div class="code-copy-outer-scaffold">
+                <div class="sourceCode cell-code" id="cb3">
+                  <pre
+                    class="sourceCode python code-with-copy"
+                  ><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> text[:<span class="dv">8</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'char'</span><span class="sc">:&lt;6}{</span><span class="st">'codepoint'</span><span class="sc">:&lt;12}{</span><span class="st">'hex'</span><span class="sc">:&lt;20}{</span><span class="st">'bin'</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ch <span class="kw">in</span> sample:</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> ch.encode(<span class="st">'utf-8'</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    hx <span class="op">=</span> <span class="st">" "</span>.join(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:02x}</span><span class="ss">"</span> <span class="cf">for</span> x <span class="kw">in</span> b)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    bn <span class="op">=</span> <span class="st">" "</span>.join(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:08b}</span><span class="ss">"</span> <span class="cf">for</span> x <span class="kw">in</span> b)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">repr</span>(ch)<span class="sc">:&lt;6}{</span><span class="bu">ord</span>(ch)<span class="sc">:&lt;12}{</span>hx<span class="sc">:&lt;20}{</span>bn<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>char  codepoint   hex                 bin
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="bu">repr</span>(ch)<span class="sc">:&lt;6}{</span><span class="bu">ord</span>(ch)<span class="sc">:&lt;12}{</span>hx<span class="sc">:&lt;20}{</span>bn<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
+                </div>
+                <button title="Copy to Clipboard" class="code-copy-button">
+                  <i class="bi"></i>
+                </button>
+              </div>
+              <div class="cell-output cell-output-stdout">
+                <pre><code>char  codepoint   hex                 bin
 'I'   73          49                  01001001
 "'"   39          27                  00100111
 'm'   109         6d                  01101101
@@ -297,16 +575,40 @@ decoded: I'm enjoying learning about how ChatGPT works from the inside. It's pre
 'n'   110         6e                  01101110
 'j'   106         6a                  01101010
 'o'   111         6f                  01101111</code></pre>
-</div>
-</div>
-</section>
-<section id="byte-pair-encoding-bpe-learn-merges-and-tokenize" class="level3">
-<h3 class="anchored" data-anchor-id="byte-pair-encoding-bpe-learn-merges-and-tokenize">Byte Pair Encoding (BPE) — learn merges and tokenize</h3>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HEikzVL-lZU?si=cRWfRvEtko61Vnbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<p>We’ll train a tiny BPE on a short corpus, learn a few merges, then tokenize a sentence.</p>
-<div id="0f7a82f0" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+              </div>
+            </div>
+          </section>
+          <section
+            id="byte-pair-encoding-bpe-learn-merges-and-tokenize"
+            class="level3"
+          >
+            <h3
+              class="anchored"
+              data-anchor-id="byte-pair-encoding-bpe-learn-merges-and-tokenize"
+            >
+              Byte Pair Encoding (BPE) — learn merges and tokenize
+            </h3>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/HEikzVL-lZU?si=cRWfRvEtko61Vnbo"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen=""
+            >
+            </iframe>
+            <p>
+              We’ll train a tiny BPE on a short corpus, learn a few merges, then
+              tokenize a sentence.
+            </p>
+            <div id="767b5897" class="cell" data-execution_count="3">
+              <div class="code-copy-outer-scaffold">
+                <div class="sourceCode cell-code" id="cb5">
+                  <pre
+                    class="sourceCode python code-with-copy"
+                  ><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> (</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"I'm enjoying learning about how ChatGPT works from the inside. It's pretty difficult to understand, but I'm sure I'll get the hang of it if I stick around and carry on"</span></span>
@@ -384,550 +686,931 @@ decoded: I'm enjoying learning about how ChatGPT works from the inside. It's pre
 <span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"char-level token count:"</span>, <span class="bu">len</span>(char_tokens))</span>
 <span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"bpe token count:"</span>, <span class="bu">len</span>(bpe_tokens))</span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"bpe tokens (first 30):"</span>, bpe_tokens[:<span class="dv">30</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>top merges: [('t', '&lt;/w&gt;'), ('n', 'd'), ('i', "'"), ('m', '&lt;/w&gt;'), ('i', 'n'), ('g', '&lt;/w&gt;'), ('a', 'r'), ('e', '&lt;/w&gt;'), ("i'", 'm&lt;/w&gt;'), ('in', 'g&lt;/w&gt;')]
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"bpe tokens (first 30):"</span>, bpe_tokens[:<span class="dv">30</span>])</span></code></pre>
+                </div>
+                <button title="Copy to Clipboard" class="code-copy-button">
+                  <i class="bi"></i>
+                </button>
+              </div>
+              <div class="cell-output cell-output-stdout">
+                <pre><code>top merges: [('t', '&lt;/w&gt;'), ('n', 'd'), ('i', "'"), ('m', '&lt;/w&gt;'), ('i', 'n'), ('g', '&lt;/w&gt;'), ('a', 'r'), ('e', '&lt;/w&gt;'), ("i'", 'm&lt;/w&gt;'), ('in', 'g&lt;/w&gt;')]
 char-level token count: 41
 bpe token count: 36
 bpe tokens (first 30): ['v', 'i', 'e', 'w', 'ing&lt;/w&gt;', 's', 'in', 'g', 'l', 'e&lt;/w&gt;', 'p', 'o', 's', 't&lt;/w&gt;', 'f', 'r', 'o', 'm&lt;/w&gt;', 's', 'p', 'o', 'i', 'l', 'e', 'r', 's&lt;/w&gt;', 'o', 'f', 'the&lt;/w&gt;', 'w']</code></pre>
-</div>
-</div>
-<p>We <strong>mint a symbol</strong> for each unique byte pair in the corpus. There are 100,277 symbols in GPT4</p>
-<ul>
-<li><a href="https://tiktokenizer.vercel.app/?model=gpt2">GPT2 Tokenizer</a></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://pbs.twimg.com/media/F4J_u6ZXQAAe3Fi.jpg" class="img-fluid figure-img"></p>
-<figcaption>TikTokenizer</figcaption>
-</figure>
-</div>
-<p>This token sequence is what GPT4 will ‘see’ the text as.</p>
-</section>
-</section>
-<section id="step-3-neural-network-training" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-neural-network-training">Step 3: Neural Network Training</h2>
-<p>Now we are trying to predict the next token in the sequence. Currently there are 100,277 probabilities for the next token. The neural network is going to output exactly 100,277 numbers, and of those numbers, correspond to the probablility of that token as coming next in the sequence</p>
-<p>In the beginning the Nural Network is randomly initialised, random probabilities. We’ve <code>sampled</code> this <code>window</code> from our dataset.</p>
-<p>We know the correct next token for this sentence, so we need a mathematical process to update the weights on the network - <code>tuning it</code>. (Making the <strong>probability</strong> of the correct next token as high as possible, and making the other potential answers lower.)</p>
-<p>We mathematically adjust the neural network so that the correct answer has a slightly higher probability.</p>
-<p><code>input sequence tokens</code></p>
-<p>iteratively updating the neural network = training the neural network.</p>
-</section>
-<section id="visualization-of-llm-in-3d" class="level2">
-<h2 class="anchored" data-anchor-id="visualization-of-llm-in-3d"><a href="https://bbycroft.net/llm">Visualization of LLM in 3D</a></h2>
-<p>Try not to think of these LLM neurons like the ones in our brain, our biological ones have complex dynamical processes that have memory. There’sno memory in LLM neurons, it’s <strong>stateless</strong> input and output.</p>
-<p>The LLM in basic terms is a mathematical function. It it parameterised by some fixed set of parameters (85,584) it is a way of <strong>transforming inputs to outputs as we twiddle the parameters we are getting different kinds of predictions, and then we need to find a good setting of these parameters so they match up with the patterns seen in the training set</strong></p>
-</section>
-<section id="inference" class="level1">
-<h1>Inference</h1>
-<p>In inference, we are generating new data from the model. We want to see what patterns it has internalised in the paramteres of its network.</p>
-<p><code>probability vector</code>, <code>probability distribution</code>, <code>sample a token based on the probability distribution</code></p>
-<p>We check if we can reproduce the data in the initial training set.</p>
-<p>When we are “talking to” the model, it is inference. We are giving it tokens, and it is completing token sequences with its fixed parameters.</p>
-<p>Generative Pretrained Transformer (GPT)</p>
-<p>We run inference on the model to generate new data, we check the loss value of the model to see how well it is doing. GPUs are needed because they can run many processes in parallel. At the end of this expensive process we get a <code>Base Model</code>.</p>
-<p>Base models are only step one, you cannot communicate directly.</p>
-<p>The following code is describing the <code>forward-pass</code> of the neural network. This plus the parameters is the <code>Base Model</code>.</p>
-<p>The sequence of steps taken by the neural network for training is shown for GPT-2 <a href="https://github.com/openai/gpt-2/blob/master/src/model.py">here</a></p>
-<p>At this stage it is just a vague recollection fo the training data set, with sometimes exact <strong>regurgitation</strong>. These models can be extremely good at memorisation - this is not what we want them for.</p>
-<p>Although…the Base model can still be utilised in practical applications even at this stage. These models have <code>in context learning</code> capabilities. IT understands to continue patterns such as translations.</p>
-<p>With a prompt, you can get the base model to mimic an assistant model. By copying and pasting in the beginning of a back and forth conversation, you can get the base model to mimic an assistant model and reply in the correct tone and length of characters.</p>
-</section>
-<section id="post-training" class="level1">
-<h1>Post Training</h1>
-<p>Humans write out ideal responses, then we have the model train on those responses to hopefully mimic the human responses.</p>
-<p><strong>Same algorithm, same everything as pre training stage. We are just swapping out the data set for conversations.</strong></p>
-<p>Next problem is turning conversations into tokens.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://substackcdn.com/image/fetch/$s_!Ly-S!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8bfb8c02-5d35-4474-a6ad-70d76e0d65f3_1076x911.png" class="img-fluid figure-img"></p>
-<figcaption>Image of Tiktokeniser</figcaption>
-</figure>
-</div>
-<p>Our conversations get turned into a <strong>sequences of one dimesional tokens</strong>.</p>
-<p>We cannot possibilty cover all potential prompts a user might ask in our training dataset. However we can make a few different examples of how the model should respond in a helpful way. It’s all programmed by example.</p>
-<section id="high-level-overview-of-how-chatgpt-works" class="level4">
-<h4 class="anchored" data-anchor-id="high-level-overview-of-how-chatgpt-works">High level overview of how ChatGPT works</h4>
-<p><strong>We are programming the system by example and the system adopts statistically this persona of this helpful truthful assistant which is reflected in the labelling instructions that the company creates.</strong></p>
-<p>When talking to ChatGPT, it isn’t some magical AI. It is like speaking with a simulation of an average highly skilled labeller. It is NOT a magical AI that has gone out and researched all the answers to all the questions as you ask them. <strong>ChatGPT is a statistical simulation of a labeller hired by OpenAI</strong></p>
-<p><strong>Pre training knowledge is combined with the Post Training data set that results in this imitation of emergent behaviour.</strong></p>
-</section>
-<section id="hallucinations-and-how-they-happen" class="level4">
-<h4 class="anchored" data-anchor-id="hallucinations-and-how-they-happen">Hallucinations and how they happen</h4>
-<p>Labellers have a confident tone of answer when they label their data - they’ve gone out and researched and know something to be definively true. Therefore when the model hallucinates, it is because it is trying to mimic the labeller’s tone of answer.</p>
-<p>The assistant will not tell you it doesn’t know because the style of the majority of the training data examples is a helpful answer, confidently stated. The answer you get is a statistical best guess. The model is just sampling through the probabilities and coming up with random answers.</p>
-<p>Hallucinations have been improved over time. Meta used an interrogation technique, asking the same question multiple times and then comparing the answers to the correct answer. If this keeps coming up as incorrect, we’ve found what the model doesn’t know. We add a new conversation to the training set, with the answer “I’m sorry, I don’t know”. <strong>When this neurons uncertainty is high, then state “I don’t know”.</strong></p>
-<p>A better way is to allow the model to query the internet. <code>&lt;SEARCH_START&gt;</code> and <code>&lt;SEARCH_END&gt;</code> are special tokens that tell the model to search the internet. The text from the web search is now inside the <code>Context Window</code> - directly available to the model. So now the model can reference this exact text in its response.</p>
-<p>When providing the text of reference within the prompt, the model has full access to it within its Context Window. Therefore the output will be of high quality, rather than vague recollection of the training data.</p>
-</section>
-<section id="knowledge-of-self" class="level4">
-<h4 class="anchored" data-anchor-id="knowledge-of-self">Knowledge of self</h4>
-<p>Asking the model about itself doesn’t make sense, it will make this up. It will hallucinate. It has zero sense of self. The model understands it is taking on the personality of a AI assistant and can infer and guess with high statistical probability that it was created by OpenAI.</p>
-<p>Sometimes you can add something called a <strong>system message</strong> to the beginning of the conversation. This is a message that the model will see first and it will use to guide its behaviour.</p>
-<p>Distributing the computation across the answer is how a good maths question is answered. A well trained model spreads out its reasoning and spread out its computation across the tokens. Then it’ll have all the previous results wihtin its working memory. It is really bad to make the model do all calculation from a singular token.</p>
-<p>“working out” the answer is better than just “the answer is…”. The model can break the problem down into steps and refer to them as it goes.</p>
-<p><code>A single forward pass of the network</code> is not sufficient for the work of doing mathematics.</p>
-<p>Models can’t count, and they struggle to do arithmetic.</p>
-<p>Models don’t see characters, they see tokens - therefore they’re not great at spelling.</p>
-</section>
-</section>
-<section id="post-training-reinforcement-learning" class="level1">
-<h1>Post-Training Reinforcement Learning</h1>
-<p><em>An assistant model trained by supervised fine-tuning</em></p>
-<p>We generated 15 solutions:</p>
-<ul>
-<li>Only 4 of them got the right answer.</li>
-<li>Take the top solution (each right short answer).</li>
-<li>Train on it to make it better at the task.</li>
-<li>repeat</li>
-<li>repeat</li>
-</ul>
-<p>After the parameter update, the model will be slightly more likely to choose the right answer.</p>
-<p>The model is discovering <em>for itself</em> what kind of token sequences lead it to correct answers. No human annotator in this part.</p>
-<p>Companies don’t share information about this stage usually so it was a surprise to see this paper - <a href="https://arxiv.org/pdf/2501.12948">DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning</a></p>
-<p>The models made improvement on solving mathematical problems, discovering how to solve them.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.researchgate.net/publication/395582429/figure/fig1/AS:11431281640049975@1758250476126/Accuracy-and-output-length-of-DeepSeek-R1-Zero-throughout-the-training-process-a-AIME.png" class="img-fluid figure-img"></p>
-<figcaption>DeepSeek-R1 Accuracy and output length throughout the training process</figcaption>
-</figure>
-</div>
-<p>The model learns to make very long solutions. It’s like the model is “thinking” about the problem and then “working out” the answer.</p>
-<p><code>Wait, wait. Wait. That’s an aha moment I can flag here....</code> <code>Let’s reevaluate this step-by-step to identify if the correct sum can be ...</code></p>
-<p>This has been discovered by the model, this was not an addition or taught by labellers. The model is learning to reason and discover how to solve problems.</p>
-<section id="alpha-go" class="level4">
-<h4 class="anchored" data-anchor-id="alpha-go">Alpha Go</h4>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WXuK6gekU1Y?si=xLVk0tTMIyYOkMWq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<p>Here they compare the strength of a model trained by Reinforcement Learning to a model trained by Supervised Learning. Reinforcement Learning is significantly more powerful. It played against itself and learned to play better, trialing many different solutions to the problem.</p>
-<p>Reinforcement Learning is NOT constrained by human knowledge and abilities.</p>
-<p>Move 37 was a move that no humna experert would play. In retrospect it was brilliant. Move 37 proved that the model was able to reason and discover how to play the game better.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1639502365311/OiDB9gSUf.png?auto=compress,format&amp;format=webp" class="img-fluid figure-img"></p>
-<figcaption>Alpha go</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="rlhf---reinforcement-learning-from-human-feedback" class="level1">
-<h1>RLHF - Reinforcement Learning from Human Feedback</h1>
-<p>We train a <code>Reward Model</code> - a scoring model, based on ranked answers by humans. We compare the reward model’s answers to the model’s answers and then we train the model to get a higher reward score.</p>
-<p>The weights of the model become tuned to the human feedback</p>
-<p>We want the reward model scoring to reflect the human feedback ordering.</p>
-<p>Humans can far easier discriminate between answers than gnerate answers.</p>
-<p>In RHLF the system discovers the answers that would be graded well by humans.</p>
-<p>Downside is we are doing Reinforcement learning with respect to a <code>lossy simulation of humans</code> - could be misleading. RL can also find ways to game the system to get a higher reward score - e.g the answer could become nonsensical but still get a high reward score. <strong>This is a problem because the model is not learning to reason and discover how to solve problems, it is learning to game the system to get a higher reward score.</strong></p>
-<p>Therefore RHLF is fine tuning, it’s seen as ‘not real RL’ because the scoring is gameable. It’s a little improvement, fine tune.</p>
-
-
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
-    }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
-    }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
-    });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
-    }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
+              </div>
+            </div>
+            <p>
+              We <strong>mint a symbol</strong> for each unique byte pair in the
+              corpus. There are 100,277 symbols in GPT4
+            </p>
+            <ul>
+              <li>
+                <a href="https://tiktokenizer.vercel.app/?model=gpt2"
+                  >GPT2 Tokenizer</a
+                >
+              </li>
+            </ul>
+            <div class="quarto-figure quarto-figure-center">
+              <figure class="figure">
+                <p>
+                  <img
+                    src="https://pbs.twimg.com/media/F4J_u6ZXQAAe3Fi.jpg"
+                    class="img-fluid figure-img"
+                  />
+                </p>
+                <figcaption>TikTokenizer</figcaption>
+              </figure>
+            </div>
+            <p>This token sequence is what GPT4 will ‘see’ the text as.</p>
+          </section>
+        </section>
+        <section id="step-3-neural-network-training" class="level2">
+          <h2 class="anchored" data-anchor-id="step-3-neural-network-training">
+            Step 3: Neural Network Training
+          </h2>
+          <p>
+            Now we are trying to predict the next token in the sequence.
+            Currently there are 100,277 probabilities for the next token. The
+            neural network is going to output exactly 100,277 numbers, and of
+            those numbers, correspond to the probablility of that token as
+            coming next in the sequence
+          </p>
+          <p>
+            In the beginning the Nural Network is randomly initialised, random
+            probabilities. We’ve <code>sampled</code> this
+            <code>window</code> from our dataset.
+          </p>
+          <p>
+            We know the correct next token for this sentence, so we need a
+            mathematical process to update the weights on the network -
+            <code>tuning it</code>. (Making the <strong>probability</strong> of
+            the correct next token as high as possible, and making the other
+            potential answers lower.)
+          </p>
+          <p>
+            We mathematically adjust the neural network so that the correct
+            answer has a slightly higher probability.
+          </p>
+          <p><code>input sequence tokens</code></p>
+          <p>
+            iteratively updating the neural network = training the neural
+            network.
+          </p>
+        </section>
+        <section id="visualization-of-llm-in-3d" class="level2">
+          <h2 class="anchored" data-anchor-id="visualization-of-llm-in-3d">
+            <a href="https://bbycroft.net/llm">Visualization of LLM in 3D</a>
+          </h2>
+          <p>
+            Try not to think of these LLM neurons like the ones in our brain,
+            our biological ones have complex dynamical processes that have
+            memory. There’sno memory in LLM neurons, it’s
+            <strong>stateless</strong> input and output.
+          </p>
+          <p>
+            The LLM in basic terms is a mathematical function. It it
+            parameterised by some fixed set of parameters (85,584) it is a way
+            of
+            <strong
+              >transforming inputs to outputs as we twiddle the parameters we
+              are getting different kinds of predictions, and then we need to
+              find a good setting of these parameters so they match up with the
+              patterns seen in the training set</strong
+            >
+          </p>
+        </section>
+        <section id="inference" class="level1">
+          <h1>Inference</h1>
+          <p>
+            In inference, we are generating new data from the model. We want to
+            see what patterns it has internalised in the paramteres of its
+            network.
+          </p>
+          <p>
+            <code>probability vector</code>,
+            <code>probability distribution</code>,
+            <code>sample a token based on the probability distribution</code>
+          </p>
+          <p>
+            We check if we can reproduce the data in the initial training set.
+          </p>
+          <p>
+            When we are “talking to” the model, it is inference. We are giving
+            it tokens, and it is completing token sequences with its fixed
+            parameters.
+          </p>
+          <p>Generative Pretrained Transformer (GPT)</p>
+          <p>
+            We run inference on the model to generate new data, we check the
+            loss value of the model to see how well it is doing. GPUs are needed
+            because they can run many processes in parallel. At the end of this
+            expensive process we get a <code>Base Model</code>.
+          </p>
+          <p>Base models are only step one, you cannot communicate directly.</p>
+          <p>
+            The following code is describing the <code>forward-pass</code> of
+            the neural network. This plus the parameters is the
+            <code>Base Model</code>.
+          </p>
+          <p>
+            The sequence of steps taken by the neural network for training is
+            shown for GPT-2
+            <a href="https://github.com/openai/gpt-2/blob/master/src/model.py"
+              >here</a
+            >
+          </p>
+          <p>
+            At this stage it is just a vague recollection fo the training data
+            set, with sometimes exact <strong>regurgitation</strong>. These
+            models can be extremely good at memorisation - this is not what we
+            want them for.
+          </p>
+          <p>
+            Although…the Base model can still be utilised in practical
+            applications even at this stage. These models have
+            <code>in context learning</code> capabilities. IT understands to
+            continue patterns such as translations.
+          </p>
+          <p>
+            With a prompt, you can get the base model to mimic an assistant
+            model. By copying and pasting in the beginning of a back and forth
+            conversation, you can get the base model to mimic an assistant model
+            and reply in the correct tone and length of characters.
+          </p>
+        </section>
+        <section id="post-training" class="level1">
+          <h1>Post Training</h1>
+          <p>
+            Humans write out ideal responses, then we have the model train on
+            those responses to hopefully mimic the human responses.
+          </p>
+          <p>
+            <strong
+              >Same algorithm, same everything as pre training stage. We are
+              just swapping out the data set for conversations.</strong
+            >
+          </p>
+          <p>Next problem is turning conversations into tokens.</p>
+          <div class="quarto-figure quarto-figure-center">
+            <figure class="figure">
+              <p>
+                <img
+                  src="https://substackcdn.com/image/fetch/$s_!Ly-S!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8bfb8c02-5d35-4474-a6ad-70d76e0d65f3_1076x911.png"
+                  class="img-fluid figure-img"
+                />
+              </p>
+              <figcaption>Image of Tiktokeniser</figcaption>
+            </figure>
+          </div>
+          <p>
+            Our conversations get turned into a
+            <strong>sequences of one dimesional tokens</strong>.
+          </p>
+          <p>
+            We cannot possibilty cover all potential prompts a user might ask in
+            our training dataset. However we can make a few different examples
+            of how the model should respond in a helpful way. It’s all
+            programmed by example.
+          </p>
+          <section id="high-level-overview-of-how-chatgpt-works" class="level4">
+            <h4
+              class="anchored"
+              data-anchor-id="high-level-overview-of-how-chatgpt-works"
+            >
+              High level overview of how ChatGPT works
+            </h4>
+            <p>
+              <strong
+                >We are programming the system by example and the system adopts
+                statistically this persona of this helpful truthful assistant
+                which is reflected in the labelling instructions that the
+                company creates.</strong
+              >
+            </p>
+            <p>
+              When talking to ChatGPT, it isn’t some magical AI. It is like
+              speaking with a simulation of an average highly skilled labeller.
+              It is NOT a magical AI that has gone out and researched all the
+              answers to all the questions as you ask them.
+              <strong
+                >ChatGPT is a statistical simulation of a labeller hired by
+                OpenAI</strong
+              >
+            </p>
+            <p>
+              <strong
+                >Pre training knowledge is combined with the Post Training data
+                set that results in this imitation of emergent
+                behaviour.</strong
+              >
+            </p>
+          </section>
+          <section id="hallucinations-and-how-they-happen" class="level4">
+            <h4
+              class="anchored"
+              data-anchor-id="hallucinations-and-how-they-happen"
+            >
+              Hallucinations and how they happen
+            </h4>
+            <p>
+              Labellers have a confident tone of answer when they label their
+              data - they’ve gone out and researched and know something to be
+              definively true. Therefore when the model hallucinates, it is
+              because it is trying to mimic the labeller’s tone of answer.
+            </p>
+            <p>
+              The assistant will not tell you it doesn’t know because the style
+              of the majority of the training data examples is a helpful answer,
+              confidently stated. The answer you get is a statistical best
+              guess. The model is just sampling through the probabilities and
+              coming up with random answers.
+            </p>
+            <p>
+              Hallucinations have been improved over time. Meta used an
+              interrogation technique, asking the same question multiple times
+              and then comparing the answers to the correct answer. If this
+              keeps coming up as incorrect, we’ve found what the model doesn’t
+              know. We add a new conversation to the training set, with the
+              answer “I’m sorry, I don’t know”.
+              <strong
+                >When this neurons uncertainty is high, then state “I don’t
+                know”.</strong
+              >
+            </p>
+            <p>
+              A better way is to allow the model to query the internet.
+              <code>&lt;SEARCH_START&gt;</code> and
+              <code>&lt;SEARCH_END&gt;</code> are special tokens that tell the
+              model to search the internet. The text from the web search is now
+              inside the <code>Context Window</code> - directly available to the
+              model. So now the model can reference this exact text in its
+              response.
+            </p>
+            <p>
+              When providing the text of reference within the prompt, the model
+              has full access to it within its Context Window. Therefore the
+              output will be of high quality, rather than vague recollection of
+              the training data.
+            </p>
+          </section>
+          <section id="knowledge-of-self" class="level4">
+            <h4 class="anchored" data-anchor-id="knowledge-of-self">
+              Knowledge of self
+            </h4>
+            <p>
+              Asking the model about itself doesn’t make sense, it will make
+              this up. It will hallucinate. It has zero sense of self. The model
+              understands it is taking on the personality of a AI assistant and
+              can infer and guess with high statistical probability that it was
+              created by OpenAI.
+            </p>
+            <p>
+              Sometimes you can add something called a
+              <strong>system message</strong> to the beginning of the
+              conversation. This is a message that the model will see first and
+              it will use to guide its behaviour.
+            </p>
+            <p>
+              Distributing the computation across the answer is how a good maths
+              question is answered. A well trained model spreads out its
+              reasoning and spread out its computation across the tokens. Then
+              it’ll have all the previous results wihtin its working memory. It
+              is really bad to make the model do all calculation from a singular
+              token.
+            </p>
+            <p>
+              “working out” the answer is better than just “the answer is…”. The
+              model can break the problem down into steps and refer to them as
+              it goes.
+            </p>
+            <p>
+              <code>A single forward pass of the network</code> is not
+              sufficient for the work of doing mathematics.
+            </p>
+            <p>Models can’t count, and they struggle to do arithmetic.</p>
+            <p>
+              Models don’t see characters, they see tokens - therefore they’re
+              not great at spelling.
+            </p>
+          </section>
+        </section>
+        <section id="post-training-reinforcement-learning" class="level1">
+          <h1>Post-Training Reinforcement Learning</h1>
+          <p><em>An assistant model trained by supervised fine-tuning</em></p>
+          <p>We generated 15 solutions:</p>
+          <ul>
+            <li>Only 4 of them got the right answer.</li>
+            <li>Take the top solution (each right short answer).</li>
+            <li>Train on it to make it better at the task.</li>
+            <li>repeat</li>
+            <li>repeat</li>
+          </ul>
+          <p>
+            After the parameter update, the model will be slightly more likely
+            to choose the right answer.
+          </p>
+          <p>
+            The model is discovering <em>for itself</em> what kind of token
+            sequences lead it to correct answers. No human annotator in this
+            part.
+          </p>
+          <p>
+            Companies don’t share information about this stage usually so it was
+            a surprise to see this paper -
+            <a href="https://arxiv.org/pdf/2501.12948"
+              >DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via
+              Reinforcement Learning</a
+            >
+          </p>
+          <p>
+            The models made improvement on solving mathematical problems,
+            discovering how to solve them.
+          </p>
+          <div class="quarto-figure quarto-figure-center">
+            <figure class="figure">
+              <p>
+                <img
+                  src="https://www.researchgate.net/publication/395582429/figure/fig1/AS:11431281640049975@1758250476126/Accuracy-and-output-length-of-DeepSeek-R1-Zero-throughout-the-training-process-a-AIME.png"
+                  class="img-fluid figure-img"
+                />
+              </p>
+              <figcaption>
+                DeepSeek-R1 Accuracy and output length throughout the training
+                process
+              </figcaption>
+            </figure>
+          </div>
+          <p>
+            The model learns to make very long solutions. It’s like the model is
+            “thinking” about the problem and then “working out” the answer.
+          </p>
+          <p>
+            <code
+              >Wait, wait. Wait. That’s an aha moment I can flag here....</code
+            >
+            <code
+              >Let’s reevaluate this step-by-step to identify if the correct sum
+              can be ...</code
+            >
+          </p>
+          <p>
+            This has been discovered by the model, this was not an addition or
+            taught by labellers. The model is learning to reason and discover
+            how to solve problems.
+          </p>
+          <section id="alpha-go" class="level4">
+            <h4 class="anchored" data-anchor-id="alpha-go">Alpha Go</h4>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/WXuK6gekU1Y?si=xLVk0tTMIyYOkMWq"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen=""
+            >
+            </iframe>
+            <p>
+              Here they compare the strength of a model trained by Reinforcement
+              Learning to a model trained by Supervised Learning. Reinforcement
+              Learning is significantly more powerful. It played against itself
+              and learned to play better, trialing many different solutions to
+              the problem.
+            </p>
+            <p>
+              Reinforcement Learning is NOT constrained by human knowledge and
+              abilities.
+            </p>
+            <p>
+              Move 37 was a move that no humna experert would play. In
+              retrospect it was brilliant. Move 37 proved that the model was
+              able to reason and discover how to play the game better.
+            </p>
+            <div class="quarto-figure quarto-figure-center">
+              <figure class="figure">
+                <p>
+                  <img
+                    src="https://cdn.hashnode.com/res/hashnode/image/upload/v1639502365311/OiDB9gSUf.png?auto=compress,format&amp;format=webp"
+                    class="img-fluid figure-img"
+                  />
+                </p>
+                <figcaption>Alpha go</figcaption>
+              </figure>
+            </div>
+          </section>
+        </section>
+        <section
+          id="rlhf---reinforcement-learning-from-human-feedback"
+          class="level1"
+        >
+          <h1>RLHF - Reinforcement Learning from Human Feedback</h1>
+          <p>
+            We train a <code>Reward Model</code> - a scoring model, based on
+            ranked answers by humans. We compare the reward model’s answers to
+            the model’s answers and then we train the model to get a higher
+            reward score.
+          </p>
+          <p>The weights of the model become tuned to the human feedback</p>
+          <p>
+            We want the reward model scoring to reflect the human feedback
+            ordering.
+          </p>
+          <p>
+            Humans can far easier discriminate between answers than gnerate
+            answers.
+          </p>
+          <p>
+            In RHLF the system discovers the answers that would be graded well
+            by humans.
+          </p>
+          <p>
+            Downside is we are doing Reinforcement learning with respect to a
+            <code>lossy simulation of humans</code> - could be misleading. RL
+            can also find ways to game the system to get a higher reward score -
+            e.g the answer could become nonsensical but still get a high reward
+            score.
+            <strong
+              >This is a problem because the model is not learning to reason and
+              discover how to solve problems, it is learning to game the system
+              to get a higher reward score.</strong
+            >
+          </p>
+          <p>
+            Therefore RHLF is fine tuning, it’s seen as ‘not real RL’ because
+            the scoring is gameable. It’s a little improvement, fine tune.
+          </p>
+        </section>
+      </main>
+      <!-- /main -->
+      <script id="quarto-html-after-body" type="application/javascript">
+        window.document.addEventListener("DOMContentLoaded", function (event) {
+          const icon = "";
+          const anchorJS = new window.AnchorJS();
+          anchorJS.options = {
+            placement: "right",
+            icon: icon,
+          };
+          anchorJS.add(".anchored");
+          const isCodeAnnotation = (el) => {
+            for (const clz of el.classList) {
+              if (clz.startsWith("code-annotation-")) {
+                return true;
+              }
+            }
+            return false;
+          };
+          const onCopySuccess = function (e) {
+            // button target
+            const button = e.trigger;
+            // don't keep focus
+            button.blur();
+            // flash "checked"
+            button.classList.add("code-copy-button-checked");
+            var currentTitle = button.getAttribute("title");
+            button.setAttribute("title", "Copied!");
+            let tooltip;
+            if (window.bootstrap) {
+              button.setAttribute("data-bs-toggle", "tooltip");
+              button.setAttribute("data-bs-placement", "left");
+              button.setAttribute("data-bs-title", "Copied!");
+              tooltip = new bootstrap.Tooltip(button, {
+                trigger: "manual",
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8],
+              });
+              tooltip.show();
+            }
+            setTimeout(function () {
+              if (tooltip) {
+                tooltip.hide();
+                button.removeAttribute("data-bs-title");
+                button.removeAttribute("data-bs-toggle");
+                button.removeAttribute("data-bs-placement");
+              }
+              button.setAttribute("title", currentTitle);
+              button.classList.remove("code-copy-button-checked");
+            }, 1000);
+            // clear code selection
+            e.clearSelection();
+          };
+          const getTextToCopy = function (trigger) {
+            const outerScaffold = trigger.parentElement.cloneNode(true);
+            const codeEl = outerScaffold.querySelector("code");
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+          };
+          const clipboard = new window.ClipboardJS(
+            ".code-copy-button:not([data-in-quarto-modal])",
+            {
+              text: getTextToCopy,
+            }
+          );
+          clipboard.on("success", onCopySuccess);
+          if (
+            window.document.getElementById("quarto-embedded-source-code-modal")
+          ) {
+            const clipboardModal = new window.ClipboardJS(
+              ".code-copy-button[data-in-quarto-modal]",
+              {
+                text: getTextToCopy,
+                container: window.document.getElementById(
+                  "quarto-embedded-source-code-modal"
+                ),
+              }
+            );
+            clipboardModal.on("success", onCopySuccess);
           }
-        }
-      }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
-    }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
-    }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
+          var localhostRegex = new RegExp(
+            /^(?:http|https):\/\/localhost\:?[0-9]*\//
+          );
+          var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp(
+            "https:\/\/astonishing-phoenix-6751cb\.netlify\.app"
+          );
+          var isInternal = (href) => {
+            return (
+              filterRegex.test(href) ||
+              localhostRegex.test(href) ||
+              mailtoRegex.test(href)
+            );
+          };
+          // Inspect non-navigation links and adorn them if external
+          var links = window.document.querySelectorAll(
+            "a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)"
+          );
+          for (var i = 0; i < links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
-      } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
-      }
-    }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
+          function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+            const config = {
+              allowHTML: true,
+              maxWidth: 500,
+              delay: 100,
+              arrow: false,
+              appendTo: function (el) {
+                return el.parentElement;
+              },
+              interactive: true,
+              interactiveBorder: 10,
+              theme: "quarto",
+              placement: "bottom-start",
+            };
+            if (contentFn) {
+              config.content = contentFn;
             }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
+            if (onTriggerFn) {
+              config.onTrigger = onTriggerFn;
+            }
+            if (onUntriggerFn) {
+              config.onUntrigger = onUntriggerFn;
+            }
+            window.tippy(el, config);
+          }
+          const noterefs = window.document.querySelectorAll(
+            'a[role="doc-noteref"]'
+          );
+          for (var i = 0; i < noterefs.length; i++) {
+            const ref = noterefs[i];
+            tippyHover(ref, function () {
+              // use id or data attribute instead here
+              let href =
+                ref.getAttribute("data-footnote-href") ||
+                ref.getAttribute("href");
+              try {
+                href = new URL(href).hash;
+              } catch {}
+              const id = href.replace(/^#\/?/, "");
+              const note = window.document.getElementById(id);
+              if (note) {
+                return note.innerHTML;
+              } else {
+                return "";
+              }
             });
           }
-        } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
-            if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
+          const xrefs = window.document.querySelectorAll("a.quarto-xref");
+          const processXRef = (id, note) => {
+            // Strip column container classes
+            const stripColumnClz = (el) => {
+              el.classList.remove("page-full", "page-columns");
+              if (el.children) {
+                for (const child of el.children) {
+                  stripColumnClz(child);
+                }
               }
-              const html = processXRef(null, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
+            };
+            stripColumnClz(note);
+            if (id === null || id.startsWith("sec-")) {
+              // Special case sections, only their first couple elements
+              const container = document.createElement("div");
+              if (note.children && note.children.length > 2) {
+                container.appendChild(note.children[0].cloneNode(true));
+                for (let i = 1; i < note.children.length; i++) {
+                  const child = note.children[i];
+                  if (child.tagName === "P" && child.innerText === "") {
+                    continue;
+                  } else {
+                    container.appendChild(child.cloneNode(true));
+                    break;
+                  }
+                }
+                if (window.Quarto?.typesetMath) {
+                  window.Quarto.typesetMath(container);
+                }
+                return container.innerHTML;
+              } else {
+                if (window.Quarto?.typesetMath) {
+                  window.Quarto.typesetMath(note);
+                }
+                return note.innerHTML;
+              }
+            } else {
+              // Remove any anchor links if they are present
+              const anchorLink = note.querySelector("a.anchorjs-link");
+              if (anchorLink) {
+                anchorLink.remove();
+              }
+              if (window.Quarto?.typesetMath) {
+                window.Quarto.typesetMath(note);
+              }
+              if (note.classList.contains("callout")) {
+                return note.outerHTML;
+              } else {
+                return note.innerHTML;
+              }
+            }
+          };
+          for (var i = 0; i < xrefs.length; i++) {
+            const xref = xrefs[i];
+            tippyHover(
+              xref,
+              undefined,
+              function (instance) {
+                instance.disable();
+                let url = xref.getAttribute("href");
+                let hash = undefined;
+                if (url.startsWith("#")) {
+                  hash = url;
+                } else {
+                  try {
+                    hash = new URL(url).hash;
+                  } catch {}
+                }
+                if (hash) {
+                  const id = hash.replace(/^#\/?/, "");
+                  const note = window.document.getElementById(id);
+                  if (note !== null) {
+                    try {
+                      const html = processXRef(id, note.cloneNode(true));
+                      instance.setContent(html);
+                    } finally {
+                      instance.enable();
+                      instance.show();
+                    }
+                  } else {
+                    // See if we can fetch this
+                    fetch(url.split("#")[0])
+                      .then((res) => res.text())
+                      .then((html) => {
+                        const parser = new DOMParser();
+                        const htmlDoc = parser.parseFromString(
+                          html,
+                          "text/html"
+                        );
+                        const note = htmlDoc.getElementById(id);
+                        if (note !== null) {
+                          const html = processXRef(id, note);
+                          instance.setContent(html);
+                        }
+                      })
+                      .finally(() => {
+                        instance.enable();
+                        instance.show();
+                      });
+                  }
+                } else {
+                  // See if we can fetch a full url (with no hash to target)
+                  // This is a special case and we should probably do some content thinning / targeting
+                  fetch(url)
+                    .then((res) => res.text())
+                    .then((html) => {
+                      const parser = new DOMParser();
+                      const htmlDoc = parser.parseFromString(html, "text/html");
+                      const note = htmlDoc.querySelector("main.content");
+                      if (note !== null) {
+                        // This should only happen for chapter cross references
+                        // (since there is no id in the URL)
+                        // remove the first header
+                        if (
+                          note.children.length > 0 &&
+                          note.children[0].tagName === "HEADER"
+                        ) {
+                          note.children[0].remove();
+                        }
+                        const html = processXRef(null, note);
+                        instance.setContent(html);
+                      }
+                    })
+                    .finally(() => {
+                      instance.enable();
+                      instance.show();
+                    });
+                }
+              },
+              function (instance) {}
+            );
+          }
+          let selectedAnnoteEl;
+          const selectorForAnnotation = (cell, annotation) => {
+            let cellAttr = 'data-code-cell="' + cell + '"';
+            let lineAttr = 'data-code-annotation="' + annotation + '"';
+            const selector = "span[" + cellAttr + "][" + lineAttr + "]";
+            return selector;
+          };
+          const selectCodeLines = (annoteEl) => {
+            const doc = window.document;
+            const targetCell = annoteEl.getAttribute("data-target-cell");
+            const targetAnnotation = annoteEl.getAttribute(
+              "data-target-annotation"
+            );
+            const annoteSpan = window.document.querySelector(
+              selectorForAnnotation(targetCell, targetAnnotation)
+            );
+            const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+            const lineIds = lines.map((line) => {
+              return targetCell + "-" + line;
+            });
+            let top = null;
+            let height = null;
+            let parent = null;
+            if (lineIds.length > 0) {
               //compute the position of the single el (top and bottom and make a div)
               const el = window.document.getElementById(lineIds[0]);
               top = el.offsetTop;
               height = el.offsetHeight;
               parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
+              if (lineIds.length > 1) {
+                const lastEl = window.document.getElementById(
+                  lineIds[lineIds.length - 1]
+                );
+                const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                height = bottom - top;
               }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
+              if (top !== null && height !== null && parent !== null) {
+                // cook up a div (if necessary) and position it
+                let div = window.document.getElementById(
+                  "code-annotation-line-highlight"
+                );
+                if (div === null) {
+                  div = window.document.createElement("div");
+                  div.setAttribute("id", "code-annotation-line-highlight");
+                  div.style.position = "absolute";
+                  parent.appendChild(div);
+                }
+                div.style.top = top - 2 + "px";
+                div.style.height = height + 4 + "px";
+                div.style.left = 0;
+                let gutterDiv = window.document.getElementById(
+                  "code-annotation-line-highlight-gutter"
+                );
+                if (gutterDiv === null) {
+                  gutterDiv = window.document.createElement("div");
+                  gutterDiv.setAttribute(
+                    "id",
+                    "code-annotation-line-highlight-gutter"
+                  );
+                  gutterDiv.style.position = "absolute";
+                  const codeCell = window.document.getElementById(targetCell);
+                  const gutter = codeCell.querySelector(
+                    ".code-annotation-gutter"
+                  );
+                  gutter.appendChild(gutterDiv);
+                }
+                gutterDiv.style.top = top - 2 + "px";
+                gutterDiv.style.height = height + 4 + "px";
               }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+              selectedAnnoteEl = annoteEl;
             }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
           };
-        } else {
-          return findCites(el.parentElement)
-        }
-      } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+          const unselectCodeLines = () => {
+            const elementsIds = [
+              "code-annotation-line-highlight",
+              "code-annotation-line-highlight-gutter",
+            ];
+            elementsIds.forEach((elId) => {
+              const div = window.document.getElementById(elId);
+              if (div) {
+                div.remove();
+              }
+            });
+            selectedAnnoteEl = undefined;
+          };
+          // Handle positioning of the toggle
+          window.addEventListener(
+            "resize",
+            throttle(() => {
+              elRect = undefined;
+              if (selectedAnnoteEl) {
+                selectCodeLines(selectedAnnoteEl);
+              }
+            }, 10)
+          );
+          function throttle(fn, ms) {
+            let throttle = false;
+            let timer;
+            return (...args) => {
+              if (!throttle) {
+                // first call gets through
+                fn.apply(this, args);
+                throttle = true;
+              } else {
+                // all the others get throttled
+                if (timer) clearTimeout(timer); // cancel #2
+                timer = setTimeout(() => {
+                  fn.apply(this, args);
+                  timer = throttle = false;
+                }, ms);
+              }
+            };
+          }
+          // Attach click handler to the DT
+          const annoteDls = window.document.querySelectorAll(
+            "dt[data-target-cell]"
+          );
+          for (const annoteDlNode of annoteDls) {
+            annoteDlNode.addEventListener("click", (event) => {
+              const clickedEl = event.target;
+              if (clickedEl !== selectedAnnoteEl) {
+                unselectCodeLines();
+                const activeEl = window.document.querySelector(
+                  "dt[data-target-cell].code-annotation-active"
+                );
+                if (activeEl) {
+                  activeEl.classList.remove("code-annotation-active");
+                }
+                selectCodeLines(clickedEl);
+                clickedEl.classList.add("code-annotation-active");
+              } else {
+                // Unselect the line
+                unselectCodeLines();
+                clickedEl.classList.remove("code-annotation-active");
+              }
+            });
+          }
+          const findCites = (el) => {
+            const parentEl = el.parentElement;
+            if (parentEl) {
+              const cites = parentEl.dataset.cites;
+              if (cites) {
+                return {
+                  el,
+                  cites: cites.split(" "),
+                };
+              } else {
+                return findCites(el.parentElement);
+              }
+            } else {
+              return undefined;
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+          };
+          var bibliorefs = window.document.querySelectorAll(
+            'a[role="doc-biblioref"]'
+          );
+          for (var i = 0; i < bibliorefs.length; i++) {
+            const ref = bibliorefs[i];
+            const citeInfo = findCites(ref);
+            if (citeInfo) {
+              tippyHover(citeInfo.el, function () {
+                var popup = window.document.createElement("div");
+                citeInfo.cites.forEach(function (cite) {
+                  var citeDiv = window.document.createElement("div");
+                  citeDiv.classList.add("hanging-indent");
+                  citeDiv.classList.add("csl-entry");
+                  var biblioDiv = window.document.getElementById("ref-" + cite);
+                  if (biblioDiv) {
+                    citeDiv.innerHTML = biblioDiv.innerHTML;
+                  }
+                  popup.appendChild(citeDiv);
+                });
+                return popup.innerHTML;
+              });
+            }
+          }
         });
-      }
-    }
-  });
-  </script>
-</div> <!-- /content -->
-
-
-
-
-</body></html>
+      </script>
+    </div>
+    <!-- /content -->
+  </body>
+</html>
