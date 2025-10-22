@@ -5,7 +5,7 @@ image: me.jpeg
 
 ::: {.columns}
 ::: {.column width="65%"}
-Hey there — I’m Charlotte Bondarev, a Frontend‑focused Product Developer who loves building fast, elegant, and accessible web experiences. I dive deep, move quickly, and use strong workflows to ship pixel‑perfect UI.
+Hey there — I’m Charlotte, a Frontend‑focused Product Developer who loves building fast, elegant, and accessible web experiences. I dive deep, move quickly, and use strong workflows to ship pixel‑perfect UI.
 
 I started by asking “can I build this?” and dove head‑first into full‑stack projects. Today I lean frontend, collaborate closely with design, and sweat the details that make products feel alive.
 

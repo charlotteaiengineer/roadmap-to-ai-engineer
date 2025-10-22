@@ -8,12 +8,14 @@ website:
 
   navbar:
     left:
-      # - text: Home
-      #   href: index.qmd
-      - text: About
-        href: about.qmd
+      - text: Learning Journey
+        href: learning-journey/index.qmd
+      - text: Resources
+        href: resources.qmd
       - text: Blog
         href: blog/index.qmd
+      - text: About
+        href: about.qmd
 
 format:
   html:

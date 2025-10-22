@@ -2,15 +2,16 @@
 title: "Blog"
 page-layout: full
 listing:
-  contents: .
   sort: "date desc"
-  type: default
-  sort-ui: true
-  page-size: 20
-  fields: [title, description, date, categories]
+  type: table
+  fields: [title, date]
   categories: true
+  page-size: 10
   filter-ui: true
 ---
+
+Notes, experiments, and updates.
+
 
 Welcome to my blog. I write about frontend engineering, product development, and building with AI.
 

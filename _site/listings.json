@@ -24,6 +24,9 @@
   },
   {
     "listing": "/blog/index.html",
-    "items": []
+    "items": [
+      "/blog/posts/2025-10-21-brain.html",
+      "/blog/posts/2025-10-21-first-post.html"
+    ]
   }
 ]

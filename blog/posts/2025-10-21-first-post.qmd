@@ -1,0 +1,41 @@
+---
+title: "Why I'm Building an AI Engineer Curriculum in Public"
+description: "Kicking off the blog with intent, scope, and how I’ll share progress."
+date: 2025-10-21
+# categories: [meta, roadmap]
+# image: /me.jpeg
+---
+
+### I want to retrain to make AI systems
+
+Why a change in career? I've been finding fullstack engineering un-impactful and un-fulfilling. Rendering out data on a page; designing that page to pixel perfection, and getting millions of clicks on buttons I have created doesn't feel awesome to me.
+
+I'm so glad I went down this route and tried it out... however when I tell people what they should do with their lives, I tell them to study AI and get involved. 
+
+It is the next technological revolution and I want to be part of it. I like how it's the closest thing to understand the human brain and trying to emulate it. I like how we become gods in a way of our own simulation. - It's becoming clearer that we are within a simulation, so I want to be a part of the people able to bend the matrix and understand it.
+
+AI isn't only interesting for making lots of money. It could do so much for us. [Neuralink](https://neuralink.com/) comes to mind. That's directly some of the most incredible impactful outcomes I've seen in my life.
+
+In another sense I want to get to see AGI. To understand the human mind, truly. I find human intelligence fascinating.
+
+
+### My Dream job 
+
+- Title: AGI Engineer
+- Team: The Artificial General Intelligence (AGI) team 
+- Working for a massive well known company like OpenAI, Meta, Amazon...
+- prototype new technology
+
+
+##### Ideal working environment
+- Work from home, flexible working hours
+- Learning days and study days
+- Open sharing environment 
+
+
+
+#### Listings
+
+
+- [Amazon - Software Development Engineer (ML), AGI Customization](https://www.amazon.jobs/en-gb/jobs/3102530/software-development-engineer-ml-agi-customization)
+- [Amazon - Sr. Research Engineer, Machine Learning, AGI Foundations](https://www.amazon.jobs/en-gb/jobs/3113050/sr-research-engineer-machine-learning-agi-foundations)

@@ -58,5 +58,17 @@
   },
   "blog/index.qmd": {
     "index.html": "41ff01e5"
+  },
+  "dream-job.qmd": {
+    "dream-job.html": "2b309840"
+  },
+  "resources.qmd": {
+    "resources.html": "02b9d0df"
+  },
+  "blog/posts/2025-10-21-first-post.qmd": {
+    "2025-10-21-first-post.html": "6ff6afe8"
+  },
+  "blog/posts/2025-10-21-brain.qmd": {
+    "2025-10-21-brain.html": "90d8e950"
   }
 }

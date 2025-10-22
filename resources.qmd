@@ -1,0 +1,30 @@
+---
+title: "Resources"
+page-layout: full
+---
+
+Quick access to frequently used links. Add/edit freely.
+
+## Daily / Weekly
+- [Latent Space](https://www.latent.space/)
+
+- [Sam Altman's Blog](https://blog.samaltman.com/archive)
+
+## LLMs / GenAI
+
+- [Andrej Karpathy's Youtube](https://www.youtube.com/@AndrejKarpathy)
+- 
+
+## Python / Data
+
+- 
+
+## Research & Learning
+
+- 
+
+## Tools & Platforms
+
+- 
+
+

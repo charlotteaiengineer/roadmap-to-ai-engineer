@@ -1,0 +1,11 @@
+---
+title: "An llm that tweaks itself - Evolutionary based LLM"
+description: "An idea on AGI and the human brain"
+date: 2025-10-21
+categories: [ai, agi, brain]
+# image: /me.jpeg
+---
+
+
+The core idea is an LLM that can tweak its own parameters.
+An LLM that has core drivers, motivations, and goals.
