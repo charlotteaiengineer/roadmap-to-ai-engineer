@@ -31,14 +31,39 @@ In another sense I want to get to see AGI. To understand the human mind, truly. 
 
 > I need to find the most fascinating stage of training Neural Networks to me, then I'll find the right specialisation.
 
+### Sample Projects must be in portfolio
+
+Optimizing the throughput of novel attention mechanisms
+Comparing compute efficiency of different Transformer variants
+Preparing large-scale datasets for efficient model consumption
+Scaling distributed training jobs to thousands of GPUs
+Designing fault tolerance strategies for our training infrastructure
+Creating interactive visualizations of model internals, such as attention patterns
+
 ### Must-Haves from listings
 
 - Computer Science Degree or equivalent
 - Possess strong programming skills in Python
+- Expertise in Python and experience with deep learning frameworks (PyTorch preferred)
 - Implementing LLM finetuning algorithms, such as RLHF
-- Large scale LLM training
 - Experience with open-source ML toolkits and frameworks (eg. PyTorch, TensorFlow, etc)
-
+- Have experience with training, evaluating, or monitoring large language models
+- Language modeling with transformers
+- Large-scale ETL
+Work on high-performance, large-scale ML systems
+Familiarity with GPUs, Kubernetes, and OS internals
+Experience with language modeling using transformer architectures
+Knowledge of reinforcement learning techniques
+Background in large-scale ETL processes
+Are eager to learn more about machine learning research
+Are working to align state of the art models with human values and preferences, understand and interpret deep neural networks, or develop new models to support these areas of research
+View research and engineering as two sides of the same coin, and seek to understand all aspects of our research program as well as possible, to maximize the impact of your insights
+Have ambitious goals for AI safety and general progress in the next few years, and you’re working to create the best outcomes over the long-term.
+- GPUs, Kubernetes, Pytorch, or OS internals
+- Independently lead small research projects
+- Conduct research and implement solutions in areas such as model architecture, algorithms, data processing, and optimizer development
+- Design, run, and analyze scientific experiments to advance our understanding of large language models
+- Optimize and scale our training infrastructure to improve efficiency and reliability
 
 - Published work on hallucination prevention, factual grounding, or knowledge integration in language models
 - Experience with fact-grounding techniques
@@ -86,6 +111,17 @@ Making changes to our finetuning systems so they work on new model architectures
 Building instrumentation to detect and eliminate Python GIL contention in our training code
 Diagnosing why training runs have started slowing down after some number of steps, and fixing it
 Implementing a stable, fast version of a new training algorithm proposed by a researcher
+
+Develop next-generation evaluation frameworks - Move beyond traditional benchmarks to create evaluations that capture real-world utility
+
+Create automated quality assessment pipelines - Build custom classifiers to continuously monitor RL transcripts for complex issues
+
+Build comprehensive training observability systems - Design and implement monitoring infrastructure to keep an eye on how model behaviors evolve throughout training.
+
+Bridge research and production - Partner with research teams to translate cutting-edge evaluation techniques into production-ready systems, and work with engineering teams to ensure our monitoring infrastructure scales with increasingly complex training workflows.
+
+
+
 ##### Ideal working environment
 - Work from home, flexible working hours
 - Learning days and study days
@@ -96,6 +132,7 @@ Implementing a stable, fast version of a new training algorithm proposed by a re
 
 #### Listings
 
+- [Research Engineer, Pre-training](https://job-boards.greenhouse.io/anthropic/jobs/4681526008)
 - [Anthropic - Machine Learning Systems Engineer, Research Tools](https://job-boards.greenhouse.io/anthropic/jobs/4952079008)
 - [Anthrophic - [Expression of Interest] Research Scientist/Engineer, Honesty](https://job-boards.greenhouse.io/anthropic/jobs/4532887008)
 - [Anthropic - Machine Learning Systems Engineer, RL Engineering](https://job-boards.greenhouse.io/anthropic/jobs/4952051008)

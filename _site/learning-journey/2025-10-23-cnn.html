@@ -155,8 +155,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#convolution" id="toc-convolution" class="nav-link active" data-scroll-target="#convolution">Convolution</a>
+  <ul class="collapse">
+  <li><a href="#edge-detection" id="toc-edge-detection" class="nav-link" data-scroll-target="#edge-detection">Edge Detection</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -199,35 +208,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A CNN is for any structural data. Images, Video, Audio, Text, etc.</p>
 <p>Colours in digital screens are represented as a combination of Red, Green, and Blue in different intensities. There are three image ‘Planes’ stacked ontop of eachother.</p>
 <p>High spectral images have more stacks ontop of the basic 3. (Geospacial images from satellites for example get height maps too)</p>
-<div id="ce8ba7ef" class="cell" data-execution_count="1">
+<div id="fc82dd4c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="102eacd2" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> plt.imread(<span class="st">'../images/owl.jpg'</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(im)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>im <span class="op">=</span> plt.imread(<span class="st">'../images/owl.jpg'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>plt.imshow(im)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2025-10-23-cnn_files/figure-html/cell-3-output-1.png" width="586" height="394" class="figure-img"></p>
+<p><img src="2025-10-23-cnn_files/figure-html/cell-2-output-1.png" width="586" height="394" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="036181a9" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>im.shape <span class="co"># (height, width, channels)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="f0f3f823" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>im.shape <span class="co"># (height, width, channels)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>(4800, 7200, 3)</code></pre>
 </div>
 </div>
-<div id="72233b2e" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> im[:,:,<span class="dv">0</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> im[:,:,<span class="dv">1</span>]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> im[:,:,<span class="dv">2</span>]</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.imshow(R)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.imshow(G)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.imshow(B)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="10d948ae" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> im[:,:,<span class="dv">0</span>]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> im[:,:,<span class="dv">1</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> im[:,:,<span class="dv">2</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.imshow(R)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.imshow(G)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.imshow(B)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-10-23-cnn_files/figure-html/cell-4-output-1.png" width="540" height="366" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="51d4c145" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(R, cmap<span class="op">=</span><span class="st">'Reds'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -236,8 +254,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="05fcfd2a" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(R, cmap<span class="op">=</span><span class="st">'Reds'</span>)</span>
+<div id="128e267c" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(R, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -247,69 +265,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="f36c220e" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plt.imshow(R, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="823536c7" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig,(ax1, ax2, ax3) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">15</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax1.imshow(R, cmap<span class="op">=</span><span class="st">'Reds'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax1.axis(<span class="st">'off'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ax2.imshow(G, cmap<span class="op">=</span><span class="st">'Greens'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ax2.axis(<span class="st">'off'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ax3.imshow(B, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>ax3.axis(<span class="st">'off'</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2025-10-23-cnn_files/figure-html/cell-7-output-1.png" width="540" height="366" class="figure-img"></p>
+<p><img src="2025-10-23-cnn_files/figure-html/cell-7-output-1.png" width="763" height="165" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="71551a4b" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig,(ax1, ax2, ax3) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">15</span>))</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ax1.imshow(R, cmap<span class="op">=</span><span class="st">'Reds'</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ax1.axis(<span class="st">'off'</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ax2.imshow(G, cmap<span class="op">=</span><span class="st">'Greens'</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>ax2.axis(<span class="st">'off'</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>ax3.imshow(B, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>ax3.axis(<span class="st">'off'</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4129d50a" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>modified_im <span class="op">=</span> im.copy()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>modified_im[:,:,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">255</span> <span class="co"># Blue channel</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(modified_im)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2025-10-23-cnn_files/figure-html/cell-8-output-1.png" width="763" height="165" class="figure-img"></p>
+<p><img src="2025-10-23-cnn_files/figure-html/cell-8-output-1.png" width="540" height="366" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="d02e1451" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>modified_im <span class="op">=</span> im.copy()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>modified_im[:,:,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">255</span> <span class="co"># Blue channel</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.imshow(modified_im)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ac582e7a" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>modified_im2 <span class="op">=</span> im.copy()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>modified_im2[<span class="dv">1000</span>:<span class="dv">3600</span>,<span class="dv">1400</span>:<span class="dv">3600</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span> <span class="co"># A position in the image</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>modified_im2[<span class="dv">1000</span>:<span class="dv">3600</span>,<span class="dv">1400</span>:<span class="dv">3600</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">255</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>modified_im2[<span class="dv">1000</span>:<span class="dv">3600</span>,<span class="dv">1400</span>:<span class="dv">3600</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.imshow(modified_im2)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2025-10-23-cnn_files/figure-html/cell-9-output-1.png" width="540" height="366" class="figure-img"></p>
+<p><img src="2025-10-23-cnn_files/figure-html/cell-9-output-1.png" width="586" height="394" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="35992ce9" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>modified_im2 <span class="op">=</span> im.copy()</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>modified_im2[<span class="dv">1000</span>:<span class="dv">3600</span>,<span class="dv">1400</span>:<span class="dv">3600</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span> <span class="co"># A position in the image</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>modified_im2[<span class="dv">1000</span>:<span class="dv">3600</span>,<span class="dv">1400</span>:<span class="dv">3600</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">255</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>modified_im2[<span class="dv">1000</span>:<span class="dv">3600</span>,<span class="dv">1400</span>:<span class="dv">3600</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.imshow(modified_im2)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f0be197e" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>grayscale_im <span class="op">=</span> <span class="fl">0.299</span> <span class="op">*</span> R <span class="op">+</span> <span class="fl">0.587</span> <span class="op">*</span> G <span class="op">+</span> <span class="fl">0.114</span> <span class="op">*</span> B <span class="co"># not equal (0.333) values because a more realistic grayscale image would have these values</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(grayscale_im, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="2025-10-23-cnn_files/figure-html/cell-10-output-1.png" width="586" height="394" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="fef5a0b8" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>grayscale_im <span class="op">=</span> <span class="fl">0.299</span> <span class="op">*</span> R <span class="op">+</span> <span class="fl">0.587</span> <span class="op">*</span> G <span class="op">+</span> <span class="fl">0.114</span> <span class="op">*</span> B <span class="co"># not equal (0.333) values because a more realistic grayscale image would have these values</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(grayscale_im, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="2025-10-23-cnn_files/figure-html/cell-11-output-1.png" width="540" height="366" class="figure-img"></p>
+<p><img src="2025-10-23-cnn_files/figure-html/cell-10-output-1.png" width="540" height="366" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -317,11 +324,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>A filter is a function grid. To blur the image, each pixel is put through an averaging function. The filter function moves along each pixel, outputting into another image. it takes the average value of the pixels in the filter and applies it to the pixel in the image.</p>
 <p>It takes all the input pixels and multiplies them by the filter values and sums them up to get the output pixel value. This is an image filtering function.</p>
 <p>The output image has had convolution applied to it.</p>
+<section id="convolution" class="level1">
+<h1>Convolution</h1>
 <p><img src="https://poloclub.github.io/cnn-explainer/assets/figures/convlayer_detailedview_demo.gif" class="img-fluid"></p>
+<p><code>Convolutional filter</code>, <code>Cross Correlation</code></p>
+<blockquote class="blockquote">
+<p>CNN’s take in inputs and produce outputs.</p>
+</blockquote>
+<section id="edge-detection" class="level3">
+<h3 class="anchored" data-anchor-id="edge-detection">Edge Detection</h3>
+<p>Detecting <strong>changes in intensity</strong> across an image.</p>
+<p>We do edge detection when we draw things, we make a thick line around every feature we draw (even though those lines do not exist in real world)</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img src="https://yolandiehorak.com/wp-content/uploads/2022/07/81b80-img_20180627_163402-11.jpg?w=1000&amp;h=1000" class="img-fluid"></p>
+</div><div class="column" style="width:50%;">
+<p><img src="https://i.pinimg.com/736x/fa/5a/1d/fa5a1d989d373689467bdaa4cd387f8e.jpg" class="img-fluid"></p>
+</div>
+</div>
+<p>We even have mathematical rules we have to follow to correctly identify the animal / face for symmetry, proportions, etc.</p>
+<p>Image Sharpening is the opposite of blurring where we highlight the changes in intensities of pixel values.</p>
+<div id="6f81b1b8" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> signal</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>owl_image <span class="op">=</span> plt.imread(<span class="st">'../images/owl.jpg'</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>grey_owl_image <span class="op">=</span> cv2.cvtColor(owl_image, cv2.COLOR_RGB2GRAY)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.imshow(grey_owl_image)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-10-23-cnn_files/figure-html/cell-11-output-1.png" width="586" height="394" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>In a Convolutional Neural Network (CNN), a <strong>kernel</strong> (also called a filter) is a small matrix of numbers used to extract features from an input image. This kernel slides over the image, performing element-wise multiplication with the portion of the image it covers, and the sum of these products becomes a new value in an output matrix called a “feature map”. By using multiple kernels, a CNN can detect various features like edges, textures, and shapes, which helps the network learn complex pattern</p>
+</blockquote>
+<div id="5b526817" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>kernel_size <span class="op">=</span> <span class="dv">30</span>   <span class="co"># Increase kernel size to make image more blurry</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>smoothing_mask <span class="op">=</span> np.ones((kernel_size, kernel_size)) <span class="op">/</span> (kernel_size <span class="op">*</span> kernel_size)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>im_blurred <span class="op">=</span> signal.convolve2d(grey_owl_image, smoothing_mask, boundary<span class="op">=</span><span class="st">'symm'</span>, mode<span class="op">=</span><span class="st">'same'</span>) <span class="co"># convolution operation</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">15</span>))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax1.imshow(grey_owl_image, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax2.imshow(im_blurred, cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-10-23-cnn_files/figure-html/cell-12-output-1.png" width="814" height="272" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="39121280" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x_mask <span class="op">=</span> np.array([[<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]])</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y_mask <span class="op">=</span> x_mask.T.copy()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>fx <span class="op">=</span> signal.convolve2d(grey_owl_image, x_mask, boundary<span class="op">=</span><span class="st">'symm'</span>, mode<span class="op">=</span><span class="st">'same'</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>fy <span class="op">=</span> signal.convolve2d(grey_owl_image, y_mask, boundary<span class="op">=</span><span class="st">'symm'</span>, mode<span class="op">=</span><span class="st">'same'</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>fx.shape</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>grey_owl_image.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>(4800, 7200)</code></pre>
+</div>
+</div>
+<div id="7cbb9b34" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>gm <span class="op">=</span> (fx<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> fy<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="fl">0.5</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.imshow(gm, cmap<span class="op">=</span><span class="st">'gray'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2025-10-23-cnn_files/figure-html/cell-14-output-1.png" width="586" height="394" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FwFduRA_L6Q?si=8ieLHvWo7Q1cgRpR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
 </iframe>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -397,7 +482,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/charlotteaiengineer\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

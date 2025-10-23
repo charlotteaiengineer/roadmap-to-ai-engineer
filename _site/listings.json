@@ -2,13 +2,15 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/posts/2025-10-22-reality.html",
       "/blog/posts/2025-10-21-brain.html",
       "/blog/posts/2025-10-21-first-post.html"
     ]
   },
   {
-    "listing": "/learning-journey/index.html",
+    "listing": "/index.html",
     "items": [
+      "/learning-journey/index.html",
       "/learning-journey/2025-10-25.html",
       "/learning-journey/2025-10-24.html",
       "/learning-journey/2025-10-23-cnn.html",
@@ -21,9 +23,8 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/learning-journey/index.html",
     "items": [
-      "/learning-journey/index.html",
       "/learning-journey/2025-10-25.html",
       "/learning-journey/2025-10-24.html",
       "/learning-journey/2025-10-23-cnn.html",

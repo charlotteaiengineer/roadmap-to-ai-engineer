@@ -264,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="examples">Examples</h2>
 <section id="greedy-vs-sampling-with-softmax-no-external-libs" class="level3">
 <h3 class="anchored" data-anchor-id="greedy-vs-sampling-with-softmax-no-external-libs">Greedy vs sampling with softmax (no external libs)</h3>
-<div id="55241ec0" class="cell" data-execution_count="1">
+<div id="8c7d3b1c" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math, random</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> softmax(logits):</span>
@@ -296,13 +296,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"top-k (k=2):"</span>, [top_k_sample(fake_logits, vocab, k<span class="op">=</span><span class="dv">2</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>greedy: the
-top-k (k=2): ['cat', 'the', 'the', 'cat', 'cat']</code></pre>
+top-k (k=2): ['cat', 'cat', 'the', 'cat', 'cat']</code></pre>
 </div>
 </div>
 </section>
 <section id="tiny-attention-intuition-with-two-tokens-toy-numbers" class="level3">
 <h3 class="anchored" data-anchor-id="tiny-attention-intuition-with-two-tokens-toy-numbers">Tiny attention intuition with two tokens (toy numbers)</h3>
-<div id="4d633a7e" class="cell" data-execution_count="2">
+<div id="41810e2f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two token embeddings (dim=2), toy Q,K,V projections</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -350,7 +350,7 @@ attended token1: [0.75, 0.25]</code></pre>
 </section>
 <section id="prompt-templating-system-user" class="level3">
 <h3 class="anchored" data-anchor-id="prompt-templating-system-user">Prompt templating (system + user)</h3>
-<div id="cad6fb94" class="cell" data-execution_count="3">
+<div id="a83d5542" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>task <span class="op">=</span> <span class="st">"Summarize discriminative vs generative models with examples."</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>system <span class="op">=</span> <span class="st">"You are a precise assistant. Keep answers under 100 words."</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>user <span class="op">=</span> <span class="ss">f"Task: </span><span class="sc">{</span>task<span class="sc">}</span><span class="ch">\n</span><span class="ss">Constraints: 3 sentences max."</span></span>
@@ -444,7 +444,7 @@ Constraints: 3 sentences max.</code></pre>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/charlotteaiengineer\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
