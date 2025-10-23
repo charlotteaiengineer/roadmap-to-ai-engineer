@@ -9,6 +9,7 @@ Quick access to frequently used links. Add/edit freely.
 - [Latent Space](https://www.latent.space/)
 
 - [Sam Altman's Blog](https://blog.samaltman.com/archive)
+- [News from Wes Roth](https://www.youtube.com/@WesRoth/videos)
 
 ## LLMs / GenAI
 
@@ -28,6 +29,7 @@ Quick access to frequently used links. Add/edit freely.
 
 - [Run local AI models like gpt-oss, Qwen, Gemma, DeepSeek and many more on your computer, privately and for free](https://lmstudio.ai/)
 - [lmarena](https://lmarena.ai/leaderboard/text-to-image)
+- [Inference Playground](https://huggingface.co/spaces/huggingface/inference-playground)
 
 
 ## Newsletters

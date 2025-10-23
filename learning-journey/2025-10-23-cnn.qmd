@@ -1,0 +1,109 @@
+---
+title: "Convolutional Neural Networks"
+description: ""
+date: 2025-10-23
+jupyter: python3
+categories: [convolutional-neural-networks]
+image: https://www.oreilly.com/covers/urn:orm:video:9781803243726/400w/
+---
+
+::::: columns
+::: {.column width="35%"}
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXmfK3K7hDUDEbs1P0c6esinTf0rKrF5rjmw&s)
+:::
+
+::: {.column width="45%"}
+[Deep Learning CNN: Convolutional Neural Networks with Python AI Sciences - Published by Packt Publishing](https://learning.oreilly.com/course/deep-learning-cnn/9781803243726/)
+:::
+:::::
+
+A CNN is for any structural data. Images, Video, Audio, Text, etc.
+
+Colours in digital screens are represented as a combination of Red, Green, and Blue in different intensities. There are three image 'Planes' stacked ontop of eachother.
+
+High spectral images have more stacks ontop of the basic 3. (Geospacial images from satellites for example get height maps too)
+
+
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+```{python}
+im = plt.imread('../images/owl.jpg')
+plt.imshow(im)
+```
+
+```{python}
+im.shape # (height, width, channels)
+```
+
+```{python}
+R = im[:,:,0]
+G = im[:,:,1]
+B = im[:,:,2]
+plt.imshow(R)
+plt.imshow(G)
+plt.imshow(B)
+plt.axis('off')
+```
+
+```{python}
+plt.imshow(R, cmap='Reds')
+plt.axis('off')
+```
+
+```{python}
+plt.imshow(R, cmap='gray')
+plt.axis('off')
+```
+
+```{python}
+fig,(ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10, 15))
+ax1.imshow(R, cmap='Reds')
+ax1.axis('off')
+ax2.imshow(G, cmap='Greens')
+ax2.axis('off')
+ax3.imshow(B, cmap='Blues')
+ax3.axis('off')
+plt.show()
+```
+
+
+```{python}
+modified_im = im.copy()
+modified_im[:,:,2] = 255 # Blue channel
+plt.imshow(modified_im)
+plt.axis('off')
+```
+
+
+
+```{python}
+modified_im2 = im.copy()
+modified_im2[1000:3600,1400:3600,0] = 0 # A position in the image
+modified_im2[1000:3600,1400:3600,1] = 255
+modified_im2[1000:3600,1400:3600,0] = 0
+plt.imshow(modified_im2)    
+```
+
+
+```{python}
+grayscale_im = 0.299 * R + 0.587 * G + 0.114 * B # not equal (0.333) values because a more realistic grayscale image would have these values
+plt.imshow(grayscale_im, cmap='gray')
+plt.axis('off')
+```
+
+A filter is a function grid. To blur the image, each pixel is put through an averaging function.
+The filter function moves along each pixel, outputting into another image. it takes the average value of the pixels in the filter and applies it to the pixel in the image. 
+
+It takes all the input pixels and multiplies them by the filter values and sums them up to get the output pixel value. This is an image filtering function.
+
+The output image has had convolution applied to it.
+
+![](https://poloclub.github.io/cnn-explainer/assets/figures/convlayer_detailedview_demo.gif)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FwFduRA_L6Q?si=8ieLHvWo7Q1cgRpR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
