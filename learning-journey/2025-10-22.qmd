@@ -58,3 +58,27 @@ Finding an input that minimises the cost function is called `Gradient Descent`. 
 
 
 What we mean by a network 'learning' is **the minimisation of the cost function**
+
+Artificial neurons have continously ranging neuron activations (0.45....0.93). They are not binary (0, 1).
+
+`Gradient Descent` - A process of repeatedly nudging an input of a function by some multiple of the negative gradient is called Gradient Descent. It is a way to **converge towards some local minimum of a cost function**.
+
+The sin tells us if the number should be nudged up or down the gradient.
+
+The network itself is a function with inputs and outputs, defined in terms of weighted sums: 
+
+For example:
+
+
+#### Neural Network Function
+- input: 784 numbers (pixels)
+- output: 10 numbers (digits)
+- parameters: 13,002 weights/biases
+
+
+#### Cost Function
+- inputs: 13,002 weights/biases
+- output 1 number (the cost)
+- parameters: many, many training examples
+
+> The Gradient of the Cost Function tells us what nudges to all the weights/biases cause the fastest change to the value of the cost function. Which changes to which weights matter the most.

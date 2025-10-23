@@ -26,6 +26,11 @@ Quick access to frequently used links. Add/edit freely.
 
 ## Tools & Platforms
 
-- 
+- [Run local AI models like gpt-oss, Qwen, Gemma, DeepSeek and many more on your computer, privately and for free](https://lmstudio.ai/)
+- [lmarena](https://lmarena.ai/leaderboard/text-to-image)
 
+
+## Newsletters
+- [Latent Space](https://www.latent.space/)
+- [news.smol.ai](https://news.smol.ai/)
 

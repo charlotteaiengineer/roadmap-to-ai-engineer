@@ -194,8 +194,32 @@ ul.task-list li input[type="checkbox"] {
 <p>Gradient descent is an iterative optimisation algorithm, which is used in machine learning to train models, by finding the parameters which minimise a cost function. Gradient descent is essential where the exhaustive calculation of best parameters would be unfeasible, for example in the training of neural networks.</p>
 </blockquote>
 <p>What we mean by a network ‘learning’ is <strong>the minimisation of the cost function</strong></p>
+<p>Artificial neurons have continously ranging neuron activations (0.45….0.93). They are not binary (0, 1).</p>
+<p><code>Gradient Descent</code> - A process of repeatedly nudging an input of a function by some multiple of the negative gradient is called Gradient Descent. It is a way to <strong>converge towards some local minimum of a cost function</strong>.</p>
+<p>The sin tells us if the number should be nudged up or down the gradient.</p>
+<p>The network itself is a function with inputs and outputs, defined in terms of weighted sums:</p>
+<p>For example:</p>
+<section id="neural-network-function" class="level4">
+<h4 class="anchored" data-anchor-id="neural-network-function">Neural Network Function</h4>
+<ul>
+<li>input: 784 numbers (pixels)</li>
+<li>output: 10 numbers (digits)</li>
+<li>parameters: 13,002 weights/biases</li>
+</ul>
+</section>
+<section id="cost-function" class="level4">
+<h4 class="anchored" data-anchor-id="cost-function">Cost Function</h4>
+<ul>
+<li>inputs: 13,002 weights/biases</li>
+<li>output 1 number (the cost)</li>
+<li>parameters: many, many training examples</li>
+</ul>
+<blockquote class="blockquote">
+<p>The Gradient of the Cost Function tells us what nudges to all the weights/biases cause the fastest change to the value of the cost function. Which changes to which weights matter the most.</p>
+</blockquote>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
