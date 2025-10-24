@@ -1,131 +1,159 @@
 ---
-title: "Generative AI with Python and PyTorch — Second Edition"
-description: "Study outline, exercises, and examples based on Babcock & Bali (O’Reilly, 2025)."
+title: "Intermediate Python"
+description: "frontendmaster course"
 date: 2025-10-24
 jupyter: python3
-categories: [python, pytorch, deep-learning, generative-ai, llm, transformers]
-image: https://learning.oreilly.com/covers/urn:orm:book:9781835884447/400w/
+categories: [python]
+image: https://static.frontendmasters.com/assets/courses/2019-05-01-intermediate-python/posterframe.webp
 ---
 
-## Learning outcomes
-
--   Explain the difference between discriminative and generative models
--   Describe transformer basics (attention, positional encodings) at a high level
--   Compare decoding strategies (greedy vs sampling; top-k intuition)
--   Apply prompt-engineering fundamentals to steer model outputs
--   Outline a minimal LLM app stack (prompting, logging, tooling) 
-
-## Today's syllabus
-
--   Introduction to Generative AI (motivation, generative vs discriminative)
--   Transformer refresher (attention and positional encoding intuition)
--   Text generation strategies (greedy vs sampling)
--   Prompt engineering fundamentals and safety
--   Lightweight LLM app scaffolding and tooling overview
-
-## Resources
-
--   Generative AI with Python and PyTorch — Second Edition, Joseph Babcock & Raghav Bali, 2025: <https://learning.oreilly.com/library/view/generative-ai-with/9781835884447/>
-
-## Exercises
-
--   Summarize generative vs discriminative in 3 sentences with one concrete example of each.
--   Sketch the data flow of attention for 2 tokens (Q, K, V), labeling shapes.
--   Implement a tiny decoder that picks tokens via greedy vs top-k sampling from fake logits.
-
-## Readiness checklist
-
--   [ ] I can define discriminative vs generative models and give an example of each.
--   [ ] I can explain attention at a high level and what positional encodings do.
--   [ ] I can describe greedy vs sampling (and why top-k/top-p exist).
--   [ ] I can write an effective system and user prompt for a concrete task.
--   [ ] I can outline components of a minimal LLM app (prompting, logging, tooling).
-
-## Examples
-
-### Greedy vs sampling with softmax (no external libs)
+# [Intermediate Python - Frontend Masters - Nina Zakharenko](https://frontendmasters.com/courses/intermediate-python/)
 
 ```{python}
-import math, random
-
-def softmax(logits):
-    m = max(logits)
-    exps = [math.exp(x - m) for x in logits]
-    s = sum(exps)
-    return [e / s for e in exps]
-
-def greedy_sample(logits, vocab):
-    idx = max(range(len(logits)), key=lambda i: logits[i])
-    return vocab[idx]
-
-def top_k_sample(logits, vocab, k=2):
-    # keep top-k, renormalize, sample
-    idxs = sorted(range(len(logits)), key=lambda i: logits[i], reverse=True)[:k]
-    kept = [logits[i] for i in idxs]
-    probs = softmax(kept)
-    r = random.random()
-    cum = 0.0
-    for i, p in enumerate(probs):
-        cum += p
-        if r <= cum:
-            return vocab[idxs[i]]
-
-vocab = ["the", "a", "an", "cat", "dog"]
-fake_logits = [1.0, 0.7, 0.2, 0.9, 0.6]  # pretend model scores
-
-print("greedy:", greedy_sample(fake_logits, vocab))
-print("top-k (k=2):", [top_k_sample(fake_logits, vocab, k=2) for _ in range(5)])
+my_data = "hello, I am Charlotte, I am learning Python..."
+my_data.split(",") # creates a list split by ,
 ```
 
-### Tiny attention intuition with two tokens (toy numbers)
-
 ```{python}
-# Two token embeddings (dim=2), toy Q,K,V projections
-import math
-
-X = [[1.0, 0.0],  # token 1
-     [0.5, 0.5]]  # token 2
-
-W_Q = [[1.0, 0.0],[0.0, 1.0]]
-W_K = [[0.5, 0.5],[0.5, 0.5]]
-W_V = [[1.0, 0.0],[0.0, 1.0]]
-
-def matmul(A, B):
-    return [[sum(a*b for a, b in zip(row, col)) for col in zip(*B)] for row in A]
-
-Q = matmul(X, W_Q)
-K = matmul(X, W_K)
-V = matmul(X, W_V)
-
-def dot(a, b):
-    return sum(x*y for x, y in zip(a, b))
-
-def attention_weights(q_i, K):
-    scores = [dot(q_i, k) for k in K]
-    m = max(scores)
-    exps = [math.exp(s - m) for s in scores]
-    Z = sum(exps)
-    return [e/Z for e in exps]
-
-weights_0 = attention_weights(Q[0], K)
-out_0 = [sum(w*v for w, v in zip(weights_0, col)) for col in zip(*V)]
-
-weights_1 = attention_weights(Q[1], K)
-out_1 = [sum(w*v for w, v in zip(weights_1, col)) for col in zip(*V)]
-
-print("weights token0:", weights_0)
-print("attended token0:", out_0)
-print("weights token1:", weights_1)
-print("attended token1:", out_1)
+",".join(my_data) # creates a string joined by ,
 ```
 
-### Prompt templating (system + user)
+```{python}
+"💻".join(my_data) # creates a string joined by 💻
+```
 
 ```{python}
-task = "Summarize discriminative vs generative models with examples."
-system = "You are a precise assistant. Keep answers under 100 words."
-user = f"Task: {task}\nConstraints: 3 sentences max."
+my_data.split(" ")
+" ".join(my_data) # careful, this will add a space between each character
+```
 
-print("SYSTEM:\n" + system)
-print("USER:\n" + user)
+
+```{python}
+"".join(my_data) # join on empty string
+```
+
+```{python}
+gym_set = "Deadlifts,Hip Thrusts,Squats"
+gym_set.split(",") # creates a list split by ,
+first_excercise, second_excercise, third_excercise = gym_set.split(",")
+first_excercise
+```
+
+### Type Conversion
+
+```{python}
+int("123")
+```
+
+
+```{python}
+float("123")
+```
+
+```{python}
+str(123)
+```
+
+```{python}
+name = ["Charlotte", "Alex", "Anubis", "Annie", "Anubis", "Charlotte", "Alex", "Annie", "Anubis"]
+set(name) # creates a set of unique names. Sets CANNOT have duplicate values.
+```
+
+
+```{python}
+sorted(set(name)) # creates a list of unique names sorted alphabetically, lists have ORDER. sets do not.
+```
+
+### List Comprehensions
+
+```{python}
+for n in name: print(n.upper())
+```
+
+
+```{python}
+lowercase_names = []
+for n in name: 
+    lowercase_names.append(n.lower())
+print(lowercase_names)
+```
+
+```{python}
+[n.upper() for n in name] # list comprehension
+# action you want to perform on each item in the list is first arg  
+```
+
+```{python}
+list(range(10)) # peak inside what range is doing
+```
+
+```{python}
+list(range(1,4))
+```
+
+```{python}
+for num in range(6): print(num)
+```
+
+```{python}
+6 % 2 # modulo operator
+```
+
+```{python}
+fizz_buzz = []
+for num in range(55, 74):
+    if num % 3 == 0 and num % 5 == 0:
+        fizz_buzz.append(f"{num} FizzBuzz")
+    elif num % 3 == 0:
+        fizz_buzz.append(f"{num} Fizz")
+    elif num % 5 == 0:
+        fizz_buzz.append(f"{num} Buzz")
+    else:
+        fizz_buzz.append(num)
+print(fizz_buzz)
+```
+
+### List Operations
+
+```{python}
+squares = [num * num for num in range(10)]
+squares
+```
+
+```{python}
+sum(squares)
+```
+
+```{python}
+max(squares)
+```
+
+```{python}
+min(squares)
+```
+
+```{python}
+len(squares)
+```
+
+```{python}
+sorted(squares, reverse=True)
+```
+
+
+```{python}
+# get largest number in list
+lottery_numbers = "12, 23, 34, 45, 56, 2" 
+```
+
+```{python}
+lottery_numbers.split(", ")
+```
+
+```{python}
+[int(num) for num in lottery_numbers.split(", ")]
+```
+
+```{python}
+max([int(num) for num in lottery_numbers.split(", ")])
 ```

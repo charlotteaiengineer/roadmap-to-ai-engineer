@@ -56,6 +56,7 @@ Finding an input that minimises the cost function is called `Gradient Descent`. 
 > 
 > Gradient descent is an iterative optimisation algorithm, which is used in machine learning to train models, by finding the parameters which minimise a cost function. Gradient descent is essential where the exhaustive calculation of best parameters would be unfeasible, for example in the training of neural networks. 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GkB4vW16QHI?si=TJ51Uwjy1tWg7W_Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 What we mean by a network 'learning' is **the minimisation of the cost function**
 

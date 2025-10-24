@@ -193,6 +193,8 @@ ul.task-list li input[type="checkbox"] {
 <blockquote class="blockquote">
 <p>Gradient descent is an iterative optimisation algorithm, which is used in machine learning to train models, by finding the parameters which minimise a cost function. Gradient descent is essential where the exhaustive calculation of best parameters would be unfeasible, for example in the training of neural networks.</p>
 </blockquote>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GkB4vW16QHI?si=TJ51Uwjy1tWg7W_Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
 <p>What we mean by a network ‘learning’ is <strong>the minimisation of the cost function</strong></p>
 <p>Artificial neurons have continously ranging neuron activations (0.45….0.93). They are not binary (0, 1).</p>
 <p><code>Gradient Descent</code> - A process of repeatedly nudging an input of a function by some multiple of the negative gradient is called Gradient Descent. It is a way to <strong>converge towards some local minimum of a cost function</strong>.</p>
@@ -295,7 +297,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/charlotteaiengineer\.netlify\.app");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

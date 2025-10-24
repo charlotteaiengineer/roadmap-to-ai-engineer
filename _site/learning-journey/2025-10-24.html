@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2025-10-24">
-<meta name="description" content="Study outline, exercises, and examples based on Babcock &amp; Bali (O’Reilly, 2025).">
+<meta name="description" content="frontendmaster course">
 
-<title>Generative AI with Python and PyTorch — Second Edition – charlotteai.engineer</title>
+<title>Intermediate Python – charlotteai.engineer</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,16 +161,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#learning-outcomes" id="toc-learning-outcomes" class="nav-link active" data-scroll-target="#learning-outcomes">Learning outcomes</a></li>
-  <li><a href="#todays-syllabus" id="toc-todays-syllabus" class="nav-link" data-scroll-target="#todays-syllabus">Today’s syllabus</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
-  <li><a href="#readiness-checklist" id="toc-readiness-checklist" class="nav-link" data-scroll-target="#readiness-checklist">Readiness checklist</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
+  <li><a href="#intermediate-python---frontend-masters---nina-zakharenko" id="toc-intermediate-python---frontend-masters---nina-zakharenko" class="nav-link active" data-scroll-target="#intermediate-python---frontend-masters---nina-zakharenko">Intermediate Python - Frontend Masters - Nina Zakharenko</a>
   <ul class="collapse">
-  <li><a href="#greedy-vs-sampling-with-softmax-no-external-libs" id="toc-greedy-vs-sampling-with-softmax-no-external-libs" class="nav-link" data-scroll-target="#greedy-vs-sampling-with-softmax-no-external-libs">Greedy vs sampling with softmax (no external libs)</a></li>
-  <li><a href="#tiny-attention-intuition-with-two-tokens-toy-numbers" id="toc-tiny-attention-intuition-with-two-tokens-toy-numbers" class="nav-link" data-scroll-target="#tiny-attention-intuition-with-two-tokens-toy-numbers">Tiny attention intuition with two tokens (toy numbers)</a></li>
-  <li><a href="#prompt-templating-system-user" id="toc-prompt-templating-system-user" class="nav-link" data-scroll-target="#prompt-templating-system-user">Prompt templating (system + user)</a></li>
+  <li><a href="#type-conversion" id="toc-type-conversion" class="nav-link" data-scroll-target="#type-conversion">Type Conversion</a></li>
+  <li><a href="#list-comprehensions" id="toc-list-comprehensions" class="nav-link" data-scroll-target="#list-comprehensions">List Comprehensions</a></li>
+  <li><a href="#list-operations" id="toc-list-operations" class="nav-link" data-scroll-target="#list-operations">List Operations</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -180,20 +175,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Generative AI with Python and PyTorch — Second Edition</h1>
+<h1 class="title">Intermediate Python</h1>
   <div class="quarto-categories">
     <div class="quarto-category">python</div>
-    <div class="quarto-category">pytorch</div>
-    <div class="quarto-category">deep-learning</div>
-    <div class="quarto-category">generative-ai</div>
-    <div class="quarto-category">llm</div>
-    <div class="quarto-category">transformers</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Study outline, exercises, and examples based on Babcock &amp; Bali (O’Reilly, 2025).
+    frontendmaster course
   </div>
 </div>
 
@@ -216,153 +206,228 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="learning-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="learning-outcomes">Learning outcomes</h2>
-<ul>
-<li>Explain the difference between discriminative and generative models</li>
-<li>Describe transformer basics (attention, positional encodings) at a high level</li>
-<li>Compare decoding strategies (greedy vs sampling; top-k intuition)</li>
-<li>Apply prompt-engineering fundamentals to steer model outputs</li>
-<li>Outline a minimal LLM app stack (prompting, logging, tooling)</li>
-</ul>
+<section id="intermediate-python---frontend-masters---nina-zakharenko" class="level1">
+<h1><a href="https://frontendmasters.com/courses/intermediate-python/">Intermediate Python - Frontend Masters - Nina Zakharenko</a></h1>
+<div id="55c0bad4" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="op">=</span> <span class="st">"hello, I am Charlotte, I am learning Python..."</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>my_data.split(<span class="st">","</span>) <span class="co"># creates a list split by ,</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="740">
+<pre><code>['hello', ' I am Charlotte', ' I am learning Python...']</code></pre>
+</div>
+</div>
+<div id="1ae8491e" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">","</span>.join(my_data) <span class="co"># creates a string joined by ,</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="741">
+<pre><code>'h,e,l,l,o,,, ,I, ,a,m, ,C,h,a,r,l,o,t,t,e,,, ,I, ,a,m, ,l,e,a,r,n,i,n,g, ,P,y,t,h,o,n,.,.,.'</code></pre>
+</div>
+</div>
+<div id="57f753e2" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">"💻"</span>.join(my_data) <span class="co"># creates a string joined by 💻</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="742">
+<pre><code>'h💻e💻l💻l💻o💻,💻 💻I💻 💻a💻m💻 💻C💻h💻a💻r💻l💻o💻t💻t💻e💻,💻 💻I💻 💻a💻m💻 💻l💻e💻a💻r💻n💻i💻n💻g💻 💻P💻y💻t💻h💻o💻n💻.💻.💻.'</code></pre>
+</div>
+</div>
+<div id="4ee4a985" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>my_data.split(<span class="st">" "</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">" "</span>.join(my_data) <span class="co"># careful, this will add a space between each character</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="743">
+<pre><code>'h e l l o ,   I   a m   C h a r l o t t e ,   I   a m   l e a r n i n g   P y t h o n . . .'</code></pre>
+</div>
+</div>
+<div id="28079561" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">""</span>.join(my_data) <span class="co"># join on empty string</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="744">
+<pre><code>'hello, I am Charlotte, I am learning Python...'</code></pre>
+</div>
+</div>
+<div id="632a9999" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gym_set <span class="op">=</span> <span class="st">"Deadlifts,Hip Thrusts,Squats"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>gym_set.split(<span class="st">","</span>) <span class="co"># creates a list split by ,</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>first_excercise, second_excercise, third_excercise <span class="op">=</span> gym_set.split(<span class="st">","</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>first_excercise</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="745">
+<pre><code>'Deadlifts'</code></pre>
+</div>
+</div>
+<section id="type-conversion" class="level3">
+<h3 class="anchored" data-anchor-id="type-conversion">Type Conversion</h3>
+<div id="35f4e3c9" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(<span class="st">"123"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="746">
+<pre><code>123</code></pre>
+</div>
+</div>
+<div id="137d4a52" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">float</span>(<span class="st">"123"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="747">
+<pre><code>123.0</code></pre>
+</div>
+</div>
+<div id="40736d0b" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(<span class="dv">123</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="748">
+<pre><code>'123'</code></pre>
+</div>
+</div>
+<div id="4a5a6dfa" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> [<span class="st">"Charlotte"</span>, <span class="st">"Alex"</span>, <span class="st">"Anubis"</span>, <span class="st">"Annie"</span>, <span class="st">"Anubis"</span>, <span class="st">"Charlotte"</span>, <span class="st">"Alex"</span>, <span class="st">"Annie"</span>, <span class="st">"Anubis"</span>]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span>(name) <span class="co"># creates a set of unique names. Sets CANNOT have duplicate values.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="749">
+<pre><code>{'Alex', 'Annie', 'Anubis', 'Charlotte'}</code></pre>
+</div>
+</div>
+<div id="c01a1bc3" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(<span class="bu">set</span>(name)) <span class="co"># creates a list of unique names sorted alphabetically, lists have ORDER. sets do not.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="750">
+<pre><code>['Alex', 'Annie', 'Anubis', 'Charlotte']</code></pre>
+</div>
+</div>
 </section>
-<section id="todays-syllabus" class="level2">
-<h2 class="anchored" data-anchor-id="todays-syllabus">Today’s syllabus</h2>
-<ul>
-<li>Introduction to Generative AI (motivation, generative vs discriminative)</li>
-<li>Transformer refresher (attention and positional encoding intuition)</li>
-<li>Text generation strategies (greedy vs sampling)</li>
-<li>Prompt engineering fundamentals and safety</li>
-<li>Lightweight LLM app scaffolding and tooling overview</li>
-</ul>
-</section>
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<ul>
-<li>Generative AI with Python and PyTorch — Second Edition, Joseph Babcock &amp; Raghav Bali, 2025: <a href="https://learning.oreilly.com/library/view/generative-ai-with/9781835884447/" class="uri">https://learning.oreilly.com/library/view/generative-ai-with/9781835884447/</a></li>
-</ul>
-</section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<ul>
-<li>Summarize generative vs discriminative in 3 sentences with one concrete example of each.</li>
-<li>Sketch the data flow of attention for 2 tokens (Q, K, V), labeling shapes.</li>
-<li>Implement a tiny decoder that picks tokens via greedy vs top-k sampling from fake logits.</li>
-</ul>
-</section>
-<section id="readiness-checklist" class="level2">
-<h2 class="anchored" data-anchor-id="readiness-checklist">Readiness checklist</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">I can define discriminative vs generative models and give an example of each.</label></li>
-<li><label><input type="checkbox">I can explain attention at a high level and what positional encodings do.</label></li>
-<li><label><input type="checkbox">I can describe greedy vs sampling (and why top-k/top-p exist).</label></li>
-<li><label><input type="checkbox">I can write an effective system and user prompt for a concrete task.</label></li>
-<li><label><input type="checkbox">I can outline components of a minimal LLM app (prompting, logging, tooling).</label></li>
-</ul>
-</section>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<section id="greedy-vs-sampling-with-softmax-no-external-libs" class="level3">
-<h3 class="anchored" data-anchor-id="greedy-vs-sampling-with-softmax-no-external-libs">Greedy vs sampling with softmax (no external libs)</h3>
-<div id="8c7d3b1c" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math, random</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> softmax(logits):</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="bu">max</span>(logits)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    exps <span class="op">=</span> [math.exp(x <span class="op">-</span> m) <span class="cf">for</span> x <span class="kw">in</span> logits]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="bu">sum</span>(exps)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [e <span class="op">/</span> s <span class="cf">for</span> e <span class="kw">in</span> exps]</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greedy_sample(logits, vocab):</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> <span class="bu">max</span>(<span class="bu">range</span>(<span class="bu">len</span>(logits)), key<span class="op">=</span><span class="kw">lambda</span> i: logits[i])</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> vocab[idx]</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> top_k_sample(logits, vocab, k<span class="op">=</span><span class="dv">2</span>):</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># keep top-k, renormalize, sample</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    idxs <span class="op">=</span> <span class="bu">sorted</span>(<span class="bu">range</span>(<span class="bu">len</span>(logits)), key<span class="op">=</span><span class="kw">lambda</span> i: logits[i], reverse<span class="op">=</span><span class="va">True</span>)[:k]</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    kept <span class="op">=</span> [logits[i] <span class="cf">for</span> i <span class="kw">in</span> idxs]</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    probs <span class="op">=</span> softmax(kept)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> random.random()</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    cum <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, p <span class="kw">in</span> <span class="bu">enumerate</span>(probs):</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        cum <span class="op">+=</span> p</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> r <span class="op">&lt;=</span> cum:</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> vocab[idxs[i]]</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>vocab <span class="op">=</span> [<span class="st">"the"</span>, <span class="st">"a"</span>, <span class="st">"an"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>]</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>fake_logits <span class="op">=</span> [<span class="fl">1.0</span>, <span class="fl">0.7</span>, <span class="fl">0.2</span>, <span class="fl">0.9</span>, <span class="fl">0.6</span>]  <span class="co"># pretend model scores</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"greedy:"</span>, greedy_sample(fake_logits, vocab))</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"top-k (k=2):"</span>, [top_k_sample(fake_logits, vocab, k<span class="op">=</span><span class="dv">2</span>) <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="list-comprehensions" class="level3">
+<h3 class="anchored" data-anchor-id="list-comprehensions">List Comprehensions</h3>
+<div id="16c68940" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> name: <span class="bu">print</span>(n.upper())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>greedy: the
-top-k (k=2): ['cat', 'cat', 'the', 'cat', 'cat']</code></pre>
+<pre><code>CHARLOTTE
+ALEX
+ANUBIS
+ANNIE
+ANUBIS
+CHARLOTTE
+ALEX
+ANNIE
+ANUBIS</code></pre>
+</div>
+</div>
+<div id="cd1ff5cb" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>lowercase_names <span class="op">=</span> []</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> name: </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    lowercase_names.append(n.lower())</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lowercase_names)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['charlotte', 'alex', 'anubis', 'annie', 'anubis', 'charlotte', 'alex', 'annie', 'anubis']</code></pre>
+</div>
+</div>
+<div id="ad3fc4ae" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>[n.upper() <span class="cf">for</span> n <span class="kw">in</span> name] <span class="co"># list comprehension</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># action you want to perform on each item in the list is first arg  </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="753">
+<pre><code>['CHARLOTTE',
+ 'ALEX',
+ 'ANUBIS',
+ 'ANNIE',
+ 'ANUBIS',
+ 'CHARLOTTE',
+ 'ALEX',
+ 'ANNIE',
+ 'ANUBIS']</code></pre>
+</div>
+</div>
+<div id="3c6b09d2" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>)) <span class="co"># peak inside what range is doing</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="754">
+<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+</div>
+</div>
+<div id="9e8fbf14" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="755">
+<pre><code>[1, 2, 3]</code></pre>
+</div>
+</div>
+<div id="4c34fcb6" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>): <span class="bu">print</span>(num)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4
+5</code></pre>
+</div>
+</div>
+<div id="fd26465c" class="cell" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="op">%</span> <span class="dv">2</span> <span class="co"># modulo operator</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="757">
+<pre><code>0</code></pre>
+</div>
+</div>
+<div id="917471a2" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>fizz_buzz <span class="op">=</span> []</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">55</span>, <span class="dv">74</span>):</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> num <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> num <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>        fizz_buzz.append(<span class="ss">f"</span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> FizzBuzz"</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> num <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>        fizz_buzz.append(<span class="ss">f"</span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> Fizz"</span>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> num <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>        fizz_buzz.append(<span class="ss">f"</span><span class="sc">{</span>num<span class="sc">}</span><span class="ss"> Buzz"</span>)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>        fizz_buzz.append(num)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fizz_buzz)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['55 Buzz', 56, '57 Fizz', 58, 59, '60 FizzBuzz', 61, 62, '63 Fizz', 64, '65 Buzz', '66 Fizz', 67, 68, '69 Fizz', '70 Buzz', 71, '72 Fizz', 73]</code></pre>
 </div>
 </div>
 </section>
-<section id="tiny-attention-intuition-with-two-tokens-toy-numbers" class="level3">
-<h3 class="anchored" data-anchor-id="tiny-attention-intuition-with-two-tokens-toy-numbers">Tiny attention intuition with two tokens (toy numbers)</h3>
-<div id="41810e2f" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Two token embeddings (dim=2), toy Q,K,V projections</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [[<span class="fl">1.0</span>, <span class="fl">0.0</span>],  <span class="co"># token 1</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>     [<span class="fl">0.5</span>, <span class="fl">0.5</span>]]  <span class="co"># token 2</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>W_Q <span class="op">=</span> [[<span class="fl">1.0</span>, <span class="fl">0.0</span>],[<span class="fl">0.0</span>, <span class="fl">1.0</span>]]</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>W_K <span class="op">=</span> [[<span class="fl">0.5</span>, <span class="fl">0.5</span>],[<span class="fl">0.5</span>, <span class="fl">0.5</span>]]</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>W_V <span class="op">=</span> [[<span class="fl">1.0</span>, <span class="fl">0.0</span>],[<span class="fl">0.0</span>, <span class="fl">1.0</span>]]</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> matmul(A, B):</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [[<span class="bu">sum</span>(a<span class="op">*</span>b <span class="cf">for</span> a, b <span class="kw">in</span> <span class="bu">zip</span>(row, col)) <span class="cf">for</span> col <span class="kw">in</span> <span class="bu">zip</span>(<span class="op">*</span>B)] <span class="cf">for</span> row <span class="kw">in</span> A]</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> matmul(X, W_Q)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> matmul(X, W_K)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>V <span class="op">=</span> matmul(X, W_V)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dot(a, b):</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(x<span class="op">*</span>y <span class="cf">for</span> x, y <span class="kw">in</span> <span class="bu">zip</span>(a, b))</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> attention_weights(q_i, K):</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    scores <span class="op">=</span> [dot(q_i, k) <span class="cf">for</span> k <span class="kw">in</span> K]</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="bu">max</span>(scores)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    exps <span class="op">=</span> [math.exp(s <span class="op">-</span> m) <span class="cf">for</span> s <span class="kw">in</span> scores]</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> <span class="bu">sum</span>(exps)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [e<span class="op">/</span>Z <span class="cf">for</span> e <span class="kw">in</span> exps]</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>weights_0 <span class="op">=</span> attention_weights(Q[<span class="dv">0</span>], K)</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>out_0 <span class="op">=</span> [<span class="bu">sum</span>(w<span class="op">*</span>v <span class="cf">for</span> w, v <span class="kw">in</span> <span class="bu">zip</span>(weights_0, col)) <span class="cf">for</span> col <span class="kw">in</span> <span class="bu">zip</span>(<span class="op">*</span>V)]</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>weights_1 <span class="op">=</span> attention_weights(Q[<span class="dv">1</span>], K)</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>out_1 <span class="op">=</span> [<span class="bu">sum</span>(w<span class="op">*</span>v <span class="cf">for</span> w, v <span class="kw">in</span> <span class="bu">zip</span>(weights_1, col)) <span class="cf">for</span> col <span class="kw">in</span> <span class="bu">zip</span>(<span class="op">*</span>V)]</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"weights token0:"</span>, weights_0)</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"attended token0:"</span>, out_0)</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"weights token1:"</span>, weights_1)</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"attended token1:"</span>, out_1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>weights token0: [0.5, 0.5]
-attended token0: [0.75, 0.25]
-weights token1: [0.5, 0.5]
-attended token1: [0.75, 0.25]</code></pre>
+<section id="list-operations" class="level3">
+<h3 class="anchored" data-anchor-id="list-operations">List Operations</h3>
+<div id="d3599671" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [num <span class="op">*</span> num <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="759">
+<pre><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
 </div>
 </div>
-</section>
-<section id="prompt-templating-system-user" class="level3">
-<h3 class="anchored" data-anchor-id="prompt-templating-system-user">Prompt templating (system + user)</h3>
-<div id="a83d5542" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>task <span class="op">=</span> <span class="st">"Summarize discriminative vs generative models with examples."</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>system <span class="op">=</span> <span class="st">"You are a precise assistant. Keep answers under 100 words."</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>user <span class="op">=</span> <span class="ss">f"Task: </span><span class="sc">{</span>task<span class="sc">}</span><span class="ch">\n</span><span class="ss">Constraints: 3 sentences max."</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"SYSTEM:</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> system)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"USER:</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> user)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>SYSTEM:
-You are a precise assistant. Keep answers under 100 words.
-USER:
-Task: Summarize discriminative vs generative models with examples.
-Constraints: 3 sentences max.</code></pre>
+<div id="5807e502" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="760">
+<pre><code>285</code></pre>
+</div>
+</div>
+<div id="07bf0825" class="cell" data-execution_count="22">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="761">
+<pre><code>81</code></pre>
+</div>
+</div>
+<div id="5d8209c5" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="762">
+<pre><code>0</code></pre>
+</div>
+</div>
+<div id="74335241" class="cell" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="763">
+<pre><code>10</code></pre>
+</div>
+</div>
+<div id="73d4525a" class="cell" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(squares, reverse<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="764">
+<pre><code>[81, 64, 49, 36, 25, 16, 9, 4, 1, 0]</code></pre>
+</div>
+</div>
+<div id="c7863346" class="cell" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get largest number in list</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>lottery_numbers <span class="op">=</span> <span class="st">"12, 23, 34, 45, 56, 2"</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="df48c04b" class="cell" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>lottery_numbers.split(<span class="st">", "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="766">
+<pre><code>['12', '23', '34', '45', '56', '2']</code></pre>
+</div>
+</div>
+<div id="1774676f" class="cell" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>[<span class="bu">int</span>(num) <span class="cf">for</span> num <span class="kw">in</span> lottery_numbers.split(<span class="st">", "</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="767">
+<pre><code>[12, 23, 34, 45, 56, 2]</code></pre>
+</div>
+</div>
+<div id="2ca7933b" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>([<span class="bu">int</span>(num) <span class="cf">for</span> num <span class="kw">in</span> lottery_numbers.split(<span class="st">", "</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="768">
+<pre><code>56</code></pre>
 </div>
 </div>
 
