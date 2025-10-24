@@ -190,6 +190,10 @@ There's no index positions.
 
 Define what's going to happen, only run on yield. Yielding is like running once and returning a value.
 
+Its faking something that is multi-threaded. "hey, let's come back to this later".
+
+Also something in the generator could fail, and the rest of your application is unaffected - as long as the application is expecting the error.
+
 in `range(0,5)` each number is **generated** one by one as its looped through.
 
 ```{python}
