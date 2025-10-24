@@ -157,3 +157,76 @@ lottery_numbers.split(", ")
 ```{python}
 max([int(num) for num in lottery_numbers.split(", ")])
 ```
+
+```{python}
+[num * num for num in range(10)] # ordered list
+```
+
+### Set Operations
+
+```{python}
+{num * num for num in range(10)} # unordered set
+```
+
+### Dictionaries
+
+```{python}
+{f"square of {num}": num * num for num in range(10)} # unordered set
+```
+
+### Generator Expression
+
+Generators are cruical in AI/ML, its a lazy evalution. They produce a sequence lazily, **yielding one item at a time** instead of building the whole list in memory.
+
+- Memory efficient (stream large data)
+- Fast start-up (compute-on-demand)
+- Composable (pipe transformations)
+
+There's an issue that you're constantly pushing values to a potentially infinite queue. This takes up a load of memory. 
+
+Generators don't return; they yield. 
+
+There's no index positions. 
+
+Define what's going to happen, only run on yield. Yielding is like running once and returning a value.
+
+in `range(0,5)` each number is **generated** one by one as its looped through.
+
+```{python}
+family = ["Annie", "Anubis", "Alex", "Charlotte"]
+(len(name) for name in family)
+```
+
+you can pass a generator comprehension into a function that expects an iterable.
+
+```{python}
+set((len(name) for name in family))
+```
+
+```{python}
+sum((len(name) for name in family))
+```
+
+To get items out of a generator you need to iterate over it.
+
+```{python}
+my_generator = (num * num for num in range(10))
+
+for num in my_generator:
+    print(num)
+```
+
+### zip function
+
+```{python}
+squares = {f"square of {num}": num * num for num in range(10)}
+squares.keys() # get the keys 
+```
+
+```{python}
+squares.values() # get the values 
+```
+
+```{python}
+squares.items() # get the key values 
+```
