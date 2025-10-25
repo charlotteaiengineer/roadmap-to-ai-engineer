@@ -144,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 <p>I started by asking “can I build this?” and dove head‑first into full‑stack projects. Today I lean frontend, collaborate closely with design, and sweat the details that make products feel alive.</p>
 <p><strong>Focus areas</strong> - Pixel‑perfect UI and component systems - Rapid, feedback‑driven iteration - Performance, accessibility, and DX</p>
 </div><div class="column" style="width:35%;">
-<p><img src="me.jpeg" class="img-fluid"></p>
+<p><img src="me.png" class="img-fluid"></p>
 <p>Ipswich, UK<br>
 <a href="https://www.linkedin.com/in/charlotte-bondarev-4962a5264/">LinkedIn</a> · <a href="https://github.com/prophecyengineer">GitHub</a><br>
 <!-- Phone: +44 7827 3XXXX --></p>
@@ -161,17 +161,33 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="experience" class="level3">
 <h3 class="anchored" data-anchor-id="experience">Experience</h3>
+<div class="columns">
+<div class="column" style="width:5%;">
+<p><img src="./images/hargreaves.png?width=50px" class="img-fluid"></p>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:93%;">
 <p><strong>Frontend Engineer · Hargreaves Lansdown</strong> (03/2023 — current)<br>
 - Led rebuild of main and dropdown menus on <code>hl.co.uk</code> with Next.js and Contentful<br>
 - Built new Help Docs and News &amp; Insights from scratch; promoted to Pensions team<br>
 - Owned calculators and high‑traffic apps; integrated Adobe Analytics<br>
 - Migrated UI to an internal library; TDD; sole manager of three repos<br>
 - Mentored two apprentices; taught Playwright/Next.js; wrote technical docs</p>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:5%;">
+<p><img src="./images/munch.png?width=50px" class="img-fluid"></p>
+</div><div class="column" style="width:2%;">
+
+</div><div class="column" style="width:93%;">
 <p><strong>Frontend Engineer · Munch</strong> (01/2021 — 01/2023)<br>
 - Mobile‑first website builder with complex multi‑touch interactions<br>
 - Rebuilt the entire menu system for responsiveness and configurability<br>
 - Improved productivity via modular architecture and clear routing/naming<br>
 - Migrated frontend from Craft.js to Google Web Stories in one weekend; desktop/mobile editor up within a week</p>
+</div>
+</div>
 <p><strong>CPO · Kynk</strong> (04/2019 — 08/2020)<br>
 - Product discovery and UX; user research into user stories and flows<br>
 - Pitched scope and product vision to engineering team<br>
@@ -286,7 +302,7 @@ Unity, Blender, Rokoko; custom retargeting, facial rig mapping, live web integra
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/charlotteaiengineer\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

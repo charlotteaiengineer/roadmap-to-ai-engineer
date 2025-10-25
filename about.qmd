@@ -1,6 +1,6 @@
 ---
 page-layout: full
-image: me.jpeg
+image: me.png
 ---
 
 ::: {.columns}
@@ -16,7 +16,7 @@ I started by asking “can I build this?” and dove head‑first into full‑st
 :::
 ::: {.column width="35%"}
 
-![](me.jpeg)
+![](me.png)
 
 Ipswich, UK  
 [LinkedIn](https://www.linkedin.com/in/charlotte-bondarev-4962a5264/) · [GitHub](https://github.com/prophecyengineer)  
@@ -33,18 +33,44 @@ Ipswich, UK
 **Tooling**: Git, Figma, Linear, Adobe Analytics, Prisma, Heroku, Railway  
 
 ### Experience
+
+::: {.columns}
+::: {.column width="5%"}
+![](./images/hargreaves.png?width=50px)
+
+:::
+::: {.column width="2%"}
+:::
+::: {.column width="93%"}
 **Frontend Engineer · Hargreaves Lansdown** (03/2023 — current)  
 - Led rebuild of main and dropdown menus on `hl.co.uk` with Next.js and Contentful  
 - Built new Help Docs and News & Insights from scratch; promoted to Pensions team  
 - Owned calculators and high‑traffic apps; integrated Adobe Analytics  
 - Migrated UI to an internal library; TDD; sole manager of three repos  
 - Mentored two apprentices; taught Playwright/Next.js; wrote technical docs
+:::
+:::
 
+::: {.columns}
+::: {.column width="5%"}
+![](/images/munch.png?width=50px)
+
+
+:::
+::: {.column width="2%"}
+:::
+::: {.column width="93%"}
 **Frontend Engineer · Munch** (01/2021 — 01/2023)  
 - Mobile‑first website builder with complex multi‑touch interactions  
 - Rebuilt the entire menu system for responsiveness and configurability  
 - Improved productivity via modular architecture and clear routing/naming  
 - Migrated frontend from Craft.js to Google Web Stories in one weekend; desktop/mobile editor up within a week
+:::
+:::
+
+
+
+
 
 **CPO · Kynk** (04/2019 — 08/2020)  
 - Product discovery and UX; user research into user stories and flows  
