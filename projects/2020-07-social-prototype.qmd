@@ -1,0 +1,15 @@
+---
+title: "Social media prototype"
+description: "Deep‑dive first project; IPFS media, auth/feeds prototype."
+date: 2020-07-01
+categories: [social, prototype]
+image: images/munch.png
+---
+
+GetStream‑based social feeds; Amplify, Serverless, Heroku, Mantine, Next.js.
+
+Links:
+
+- Placeholder link
+
+

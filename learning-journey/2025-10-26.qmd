@@ -1,0 +1,54 @@
+---
+title: "Deep Learning Lectures - History of Neural Networks"
+description: "and other cool videos I found as I wanted to hear other perspectives"
+date: 2025-10-26
+jupyter: python3
+categories: [neural-networks]
+image: https://repository-images.githubusercontent.com/150001117/60a1b200-6541-11e9-87e0-abaf5fd304cc
+---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HzLom8rk2zo?si=p-P5VMYZoZMO6YhU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Went with Spring 2025 for the best sound quality
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NXYrIEP1LRs?si=iIGD_61vHDX9nFVz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### Warren McCulloch and Walter Pitts
+
+![ehy](https://pbs.twimg.com/media/DR1U7V3WAAAdFUM.jpg)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wawMjJUCMVw?si=kS5M6GZhQ0B9Ez7d&amp;start=95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+![](https://www.researchgate.net/profile/Gualtiero-Piccinini/publication/263265620/figure/fig1/AS:392401760866309@1470567278624/Diagrams-of-McCulloch-and-Pitts-nets-In-order-to-send-an-output-pulse-each-neuron-must.png)
+
+What interests me is that there's an element of more complex rule than our on/off neurons. There's ability for disagreement between neurons. With the `Inhibitory` neurons, even if the threshold has been met, the neuron will be prevented from firing.
+
+### Rosenblatt's perceptron
+
+![](https://www.researchgate.net/profile/Eduardo-Alves-13/publication/226190708/figure/fig1/AS:393793066029064@1470898992097/Rosenblatts-perceptron.png)
+
+- a simplified model
+- number of inputs combine linearly 
+- **Threshold logic**: Fire is combined input exceeds threshold
+
+Rosenblatt also introduced a learning model. 
+
+![](https://www.researchgate.net/publication/353501601/figure/fig6/AS:1135172640616449@1647657656464/Rosenblatts-Perceptron-1958-with-step-activation.png)
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ip6RIHwi21c?si=DOYcA2eG4dIyU6qy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+`Excitatory` - a positive input - more likely the associated neuron will fire
+`Inhibitory` - a negative input - less likely the associated neuron will fire
+
+`Learning Rate` - How much the value per weight is changed when we are adjusting the weights.
+
+
+`Loss Function` - The squared sum of the residuals (distance) between the predicted and actual values.
+The Loss Function measures how far off our output was from the predicted value
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cAkMcPfY_Ns?si=gradgtrXMoy8A-H9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+`Learning Rate` - How much the network changes its parameters in response to the cost function.
+
+

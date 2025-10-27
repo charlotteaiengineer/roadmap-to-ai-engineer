@@ -234,3 +234,32 @@ squares.values() # get the values
 ```{python}
 squares.items() # get the key values 
 ```
+
+### zip function
+
+Combine values of **lists**
+```{python}
+dogs = ["Annie", "Anubis"]
+ages = [4, 6]
+zip(dogs, ages)
+```
+
+Cannot do anything with this data structure until we loop over it 
+
+```{python}
+for dog in zip(dogs, ages):
+    print(dog)
+```
+
+```{python}
+for name, age in zip(dogs, ages):
+    print(f"{name} is {age} years old")
+```
+
+```{python}
+list(zip(dogs, ages)) # returns a list of tuples
+```
+
+```{python}
+dict(zip(dogs, ages))
+```

@@ -198,7 +198,78 @@ ax1.imshow(blurred_owl_image, cmap='gray')
 ax2.imshow(sharp_owl, cmap='gray')
 ```
 
-## Parametric Shape Detection
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FwFduRA_L6Q?si=8ieLHvWo7Q1cgRpR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-</iframe>
+
+
+## Testing Knowledge
+
+- you must have a function f_conv2d which accepts an image, and a mask. 
+- this function returns the convolved image.
+- no inbuilt functions for convolution.
+- should auto check if image is greyscale or rgb
+- should handle both cases
+- return image2
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+# image = plt.imread('../images/anubis.JPG')
+
+# 1. Check if image is greyscale or rgb
+
+# image.shape # this last value tells me 3 layers, so it's rgb
+```
+
+```{python}
+# if image.shape[2] == 3: # check the channels value
+#     print("Image is rgb")
+# else:
+#     print("Image is greyscale")
+```
+
+```{python}
+# mask = np.array([[1, 0, 1], [0, 1, 0], [1, 0, 1]])
+def f_conv2d(image, mask):
+    assert(image.ndim == 2) # Image must be 2D
+    assert(mask.ndim == 2) # Mask must be 2D
+    # if image.shape[2] == 3:
+    #     print("Image is rgb")
+    # else:
+    #     print("Image is greyscale")
+    image_columns = image.shape[1] # number of columns in image
+    image_rows = image.shape[0] # number of rows in image
+    mask_columns = mask.shape[1] # number of columns in mask saved in this variable
+    mask_rows = mask.shape[0] # number of rows in mask
+
+    rows_convolution_will_be_performed_on = image_rows + mask_rows - 1 # subtract 1 because new result after convolution will have one less row and column
+    columns_convolution_will_be_performed_on = image_columns + mask_columns - 1 # subtract 1 because new result after convolution will have one less row and column
+    Y = np.zeros((rows_convolution_will_be_performed_on, columns_convolution_will_be_performed_on))
+    # empty array to store the result of the convolution
+    # loop over every row and column in the image
+    for m in range(rows_convolution_will_be_performed_on):
+        for n in range(columns_convolution_will_be_performed_on):
+            for i in range(mask_rows):
+                for j in range(mask_columns):
+                    #if negative index that cannot exist... checking most things calculatable in the loop
+                    if(m-i>0) and (m-i < image_rows) and (n-j>0) and (n-j < image_columns):
+                        Y[m,n] = Y[m,n] + mask[i,j] * image[m-i, n-j] # how dot product will be completed
+    return Y                    
+
+```
+
+```{python}
+mask = np.array([[-1, -2, -1], [0, 0, 0], [1, 2, 1]])
+image = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+```
+
+```{python}
+f_conv2d(image, mask) # convolution result
+```
+
+# Object Detection
+
+`Object Recognition` - Nothing but the number of object within the image, the number of classes, and the names (convolution at this level)
+`Object Localization` - Given an image, identify the objects in the image, find their coordinates and draw a bounding box around them.
+
+
+I struggled to continue with these lectures, I found the further explainations confusing

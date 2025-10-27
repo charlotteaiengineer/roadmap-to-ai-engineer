@@ -2,17 +2,18 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/posts/2025-10-23-inpso.html",
       "/blog/posts/2025-10-22-reality.html",
       "/blog/posts/2025-10-21-brain.html",
       "/blog/posts/2025-10-21-first-post.html"
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/learning-journey/index.html",
     "items": [
-      "/learning-journey/index.html",
+      "/learning-journey/2025-10-30.html",
       "/learning-journey/2025-10-27.html",
-      "/learning-journey/2025-10-25.html",
+      "/learning-journey/2025-10-26.html",
       "/learning-journey/2025-10-24.html",
       "/learning-journey/2025-10-23.html",
       "/learning-journey/2025-10-22.html",
@@ -23,10 +24,21 @@
     ]
   },
   {
-    "listing": "/learning-journey/index.html",
+    "listing": "/projects/index.html",
     "items": [
+      "/projects/2023-01-marketplace.html",
+      "/projects/2021-09-learning-roadmap.html",
+      "/projects/2020-07-social-prototype.html",
+      "/projects/2019-11-realtime-rig.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/learning-journey/index.html",
+      "/learning-journey/2025-10-30.html",
       "/learning-journey/2025-10-27.html",
-      "/learning-journey/2025-10-25.html",
+      "/learning-journey/2025-10-26.html",
       "/learning-journey/2025-10-24.html",
       "/learning-journey/2025-10-23.html",
       "/learning-journey/2025-10-22.html",
@@ -34,6 +46,16 @@
       "/learning-journey/2025-10-17.html",
       "/learning-journey/2025-10-14.html",
       "/learning-journey/2025-10-13.html"
+    ]
+  },
+  {
+    "listing": "/about.html",
+    "items": [
+      "/projects/index.html",
+      "/projects/2023-01-marketplace.html",
+      "/projects/2021-09-learning-roadmap.html",
+      "/projects/2020-07-social-prototype.html",
+      "/projects/2019-11-realtime-rig.html"
     ]
   }
 ]

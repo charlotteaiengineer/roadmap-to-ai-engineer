@@ -2,6 +2,20 @@
 page-layout: full
 image: me.png
 ---
+<!-- 
+```{listing}
+contents: projects
+sort: "date desc"
+type: grid
+grid-columns: 3
+fields: [image, title, description, date, categories]
+image-align: left
+categories: true
+filter-ui: true
+page-size: 6
+max-description-length: 160
+image-placeholder: images/valley.png
+``` -->
 
 ::: {.columns}
 ::: {.column width="65%"}
@@ -80,21 +94,7 @@ Ipswich, UK
 **WordPress Developer · Lella.co** (01/2019 — 06/2019)  
 - Built and maintained the site; advised on product positioning
 
-### Selected projects
-**Marketplace buildout** — ultra‑fast marketplaces with non‑technical creator tools  
-Stack: Medusa.js + Next.js; Vendure; later Qwik; Docker; Railway; PostgreSQL  
-- Rebuilt three times to optimize DX/perf; pitched to VCs; interviewed early users
 
-**Engineer Learning Roadmap** — curated learning hub  
-Prior: Clerk auth, Next.js + TypeScript, Payload CMS (MongoDB, PlanetScale, Prisma)  
-Current: Docusaurus; planned progression tracking and starter code
-
-**Social media prototype** — deep dive first project  
-GetStream‑based social feeds; Amplify, Serverless, Heroku, Mantine, Next.js  
-- Solved media‑hosting costs via IPFS/web3.storage; working prototype with auth/feeds
-
-**Realtime character rig** — motion‑tracked 3D avatar  
-Unity, Blender, Rokoko; custom retargeting, facial rig mapping, live web integration
 
 ### Currently exploring
 - AI companion to support autistic people (React/Next.js)  
@@ -104,4 +104,21 @@ Unity, Blender, Rokoko; custom retargeting, facial rig mapping, live web integra
 
 ### Get in touch
 If you’re building ambitious, design‑led products and want to ship fast with quality, let’s talk.
+
+sldsmls
+asdmlsadml
+
+# Selected projects
+
+Below is an inline listing of recent projects. For the full archive, see the [Projects](/projects/) page.
+
+
+
+---
+listing:
+  contents: projects
+  type: table
+  sort: "date desc"
+  fields: [title, description]
+---
 
