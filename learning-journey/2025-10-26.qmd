@@ -4,7 +4,7 @@ description: "and other cool videos I found as I wanted to hear other perspectiv
 date: 2025-10-26
 jupyter: python3
 categories: [neural-networks]
-image: https://repository-images.githubusercontent.com/150001117/60a1b200-6541-11e9-87e0-abaf5fd304cc
+image: https://pbs.twimg.com/media/DR1U7V3WAAAdFUM.jpg
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HzLom8rk2zo?si=p-P5VMYZoZMO6YhU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -15,7 +15,7 @@ Went with Spring 2025 for the best sound quality
 
 ### Warren McCulloch and Walter Pitts
 
-![ehy](https://pbs.twimg.com/media/DR1U7V3WAAAdFUM.jpg)
+![](https://pbs.twimg.com/media/DR1U7V3WAAAdFUM.jpg)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wawMjJUCMVw?si=kS5M6GZhQ0B9Ez7d&amp;start=95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

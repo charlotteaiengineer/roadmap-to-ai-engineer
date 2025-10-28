@@ -4,7 +4,7 @@ description: ""
 date: 2025-10-23
 jupyter: python3
 categories: [convolutional-neural-networks]
-image: https://www.oreilly.com/covers/urn:orm:video:9781803243726/400w/
+image: /images/owl.png
 ---
 
 ::::: columns

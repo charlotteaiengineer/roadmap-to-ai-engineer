@@ -1,0 +1,8 @@
+---
+title: "Generative AI with Python and PyTorch — Second Edition"
+description: "Study outline, exercises, and examples based on Babcock & Bali (O’Reilly, 2025)."
+date: 2025-11-01
+jupyter: python3
+categories: [python, pytorch, deep-learning, generative-ai, llm, transformers]
+image: https://learning.oreilly.com/covers/urn:orm:book:9781835884447/400w/
+---
