@@ -60,3 +60,6 @@ For each misclassifcation, we adjust the coeficiants to move the boundary in the
 > Build a network that isolates the region within the region we wish to classify.
 
 > Individual perceptrons capture linear boundaries
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-KLnurhX-Pg?si=1edq6KfRc6d-m-Rg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

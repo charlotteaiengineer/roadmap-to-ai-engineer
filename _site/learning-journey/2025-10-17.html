@@ -240,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The way the technology works for these neural nets is that they expect a <code>one dimesional sequence of symbols</code>. They want a <code>finite set of symbols</code> that are possible. We have to decide what the symbols are, then have to represent our data as a one dimensional sequence of symbols.</p>
 <section id="text-bytes-bits-roundtrip-compact-and-readable" class="level3">
 <h3 class="anchored" data-anchor-id="text-bytes-bits-roundtrip-compact-and-readable">Text → bytes → bits (roundtrip, compact and readable)</h3>
-<div id="fbee354f" class="cell" data-execution_count="1">
+<div id="b9016bbc" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">"I'm enjoying learning about how ChatGPT works from the inside. It's pretty difficult to understand, but I'm sure I'll get the hang of it if I stick around and carry on"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Text → bytes (UTF-8)</span></span>
@@ -283,7 +283,7 @@ decoded: I'm enjoying learning about how ChatGPT works from the inside. It's pre
 <section id="per-character-view-code-point-utf8-bytes" class="level3">
 <h3 class="anchored" data-anchor-id="per-character-view-code-point-utf8-bytes">Per-character view (code point → UTF‑8 bytes)</h3>
 <p>We want more symbols and shorter sequences. Let’s compress the binary sequence. <strong>A group of 8 bits are a byte</strong>.</p>
-<div id="c6984990" class="cell" data-execution_count="2">
+<div id="c6003144" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> text[:<span class="dv">8</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span><span class="st">'char'</span><span class="sc">:&lt;6}{</span><span class="st">'codepoint'</span><span class="sc">:&lt;12}{</span><span class="st">'hex'</span><span class="sc">:&lt;20}{</span><span class="st">'bin'</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ch <span class="kw">in</span> sample:</span>
@@ -309,7 +309,7 @@ decoded: I'm enjoying learning about how ChatGPT works from the inside. It's pre
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HEikzVL-lZU?si=cRWfRvEtko61Vnbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
 </iframe>
 <p>We’ll train a tiny BPE on a short corpus, learn a few merges, then tokenize a sentence.</p>
-<div id="45c29696" class="cell" data-execution_count="3">
+<div id="1a48f6fe" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>corpus <span class="op">=</span> (</span>

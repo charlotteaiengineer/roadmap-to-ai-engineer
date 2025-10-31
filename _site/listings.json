@@ -11,12 +11,9 @@
   {
     "listing": "/learning-journey/index.html",
     "items": [
-      "/learning-journey/2025-11-01.html",
-      "/learning-journey/2025-10-31.html",
-      "/learning-journey/2025-10-30.html",
       "/learning-journey/2025-10-29.html",
       "/learning-journey/2025-10-28.html",
-      "/learning-journey/2025-10-27.html",
+      "/learning-journey/perceptrons.html",
       "/learning-journey/2025-10-26.html",
       "/learning-journey/2025-10-24.html",
       "/learning-journey/2025-10-23.html",
@@ -40,12 +37,9 @@
     "listing": "/index.html",
     "items": [
       "/learning-journey/index.html",
-      "/learning-journey/2025-11-01.html",
-      "/learning-journey/2025-10-31.html",
-      "/learning-journey/2025-10-30.html",
       "/learning-journey/2025-10-29.html",
       "/learning-journey/2025-10-28.html",
-      "/learning-journey/2025-10-27.html",
+      "/learning-journey/perceptrons.html",
       "/learning-journey/2025-10-26.html",
       "/learning-journey/2025-10-24.html",
       "/learning-journey/2025-10-23.html",
@@ -64,6 +58,12 @@
       "/projects/2021-09-learning-roadmap.html",
       "/projects/2020-07-social-prototype.html",
       "/projects/2019-11-realtime-rig.html"
+    ]
+  },
+  {
+    "listing": "/roadmap/index.html",
+    "items": [
+      "/roadmap/perceptrons.html"
     ]
   }
 ]

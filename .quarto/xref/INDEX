@@ -124,5 +124,23 @@
   },
   "learning-journey/2025-10-31.qmd": {
     "2025-10-31.html": "c6a0d536"
+  },
+  "books.qmd": {
+    "books.html": "be6430ee"
+  },
+  "papers.qmd": {
+    "papers.html": "a7981981"
+  },
+  "courses.qmd": {
+    "courses.html": "ab83f0fb"
+  },
+  "learning-journey/perceptrons.qmd": {
+    "perceptrons.html": "44b75ca1"
+  },
+  "roadmap/index.qmd": {
+    "index.html": "5d5375da"
+  },
+  "roadmap/perceptrons.ipynb": {
+    "perceptrons.html": "ef7def2b"
   }
 }

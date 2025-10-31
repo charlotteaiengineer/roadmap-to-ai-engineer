@@ -26,3 +26,9 @@ image: h
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wawMjJUCMVw?si=Iih05eF_lhTGGxMX&amp;start=95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 [Vibe Coding Menu Generator - Karpathy](https://karpathy.bearblog.dev/vibe-coding-menugen/)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ij_cGdu_0Rk?si=gkS3yuil31uiJgpo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+After seeing this video, feeling thankful right now for the life I have, my worries seem insignificant.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0kzR0SoTIrg?si=JsFrt807E8TGMxQ2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
