@@ -203,10 +203,16 @@ No items found.
   {
     "title": "AI Engineering",
     "authors": "Chip Huyen",
-    "image": "https://learning.oreilly.com/covers/urn:orm:book:9781098166298/400w/",
     "url": "https://learning.oreilly.com/library/view/ai-engineering/9781098166298/",
     "status": "in-progress",
     "categories": ["deep-learning","llm"]
+  },
+  {
+    "title": "Learn AI-Assisted Python Programming, Second Edition",
+    "authors": "Leo Porter, Daniel Zingaro",
+    "url": "https://learning.oreilly.com/library/view/learn-ai-assisted-python/9781633435995/",
+    "status": "unread",
+    "categories": ["python","ai"]
   }
 ]</script>
 <script>
@@ -220,6 +226,19 @@ No items found.
   const emptyEl = document.getElementById('books-empty');
   const filtersEl = document.getElementById('books-filters');
   let activeCategory = 'all';
+
+  function thumbnailFromUrl(url) {
+    try {
+      const u = new URL(url);
+      if (u.hostname.includes('learning.oreilly.com')) {
+        // Expect path like /library/view/<slug>/<id>/ → use final numeric id
+        const parts = u.pathname.split('/').filter(Boolean);
+        const id = parts[parts.length - 1] || parts[parts.length - 2] || '';
+        if (id) return `https://learning.oreilly.com/covers/urn:orm:book:${id}/400w/`;
+      }
+    } catch (_) { /* ignore */ }
+    return 'https://via.placeholder.com/600x900?text=No+Image';
+  }
 
   function cardHTML(d) {
     const a = document.createElement('a');
@@ -235,8 +254,9 @@ No items found.
     };
     const si = statusInfo(d.status);
     const dot = si ? `<span class="status-dot ${si.cls}" title="${si.label}"></span>` : '';
+    const imgSrc = d.image || thumbnailFromUrl(d.url);
     a.innerHTML = `
-      <img loading="lazy" src="${d.image}" alt="${d.title}" style="width:100%;height:auto;" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x900?text=No+Image'">
+      <img loading=\"lazy\" src=\"${imgSrc}\" alt=\"${d.title}\" style=\"width:100%;height:auto;\" onerror=\"this.onerror=null;this.src='https://via.placeholder.com/600x900?text=No+Image'\">
       <div class="meta">
         <div class="title-row"><div class="title">${d.title}</div>${dot}</div>
         <div class="authors">${d.authors}</div>

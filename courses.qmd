@@ -98,6 +98,61 @@ format:
     "url": "https://www.youtube.com/watch?v=IIvORO248Zs",
     "status": "not-started",
     "categories": ["fine-tuning"]
+  },
+  {
+    "title": "Python Fundamentals with Paul Deitel, 2nd Edition",
+    "authors": "Paul Deitel",
+    "url": "https://learning.oreilly.com/course/python-fundamentals-with/9780135917411/",
+    "status": "in-progress",
+    "categories": ["python"]
+  },
+  {
+    "title": "A Practical Guide to Machine Learning with TensorFlow 2.0 & Keras",
+    "authors": "Vadim Karpusenko",
+    "url": "https://frontendmasters.com/courses/practical-machine-learning/",
+    "status": "not-started",
+    "image": "https://static.frontendmasters.com/assets/courses/2020-03-03-practical-machine-learning/posterframe.webp",
+    "categories": ["machine-learning", "tensorflow", "keras"]
+  },
+  {
+    "title": "Open Source AI with Python & Hugging Face",
+    "authors": "Steve Kinney",
+    "url": "https://frontendmasters.com/courses/python-ai/",
+    "status": "not-started",
+    "image": "https://static.frontendmasters.com/assets/courses/2025-08-22-python-ai/posterframe.webp",
+    "categories": ["python", "ai", "hugging-face"]
+  },
+  {
+    "title": "Intermediate Python",
+    "authors": "Nina Zakharenko",
+    "url": "https://frontendmasters.com/courses/intermediate-python/",
+    "status": "completed",
+    "image": "https://static.frontendmasters.com/assets/courses/2019-05-01-intermediate-python/posterframe.webp",
+    "categories": ["python"]
+  },
+  {
+    "title": "Practical Guide to Python",
+    "authors": "Nina Zakharenko",
+    "url": "https://frontendmasters.com/courses/practical-python/",
+    "status": "completed",
+    "image": "https://static.frontendmasters.com/assets/courses/2020-12-22-practical-python/posterframe.webp",
+    "categories": ["python"]
+  },
+  {
+    "title": "Build an AI Agent from Scratch",
+    "authors": "Scott Moss",
+    "url": "https://frontendmasters.com/courses/ai-agents/",
+    "status": "not-started",
+    "image": "https://static.frontendmasters.com/assets/courses/2024-12-10-ai-agents/posterframe.webp",
+    "categories": ["ai", "agents"]
+  },
+  {
+    "title": "Hard Parts of AI: Neural Networks",
+    "authors": "Will Sentance",
+    "url": "https://frontendmasters.com/courses/hard-parts-ai/",
+    "status": "not-started",
+    "image": "https://static.frontendmasters.com/assets/courses/2025-01-17-hard-parts-ai/posterframe.webp",
+    "categories": ["ai", "neural-networks"]
   }
 ]</script>
 
@@ -125,8 +180,40 @@ format:
   }
 
   function thumbnailFromUrl(url) {
-    const id = getYouTubeId(url);
-    return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : 'https://via.placeholder.com/600x340?text=No+Thumbnail';
+    // YouTube
+    const yt = getYouTubeId(url);
+    if (yt) return `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
+    // O'Reilly (best effort): try constructing a cover URL from trailing ID
+    try {
+      const u = new URL(url);
+      if (u.hostname.includes('learning.oreilly.com')) {
+        const parts = u.pathname.split('/').filter(Boolean);
+        const tail = parts[parts.length - 1];
+        const id = tail && tail !== 'view' ? tail : (parts[parts.length - 2] || '');
+        if (id) {
+          // Attempt known cover patterns; onerror will gracefully fallback
+          return `https://learning.oreilly.com/covers/urn:orm:video:${id}/400w/`;
+        }
+      }
+      // Frontend Masters (best effort): derive slug from path and use graph image
+      if (u.hostname.includes('frontendmasters.com')) {
+        const partsFm = u.pathname.split('/').filter(Boolean);
+        const slug = partsFm[partsFm.length - 1];
+        if (slug) {
+          const fePosterOverrides = {
+            'practical-machine-learning': 'https://static.frontendmasters.com/assets/courses/2020-03-03-practical-machine-learning/posterframe.webp',
+            'python-ai': 'https://static.frontendmasters.com/assets/courses/2025-08-22-python-ai/posterframe.webp',
+            'practical-python': 'https://static.frontendmasters.com/assets/courses/2020-12-22-practical-python/posterframe.webp',
+            'ai-agents': 'https://static.frontendmasters.com/assets/courses/2024-12-10-ai-agents/posterframe.webp',
+            'hard-parts-ai': 'https://static.frontendmasters.com/assets/courses/2025-01-17-hard-parts-ai/posterframe.webp'
+          };
+          if (fePosterOverrides[slug]) return fePosterOverrides[slug];
+          // Best-effort generic poster path
+          return `https://static.frontendmasters.com/assets/courses/${slug}/posterframe.webp`;
+        }
+      }
+    } catch (_) { /* ignore */ }
+    return 'https://via.placeholder.com/600x340?text=No+Thumbnail';
   }
 
   function statusInfo(s) {
@@ -145,8 +232,9 @@ format:
     const si = statusInfo(d.status);
     const dot = si ? `<span class="status-dot ${si.cls}" title="${si.label}"></span>` : '';
     const byline = d.authors || d.instructor || d.channel || '';
+    const imgSrc = d.image || thumbnailFromUrl(d.url);
     a.innerHTML = `
-      <img loading="lazy" src="${thumbnailFromUrl(d.url)}" alt="${d.title}" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x340?text=No+Thumbnail'">
+      <img loading="lazy" src="${imgSrc}" alt="${d.title}" onerror="this.onerror=null;this.src='https://via.placeholder.com/600x340?text=No+Thumbnail'">
       <div class="meta">
         <div class="title-row"><div class="title">${d.title}</div>${dot}</div>
         <div class="authors">${byline}</div>
