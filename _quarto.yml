@@ -12,20 +12,20 @@ website:
         href: learning-journey/index.qmd
       - text: Roadmap
         href: roadmap/index.qmd
-      - text: Resources
-        href: resources.qmd
-      - text: Blog
-        href: blog/index.qmd
-      - text: Projects
-        href: projects/index.qmd
+
       - text: Papers
         href: papers.qmd
       - text: Bookshelf
         href: books.qmd
       - text: Courses
         href: courses.qmd
+    right:
       - text: About
         href: about.qmd
+      - text: Blog
+        href: blog/index.qmd
+      - text: Resources
+        href: resources.qmd
 
 format:
   html:

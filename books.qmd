@@ -72,6 +72,13 @@ format:
     "url": "https://learning.oreilly.com/library/view/learn-ai-assisted-python/9781633435995/",
     "status": "unread",
     "categories": ["python","ai"]
+  },
+  {
+    "title": "Hands-On Machine Learning with Scikit-Learn and PyTorch",
+    "authors": "Aurélien Géron",
+    "url": "https://learning.oreilly.com/library/view/hands-on-machine-learning/9798341607972/",
+    "status": "unread",
+    "categories": ["machine-learning","pytorch","scikit-learn"]
   }
 ]</script>
 
