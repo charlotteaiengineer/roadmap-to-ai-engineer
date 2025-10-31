@@ -189,6 +189,7 @@ ul.task-list li input[type="checkbox"] {
 </iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wawMjJUCMVw?si=Iih05eF_lhTGGxMX&amp;start=95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
 </iframe>
+<p><a href="https://karpathy.bearblog.dev/vibe-coding-menugen/">Vibe Coding Menu Generator - Karpathy</a></p>
 
 
 </main></div>
@@ -267,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/charlotteaiengineer\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

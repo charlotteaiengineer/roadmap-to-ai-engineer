@@ -1,5 +1,5 @@
 ---
-title: "Lecture 2 - Multi-Layer Perceptrons"
+title: "Multi-Layer Perceptrons"
 date: 2025-10-27
 jupyter: python3
 categories: []

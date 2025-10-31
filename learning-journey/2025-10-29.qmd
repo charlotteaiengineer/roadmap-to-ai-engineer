@@ -1,0 +1,64 @@
+---
+title: "SELF-TUNING: Instructing LLMs to Effectively Acquire New Knowledge through Self-Teaching"
+date: 2025-10-29
+jupyter: python3
+categories: [self-tuning, llm, paper]
+image: https://cdn-thumbnails.huggingface.co/social-thumbnails/papers/2406.06326/gradient.png
+---
+
+#### [SELF-TUNING: Instructing LLMs to Effectively Acquire New Knowledge through Self-Teaching](https://arxiv.org/pdf/2406.06326)
+
+*Xiaoying Zhang, Baolin Peng, Ye Tian, Jingyan Zhou, Yipeng Zhang, Haitao Mi, Helen Meng*
+
+Inspired by the success of the Feynman Technique - how children are taught to learn.
+
+`SELFTUNING` - , a learning framework aimed at improving an LLM’s ability to effectively acquire new knowledge from unseen raw documents through self-teaching.
+
+a `SELF-TEACHING` strategy that augments the documents with a set of knowledge-intensive tasks created in a self-supervised manner, focusing on three crucial aspects: *memorization*, *comprehension*, and *self-reflection*
+
+**Outcome - significantly enhanced factual accuracy compared to the standard approaches. SELFTUNING significantly outperforms all other compared methods on knowledge memorization and extraction tasks.** 
+
+**In addition, SELF-TUNING consistently yields high accuracy on reasoning tasks, while the performance of the compared methods largely fluctuates in different scenarios.** 
+
+**Inspiringly, SELF-TUNING exhibits exceptional performance in retaining previously acquired knowledge (i.e., knowledge retention) concerning extraction and reasoning on two well-established benchmarks**
+
+##### Stage 1: Learn How to Effectively Absorb Knowledge from Raw Documents.
+
+equip an LLM M, parameterized by θ,with the ability to learn how to derive knowledge
+
+
+$$
+L_\text{Stage 1}(\theta) = L_\theta(D_\text{Doc}^{\text{train}}) + L_\theta(D_\text{Self}^{\text{train}}) + L_\theta(D_\text{QA}^{\text{train}})
+\
+$$
+
+##### Stage 2: Learn New Knowledge while Reviewing QA Skills
+
+train the model to apply the learned strategy for spontaneously extracting new knowledge from unseen documents
+
+DocTrain is training documents, QATrain is training QA Dataset. Self Train is the knowledge-intensive tasks created in a self-supervised manner.
+
+$$
+L_\text{Stage 2}(\theta) = L_\theta(D_\text{Doc}^{\text{test}}) + L_\theta(D_\text{QA}^{\text{train}})
+$$
+
+DocTest is raw test corpora, in addition to training on this, the model is also trained on QATrain -allowing the model M to review and refine its question-answering ability
+
+###### Stage 3: Continually Learn.
+
+Their goal is to ensure that the model M thoroughly absorbs the new
+knowledge by conducting follow-up training on DDocTest (raw corpora). The objective is as follows:
+
+$$
+L_\text{Stage 3}(\theta) = L_\theta(D_\text{Doc}^{\text{test}})
+$$
+
+**Memorisation** is tested via nexttoken prediction task on plain document texts.
+
+**Comprehension** is tested through the following tasks:
+
+- **Summarization** allows the model to learn to grasp the topic by using the prompt `Write a title:` to encourage the model to summarize the raw text
+- **Gist identification** improves the model’s ability to pinpoint the key elements within the atomic facts. prompt the model with `Highlight the key information within the article:`, and use the entities within the document as gold answers, identified using Spacy
+- **Natural language inference** provides the model with the capability to determine whether a statement can be inferred from specific document contents `(i.e., “Yes,” “No,” or “It’s impossible to say”)`, thus avoiding misconceptions that may arise during knowledge acquisition. 
+
+![](/images/self-teaching.png)

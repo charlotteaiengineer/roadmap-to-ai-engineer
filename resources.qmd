@@ -21,6 +21,11 @@ Quick access to frequently used links. Add/edit freely.
 
 - 
 
+## Model Training
+
+- [Natural Language Toolkit](https://www.nltk.org/)
+- [Spacy](https://spacy.io/)
+
 ## Research & Learning
 
 - 

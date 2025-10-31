@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-10-27">
+<meta name="dcterms.date" content="2025-10-29">
 
-<title>Multi-Layer Perceptrons – prophecy.institute</title>
+<title>SELF-TUNING: Instructing LLMs to Effectively Acquire New Knowledge through Self-Teaching – prophecy.institute</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -124,25 +153,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#perceptrons" id="toc-perceptrons" class="nav-link active" data-scroll-target="#perceptrons">Perceptrons</a>
-  <ul class="collapse">
-  <li><a href="#linear-classifier" id="toc-linear-classifier" class="nav-link" data-scroll-target="#linear-classifier">Linear Classifier</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Multi-Layer Perceptrons</h1>
-</div>
+<h1 class="title">SELF-TUNING: Instructing LLMs to Effectively Acquire New Knowledge through Self-Teaching</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">self-tuning</div>
+    <div class="quarto-category">llm</div>
+    <div class="quarto-category">paper</div>
+  </div>
+  </div>
 
 
 
@@ -152,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 27, 2025</p>
+      <p class="date">October 29, 2025</p>
     </div>
   </div>
   
@@ -164,48 +189,45 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="perceptrons" class="level1">
-<h1>Perceptrons</h1>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NXYrIEP1LRs?si=95pjt-OfNECOQArL&amp;start=3534" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<p><img src="../images/logicgates.png" class="img-fluid"></p>
-<p>perceptrons do have logic gates for AND, OR, and NOT.</p>
-<p>However…there is no solution for XOR gate.</p>
-<p><img src="../images/xor.png" class="img-fluid"></p>
-<p>Until we thought about <strong>Networks of Perceptrons</strong>. Networked elements are required.</p>
-<p>There is a need for three perceptrons to solve the XOR gate.</p>
-<p><img src="https://cdn-images-1.medium.com/v2/resize:fit:1400/1*qA_APGgbbh0QfRNsRyMaJg.png" class="img-fluid"></p>
-<p>When the inidividual outputs of a layer of perceptrons is not needed to be visuallised, we call it a <strong>Hidden Layer</strong>.</p>
-<p>Once you begin networking the perceptions, you can perform any boolean function.</p>
-<p>This is deemed a multi-layer perceptron. Perceptrons are arranged in layers.</p>
-<section id="linear-classifier" class="level3">
-<h3 class="anchored" data-anchor-id="linear-classifier">Linear Classifier</h3>
-<p>A perceptron operates on real-valued vectors.</p>
-<p>There is a boundary where all inputs are classified as 0 or 1.</p>
-<p><img src="https://i.sstatic.net/epSZC.png" class="img-fluid"></p>
-<p>A perceptron defines a boundary (the line and the area) where on the graph its a 0 or 1 on each side of that linear classifier line.</p>
-<p>You can create a shape with many perceptrons with their own linear classifiers. You create a <strong>boundary</strong>.</p>
-<p>So you create a region where all perceptrons must output a 1.</p>
-<section id="decision-boundaries" class="level4">
-<h4 class="anchored" data-anchor-id="decision-boundaries">Decision Boundaries</h4>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KJJFfRXFbuc?si=FMy6iF6RVHI2bz0D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<blockquote class="blockquote">
-<p>Finding and fitting a decision boundary to the data is one of the main objectives of Machine Learning</p>
-</blockquote>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4Gac5I64LM4?si=7oRb00AooUKyx3qE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<p><code>Converges</code>, <code>Coeficiants</code></p>
-<p>For each misclassifcation, we adjust the coeficiants to move the boundary in the direction of the misclassification. If still not classified correctly, we adjust the coeficiants again. This process is called <code>Gradient Descent</code>.</p>
+<section id="self-tuning-instructing-llms-to-effectively-acquire-new-knowledge-through-self-teaching" class="level4">
+<h4 class="anchored" data-anchor-id="self-tuning-instructing-llms-to-effectively-acquire-new-knowledge-through-self-teaching"><a href="https://arxiv.org/pdf/2406.06326">SELF-TUNING: Instructing LLMs to Effectively Acquire New Knowledge through Self-Teaching</a></h4>
+<p><em>Xiaoying Zhang, Baolin Peng, Ye Tian, Jingyan Zhou, Yipeng Zhang, Haitao Mi, Helen Meng</em></p>
+<p>Inspired by the success of the Feynman Technique - how children are taught to learn.</p>
+<p><code>SELFTUNING</code> - , a learning framework aimed at improving an LLM’s ability to effectively acquire new knowledge from unseen raw documents through self-teaching.</p>
+<p>a <code>SELF-TEACHING</code> strategy that augments the documents with a set of knowledge-intensive tasks created in a self-supervised manner, focusing on three crucial aspects: <em>memorization</em>, <em>comprehension</em>, and <em>self-reflection</em></p>
+<p><strong>Outcome - significantly enhanced factual accuracy compared to the standard approaches. SELFTUNING significantly outperforms all other compared methods on knowledge memorization and extraction tasks.</strong></p>
+<p><strong>In addition, SELF-TUNING consistently yields high accuracy on reasoning tasks, while the performance of the compared methods largely fluctuates in different scenarios.</strong></p>
+<p><strong>Inspiringly, SELF-TUNING exhibits exceptional performance in retaining previously acquired knowledge (i.e., knowledge retention) concerning extraction and reasoning on two well-established benchmarks</strong></p>
+<section id="stage-1-learn-how-to-effectively-absorb-knowledge-from-raw-documents." class="level5">
+<h5 class="anchored" data-anchor-id="stage-1-learn-how-to-effectively-absorb-knowledge-from-raw-documents.">Stage 1: Learn How to Effectively Absorb Knowledge from Raw Documents.</h5>
+<p>equip an LLM M, parameterized by θ,with the ability to learn how to derive knowledge</p>
+<p><span class="math display">\[
+L_\text{Stage 1}(\theta) = L_\theta(D_\text{Doc}^{\text{train}}) + L_\theta(D_\text{Self}^{\text{train}}) + L_\theta(D_\text{QA}^{\text{train}})
+\
+\]</span></p>
 </section>
-<section id="tensorflow-playground" class="level4">
-<h4 class="anchored" data-anchor-id="tensorflow-playground"><a href="https://playground.tensorflow.org/#activation=tanh&amp;batchSize=10&amp;dataset=gauss&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=0&amp;networkShape=4,2&amp;seed=0.89612&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false">TensorFlow Playground</a></h4>
-<blockquote class="blockquote">
-<p>Build a network that isolates the region within the region we wish to classify.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Individual perceptrons capture linear boundaries</p>
-</blockquote>
+<section id="stage-2-learn-new-knowledge-while-reviewing-qa-skills" class="level5">
+<h5 class="anchored" data-anchor-id="stage-2-learn-new-knowledge-while-reviewing-qa-skills">Stage 2: Learn New Knowledge while Reviewing QA Skills</h5>
+<p>train the model to apply the learned strategy for spontaneously extracting new knowledge from unseen documents</p>
+<p>DocTrain is training documents, QATrain is training QA Dataset. Self Train is the knowledge-intensive tasks created in a self-supervised manner.</p>
+<p><span class="math display">\[
+L_\text{Stage 2}(\theta) = L_\theta(D_\text{Doc}^{\text{test}}) + L_\theta(D_\text{QA}^{\text{train}})
+\]</span></p>
+<p>DocTest is raw test corpora, in addition to training on this, the model is also trained on QATrain -allowing the model M to review and refine its question-answering ability</p>
+<section id="stage-3-continually-learn." class="level6">
+<h6 class="anchored" data-anchor-id="stage-3-continually-learn.">Stage 3: Continually Learn.</h6>
+<p>Their goal is to ensure that the model M thoroughly absorbs the new knowledge by conducting follow-up training on DDocTest (raw corpora). The objective is as follows:</p>
+<p><span class="math display">\[
+L_\text{Stage 3}(\theta) = L_\theta(D_\text{Doc}^{\text{test}})
+\]</span></p>
+<p><strong>Memorisation</strong> is tested via nexttoken prediction task on plain document texts.</p>
+<p><strong>Comprehension</strong> is tested through the following tasks:</p>
+<ul>
+<li><strong>Summarization</strong> allows the model to learn to grasp the topic by using the prompt <code>Write a title:</code> to encourage the model to summarize the raw text</li>
+<li><strong>Gist identification</strong> improves the model’s ability to pinpoint the key elements within the atomic facts. prompt the model with <code>Highlight the key information within the article:</code>, and use the entities within the document as gold answers, identified using Spacy</li>
+<li><strong>Natural language inference</strong> provides the model with the capability to determine whether a statement can be inferred from specific document contents <code>(i.e., “Yes,” “No,” or “It’s impossible to say”)</code>, thus avoiding misconceptions that may arise during knowledge acquisition.</li>
+</ul>
+<p><img src="../images/self-teaching.png" class="img-fluid"></p>
 
 
 </section>

@@ -1,0 +1,134 @@
+---
+title: "Lecture 2 - Neural Nets As Universal Approximators"
+date: 2025-10-28
+jupyter: python3
+categories: []
+image: https://cdn-images-1.medium.com/v2/resize:fit:1400/1*qA_APGgbbh0QfRNsRyMaJg.png
+---
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bAOKjnqH1Vg?si=2-plFEEmx3cLOHhr&amp;start=3534" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Linear vs Affine: 3D Surfaces
+
+The difference is a bias value
+
+This section uses Plotly 3D charts to visualize simple functions of two variables and clarify what's linear, what's affine, and what's not.
+
+### Linear function: z = 3x + 7y
+
+```{python}
+import numpy as np
+import plotly.graph_objects as go
+
+# Grid
+x = np.linspace(-5, 5, 60)
+y = np.linspace(-5, 5, 60)
+X, Y = np.meshgrid(x, y)
+Z_linear = 3*X + 7*Y
+
+fig_linear = go.Figure(data=[go.Surface(x=X, y=Y, z=Z_linear, colorscale='Viridis', showscale=True)])
+fig_linear.update_layout(
+    title='Linear plane: z = 3x + 7y',
+    scene=dict(
+        xaxis_title='x',
+        yaxis_title='y',
+        zaxis_title='z',
+        camera=dict(eye=dict(x=1.6, y=-1.6, z=1.0))
+    ),
+    height=500,
+)
+fig_linear
+```
+
+Key property: for a linear function f, f(αx + βy) = α f(x) + β f(y) when viewed as maps from a vector space to reals with zero intercept.
+
+### Affine function: z = 3x + 7y + 4
+
+```{python}
+Z_affine = Z_linear + 4
+
+fig_affine = go.Figure(data=[go.Surface(x=X, y=Y, z=Z_affine, colorscale='Plasma', showscale=True)])
+fig_affine.update_layout(
+    title='Affine plane: z = 3x + 7y + 4',
+    scene=dict(
+        xaxis_title='x',
+        yaxis_title='y',
+        zaxis_title='z',
+        camera=dict(eye=dict(x=1.6, y=-1.6, z=1.0))
+    ),
+    height=500,
+)
+fig_affine
+```
+
+An affine function is a linear function plus a constant offset. It does not preserve the linear-combination property due to the intercept.
+
+### Non-linear (not linear, not affine): z = 3x^2 + 7y
+
+```{python}
+Z_nonlinear = 3*(X**2) + 7*Y
+
+fig_nl = go.Figure(data=[go.Surface(x=X, y=Y, z=Z_nonlinear, colorscale='Cividis', showscale=True)])
+fig_nl.update_layout(
+    title='Non-linear surface: z = 3x^2 + 7y',
+    scene=dict(
+        xaxis_title='x',
+        yaxis_title='y',
+        zaxis_title='z',
+        camera=dict(eye=dict(x=1.6, y=-1.6, z=1.0))
+    ),
+    height=500,
+)
+fig_nl
+```
+
+### Linear-combination check (scatter demo)
+
+```{python}
+# Demonstrate linear vs affine on sample points
+def f_linear(x, y):
+    return 3*x + 7*y
+
+def f_affine(x, y):
+    return 3*x + 7*y + 4
+
+# Pick two points in R^2
+p = np.array([2.0, -1.0])
+q = np.array([-3.0, 2.0])
+alpha, beta = 0.4, 0.6
+comb = alpha*p + beta*q
+
+fp = f_linear(*p)
+fq = f_linear(*q)
+fcomb = f_linear(*comb)
+lhs_linear = fcomb
+rhs_linear = alpha*fp + beta*fq
+
+gp = f_affine(*p)
+gq = f_affine(*q)
+gcomb = f_affine(*comb)
+lhs_affine = gcomb
+rhs_affine = alpha*gp + beta*gq
+
+print('Linear f: f(alpha p + beta q) =', lhs_linear, ' ; alpha f(p) + beta f(q) =', rhs_linear)
+print('Affine g: g(alpha p + beta q) =', lhs_affine, ' ; alpha g(p) + beta g(q) =', rhs_affine)
+
+# 3D scatter of the three points under f and g for visualization
+pts = np.array([p, q, comb])
+z_f = np.array([f_linear(*pt) for pt in pts])
+z_g = np.array([f_affine(*pt) for pt in pts])
+
+fig_pts = go.Figure()
+fig_pts.add_trace(go.Scatter3d(x=pts[:,0], y=pts[:,1], z=z_f, mode='markers+lines',
+                               name='Linear f', marker=dict(size=5, color='blue')))
+fig_pts.add_trace(go.Scatter3d(x=pts[:,0], y=pts[:,1], z=z_g, mode='markers+lines',
+                               name='Affine g', marker=dict(size=5, color='red')))
+fig_pts.update_layout(title='Linear-combination check on sample points',
+                      scene=dict(xaxis_title='x', yaxis_title='y', zaxis_title='z',
+                                 camera=dict(eye=dict(x=1.6, y=-1.6, z=1.0))))
+fig_pts
+```
+
+References: Plotly 3D charts documentation at [plotly.com/python/3d-charts](https://plotly.com/python/3d-charts/).
+
+

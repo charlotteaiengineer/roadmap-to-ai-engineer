@@ -131,6 +131,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#daily-weekly" id="toc-daily-weekly" class="nav-link active" data-scroll-target="#daily-weekly">Daily / Weekly</a></li>
   <li><a href="#llms-genai" id="toc-llms-genai" class="nav-link" data-scroll-target="#llms-genai">LLMs / GenAI</a></li>
   <li><a href="#python-data" id="toc-python-data" class="nav-link" data-scroll-target="#python-data">Python / Data</a></li>
+  <li><a href="#model-training" id="toc-model-training" class="nav-link" data-scroll-target="#model-training">Model Training</a></li>
   <li><a href="#research-learning" id="toc-research-learning" class="nav-link" data-scroll-target="#research-learning">Research &amp; Learning</a></li>
   <li><a href="#tools-platforms" id="toc-tools-platforms" class="nav-link" data-scroll-target="#tools-platforms">Tools &amp; Platforms</a></li>
   <li><a href="#newsletters" id="toc-newsletters" class="nav-link" data-scroll-target="#newsletters">Newsletters</a></li>
@@ -180,6 +181,13 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="python-data">Python / Data</h2>
 <ul>
 <li></li>
+</ul>
+</section>
+<section id="model-training" class="level2">
+<h2 class="anchored" data-anchor-id="model-training">Model Training</h2>
+<ul>
+<li><a href="https://www.nltk.org/">Natural Language Toolkit</a></li>
+<li><a href="https://spacy.io/">Spacy</a></li>
 </ul>
 </section>
 <section id="research-learning" class="level2">
@@ -281,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/charlotteaiengineer\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

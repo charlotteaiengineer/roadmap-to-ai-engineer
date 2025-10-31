@@ -24,3 +24,5 @@ image: h
 </iframe>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wawMjJUCMVw?si=Iih05eF_lhTGGxMX&amp;start=95" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[Vibe Coding Menu Generator - Karpathy](https://karpathy.bearblog.dev/vibe-coding-menugen/)

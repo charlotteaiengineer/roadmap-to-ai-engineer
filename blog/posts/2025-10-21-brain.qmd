@@ -1,11 +1,26 @@
 ---
 title: "An llm that tweaks itself - Evolutionary based LLM"
 description: "An idea on AGI and the human brain"
-date: 2025-10-21
+date: 2025-10-29
 categories: [ai, agi, brain]
 # image: /me.jpeg
 ---
 
 
-The core idea is an LLM that can tweak its own parameters.
-An LLM that has core drivers, motivations, and goals.
+The core idea is an LLM that can **tweak its own parameters**.
+
+An LLM that has **core drivers, motivations, and goals**.
+
+> The goal of AGI developers is to create an AI model that has the cognitive abilities of a human, including the human brain's ability to reason, learn, and solve a wide range of tasks. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/N1TEjTeQeg0?si=oWmPBFdpjePCopXu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[Personal Superintelligence | Mark Zuckerberg](https://www.meta.com/superintelligence/?srsltid=AfmBOoqxUY04XtNRVsgNsdb8YhfiIB42zOFa09_H1mWfKq3gpXuuWw4E)
+
+[Planning for AGI and beyond | OpenAI](https://openai.com/index/planning-for-agi-and-beyond/)
+
+[Taking a responsible path to AGI | DeepMind](https://deepmind.google/discover/blog/taking-a-responsible-path-to-agi/)
+
+Ai as it currently stands can be very easily manipulated
+
+![](https://pbs.twimg.com/media/G2CnBM3acAACtOU)
