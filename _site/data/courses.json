@@ -73,37 +73,6 @@
     "categories": ["ai", "neural-networks"]
   },
   {
-    "title": "A Practical Guide to Machine Learning with TensorFlow 2.0 & Keras",
-    "authors": "Vadim Karpusenko",
-    "url": "https://frontendmasters.com/courses/practical-machine-learning/",
-    "status": "in-progress",
-    "image": "https://static.frontendmasters.com/assets/courses/2020-03-03-practical-machine-learning/posterframe.webp",
-    "categories": ["machine-learning", "tensorflow", "keras"]
-  },
-  {
-    "title": "Intermediate Python",
-    "authors": "Nina Zakharenko",
-    "url": "https://frontendmasters.com/courses/intermediate-python/",
-    "status": "completed",
-    "image": "https://static.frontendmasters.com/assets/courses/2019-05-01-intermediate-python/posterframe.webp",
-    "categories": ["python"]
-  },
-  {
-    "title": "Practical Guide to Python",
-    "authors": "Nina Zakharenko",
-    "url": "https://frontendmasters.com/courses/practical-python/",
-    "status": "completed",
-    "image": "https://static.frontendmasters.com/assets/courses/2020-12-22-practical-python/posterframe.webp",
-    "categories": ["python"]
-  },
-  {
-    "title": "CMU Spring 2025 - Lectures | Neural Networks",
-    "authors": "Bhiksha Raj",
-    "url": "https://www.youtube.com/watch?v=NXYrIEP1LRs&list=PLp-0K3kfddPylfHM6O3cBkRGdSW3m6n1C&index=1",
-    "status": "in-progress",
-    "categories": ["neural-networks", "youtube"]
-  },
-  {
     "title": "Deep Learning Fundamentals: A Python-Based Course",
     "authors": "Julián Darío Miranda",
     "url": "https://learning.oreilly.com/course/deep-learning-fundamentals/0636920928324/",
@@ -151,5 +120,36 @@
     "url": "https://learning.oreilly.com/course/natural-language-processing/9781836208013/",
     "status": "not-started",
     "categories": ["nlp", "deep-learning", "python"]
+  },
+  {
+    "title": "A Practical Guide to Machine Learning with TensorFlow 2.0 & Keras",
+    "authors": "Vadim Karpusenko",
+    "url": "https://frontendmasters.com/courses/practical-machine-learning/",
+    "status": "in-progress",
+    "image": "https://static.frontendmasters.com/assets/courses/2020-03-03-practical-machine-learning/posterframe.webp",
+    "categories": ["machine-learning", "tensorflow", "keras"]
+  },
+  {
+    "title": "Intermediate Python",
+    "authors": "Nina Zakharenko",
+    "url": "https://frontendmasters.com/courses/intermediate-python/",
+    "status": "completed",
+    "image": "https://static.frontendmasters.com/assets/courses/2019-05-01-intermediate-python/posterframe.webp",
+    "categories": ["python"]
+  },
+  {
+    "title": "Practical Guide to Python",
+    "authors": "Nina Zakharenko",
+    "url": "https://frontendmasters.com/courses/practical-python/",
+    "status": "completed",
+    "image": "https://static.frontendmasters.com/assets/courses/2020-12-22-practical-python/posterframe.webp",
+    "categories": ["python"]
+  },
+  {
+    "title": "CMU Spring 2025 - Lectures | Neural Networks",
+    "authors": "Bhiksha Raj",
+    "url": "https://www.youtube.com/watch?v=NXYrIEP1LRs&list=PLp-0K3kfddPylfHM6O3cBkRGdSW3m6n1C&index=1",
+    "status": "in-progress",
+    "categories": ["neural-networks", "youtube"]
   }
 ]
