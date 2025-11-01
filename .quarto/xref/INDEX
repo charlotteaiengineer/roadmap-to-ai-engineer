@@ -151,5 +151,11 @@
   },
   "roadmap/machine-learning.ipynb": {
     "machine-learning.html": "69dce3fe"
+  },
+  "tools/youtube_transcripts.ipynb": {
+    "youtube_transcripts.html": "26916502"
+  },
+  "quizzes.qmd": {
+    "quizzes.html": "5919af99"
   }
 }

@@ -17,6 +17,8 @@ website:
 
       - text: Papers
         href: papers.qmd
+      - text: Quizzes
+        href: quizzes.qmd
       - text: Bookshelf
         href: books.qmd
       - text: Courses

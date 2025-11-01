@@ -140,6 +140,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../quizzes.html"> 
+<span class="menu-text">Quizzes</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../books.html"> 
 <span class="menu-text">Bookshelf</span></a>
   </li>  
@@ -207,72 +211,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="https://frontendmasters.com/courses/practical-machine-learning/">A Practical Guide to Machine Learning with TensorFlow 2.0 &amp; Keras by Vadim Karpusenko</a></p>
 <section id="linear-regression" class="level2">
 <h2 class="anchored" data-anchor-id="linear-regression">Linear Regression</h2>
-<div id="7b3950c3" class="cell" data-execution_count="161">
+<div id="7b3950c3" class="cell" data-execution_count="262">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>tf.random.uniform.__doc__</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="161">
+<div class="cell-output cell-output-display" data-execution_count="262">
 <pre><code>'Outputs random values from a uniform distribution.\n\n  The generated values follow a uniform distribution in the range\n  `[minval, maxval)`. The lower bound `minval` is included in the range, while\n  the upper bound `maxval` is excluded.\n\n  For floats, the default range is `[0, 1)`.  For ints, at least `maxval` must\n  be specified explicitly.\n\n  In the integer case, the random integers are slightly biased unless\n  `maxval - minval` is an exact power of two.  The bias is small for values of\n  `maxval - minval` significantly smaller than the range of the output (either\n  `2**32` or `2**64`).\n\n  Examples:\n\n  &gt;&gt;&gt; tf.random.uniform(shape=[2])\n  &lt;tf.Tensor: shape=(2,), dtype=float32, numpy=array([..., ...], dtype=float32)&gt;\n  &gt;&gt;&gt; tf.random.uniform(shape=[], minval=-1., maxval=0.)\n  &lt;tf.Tensor: shape=(), dtype=float32, numpy=-...&gt;\n  &gt;&gt;&gt; tf.random.uniform(shape=[], minval=5, maxval=10, dtype=tf.int64)\n  &lt;tf.Tensor: shape=(), dtype=int64, numpy=...&gt;\n\n  The `seed` argument produces a deterministic sequence of tensors across\n  multiple calls. To repeat that sequence, use `tf.random.set_seed`:\n\n  &gt;&gt;&gt; tf.random.set_seed(5)\n  &gt;&gt;&gt; tf.random.uniform(shape=[], maxval=3, dtype=tf.int32, seed=10)\n  &lt;tf.Tensor: shape=(), dtype=int32, numpy=2&gt;\n  &gt;&gt;&gt; tf.random.uniform(shape=[], maxval=3, dtype=tf.int32, seed=10)\n  &lt;tf.Tensor: shape=(), dtype=int32, numpy=0&gt;\n  &gt;&gt;&gt; tf.random.set_seed(5)\n  &gt;&gt;&gt; tf.random.uniform(shape=[], maxval=3, dtype=tf.int32, seed=10)\n  &lt;tf.Tensor: shape=(), dtype=int32, numpy=2&gt;\n  &gt;&gt;&gt; tf.random.uniform(shape=[], maxval=3, dtype=tf.int32, seed=10)\n  &lt;tf.Tensor: shape=(), dtype=int32, numpy=0&gt;\n\n  Without `tf.random.set_seed` but with a `seed` argument is specified, small\n  changes to function graphs or previously executed operations will change the\n  returned value. See `tf.random.set_seed` for details.\n\n  Args:\n    shape: A 1-D integer Tensor or Python array. The shape of the output tensor.\n    minval: A Tensor or Python value of type `dtype`, broadcastable with\n      `shape` (for integer types, broadcasting is not supported, so it needs to\n      be a scalar). The lower bound on the range of random values to generate\n      (inclusive).  Defaults to 0.\n    maxval: A Tensor or Python value of type `dtype`, broadcastable with\n      `shape` (for integer types, broadcasting is not supported, so it needs to\n      be a scalar). The upper bound on the range of random values to generate\n      (exclusive). Defaults to 1 if `dtype` is floating point.\n    dtype: The type of the output: `float16`, `bfloat16`, `float32`, `float64`,\n      `int32`, or `int64`. Defaults to `float32`.\n    seed: A Python integer. Used in combination with `tf.random.set_seed` to\n      create a reproducible sequence of tensors across multiple calls.\n    name: A name for the operation (optional).\n\n  Returns:\n    A tensor of the specified shape filled with random uniform values.\n\n  Raises:\n    ValueError: If `dtype` is integral and `maxval` is not specified.\n  '</code></pre>
 </div>
 </div>
 <p>A Tensor is an Array/ Matrix.</p>
-<div id="9be479a9" class="cell" data-execution_count="162">
+<div id="9be479a9" class="cell" data-execution_count="263">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tf.random.uniform([<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="162">
-<pre><code>&lt;tf.Tensor: shape=(1,), dtype=float32, numpy=array([0.45965302], dtype=float32)&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="263">
+<pre><code>&lt;tf.Tensor: shape=(1,), dtype=float32, numpy=array([0.29859698], dtype=float32)&gt;</code></pre>
 </div>
 </div>
 <p>Transform a Tensor representation into a <code>numpy</code> representation</p>
-<div id="ae4b5748" class="cell" data-execution_count="163">
+<div id="ae4b5748" class="cell" data-execution_count="264">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>var <span class="op">=</span> tf.random.uniform([<span class="dv">1</span>])</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(var.numpy())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[0.44199955]</code></pre>
+<pre><code>[0.09848642]</code></pre>
 </div>
 </div>
 <p>Tensorflow is trying to optimise the utilisation of the hardware. Tensorflow keeps track of operations and how they’re running on the GPU. Helping the most compute intesive parts - using pre built libraries for these operations instead.</p>
 <p>Let’s create some noisy data</p>
-<div id="face1018" class="cell" data-execution_count="164">
+<div id="face1018" class="cell" data-execution_count="265">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_noisy_data(w<span class="op">=</span><span class="fl">0.1</span>, b<span class="op">=</span><span class="fl">0.3</span>, n<span class="op">=</span><span class="dv">100</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> tf.random.uniform(shape<span class="op">=</span>(n, ))</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    noise <span class="op">=</span> tf.random.normal(shape<span class="op">=</span>(<span class="bu">len</span>(x), ), stddev<span class="op">=</span><span class="fl">0.01</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> w <span class="op">*</span> x <span class="op">+</span> b <span class="op">+</span> noise</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x, y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="fbd9ada2" class="cell" data-execution_count="165">
+<div id="fbd9ada2" class="cell" data-execution_count="266">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> make_noisy_data()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="273d94b4" class="cell" data-execution_count="166">
+<div id="273d94b4" class="cell" data-execution_count="267">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>X</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="166">
+<div class="cell-output cell-output-display" data-execution_count="267">
 <pre><code>&lt;tf.Tensor: shape=(100,), dtype=float32, numpy=
-array([0.69684327, 0.92516327, 0.98723066, 0.7584871 , 0.51150715,
-       0.5771365 , 0.19546318, 0.33923376, 0.7210827 , 0.4719057 ,
-       0.88228285, 0.4834249 , 0.44763613, 0.6428865 , 0.74172354,
-       0.19584417, 0.9504348 , 0.8103864 , 0.61015654, 0.11952209,
-       0.11198425, 0.65789855, 0.26868832, 0.22580409, 0.6708101 ,
-       0.7302207 , 0.57062566, 0.65201867, 0.9946383 , 0.5601113 ,
-       0.05057418, 0.71463287, 0.11884773, 0.1031208 , 0.28432596,
-       0.9493371 , 0.08948135, 0.80336773, 0.3843887 , 0.11457741,
-       0.55385256, 0.62839055, 0.8865148 , 0.04919291, 0.00768876,
-       0.9908973 , 0.99392843, 0.7482102 , 0.22917128, 0.6784402 ,
-       0.2521174 , 0.08022249, 0.16221583, 0.2620312 , 0.91458595,
-       0.34076834, 0.06055832, 0.28423882, 0.24525833, 0.5696049 ,
-       0.9584749 , 0.04911828, 0.6506947 , 0.23799527, 0.89152527,
-       0.44339466, 0.91914105, 0.6150658 , 0.00865054, 0.9630414 ,
-       0.17887199, 0.5080507 , 0.02680862, 0.35734153, 0.1960988 ,
-       0.5021211 , 0.4158497 , 0.0636425 , 0.1450665 , 0.44525933,
-       0.3335749 , 0.09435642, 0.41428828, 0.2552979 , 0.02479839,
-       0.7610315 , 0.13119936, 0.03037941, 0.21997595, 0.20912468,
-       0.01997483, 0.62243176, 0.35034013, 0.9792695 , 0.5924152 ,
-       0.14128864, 0.02316236, 0.17168725, 0.80363035, 0.63792825],
+array([0.9027567 , 0.62425065, 0.8201971 , 0.527208  , 0.41396534,
+       0.82758033, 0.5288365 , 0.38327825, 0.09709716, 0.23363328,
+       0.50896263, 0.7590194 , 0.17011964, 0.8988272 , 0.3283522 ,
+       0.88666594, 0.86446285, 0.01178074, 0.8989016 , 0.93807924,
+       0.6083591 , 0.36750627, 0.79622936, 0.55519485, 0.11650658,
+       0.65157723, 0.28890097, 0.9825233 , 0.88861144, 0.68831944,
+       0.5839045 , 0.6038773 , 0.46507502, 0.9178356 , 0.3605219 ,
+       0.9921415 , 0.23289573, 0.84461486, 0.7918731 , 0.41578424,
+       0.57682455, 0.13426352, 0.4847386 , 0.68105924, 0.7355908 ,
+       0.8982395 , 0.11177492, 0.5470071 , 0.12767065, 0.636551  ,
+       0.85398936, 0.5885891 , 0.9522811 , 0.55156076, 0.5483254 ,
+       0.47479093, 0.7585926 , 0.7068069 , 0.13496864, 0.9430704 ,
+       0.16023445, 0.00137722, 0.85881364, 0.74494696, 0.21477783,
+       0.9410325 , 0.03414536, 0.11404002, 0.69787264, 0.83131003,
+       0.8802042 , 0.8053782 , 0.45944023, 0.35543776, 0.72830594,
+       0.35394847, 0.6955136 , 0.64491606, 0.72169936, 0.6726141 ,
+       0.6235976 , 0.31632876, 0.06785274, 0.9738995 , 0.61349654,
+       0.8516408 , 0.94514275, 0.19843233, 0.5123416 , 0.70605457,
+       0.64199543, 0.82579875, 0.47860146, 0.37357378, 0.5690578 ,
+       0.5520706 , 0.4493246 , 0.10918021, 0.44638765, 0.7698463 ],
       dtype=float32)&gt;</code></pre>
 </div>
 </div>
-<div id="0187227f" class="cell" data-execution_count="167">
+<div id="0187227f" class="cell" data-execution_count="268">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.hist(X, bins<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.hist(X)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -283,7 +287,7 @@ array([0.69684327, 0.92516327, 0.98723066, 0.7584871 , 0.51150715,
 </div>
 </div>
 <p>The distribution is more or less equal (uniform)</p>
-<div id="1dc4eb1d" class="cell" data-execution_count="168">
+<div id="1dc4eb1d" class="cell" data-execution_count="269">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.plot(X, Y, <span class="st">'go'</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.plot(X, <span class="fl">0.1</span><span class="op">*</span>X<span class="op">+</span><span class="fl">0.3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
@@ -294,7 +298,7 @@ array([0.69684327, 0.92516327, 0.98723066, 0.7584871 , 0.51150715,
 </div>
 </div>
 </div>
-<div id="aef034dc" class="cell" data-execution_count="169">
+<div id="aef034dc" class="cell" data-execution_count="270">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.plot(X.numpy(), Y.numpy(), <span class="st">"bo"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -304,11 +308,11 @@ array([0.69684327, 0.92516327, 0.98723066, 0.7584871 , 0.51150715,
 </div>
 </div>
 </div>
-<div id="a0612606" class="cell" data-execution_count="170">
+<div id="a0612606" class="cell" data-execution_count="271">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">0.3</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.plot(X.numpy(), Y.numpy(), <span class="st">"bo"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="fl">0.1</span><span class="op">*</span><span class="dv">0</span><span class="op">+</span><span class="fl">0.3</span>, <span class="fl">0.1</span><span class="op">*</span><span class="dv">1</span><span class="op">+</span><span class="fl">0.3</span>], <span class="st">"g:"</span>)  <span class="co"># Show linear regression line according to true w=0.1, b=0.3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [w<span class="op">*</span><span class="dv">0</span><span class="op">+</span>b, w<span class="op">*</span><span class="dv">1</span><span class="op">+</span>b], <span class="st">"g:"</span>)  <span class="co"># Show linear regression line according to true w=0.1, b=0.3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -317,8 +321,8 @@ array([0.69684327, 0.92516327, 0.98723066, 0.7584871 , 0.51150715,
 </div>
 </div>
 </div>
-<div id="7a5de212" class="cell" data-execution_count="171">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>w_guess <span class="op">=</span> <span class="fl">0.0</span></span>
+<div id="7a5de212" class="cell" data-execution_count="272">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>w_guess <span class="op">=</span> <span class="fl">0.5</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>b_guess <span class="op">=</span> <span class="fl">0.0</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.plot(X.numpy(), Y.numpy(), <span class="st">"bo"</span>)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="fl">0.1</span><span class="op">*</span><span class="dv">0</span><span class="op">+</span><span class="fl">0.3</span>, <span class="fl">0.1</span><span class="op">*</span><span class="dv">1</span><span class="op">+</span><span class="fl">0.3</span>], <span class="st">"g:"</span>) </span>
@@ -334,30 +338,30 @@ array([0.69684327, 0.92516327, 0.98723066, 0.7584871 , 0.51150715,
 </div>
 <p>The problem we are trying to solve is funding the correlation, fitting the red line to our green line. Getting the red line to fit the optimal solution (the green line point)</p>
 <p>We need to find the distance between our red line and the green line. We need to find our error - how far are we from correct answer.</p>
-<div id="2f134d5d" class="cell" data-execution_count="172">
+<div id="2f134d5d" class="cell" data-execution_count="273">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict(x, w<span class="op">=</span>w, b<span class="op">=</span>b):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> w <span class="op">*</span> x <span class="op">+</span> b</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Finding the loss (distance between the line and a point).</p>
 <p>Find distance between prediction of Y and true value of Y</p>
-<div id="27b6b69f" class="cell" data-execution_count="173">
+<div id="27b6b69f" class="cell" data-execution_count="274">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mean_squared_error(y_pred, Y):</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tf.reduce_mean(tf.square(y_pred <span class="op">-</span> Y))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="1e85c845" class="cell" data-execution_count="174">
+<div id="1e85c845" class="cell" data-execution_count="275">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_squared_error(predict(X), Y))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.0399093, shape=(), dtype=float32)</code></pre>
+<pre><code>tf.Tensor(8.431363e-05, shape=(), dtype=float32)</code></pre>
 </div>
 </div>
 <p>The loss is significant <code>0.12194605</code></p>
-<div id="c18df926" class="cell" data-execution_count="175">
+<div id="c18df926" class="cell" data-execution_count="276">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>w_guess <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>b_guess <span class="op">=</span> <span class="fl">0.3</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_squared_error(predict(X), Y))    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.0399093, shape=(), dtype=float32)</code></pre>
+<pre><code>tf.Tensor(8.431363e-05, shape=(), dtype=float32)</code></pre>
 </div>
 </div>
 <p>Matching our original values makes our loss far far lower <code>0.00011116295</code>. We are closer to our ideal solution.</p>
@@ -372,23 +376,569 @@ array([0.69684327, 0.92516327, 0.98723066, 0.7584871 , 0.51150715,
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>steps <span class="op">=</span> <span class="dv">200</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> tf.Variable(<span class="fl">0.0</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> tf.Variable(<span class="op">-</span><span class="fl">1.0</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>w_true <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>b_true <span class="op">=</span> <span class="fl">0.3</span></span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(steps):</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> tf.GradientTape() <span class="im">as</span> tape:</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        predictions <span class="op">=</span> predict(X, w<span class="op">=</span>w, b<span class="op">=</span>b)</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># comparing our predictions to the true Y values</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate current loss function</span></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> mean_squared_error(predictions, Y)</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    gradients <span class="op">=</span> tape.gradient(loss, [w, b]) <span class="co"># list of variables to modify</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># modify the weights</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    w.assign_sub(gradients[<span class="dv">0</span>] <span class="op">*</span> learning_rate)</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    b.assign_sub(gradients[<span class="dv">1</span>] <span class="op">*</span> learning_rate)</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Decide what direction to move</span></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Move in that direction</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> step <span class="op">%</span> <span class="dv">20</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"step </span><span class="sc">{</span>step<span class="sc">}</span><span class="ss"> loss </span><span class="sc">{</span>loss<span class="sc">.</span>numpy()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> tf.Variable(<span class="fl">0.0</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> tf.Variable(<span class="op">-</span><span class="fl">1.0</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(steps):</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> tf.GradientTape() <span class="im">as</span> tape:</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>        predictions <span class="op">=</span> predict(X, w<span class="op">=</span>w, b<span class="op">=</span>b)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># comparing our predictions to the true Y values</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate current loss function</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> mean_squared_error(predictions, Y)</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    gradients <span class="op">=</span> tape.gradient(loss, [w, b]) <span class="co"># list of variables to modify</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># modify the weights</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(gradients[0])</span></span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># print(gradients[0] * learning_rate)</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    w.assign_sub(gradients[<span class="dv">0</span>] <span class="op">*</span> learning_rate)</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    b.assign_sub(gradients[<span class="dv">1</span>] <span class="op">*</span> learning_rate)</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Decide what direction to move</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Move in that direction</span></span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> step <span class="op">%</span> <span class="dv">20</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"step </span><span class="sc">{</span>step<span class="sc">}</span><span class="ss"> loss </span><span class="sc">{</span>loss<span class="sc">.</span>numpy()<span class="sc">}</span><span class="ss">"</span>) </span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>        plt.plot(X, Y, <span class="st">"b."</span>)</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>        plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span><span class="op">*</span>w<span class="op">+</span>b, <span class="dv">1</span><span class="op">*</span>w<span class="op">+</span>b], <span class="st">"r:"</span>) </span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>        plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span><span class="op">*</span>w_true<span class="op">+</span>b_true, <span class="dv">1</span><span class="op">*</span>w_true<span class="op">+</span>b_true], <span class="st">"g:"</span>)</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>        plt.show()  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(-1.5663323, shape=(), dtype=float32)
+tf.Tensor(-0.15663324, shape=(), dtype=float32)
+step 0 loss 1.841741919517517</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(-1.1303513, shape=(), dtype=float32)
+tf.Tensor(-0.113035135, shape=(), dtype=float32)
+tf.Tensor(-0.81189096, shape=(), dtype=float32)
+tf.Tensor(-0.081189096, shape=(), dtype=float32)
+tf.Tensor(-0.5793143, shape=(), dtype=float32)
+tf.Tensor(-0.05793143, shape=(), dtype=float32)
+tf.Tensor(-0.40950036, shape=(), dtype=float32)
+tf.Tensor(-0.040950038, shape=(), dtype=float32)
+tf.Tensor(-0.2855524, shape=(), dtype=float32)
+tf.Tensor(-0.028555242, shape=(), dtype=float32)
+tf.Tensor(-0.1951221, shape=(), dtype=float32)
+tf.Tensor(-0.01951221, shape=(), dtype=float32)
+tf.Tensor(-0.12918511, shape=(), dtype=float32)
+tf.Tensor(-0.012918511, shape=(), dtype=float32)
+tf.Tensor(-0.0811464, shape=(), dtype=float32)
+tf.Tensor(-0.00811464, shape=(), dtype=float32)
+tf.Tensor(-0.046186343, shape=(), dtype=float32)
+tf.Tensor(-0.0046186345, shape=(), dtype=float32)
+tf.Tensor(-0.020782612, shape=(), dtype=float32)
+tf.Tensor(-0.0020782612, shape=(), dtype=float32)
+tf.Tensor(-0.0023611865, shape=(), dtype=float32)
+tf.Tensor(-0.00023611866, shape=(), dtype=float32)
+tf.Tensor(0.010959111, shape=(), dtype=float32)
+tf.Tensor(0.0010959111, shape=(), dtype=float32)
+tf.Tensor(0.020553108, shape=(), dtype=float32)
+tf.Tensor(0.0020553109, shape=(), dtype=float32)
+tf.Tensor(0.027425393, shape=(), dtype=float32)
+tf.Tensor(0.0027425394, shape=(), dtype=float32)
+tf.Tensor(0.03231015, shape=(), dtype=float32)
+tf.Tensor(0.003231015, shape=(), dtype=float32)
+tf.Tensor(0.03574395, shape=(), dtype=float32)
+tf.Tensor(0.0035743953, shape=(), dtype=float32)
+tf.Tensor(0.03811887, shape=(), dtype=float32)
+tf.Tensor(0.003811887, shape=(), dtype=float32)
+tf.Tensor(0.039721422, shape=(), dtype=float32)
+tf.Tensor(0.0039721425, shape=(), dtype=float32)
+tf.Tensor(0.040761046, shape=(), dtype=float32)
+tf.Tensor(0.0040761046, shape=(), dtype=float32)
+tf.Tensor(0.041390672, shape=(), dtype=float32)
+tf.Tensor(0.004139067, shape=(), dtype=float32)
+step 20 loss 0.012263456359505653</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(0.041722164, shape=(), dtype=float32)
+tf.Tensor(0.0041722166, shape=(), dtype=float32)
+tf.Tensor(0.041837193, shape=(), dtype=float32)
+tf.Tensor(0.0041837194, shape=(), dtype=float32)
+tf.Tensor(0.04179543, shape=(), dtype=float32)
+tf.Tensor(0.004179543, shape=(), dtype=float32)
+tf.Tensor(0.04164048, shape=(), dtype=float32)
+tf.Tensor(0.004164048, shape=(), dtype=float32)
+tf.Tensor(0.041404177, shape=(), dtype=float32)
+tf.Tensor(0.0041404176, shape=(), dtype=float32)
+tf.Tensor(0.041109815, shape=(), dtype=float32)
+tf.Tensor(0.0041109817, shape=(), dtype=float32)
+tf.Tensor(0.040774334, shape=(), dtype=float32)
+tf.Tensor(0.0040774336, shape=(), dtype=float32)
+tf.Tensor(0.040410172, shape=(), dtype=float32)
+tf.Tensor(0.0040410175, shape=(), dtype=float32)
+tf.Tensor(0.04002635, shape=(), dtype=float32)
+tf.Tensor(0.0040026354, shape=(), dtype=float32)
+tf.Tensor(0.039629493, shape=(), dtype=float32)
+tf.Tensor(0.0039629494, shape=(), dtype=float32)
+tf.Tensor(0.03922435, shape=(), dtype=float32)
+tf.Tensor(0.003922435, shape=(), dtype=float32)
+tf.Tensor(0.038814474, shape=(), dtype=float32)
+tf.Tensor(0.0038814475, shape=(), dtype=float32)
+tf.Tensor(0.038402375, shape=(), dtype=float32)
+tf.Tensor(0.0038402376, shape=(), dtype=float32)
+tf.Tensor(0.037989922, shape=(), dtype=float32)
+tf.Tensor(0.0037989921, shape=(), dtype=float32)
+tf.Tensor(0.037578415, shape=(), dtype=float32)
+tf.Tensor(0.0037578417, shape=(), dtype=float32)
+tf.Tensor(0.03716885, shape=(), dtype=float32)
+tf.Tensor(0.0037168849, shape=(), dtype=float32)
+tf.Tensor(0.036761895, shape=(), dtype=float32)
+tf.Tensor(0.0036761896, shape=(), dtype=float32)
+tf.Tensor(0.03635806, shape=(), dtype=float32)
+tf.Tensor(0.0036358058, shape=(), dtype=float32)
+tf.Tensor(0.035957668, shape=(), dtype=float32)
+tf.Tensor(0.0035957668, shape=(), dtype=float32)
+tf.Tensor(0.03556094, shape=(), dtype=float32)
+tf.Tensor(0.003556094, shape=(), dtype=float32)
+step 40 loss 0.0078764408826828</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(0.03516807, shape=(), dtype=float32)
+tf.Tensor(0.003516807, shape=(), dtype=float32)
+tf.Tensor(0.034779176, shape=(), dtype=float32)
+tf.Tensor(0.0034779178, shape=(), dtype=float32)
+tf.Tensor(0.03439427, shape=(), dtype=float32)
+tf.Tensor(0.0034394271, shape=(), dtype=float32)
+tf.Tensor(0.034013428, shape=(), dtype=float32)
+tf.Tensor(0.0034013428, shape=(), dtype=float32)
+tf.Tensor(0.033636667, shape=(), dtype=float32)
+tf.Tensor(0.0033636668, shape=(), dtype=float32)
+tf.Tensor(0.033263955, shape=(), dtype=float32)
+tf.Tensor(0.0033263955, shape=(), dtype=float32)
+tf.Tensor(0.032895304, shape=(), dtype=float32)
+tf.Tensor(0.0032895305, shape=(), dtype=float32)
+tf.Tensor(0.03253068, shape=(), dtype=float32)
+tf.Tensor(0.003253068, shape=(), dtype=float32)
+tf.Tensor(0.032170042, shape=(), dtype=float32)
+tf.Tensor(0.0032170042, shape=(), dtype=float32)
+tf.Tensor(0.031813372, shape=(), dtype=float32)
+tf.Tensor(0.0031813371, shape=(), dtype=float32)
+tf.Tensor(0.031460635, shape=(), dtype=float32)
+tf.Tensor(0.0031460635, shape=(), dtype=float32)
+tf.Tensor(0.031111801, shape=(), dtype=float32)
+tf.Tensor(0.0031111802, shape=(), dtype=float32)
+tf.Tensor(0.03076682, shape=(), dtype=float32)
+tf.Tensor(0.003076682, shape=(), dtype=float32)
+tf.Tensor(0.030425655, shape=(), dtype=float32)
+tf.Tensor(0.0030425654, shape=(), dtype=float32)
+tf.Tensor(0.030088257, shape=(), dtype=float32)
+tf.Tensor(0.0030088257, shape=(), dtype=float32)
+tf.Tensor(0.029754613, shape=(), dtype=float32)
+tf.Tensor(0.0029754613, shape=(), dtype=float32)
+tf.Tensor(0.029424649, shape=(), dtype=float32)
+tf.Tensor(0.002942465, shape=(), dtype=float32)
+tf.Tensor(0.029098341, shape=(), dtype=float32)
+tf.Tensor(0.0029098343, shape=(), dtype=float32)
+tf.Tensor(0.028775657, shape=(), dtype=float32)
+tf.Tensor(0.0028775658, shape=(), dtype=float32)
+tf.Tensor(0.028456554, shape=(), dtype=float32)
+tf.Tensor(0.0028456554, shape=(), dtype=float32)
+step 60 loss 0.00507228123024106</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-8.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(0.028140992, shape=(), dtype=float32)
+tf.Tensor(0.0028140992, shape=(), dtype=float32)
+tf.Tensor(0.02782893, shape=(), dtype=float32)
+tf.Tensor(0.0027828931, shape=(), dtype=float32)
+tf.Tensor(0.027520325, shape=(), dtype=float32)
+tf.Tensor(0.0027520326, shape=(), dtype=float32)
+tf.Tensor(0.027215129, shape=(), dtype=float32)
+tf.Tensor(0.002721513, shape=(), dtype=float32)
+tf.Tensor(0.026913319, shape=(), dtype=float32)
+tf.Tensor(0.002691332, shape=(), dtype=float32)
+tf.Tensor(0.02661486, shape=(), dtype=float32)
+tf.Tensor(0.002661486, shape=(), dtype=float32)
+tf.Tensor(0.026319701, shape=(), dtype=float32)
+tf.Tensor(0.0026319702, shape=(), dtype=float32)
+tf.Tensor(0.026027828, shape=(), dtype=float32)
+tf.Tensor(0.0026027828, shape=(), dtype=float32)
+tf.Tensor(0.025739193, shape=(), dtype=float32)
+tf.Tensor(0.0025739192, shape=(), dtype=float32)
+tf.Tensor(0.025453754, shape=(), dtype=float32)
+tf.Tensor(0.0025453754, shape=(), dtype=float32)
+tf.Tensor(0.025171466, shape=(), dtype=float32)
+tf.Tensor(0.0025171468, shape=(), dtype=float32)
+tf.Tensor(0.024892338, shape=(), dtype=float32)
+tf.Tensor(0.0024892339, shape=(), dtype=float32)
+tf.Tensor(0.024616286, shape=(), dtype=float32)
+tf.Tensor(0.0024616288, shape=(), dtype=float32)
+tf.Tensor(0.024343288, shape=(), dtype=float32)
+tf.Tensor(0.002434329, shape=(), dtype=float32)
+tf.Tensor(0.02407331, shape=(), dtype=float32)
+tf.Tensor(0.002407331, shape=(), dtype=float32)
+tf.Tensor(0.023806341, shape=(), dtype=float32)
+tf.Tensor(0.0023806342, shape=(), dtype=float32)
+tf.Tensor(0.02354234, shape=(), dtype=float32)
+tf.Tensor(0.0023542342, shape=(), dtype=float32)
+tf.Tensor(0.023281276, shape=(), dtype=float32)
+tf.Tensor(0.0023281276, shape=(), dtype=float32)
+tf.Tensor(0.023023095, shape=(), dtype=float32)
+tf.Tensor(0.0023023095, shape=(), dtype=float32)
+tf.Tensor(0.022767778, shape=(), dtype=float32)
+tf.Tensor(0.002276778, shape=(), dtype=float32)
+step 80 loss 0.003277217037975788</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-10.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(0.022515297, shape=(), dtype=float32)
+tf.Tensor(0.0022515298, shape=(), dtype=float32)
+tf.Tensor(0.022265606, shape=(), dtype=float32)
+tf.Tensor(0.0022265606, shape=(), dtype=float32)
+tf.Tensor(0.022018688, shape=(), dtype=float32)
+tf.Tensor(0.002201869, shape=(), dtype=float32)
+tf.Tensor(0.021774516, shape=(), dtype=float32)
+tf.Tensor(0.0021774515, shape=(), dtype=float32)
+tf.Tensor(0.021533059, shape=(), dtype=float32)
+tf.Tensor(0.002153306, shape=(), dtype=float32)
+tf.Tensor(0.021294266, shape=(), dtype=float32)
+tf.Tensor(0.0021294267, shape=(), dtype=float32)
+tf.Tensor(0.021058112, shape=(), dtype=float32)
+tf.Tensor(0.0021058114, shape=(), dtype=float32)
+tf.Tensor(0.020824596, shape=(), dtype=float32)
+tf.Tensor(0.0020824596, shape=(), dtype=float32)
+tf.Tensor(0.020593641, shape=(), dtype=float32)
+tf.Tensor(0.0020593642, shape=(), dtype=float32)
+tf.Tensor(0.020365264, shape=(), dtype=float32)
+tf.Tensor(0.0020365266, shape=(), dtype=float32)
+tf.Tensor(0.020139437, shape=(), dtype=float32)
+tf.Tensor(0.0020139439, shape=(), dtype=float32)
+tf.Tensor(0.019916093, shape=(), dtype=float32)
+tf.Tensor(0.0019916093, shape=(), dtype=float32)
+tf.Tensor(0.019695243, shape=(), dtype=float32)
+tf.Tensor(0.0019695244, shape=(), dtype=float32)
+tf.Tensor(0.019476837, shape=(), dtype=float32)
+tf.Tensor(0.0019476836, shape=(), dtype=float32)
+tf.Tensor(0.019260846, shape=(), dtype=float32)
+tf.Tensor(0.0019260846, shape=(), dtype=float32)
+tf.Tensor(0.019047234, shape=(), dtype=float32)
+tf.Tensor(0.0019047235, shape=(), dtype=float32)
+tf.Tensor(0.018836, shape=(), dtype=float32)
+tf.Tensor(0.0018835999, shape=(), dtype=float32)
+tf.Tensor(0.01862712, shape=(), dtype=float32)
+tf.Tensor(0.0018627121, shape=(), dtype=float32)
+tf.Tensor(0.018420562, shape=(), dtype=float32)
+tf.Tensor(0.0018420563, shape=(), dtype=float32)
+tf.Tensor(0.01821629, shape=(), dtype=float32)
+tf.Tensor(0.001821629, shape=(), dtype=float32)
+step 100 loss 0.0021281202789396048</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-12.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(0.018014267, shape=(), dtype=float32)
+tf.Tensor(0.0018014268, shape=(), dtype=float32)
+tf.Tensor(0.017814495, shape=(), dtype=float32)
+tf.Tensor(0.0017814495, shape=(), dtype=float32)
+tf.Tensor(0.017616922, shape=(), dtype=float32)
+tf.Tensor(0.0017616922, shape=(), dtype=float32)
+tf.Tensor(0.017421547, shape=(), dtype=float32)
+tf.Tensor(0.0017421547, shape=(), dtype=float32)
+tf.Tensor(0.01722836, shape=(), dtype=float32)
+tf.Tensor(0.0017228359, shape=(), dtype=float32)
+tf.Tensor(0.0170373, shape=(), dtype=float32)
+tf.Tensor(0.0017037301, shape=(), dtype=float32)
+tf.Tensor(0.016848356, shape=(), dtype=float32)
+tf.Tensor(0.0016848355, shape=(), dtype=float32)
+tf.Tensor(0.016661515, shape=(), dtype=float32)
+tf.Tensor(0.0016661516, shape=(), dtype=float32)
+tf.Tensor(0.016476743, shape=(), dtype=float32)
+tf.Tensor(0.0016476744, shape=(), dtype=float32)
+tf.Tensor(0.016294012, shape=(), dtype=float32)
+tf.Tensor(0.0016294012, shape=(), dtype=float32)
+tf.Tensor(0.016113317, shape=(), dtype=float32)
+tf.Tensor(0.0016113317, shape=(), dtype=float32)
+tf.Tensor(0.015934637, shape=(), dtype=float32)
+tf.Tensor(0.0015934637, shape=(), dtype=float32)
+tf.Tensor(0.01575793, shape=(), dtype=float32)
+tf.Tensor(0.001575793, shape=(), dtype=float32)
+tf.Tensor(0.015583178, shape=(), dtype=float32)
+tf.Tensor(0.0015583178, shape=(), dtype=float32)
+tf.Tensor(0.015410361, shape=(), dtype=float32)
+tf.Tensor(0.0015410361, shape=(), dtype=float32)
+tf.Tensor(0.015239462, shape=(), dtype=float32)
+tf.Tensor(0.0015239463, shape=(), dtype=float32)
+tf.Tensor(0.0150704635, shape=(), dtype=float32)
+tf.Tensor(0.0015070464, shape=(), dtype=float32)
+tf.Tensor(0.014903344, shape=(), dtype=float32)
+tf.Tensor(0.0014903344, shape=(), dtype=float32)
+tf.Tensor(0.014738066, shape=(), dtype=float32)
+tf.Tensor(0.0014738067, shape=(), dtype=float32)
+tf.Tensor(0.014574635, shape=(), dtype=float32)
+tf.Tensor(0.0014574635, shape=(), dtype=float32)
+step 120 loss 0.001392532605677843</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-14.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(0.014413001, shape=(), dtype=float32)
+tf.Tensor(0.0014413001, shape=(), dtype=float32)
+tf.Tensor(0.014253177, shape=(), dtype=float32)
+tf.Tensor(0.0014253177, shape=(), dtype=float32)
+tf.Tensor(0.014095127, shape=(), dtype=float32)
+tf.Tensor(0.0014095127, shape=(), dtype=float32)
+tf.Tensor(0.0139387995, shape=(), dtype=float32)
+tf.Tensor(0.00139388, shape=(), dtype=float32)
+tf.Tensor(0.013784226, shape=(), dtype=float32)
+tf.Tensor(0.0013784226, shape=(), dtype=float32)
+tf.Tensor(0.01363137, shape=(), dtype=float32)
+tf.Tensor(0.001363137, shape=(), dtype=float32)
+tf.Tensor(0.013480192, shape=(), dtype=float32)
+tf.Tensor(0.0013480192, shape=(), dtype=float32)
+tf.Tensor(0.013330704, shape=(), dtype=float32)
+tf.Tensor(0.0013330703, shape=(), dtype=float32)
+tf.Tensor(0.0131828645, shape=(), dtype=float32)
+tf.Tensor(0.0013182865, shape=(), dtype=float32)
+tf.Tensor(0.013036677, shape=(), dtype=float32)
+tf.Tensor(0.0013036677, shape=(), dtype=float32)
+tf.Tensor(0.012892103, shape=(), dtype=float32)
+tf.Tensor(0.0012892103, shape=(), dtype=float32)
+tf.Tensor(0.012749145, shape=(), dtype=float32)
+tf.Tensor(0.0012749145, shape=(), dtype=float32)
+tf.Tensor(0.012607761, shape=(), dtype=float32)
+tf.Tensor(0.0012607761, shape=(), dtype=float32)
+tf.Tensor(0.01246795, shape=(), dtype=float32)
+tf.Tensor(0.001246795, shape=(), dtype=float32)
+tf.Tensor(0.0123296855, shape=(), dtype=float32)
+tf.Tensor(0.0012329685, shape=(), dtype=float32)
+tf.Tensor(0.012192948, shape=(), dtype=float32)
+tf.Tensor(0.0012192948, shape=(), dtype=float32)
+tf.Tensor(0.012057733, shape=(), dtype=float32)
+tf.Tensor(0.0012057733, shape=(), dtype=float32)
+tf.Tensor(0.011924018, shape=(), dtype=float32)
+tf.Tensor(0.0011924019, shape=(), dtype=float32)
+tf.Tensor(0.011791784, shape=(), dtype=float32)
+tf.Tensor(0.0011791785, shape=(), dtype=float32)
+tf.Tensor(0.011661023, shape=(), dtype=float32)
+tf.Tensor(0.0011661024, shape=(), dtype=float32)
+step 140 loss 0.0009216518956236541</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-16.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(0.011531712, shape=(), dtype=float32)
+tf.Tensor(0.0011531712, shape=(), dtype=float32)
+tf.Tensor(0.011403834, shape=(), dtype=float32)
+tf.Tensor(0.0011403834, shape=(), dtype=float32)
+tf.Tensor(0.01127736, shape=(), dtype=float32)
+tf.Tensor(0.0011277361, shape=(), dtype=float32)
+tf.Tensor(0.011152307, shape=(), dtype=float32)
+tf.Tensor(0.0011152307, shape=(), dtype=float32)
+tf.Tensor(0.011028634, shape=(), dtype=float32)
+tf.Tensor(0.0011028635, shape=(), dtype=float32)
+tf.Tensor(0.010906326, shape=(), dtype=float32)
+tf.Tensor(0.0010906326, shape=(), dtype=float32)
+tf.Tensor(0.010785382, shape=(), dtype=float32)
+tf.Tensor(0.0010785382, shape=(), dtype=float32)
+tf.Tensor(0.0106657725, shape=(), dtype=float32)
+tf.Tensor(0.0010665773, shape=(), dtype=float32)
+tf.Tensor(0.0105474945, shape=(), dtype=float32)
+tf.Tensor(0.0010547495, shape=(), dtype=float32)
+tf.Tensor(0.010430526, shape=(), dtype=float32)
+tf.Tensor(0.0010430526, shape=(), dtype=float32)
+tf.Tensor(0.010314845, shape=(), dtype=float32)
+tf.Tensor(0.0010314845, shape=(), dtype=float32)
+tf.Tensor(0.010200448, shape=(), dtype=float32)
+tf.Tensor(0.0010200449, shape=(), dtype=float32)
+tf.Tensor(0.010087331, shape=(), dtype=float32)
+tf.Tensor(0.0010087331, shape=(), dtype=float32)
+tf.Tensor(0.009975474, shape=(), dtype=float32)
+tf.Tensor(0.0009975474, shape=(), dtype=float32)
+tf.Tensor(0.00986485, shape=(), dtype=float32)
+tf.Tensor(0.000986485, shape=(), dtype=float32)
+tf.Tensor(0.009755454, shape=(), dtype=float32)
+tf.Tensor(0.00097554544, shape=(), dtype=float32)
+tf.Tensor(0.009647273, shape=(), dtype=float32)
+tf.Tensor(0.00096472737, shape=(), dtype=float32)
+tf.Tensor(0.00954028, shape=(), dtype=float32)
+tf.Tensor(0.00095402804, shape=(), dtype=float32)
+tf.Tensor(0.009434488, shape=(), dtype=float32)
+tf.Tensor(0.0009434488, shape=(), dtype=float32)
+tf.Tensor(0.009329857, shape=(), dtype=float32)
+tf.Tensor(0.00093298574, shape=(), dtype=float32)
+step 160 loss 0.0006202204385772347</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-18.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(0.009226389, shape=(), dtype=float32)
+tf.Tensor(0.0009226389, shape=(), dtype=float32)
+tf.Tensor(0.009124077, shape=(), dtype=float32)
+tf.Tensor(0.0009124077, shape=(), dtype=float32)
+tf.Tensor(0.009022885, shape=(), dtype=float32)
+tf.Tensor(0.00090228854, shape=(), dtype=float32)
+tf.Tensor(0.008922811, shape=(), dtype=float32)
+tf.Tensor(0.00089228107, shape=(), dtype=float32)
+tf.Tensor(0.008823881, shape=(), dtype=float32)
+tf.Tensor(0.0008823881, shape=(), dtype=float32)
+tf.Tensor(0.008726042, shape=(), dtype=float32)
+tf.Tensor(0.0008726042, shape=(), dtype=float32)
+tf.Tensor(0.008629285, shape=(), dtype=float32)
+tf.Tensor(0.0008629285, shape=(), dtype=float32)
+tf.Tensor(0.008533576, shape=(), dtype=float32)
+tf.Tensor(0.00085335755, shape=(), dtype=float32)
+tf.Tensor(0.00843894, shape=(), dtype=float32)
+tf.Tensor(0.000843894, shape=(), dtype=float32)
+tf.Tensor(0.008345357, shape=(), dtype=float32)
+tf.Tensor(0.00083453575, shape=(), dtype=float32)
+tf.Tensor(0.008252811, shape=(), dtype=float32)
+tf.Tensor(0.0008252811, shape=(), dtype=float32)
+tf.Tensor(0.0081612915, shape=(), dtype=float32)
+tf.Tensor(0.00081612915, shape=(), dtype=float32)
+tf.Tensor(0.00807078, shape=(), dtype=float32)
+tf.Tensor(0.00080707803, shape=(), dtype=float32)
+tf.Tensor(0.007981269, shape=(), dtype=float32)
+tf.Tensor(0.00079812686, shape=(), dtype=float32)
+tf.Tensor(0.0078927465, shape=(), dtype=float32)
+tf.Tensor(0.00078927464, shape=(), dtype=float32)
+tf.Tensor(0.007805233, shape=(), dtype=float32)
+tf.Tensor(0.0007805233, shape=(), dtype=float32)
+tf.Tensor(0.0077186795, shape=(), dtype=float32)
+tf.Tensor(0.000771868, shape=(), dtype=float32)
+tf.Tensor(0.007633075, shape=(), dtype=float32)
+tf.Tensor(0.0007633075, shape=(), dtype=float32)
+tf.Tensor(0.0075484095, shape=(), dtype=float32)
+tf.Tensor(0.00075484096, shape=(), dtype=float32)
+tf.Tensor(0.0074647157, shape=(), dtype=float32)
+tf.Tensor(0.0007464716, shape=(), dtype=float32)
+step 180 loss 0.00042726114043034613</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-20.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tf.Tensor(0.007381947, shape=(), dtype=float32)
+tf.Tensor(0.0007381947, shape=(), dtype=float32)
+tf.Tensor(0.0073000733, shape=(), dtype=float32)
+tf.Tensor(0.00073000736, shape=(), dtype=float32)
+tf.Tensor(0.007219113, shape=(), dtype=float32)
+tf.Tensor(0.0007219113, shape=(), dtype=float32)
+tf.Tensor(0.0071390555, shape=(), dtype=float32)
+tf.Tensor(0.00071390555, shape=(), dtype=float32)
+tf.Tensor(0.007059889, shape=(), dtype=float32)
+tf.Tensor(0.0007059889, shape=(), dtype=float32)
+tf.Tensor(0.0069815833, shape=(), dtype=float32)
+tf.Tensor(0.00069815834, shape=(), dtype=float32)
+tf.Tensor(0.0069041736, shape=(), dtype=float32)
+tf.Tensor(0.00069041736, shape=(), dtype=float32)
+tf.Tensor(0.006827604, shape=(), dtype=float32)
+tf.Tensor(0.00068276044, shape=(), dtype=float32)
+tf.Tensor(0.006751899, shape=(), dtype=float32)
+tf.Tensor(0.00067518995, shape=(), dtype=float32)
+tf.Tensor(0.006677026, shape=(), dtype=float32)
+tf.Tensor(0.0006677026, shape=(), dtype=float32)
+tf.Tensor(0.0066029783, shape=(), dtype=float32)
+tf.Tensor(0.00066029787, shape=(), dtype=float32)
+tf.Tensor(0.0065297675, shape=(), dtype=float32)
+tf.Tensor(0.00065297674, shape=(), dtype=float32)
+tf.Tensor(0.0064573474, shape=(), dtype=float32)
+tf.Tensor(0.0006457348, shape=(), dtype=float32)
+tf.Tensor(0.00638574, shape=(), dtype=float32)
+tf.Tensor(0.000638574, shape=(), dtype=float32)
+tf.Tensor(0.006314908, shape=(), dtype=float32)
+tf.Tensor(0.00063149084, shape=(), dtype=float32)
+tf.Tensor(0.0062448834, shape=(), dtype=float32)
+tf.Tensor(0.00062448834, shape=(), dtype=float32)
+tf.Tensor(0.0061756144, shape=(), dtype=float32)
+tf.Tensor(0.00061756145, shape=(), dtype=float32)
+tf.Tensor(0.0061071375, shape=(), dtype=float32)
+tf.Tensor(0.0006107138, shape=(), dtype=float32)
+tf.Tensor(0.0060394253, shape=(), dtype=float32)
+tf.Tensor(0.00060394255, shape=(), dtype=float32)</code></pre>
+</div>
+</div>
+<div id="aaf299c7" class="cell" data-execution_count="278">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>gradients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="278">
+<pre><code>[&lt;tf.Tensor: shape=(), dtype=float32, numpy=0.006039425265043974&gt;,
+ &lt;tf.Tensor: shape=(), dtype=float32, numpy=-0.00365498848259449&gt;]</code></pre>
+</div>
+</div>
+<div id="30ab2425" class="cell" data-execution_count="279">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>w</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="279">
+<pre><code>&lt;tf.Variable 'Variable:0' shape=() dtype=float32, numpy=0.15535157918930054&gt;</code></pre>
+</div>
+</div>
+<div id="7fa59704" class="cell" data-execution_count="280">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="280">
+<pre><code>&lt;tf.Variable 'Variable:0' shape=() dtype=float32, numpy=0.266182005405426&gt;</code></pre>
+</div>
+</div>
+<div id="58a83d8f" class="cell" data-execution_count="281">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>w_true <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>b_true <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.plot(X, Y, <span class="st">"b."</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span><span class="op">*</span>w<span class="op">+</span>b, <span class="dv">1</span><span class="op">*</span>w<span class="op">+</span>b], <span class="st">"r:"</span>) </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span><span class="op">*</span>w_true<span class="op">+</span>b_true, <span class="dv">1</span><span class="op">*</span>w_true<span class="op">+</span>b_true], <span class="st">"g:"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 
 
@@ -468,7 +1018,7 @@ array([0.69684327, 0.92516327, 0.98723066, 0.7584871 , 0.51150715,
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/charlotteaiengineer\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

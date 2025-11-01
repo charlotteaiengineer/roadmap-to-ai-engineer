@@ -1,0 +1,1470 @@
+ right so
+we're going to be starting with a brief
+history of Neural
+networks uh ad yes I mean your study
+group can be a project group it can also
+be different it's up to you uh so we'll
+start with a brief history of neural
+networks talk about connectionism it's
+relation to cognition and the Brain uh
+and early models and their
+limitations and we'll be introducing
+modern neural networks and what they can
+compute that's the syllabus for today's
+class right and one last question so quu
+the section B show te but at the same
+time as section A that's just S3 right
+that's that's just
+siio so here's what we here for we all
+know that neural networks have basically
+taken over AI right uh We've applied
+them you're seeing them all around you
+theyve been successfully applied to
+every kind of pattern recognition
+prediction and Analysis problems we may
+be at the cusp of uh
+AGI uh and in essence these uh neural
+networks have established the state of
+the art in effectively every problem
+from math to physics to you name it
+right and in every C when by when they
+establish the state of the art they
+don't just establish the state of the
+art they exceed previous benchmarks by
+enormous margins and sometimes they
+they've solved problems that you could
+not solve using previous methods so you
+know here are some examples if you
+actually trace the history back
+we have been working on artificial
+neural networks for can anybody guess
+how
+long how long have we been working on
+artificial neuron networks
+anyone 40 to 60 years 40 to 60 years 20
+years 50 years 30 years okay I'll get to
+that in a few minutes right let me just
+say a very long time okay and for the
+longest time nothing useful was I mean
+we uh uh had our voice systems but
+nothing really gen generic came out and
+then all of the big breakthroughs sort
+of just piled on us around 2016 we've
+been working on speech recognition since
+the 1950s automatic speech recognition
+in early 2016 or series automatic speech
+recognition was a
+joke and then sometime around October
+2016 this article came out but the first
+time in known
+history an AI was better than human
+beings at recognizing speech a spe in on
+a specific speech task switchboard so
+here's the article Microsoft AI beats
+humans at speech recognition October 20
+2016 this was the first time it happened
+and this happened because now they began
+using neural networks here's another one
+again in uh early 2016 or even mid
+2016 Google translate which was the best
+translation system out there arguably
+was mostly a party trick you know you
+get together in parties you get and
+you'd say something and type something
+in English and asked you to translate it
+to Spanish then translate the Spanish
+back to English and then you'd all laugh
+merily at the rubbish that came out
+that's all it was good for and then
+around October 2016 again suddenly it
+became so good this was November 15 26
+2016 it became so good that now suddenly
+professional translators were using
+Google Translate to do the first cut
+what happened they began using neural
+networks or again uh games now for the
+longest time our metric for what was
+intelligent our standard was hot games
+like chess and go so uh there were some
+early naysayers who said AI could never
+outperform a human in chess but then in
+19 early in the early
+90s eventually uh chess game was
+automatic chess game was uh created that
+for the first time beat a human
+Grandmaster anybody know where that was
+built I the first chess game chess game
+to beat a human Grandmaster that was
+right here in CMU so uh it was called
+deep thought it was somebody's
+thesis uh and then it beat a Grandmaster
+the person who created it then went on
+to IBM and uh uh he built deep blue
+which actually beat Gary caspero so yeah
+1996 chess is beaten a human expert
+never beat the best chess game again but
+then we had something much more
+complicated go so it turns out that
+chess has something like 10 rais to 1
+128 uh States go has 10 raised to 16 so
+we figured that computers are never
+going to beat human and go you know go
+really requires
+intelligence and then guess when uh an
+automatic system first beat the human
+Champion 2016 this was Alpha go and
+today of course you
+have you have programs you can just
+download off the web and it can begin
+playing with itself and it can train
+itself to be so good that it will be
+alphao in a few hours right on your
+computer and all this is happening
+because we're using neural networks
+amazing
+H and so so on so here's one right uh
+this was the first example of someone
+automatically captioning images also in
+2016 Man in Black shed is playing a
+guitar this is an automatically
+generated
+caption uh by a system which just
+analyze this picture and it's right
+right construction worker or in safety
+vestors working on road two young girls
+are playing with a Lego toy well maybe
+this is not a young girl but it got it
+mostly right right boy is doing backflip
+on wakeboard man in blue wet suit is
+surfing on Wave I mean it's
+amazing this was in 2016 this was the
+first time we saw that a computer
+program could
+automatically uh caption images with
+such accuracy and that was because they
+were using neural
+networks and just going on now here's a
+a little uh test that Karan karanir
+Singh one of our teers from a few years
+ago tried he took a picture of himself
+and his home posted it on chat GPT and
+said chat GPT tell me about this picture
+and it began telling him things he never
+he he had never noticed it says the
+ceiling in the photo appears to have
+several noticeable water stains which
+could indicate potential water damage uh
+it says there are posters on the wallall
+it describes the furniture describes
+lighting and ventilation the ceiling has
+a light fixer and and an air vent this
+is a standard room with typical building
+amenities it's describ just from this
+much it's describing the bed and bedding
+and the overall condition appears
+somewhat cluttered with personal
+belongings spread out amazing right
+again thank you neural networks so
+here's where we are they are
+everywhere from astronomy to healthcare
+predicting stock markets and they're
+doing an amazing job so what are these
+neural
+networks in each case the neural network
+is some box into which some input goes
+in and something comes out like a voice
+signal might go in and the transcription
+would come out if it were performing
+speech recognition or an image goes in
+and a caption comes out or a game State
+goes in and a suggestion for the next
+move comes out so uh the Box basically
+takes in these inputs and generates
+these outputs but really what's in these
+boxes now to understand what's in these
+boxes we have to go back and understand
+that each of these tasks recognizing
+speech captioning images playing games
+these are intelligent tasks which in the
+natural world are powered by this the
+human brain so if we want to understand
+how to perform these tasks maybe we
+should just Begin by understanding the
+human brain right and even before the
+human
+brain we want to understand this
+business of
+cognition what is
+cognition so this act of
+thinking that's something we would like
+to understand here are all the things
+humans can do we can
+learn we can solve problems we can
+recognize patterns we can uh
+create and here's the best part you can
+just be having a shower and thinking
+with no additional input at all and you
+can come up with lovely things you can
+cogitate you can generate stuff
+spontaneously right so all of these are
+amazing capabilities that we would like
+to at artificially but to do this we
+need to understand how humans work and
+how do we
+work the problem is if the brain was
+simple enough to be understood we'd be
+too simple to understand it as Marvin
+Minsky said but that has never stopped
+us so we always tackle problems which
+are bigger than ourselves and we have
+tried and we have been trying for
+believe it or not well over 2,000
+years the first model for how the brain
+works was proposed by plate does anybody
+recognize this picture this one here
+School of Athens it's a School of Athens
+you can see this in the 16 chapel and
+every time I see this you know it shows
+all the scientific grades as recognized
+by the Western world around the 15th
+century in one painting it's a lovely
+painting I think this is Socrates I
+think this is
+Aristotle uh dienes
+uh and so on so uh anyway and plate was
+one of these and he was the first person
+to actually first recorded person
+because almost certainly they have been
+discussions of before them beforehand to
+have uh uh
+discussed what is or tried to analyze uh
+and come up with an theory for how the
+human brain works and and his model was
+called
+associationism so what is associationism
+we're familiar with this right we are
+all familiar with Ian pavo's experiment
+with uh uh dogs where he would uh feed a
+dog and ring a bell and then eventually
+every time he rang the bell the dog
+would drool because the dog had formed
+an association between food and the
+sound of the Bell so the idea in behind
+associationism is that the brain
+operates through forming these
+associations and in fact this idea was
+persisted for almost 2,300 Years
+starting from Plateau until Ian Pavo in
+the 20th century now again how does
+Association how do associations
+work think of
+lightning every time you see a lightning
+you generally hear a thunder after a
+while you form an association so later
+when you see a lightning you begin to
+expect Thunder you say hey here's a b of
+lightning you're going to hear thunder
+or alternately you might hear the
+thunder and then you're going to think
+lightning just struck somewhere near me
+you formed an association and it turns
+out that this kind of association
+between percepts is basically how
+machines work till today so the idea
+itself is beautiful and very powerful
+but then that doesn't explain everything
+right we know we form associations but
+then where are these associations
+stored and how are they
+stored for
+this again clearly they stored in the
+brain this was not something that was
+obvious to people for the longest time
+the idea that thought and intelligence
+lies in the brain is a fairly recent
+phenomen recent uh bit of knowledge but
+that was kind of understood by the 18th
+century and in the mid 1800s we got very
+powerful microscopes which actually told
+us what the brain was constructed of how
+it was constructed we knew that it was a
+mass of interconnected cells and these
+cells were given the name neuron not
+long
+afterwards and so here's what the brain
+looks like lots of
+neurons each
+neuron is connect each neuron gets has
+incoming connections from many
+neurons each neuron connects out to many
+neurons and so the brain is a network of
+neurons but then how does this network
+actually allow us to store those
+associations and and form
+influences for that here's the answer to
+my earlier question the first person who
+came up with a model for how the brain
+works was this guy Alexander Bane who
+was a philosopher psychologist
+mathematician logician linguist and a
+Prof Professor uh back in the in those
+days if you were one thing you you were
+all of them and unlike today it was not
+easy to be a professor it was really
+hard and he was a professor and he came
+up with the first model that the
+information is stored in the connections
+in the brain this was in his book mind
+and body written in
+1873 and so uh here is
+here here's how he tried to explain it
+believe it or not the first artificial
+neural network model dates back to
+1873 how many years ago was that
+anyone what would that answer
+be 20 152 right 150 years more than 150
+years is how old it is and so uh here
+are some
+models uh okay can you
+just here here are some examples of
+uh how he tried to explain things he
+said neurons excite and stimulate each
+other and so that the manner in which
+the brain operates and how it stores
+percepts is all in how they are
+connected these neurons are connected
+and he hypothesized that even for a
+fixed connection different combinations
+of inputs can result in different
+outputs which allows for different kinds
+of associations to be recalled by the
+same network so here for example here's
+a network of six neurons and let's
+assume that all of the inputs are 01
+right if a and b are high that is if
+they fire X
+fires if a and C fire
+then Z fires if B and C fire y fires so
+it's the same network but for different
+combinations of inputs different outputs
+are
+obtained or here's another circuit where
+there's a single network but depending
+on the strength of the input the output
+patterns can be different X for instance
+receives two copies of the input with a
+short delay y receives three copies with
+a much longer delay and so
+one second
+uh sorry about that just asking my
+family to quiet down a bit okay so
+here's a circuit where uh you know
+a single circuit produces different
+outputs depending on the strength of the
+input now this seems like an obvious
+thing to us these days that you can have
+a singles Network a single function that
+generates different outputs for
+different inputs but in the 19th century
+this was somewhat of an anathema and
+Bane even proposed a learning mechanism
+he said when two Impressions concur or
+closely succeed one another the nerve
+currents find some Bridge or place of
+continuity according to the abund
+abundance of nerve matter uh available
+for the transition he was predicting
+heavan learning so obviously you know
+very powerful ideas but the problem was
+that people mocked him they doubted him
+back in the 1870s these ideas which seem
+so obvious to us were outlandish and
+eventually they managed to convince him
+that he was wrong so as bertran Russell
+says the fundamental cause of the
+trouble is that in the modern world the
+stupid are cocka while the intelligent
+are full of doubt and so in 1873
+postulated that there must be 1 million
+neurons and 5 billion
+connections to that are required to
+obtain 200,000
+Acquisitions then after a lot of thought
+by in 10 years he realized that you
+don't have you don't always have
+complete Acquisitions you have to go
+through the process of building them up
+and that any given time you will have
+partially formed associations and so
+you're going to need neurons to store
+those too and eventually he figured by
+1903 that no this is this idea doesn't
+work the brain would need too many
+neurons and connections for it to work
+this way and so he recanted all his
+ideas apologized to all of his
+colleagues and then
+died as it turns out his colleagues were
+wrong he was right and the human brain
+is a connectionist machine a machine
+where which is composed of lots of
+simple units and the information lies in
+the manner in which these units are
+connected
+neurons connect to other neurons the
+processing capacity of the brains is a
+function of these connection connections
+so connectionist machines emulate the
+structure and so here is what a
+connectionist machine looks like it's a
+network of processing elements very
+simple elements and all World Knowledge
+is stored in the connections between
+elements and this is fundamentally
+different from the kind of computers
+that you have today so does any body
+know the architecture of the modern
+computer processor what is the
+architecture
+anyone what's the architecture of the
+processor on your phone it's a one nman
+right what distinguishes the one one
+nman architecture what's special about
+it what's special about the one n
+architecture how does it work
+anybody you have separate uh processing
+and data you separate the processor from
+the memory right there you have variant
+on it called the Princeton M
+architecture the and the Harvard
+architecture but the be key idea is this
+that you have a processor the date and
+you have memory the programs and data
+live in the memory and the same
+processor can perform different things
+by running different programs so you can
+use the same processor to do all kinds
+of different tasks simply by changing
+the program in the memory which is what
+makes your uh phone phone or your laptop
+or your super computer so powerful you
+have the same computer which can do all
+kinds of things in a connectionist
+machine this is not true the program
+lies in the connection between the units
+so the computer is the program if you
+want to change the program you have to
+change the computer itself which is why
+we never actually built physical neural
+networks we emulate them on a one one
+nyman
+machine and so to recap neural network
+based AI has taken over most AI tasks
+these originally began as computational
+models of the brain or more generally as
+models of cognition the earliest model
+of cognition was associationism and the
+more recent model is connectionist where
+neurons connect to neurons and the
+working of the workings of the brain are
+connect encoded in these
+connections current neural network
+models are connectionist machines and so
+we have our first poll you're all going
+to pretend that you didn't see what just
+popped up and we will release our
+first can you see the
+poll yes
+yeah there are two questions are the p
+[Music]
+okay 10 seconds guys the poll should be
+showing up on your screen if you're if
+you're on
+Zoom this sometimes
+happens okay so let me stop right I'll
+end the
+poll
+and share the
+results can you see the answers okay I
+just stop sharing and let's look at this
+first question what is the answer
+everybody Bane right second question I
+didn't actually give you the answer to
+this question I usually do that during
+the lecture but today I decided to you
+know let you guys guess roughly how many
+connections exist between neurons and
+the Brain B brain 100 trillion right it
+turns out that uh you know Alexander
+Ban's assumption that we will not we do
+not have enough connections did not hold
+water he thought there just weren't you
+know 5 billion connections and 1 million
+neurons were too many no we actually
+have 80 billion neurons in this little
+head of ours and 100 trillion
+connections and so uh the uh
+uh that's why we are able to store all
+of these uh percepts now to answer the
+rishab we will get to that how do
+connections explain associationism
+associations are about uh
+need are about patterns one pattern
+triggers another pattern and so we're
+going to need models to explain that
+right so here's where we are
+connectionist
+machines uh no I you don't connectionist
+machines are networks of processing
+elements all World Knowledge is stored
+in the
+connections
+now these elements what are these
+elements for that we going to go back to
+the
+brain so the basic elements in the brain
+are neurons and here's what a neuron
+looks like it's got a big head called
+the Soma with lots of these little
+tendrils which are called dendrites
+through which signal coming from other
+neurons if the total signal coming into
+the neuron exceeds some threshold it
+fires roughly speaking and then that
+signal travels down this long
+arm and goes to other neurons this long
+arm over here is called axon this is the
+most important part of the neuron
+because it's so long and so it's
+protected by this sheath called the myin
+sheath which is made of fat and so
+because neurons and the Brain
+capacity lies in the connections between
+neurons neurons cannot split if they
+split the connections would break down
+so neurons do not undergo cell division
+the brains you have now are all the
+brains you're going to have more or less
+and then secondly it turns out that this
+fat that protects the axons this long
+leg that's the most important part too
+so having it turns out that having more
+neurons in your head doesn't explain
+intelligence
+having more
+fat gal cells to protect these neurons
+explains more intelligence so so
+somebody actually uh stored a bit of
+Einstein's brain and they tried to study
+it to see how it was different and they
+found he had more fat in his head than
+most people so actually being a fat head
+is a compliment because it means you're
+smarter than others
+anyway
+so
+uh we need models right
+for the new so here the first model for
+the neurons came from these two gs Meo
+and pits Warren Melo was a
+neurophysicist Walter pittz was a
+homeless guy who knocked on melo's door
+and somehow Melo let him in and they
+worked on this crazy problem so anybody
+want to guess which is Meo and which is
+pits over
+here
+anyone first one pits first one is pits
+yeah so this is Warren mof obviously
+he's the prop for the wine and Walter
+Petz was very young he was about
+uh 20 years old 90 years old when he
+ended up in meelo's door so they came up
+with this model called the mathematical
+model for the neuron and for the first
+time we had a model a mathematical model
+for parts of the brain units of the
+brain and they they introduced this
+notion that then then that the brain can
+be modeled as performing propositional
+logic where each neuron evaluates the
+truth value of its inputs it evaluates
+propositions effectively these this is
+Boolean logic plus a little more so they
+focused on the Boolean aspect of it and
+here's how they explained it they say
+the neuron had neurons connect to other
+neurons through two kinds of
+connections these are the excitatory
+synapses the synapses are how neurons
+connect to one another
+and inhibitory synapsis so signals come
+in through the excitatory syapse if the
+total signal exceeds a threshold the
+neuron fires unless there's a signal
+through the inhibitory syapse if there's
+any signal coming down the inhibitory
+signs the neuron will no longer fire so
+here are some
+examples here in each case you must
+assume that if there are two or more
+inputs the neuron will fire here's one
+if neuron one fires neuron 2 receives
+two
+inputs which matches the threshold it
+will fire so this is just a
+delay what is this one what kind of
+Boolean operation will this
+perform
+anyone that's an R right if either one
+or two fire this receives two inputs and
+it will fire what about
+this that's an an right and what about
+the one on the right
+this is a crazier one one must fire and
+two must not fire so it's one and not
+two so it's more complex it's not an exr
+it's one and not two specifically right
+and so and then they also showed that
+you can come up with even more
+complicated logic here for example if
+you're trying to model Sensations and
+sens sensations of heat and cold it's a
+well-known fact that if you touch a cold
+object for a very short period of time
+your first sensation is heat it's only
+extend exposure that gives you a
+sensation of cold so focus on the cold
+receptor if you are touching a cold
+object and you just touched it very
+briefly at the very first instant You'
+get a cold response here but then the
+second input is coming through this
+delay and so since you get only one
+response you're not going to feel cold
+on the other hand you know if if you
+touch cold very shortly this guy will
+fire after one time instant that causes
+this guy to fire fire after two time
+instance that causes the heat sensation
+to fire so if you touch cold very
+briefly you'll feel heat but if you have
+extended
+exposure then by the second instant this
+guy continues to Fire and this
+inhibitory syapse will block this neuron
+and you no longer feel heat on the other
+hand down here you're going to get one
+signal from here you're going to get a
+delayed signal from here and you will
+feel cold so this very simple model
+could actually explain some pretty
+complicated
+phenomenon so they claimed all sorts of
+things about their model they said they
+should their models should be able to
+compute a class of functions that if a
+tape is provided it can compute a richer
+class of functions that they equivalent
+to Turing machines all of which is true
+they didn't have many strong results of
+their own but most importantly they
+didn't provide a learning mechanism for
+that you know how does the brain learn
+its connections for that we had to wait
+for this cut HEB uh who wrote this book
+called organization of behavior in
+1949 like all the scientists of the day
+he was another eccentric person who
+started Life as a novelist then became a
+farmer then became a hobo then a school
+teacher then finally gave gave it all up
+and joined Harvard and became a
+psychologist and he proposed a learning
+mechanism which he explained In This
+Very Crazy
+text which people you know when an axon
+of cell a is near enough to excite cell
+b and repeatedly or persistently takes
+part in firing it some growth process or
+metabolic change takes place such that a
+efficiency is one of the cells firing
+bees increased now it sounds complex but
+roughly speaking we like to summarize it
+as neurons that fire together wire
+together how does that work now when you
+have two neurons connecting they don't
+actually touch one another the first
+neuron has an axonal connection which is
+this bulb and anytime the first neur
+neuron fires some chemicals are emitted
+from here which cause the second neuron
+to Fire and if the connection of the
+first if the excitation of the first
+neuron causes the second neuron to fire
+then the resulting uh effect is to make
+this bulb slightly larger which means
+that the connection becomes stronger so
+a mathematical model for this is that
+the weight of the connections between
+two neurons
+wxy is always going to be inre
+ined by x * y if both X and Y file then
+W
+increases this is called the hian rule
+and it's a very powerful idea it's
+actually the basis of many learning
+algorithms in machine
+learning but it has a fatal problem what
+is that
+anybody what's the problem with this one
+it doesn't decrease right it always
+keeps increasing so it's fundamentally
+unstable stronger connections will keep
+enforcing themselves there's no notion
+of competition eventually if you wait
+long enough all of the weights are going
+to be so high that the network is not
+going to be doing anything
+useful and so people try to fix this
+they came up with all kinds of updates
+like the generalized hian Rule and so on
+but wasn't really a solution
+till something happened but before that
+here's our second
+poll let me release the second
+po
+uh can you folks see the PO
+okay 10 seconds guys everybody's got
+it are these the PS that determine
+attendance yes unless you have some
+issues with the polls right okay all
+right let me stop the
+poll 45
+seconds share results
+now let me stop sharing what is the
+answer
+guys
+anybody number two right
+perfect so here we
+are but then so heavan learning has a
+problem and the solution to that came
+from this guy Frank Rosen BL who was a a
+logician and a psychologist in Yale and
+and he invented what we now know as the
+perceptron although his perceptron was
+more complex than what we are familiar
+with he was trying to explain human
+vision and so here was his model he said
+that uh sens sensors from the retina
+excited a layer of neurons in something
+called uh the A1 area the projection
+area and these would exite neurons in
+the association area and then these
+would finally excite your responses it
+was a pretty complicated model
+and had many units but the basic unit
+you know which can at some level uh we
+simplifi to this you have the sensory
+units and then you have the associative
+layer where each neuron receives inputs
+from many
+sensors and uh response to it and uh
+then these associative layer layer
+neurons then uh trigger the response
+neurons so uh the uh individual neurons
+themselves over
+here had this kind of structure they
+received many inputs corresponding to
+each input was a weight if the weighted
+sum of all inputs exceeded some
+threshold the neuron would fire it would
+output a one otherwise it would output a
+zero so zon unbounded meanings it can
+just keep increasing until it saturates
+and cannot so the there's no cap to it
+right uh
+anyway so uh here here it is the
+weighted sum of inputs if it exceeds a
+threshold it will F otherwise it will
+not so I can also state it like so if
+the weighted sum of inputs minus a
+threshold
+is positive the unit will fire otherwise
+it will not is this making sense this
+figure the simple
+explanation yes no
+all right and so here's where we are
+right now originally this was the model
+that uh Rosen blat was uh pitching the
+units of the model were this guy this
+simple
+Petron and Rosen bl's original model was
+pretty powerful if you became if it
+became large enough so it was originally
+assumed that it could represent any
+Boolean circuit and perform any logic so
+you had had these you know glowing news
+articles like the embryo of an
+electronic computer that the Navy
+expects will be able to walk talk see
+reproduce itself and be conscious of its
+existence Frankenstein monster designed
+by Navy that thingss this this was all
+in
+1958 they overstated the capability of
+the ne this this simple perceptron so
+much that Rosen blood couldn't match it
+and uh research funding dried up for a
+decade but then more importantly
+uh on the researcher end although this
+is you know this larger model is
+roughly uh is at some level infinitely
+capable they began making the same
+assumption about the individual units in
+the model and that's where things really
+fail now if you now Rosen blot actually
+didn't just introduced
+the pitron he also introduced a learning
+rule for these guts and the learning
+rule was very similar to The heavan
+Learning rule with one difference in the
+hean learning rule there's no notion of
+a
+Target If X and Y fire the weight goes
+up here he introduced the notion of
+supervision and a Target so every neuron
+had a Target and so
+anytime uh there was an error between
+the target of the neuron and the actual
+output of the neuron then the weight was
+updated
+in proportion to both the error and the
+input if the neuron was doing the right
+thing it would not get updated and this
+simple update rule he actually proved
+that even the simple units can give you
+perfect answers for linearly separable
+classes now here again is the neuron
+right you have many inputs you computer
+weighted some of the inputs if it
+exceeds a threshold or matches it you f
+it fires you can see that even that
+simple unit is very powerful so here are
+examples of perceptrons where I'm
+assuming that the threshold the value
+inside the circle is a threshold the
+value about the arrows is are the
+weights if the perceptron has a uh uh
+you know if the total input matches the
+threshold the perceptron will
+fire can anybody tell me what this
+perceptron
+is that's an and right so both X if both
+X and Y fire the total input is two this
+is an and what about this
+guy what is this one if either X or Y
+fire the total input is one it's an or
+right what about this
+one it's a n right if x is one the total
+input is minus one it won't fire if x is
+zero the total input is zero it will
+fire so you know even the simple unit is
+very powerful it can model any Boolean
+operation
+but there's no setting for these weights
+that can actually create an
+exort and so once this realization
+struck in then people sort of uh uh got
+stuck on this problem and research in
+the area stalled for a while but then
+the answer was already available you
+want to network them individual elements
+are weak computational elements you need
+to network them now go back and consider
+the brain the brain is not just one
+neuron it has many neurons which are
+connected to one another and so once you
+begin connecting neurons to each other
+all kinds of things are possible here
+for example is the exor this cannot be
+done by a single perceptron but in this
+example I've connected up three
+perceptrons this one Con computes X or Y
+this computes not X or not Y and this
+one ands These two outputs and the
+result is going to be an XR of X and Y
+now observe that you're not interested
+in the in outputs of these individual
+neurons only on the input of output of
+this guy so this is called the output
+neuron although these need not
+necessarily be hidden the fact that
+their individual outputs are not of
+particular interest specific interest to
+you uh means that even if they were
+hidden it wouldn't matter so we call
+call them the hidden layer so this is
+the hidden layer and this is the output
+and what we find is that by networking
+up neurons now we can compute an exor in
+fact you can compute any Boolean
+function once you begin networking
+neurons so here is a a pretty
+complicated Boolean function of four
+inputs and simply by connecting up the
+perceptrons in this manner you can
+compute this Boolean function so what
+this means is that a network of
+perceptrons can compose arbitrarily
+complicated Boolean functions in
+cognitive terms it means that they can
+compute arbitrary Boolean functions over
+sensory
+input and
+so perceptrons this is what we will now
+call a multi-layer perceptron you have
+more than one perceptron they are
+connected up in a network and the
+perceptrons themselves are arranged in
+layers what is a layer we we'll get a
+formal definition of this in the next
+class but you can visually uh observe
+that there are layers so this is a
+multi-layer perceptron and what we find
+is that multi-layer perceptrons can
+compose any Boolean function and so uh
+here is the story so far neural networks
+began as computational models of the
+brain they're connectionist machines
+they comprise networks of neural
+units and the first computational model
+model for the neurons was the MEO and
+pits model where neurons act as Boolean
+threshold units and this models the
+brain is performing for propositional
+logic uh the first learning rule was
+HEBs learning rule neurons that fire
+together wire together it's
+unstable and Rosen blots perceptron was
+a variant of the Melo and P neuron with
+a provably convergent learning rule but
+then the individual units are limited in
+their capacity but if you connect up
+Rosen Bloods seon into multi-layer
+networks they can model arbitrarily
+complex Boolean
+functions
+questions any
+questions no
+okay so before I continue though is our
+brain
+Boolean is it are we only performing
+Boolean Logic No right why not
+so are the inputs we receive
+Boolean clearly not right we have real
+valued inputs we also make non- Boolean
+inferences and predictions right things
+are analog so how can this model work on
+this kind of input and
+output let's see let's go back to the
+perceptron but now let's consider that
+these inputs are real valued X1 through
+xn are real valued the weights are also
+real valued it still operates the same
+way it obtains a weighted sum of inputs
+if this weighted sum exceeds a threshold
+it fires the output is Boolean otherwise
+it doesn't fire what kind of function
+will this be anybody want to
+guess what kind of function would this
+be so here's what it's going to look
+like
+right what is the
+boundary between the
+inputs where the output is one and where
+the output is zero the boundary is where
+the summation of the inputs is exactly
+equal to the threshold right so in other
+words the boundary between the when the
+output is one and where the output is
+zero is given by summation wixi equals T
+now before that I want to introduce a
+notion of how this model can be restated
+I can say this different I can say that
+I'm first Computing a weighted sum of
+inputs plus a bias so this in other
+words you first compute an aine function
+of the
+inputs and this apine value is now put
+through a threshold function what is
+called an activation where the threshold
+activation outputs of one if the input
+is positive and zero otherwise right now
+uh and so does anybody know the
+difference between aine and uh
+linear
+anyone the bias right so just we'll uh
+get back to that in in the next class
+but here's what the P perceptron looks
+like it first computes a weighted sum
+plus a bias of the input that's the fine
+and let me see if I can mark this up uh
+if I
+have uh
+you know I if I consider to
+axes a function of this
+kind is is a line but it's not going
+through origin right so this is
+aine but if this goes if if a line goes
+through origin this is linear that's the
+basic definition of uh the the aine
+versus linear and so first you compute
+an fine value of the inputs and then you
+put it through a threshold activation
+how do I erase this
+can I erase
+it okay so that's what we do
+right and let's see how this operates
+right now but once you redraw it like
+this you can do other kinds of things
+you can compute an aine function and put
+it through kinds of activations besides
+the threshold like this smooth threshold
+which is called a sigmoid or something
+like this which is called a uh this is a
+Rec ification function uh also called a
+rectified linear unit this is the smooth
+version of it called the soft plus and
+so on so just this simple modification
+allows us to do different things but
+anyway for now let's continue assuming
+the threshold activation okay how does
+this function
+behave the boundary between when the
+output is one and when the output is
+zero is when the weighted sum of inputs
+is exactly equal to the threshold
+this is the equation of a hyper plane
+correct when the weighted sum of inputs
+X matches a threshold that's the
+equation that's an a fine equation an
+equation of a plane of this kind
+right yes or
+no and
+so what we have is this there is this
+boundary where they waited some of input
+exactly equals the
+threshold for all inputs on one side of
+this boundary the output is zero on all
+inputs on the other side the output is
+one so the function this perceptron
+itself models this heavys side function
+or step function where there's a linear
+boundary where on out one side the
+output is one on the other side the
+output is
+zero and now you can see why a
+perceptron can be a b different Boolean
+Gates right so when you inputs are
+Boolean the inputs if I have two inputs
+the inputs can only be 0 0 1 0 1 1 or 0
+1 if I have a perceptron where the
+boundary between one and zero is this
+line what gate did it
+encode right that's an R if it's this
+line what gate did it
+encode an and right and over
+here this one just ignore X2 and it's
+just not X1 right so very simple you can
+just see how by changing the weights you
+can get different Boolean Gates but then
+once you realize you can do something of
+this kind you can do crazier things so
+let's say I want to build a network a
+multi-layer perceptron which will output
+a one when the input is inside this
+Pentagon and a zero
+outside how would I do it I can start
+off with one perceptron
+which captures this lower boundary it
+outputs a zero on this side of the
+boundary and a one above it a second
+perceptron captures this boundary it
+outputs a zero here and a one on the
+yellow side the third perceptron
+captures this one right it outputs a
+zero above this line and one below it
+the fourth one captures this boundary
+and the fifth one captures this boundary
+which is the only region where all five
+perceptrons output are one anybody
+where do all five perceptrons output of
+one inside the Pentagon right so what
+more do I need to do to construct a
+network that outputs a one inside the
+Pentagon and zero
+outside and them I can just and them
+right and so voila I have this little
+Network which outputs a one inside a
+pentagon and zero outside but once I can
+do this I can do crazier things I can
+build a network which outputs are one if
+the input is anywhere within this double
+Pentagon and zero outside how one subnet
+outputs a one inside the lower
+Pentagon the second one outputs a one
+inside the upper pentagon or the two and
+here is this network that will output a
+one within the double Pentagon and zero
+outside and yes lines are more generally
+uh
+so what do you mean by hyper plane of
+three axis this is in this case here I
+just have two axes I have two
+inputs so this one
+here so the I have two inputs the word
+third axis is
+one so this is the
+line which separates the region between
+the one and the zero the output is zero
+on this side and one on the other side
+do that answer your
+question sh
+right so here we are and now of
+course now I can construct other kinds
+of crazy complex decision boundaries I
+just have to decompose it like so I can
+build pretty much any decision boundary
+that I want right amazing and so when
+you think of classification problems
+inputs live in some high dimensional
+space for example if you're classifying
+digits this is an example from mest this
+thing has to 78 it's it's a 784 pixel
+image it's essentially an input in the
+in a 784 dimensional space in that space
+there's some region within which all the
+twos lie and so if I want to build a
+network that can recognize twos I just
+have to use this Simple Theory to build
+a network that isolates the region
+within this what have region which have
+shown as a peanut over here and that
+will output a one for for inputs inside
+that region and zero side and now I have
+a two classifier and in fact I can model
+any decision boundary in this manner
+therefore
+MLPs can classify any real valued input
+you give me a decision boundary I can I
+can build an MLP that approximated to
+approximates it to arbitrary Precision
+with by composing it from hyperplanes so
+MLPs are Universal classifiers did this
+make sense
+yes or
+no that makes sense
+guys okay
+tastic and so the story so far MLPs are
+connectionist computational
+models uh so luuka will get to that
+right uh so in a
+minute MLPs are connectionist
+computational models individual
+perceptrons are computational equivalent
+of
+neurons and the MLP is a layered
+composition of many such multi-layered
+perceptron is a layered composition of
+many such perceptrons they can model any
+Boolean function individual perceptrons
+can act as Boolean Gates networks can be
+Boolean functions so M MLPs are
+Universal Boolean functions they can
+model any Boolean function they can
+model any decision boundary individual
+perceptrons captur linear
+boundaries complex boundaries can be
+composed from the linear boundaries so
+which means MLPs can represent arbitrary
+decision boundaries so they can be go to
+classify data in other words they are
+not Universal Boolean machines they can
+compose any Boolean function they
+Universal classifiers they can compose
+any classification boundary so here is
+my third
+poll
+and let's see
+okay I'm giving you only 40 seconds for
+this
+guys 10 seconds
+all
+right
+okay so here's what here's how you have
+replied does anybody want to give me the
+answer what is the
+answer
+anyone it's seven you're going to need
+six for each of the sides of the polygon
+and a seventh to end them all right it's
+not six it's
+seven perfect thank you guys seven is
+the correct answer but then that's only
+for classification
+and uh classification of real valued
+inputs but what about continuous valued
+outputs classification has categorical
+or B or Boolean outputs even even though
+the input is real valued but functions
+can also have real valued outputs how do
+you do that so I'm going to explain this
+using a simple function of a scalar
+input a scalar output of a scalar input
+this function we want to take a single X
+X and compute a function of it first I'm
+going to compute this circuit this
+network this perceptron fires if x
+exceeds the input threshold
+T1 this perceptron fires if it exceeds
+the threshold
+T2 so what happens is X x goes from
+minus infinity to plus infinity so long
+as X is below T1 both of them output
+zero the net output is zero if x exed T1
+assume T1 is lesser than T2 right then
+this neuron begins outputting a one and
+then this neuron continues to Output a
+zero and so the total output here is
+going to be one as X continues to
+increase eventually it will exceed
+T2 at that point this one will also
+output a one and these two will cancel
+each other because their weights are 1
+and minus one respectively and the
+output goes back to zero so this the
+Network outputs are one between T1 and
+T2 and zero everywhere
+else this making sense do you guys yes
+no right and anybody want to tell me how
+I can model an arbitrary function with
+this how would I model this an arbitrary
+function with this
+anyone here's what I can do right let's
+say I have this crazy function
+as arav says I can just have little
+subnets one for each I can split the uh
+axis into little regions I can have one
+little subnet within each region each
+outputting a one within that region I
+can scale all of these two different
+heights and add them up and voila I have
+a
+network exactly Which models this net
+function approximates this function as a
+pie wise constant and I can make the
+approximation error arbitrarily small by
+making these these rectangles
+arbitrarily narrow right so this this is
+how I can model a function continuous
+valued function to arbitrary
+precision and this generalizes to
+functions of any number of inputs we'll
+see how in the next class but the an
+upshot of this is that an MLP
+can Model A continuous valued regression
+so I'm not going toose the poll but does
+anybody want to answer this question how
+many neurons will be required by a
+network of sinusoidal activation neurons
+to precisely model y = cos
+2x remember I can replace the threshold
+activation with anything here I've
+replaced it with
+sign
+right how many will I
+need the answer is one right because I
+can just say that I can say that the
+weight we is 2 and the bias is Pi / 2 so
+you're going to end up with sin of 2x +
+piun / 2 which is COS of 2x so this is
+going to be one any
+right so none of the above is the
+correct answer anyway sir x and z were
+same functions there pardon me were x
+and z same functions there or they were
+different functions I mean sign I just
+want a network for yal sign of Z right
+and then
+instead so the activation is a sign sign
+activation you have the weight and the
+bias right that's okay so in any case
+what this means is that the MLP can also
+model continuous valued functions in
+other words MLPs can do everything they
+can model Boolean functions they can
+model classification functions they can
+model continuous valued functions they
+can do other kinds of things uh so far
+we've seen networks where information
+Flows In One Direction if I begin adding
+Loops it turns out they can remember
+patterns this was proposed by Lawrence
+Kuby in 1930 and it's very popular even
+today they can represent probability
+distributions over integer real Valu and
+complex value domains they can Model A
+posteriori and a priori
+probabilities they can generate data
+from complicated or even unknown
+distributions they can do pretty much
+everything I like to joke that you know
+they can rub their stomachs and pat
+their heads at the same time I thought I
+was joking and then I found that there
+are actually competitions for this sort
+of
+thing and the guy who wins it is usually
+an Indian so
+anyway and this
+is and
+so the network is a
+function given an input it computes the
+function layerwise to predict the output
+more generally given one or more inputs
+it predicts one or more outputs and so
+here what's in these
+boxes each of these boxes is a function
+it's taking an input and generating an
+output right so we replace them with
+neural networks can be approximated to
+arbitrary Precision by neural network
+and so here's our story so far
+multi-layer perceptrons are
+connectionist computational models they
+are classification engines they can also
+model continuous valed functions
+interesting AI tasks are functions that
+can be modeled by the
+network and so to come to an end we've
+gone through a brief history of neural
+networks it's relation to cognition in
+the brain we've seen some early models
+and their limitations we've introduced
+modern neural networks and what we can
+compute so in the next class we'll look
+at more on how these are Universal
+approximators and what do we mean by the
+depth of a network and how does it
+relate to its capacity so I'll stop
+right here and I'll take some questions
+any
+questions I I saw that I uh
+okay uh you didn't get how did we model
+the graph okay this are you speaking of
+this one
+here ibraim is this the one yeah
+okay this network to the left can
+produce an output of one between T1 and
+T2
+correct
+yes okay okay so here's what I can do I
+can have one little subnet of two
+neurons which with this this s T1 and
+this as T2 a second subnet of two
+neurons with this as T1 and this is T2
+and so on so for each pair of boundaries
+I can have one subnet and so each of
+these subnets is going to Output a one
+in a different
+region now that output can be scaled by
+the Target height of the function
+within that
+region that make sense and then the
+whole thing can be added and so that's
+how we approximate this
+function okayish that's for later right
+any other
+questions any other
+question
+so uh this this week Saturday's lab is
+also a recitation because I will be
+having a class on Friday Monday is a
+holiday so I'm going to use the Friday
+slot to C to cover lecture
+three and uh because uh we need to have
+a certain amount of material completed
+by the second week to release our
+homework sometime and the lab is shifted
+to the Sunday Sunday Saturday haathon it
+will be recorded and it will be put
+up any other questions any questions
+about today's lecture is everything
+clear so Dre you can just check those on
+the course
+website was today's lecture clear if do
+me a favor everybody give me a thumbs up
+if you found it was clear and then I can
+log
+on right I'd like to count like a 100 or
+so thumbs up I just got
+two okay
+sir I had a question yes go ahead sir
+while we were modeling Boolean functions
+using MLPs uh we were we were actually
+wearing the weights you know for
+modeling functions like and or X or
+right uh what if we we the
+thresholds
+so uh let me go here so in these simp
+okay first when I
+was where am I going there this one if I
+look at this perceptron the weights are
+all always one and minus one right so
+here it's fairly simple
+correct it's only when you begin looking
+at it uh more along these lines that you
+can think of them as generic weights and
+thresholds it doesn't matter what your
+weight and threshold is so long as my
+perceptron has a boundary which Falls
+between this one and the line that
+connects these two guys this is going to
+be an R so as long as my perceptron has
+a boundary which falls in this region
+it's going to be an an and so you have
+many options for weights and thresholds
+that makes
+sense yes
+sir any other
+questions I have a question yeah um like
+when we say that we can like uh like
+model uh continuous Valu functions using
+p wise linear functions with arbitrary
+Precision isn't it want a finite domain
+of input like if like X X cannot be over
+like any domain because functions can be
+arbitrarily complex you're absolutely
+right all we are speaking of is the
+capacity of the network to model
+functions if you give me a large enough
+Network I can model the function to you
+know arbitrary Precision over most of
+the domain right if you want to model it
+infinite over the entire Infinite Space
+you need infinite neurons we not
+speaking of limitations yet only the
+capacity of the function right okay now
+this one here so I can say cos 2x is sin
+of 2x +k / 2
+correct yes and so that's the same as
+saying that I have a Perron
+with one input right one input this
+weight is two and this bias is Pi / 2
+and the activation is
+sign yes right
+yeah anything
+else okay all right guys thank you very
+much thanks for your
+patience

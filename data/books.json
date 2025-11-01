@@ -89,5 +89,27 @@
     "url": "https://learning.oreilly.com/library/view/advanced-applied-deep/9781484249765/",
     "status": "unread",
     "categories": ["deep-learning", "cnn", "object-detection"]
+  },
+
+  {
+    "title": "Practical Deep Learning for Coders",
+    "authors": "Jeremy Howard",
+    "url": "https://course.fast.ai/",
+    "status": "unread",
+    "categories": ["deep-learning", "cnn", "object-detection"]
+  },
+  {
+    "title": "Python Documentation Tutorial",
+    "authors": "Python Software Foundation",
+    "url": "https://docs.python.org/3.9/tutorial/",
+    "status": "unread",
+    "categories": ["python"]
+  },
+  {
+    "title": "PEP 8 — the Style Guide for Python Code",
+    "authors": "Kenneth Reitz ",
+    "url": "https://pep8.org/#introduction",
+    "status": "unread",
+    "categories": ["python"]
   }
 ]
