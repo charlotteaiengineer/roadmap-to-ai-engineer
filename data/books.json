@@ -1,0 +1,79 @@
+[
+  {
+    "title": "AI Engineering",
+    "authors": "Chip Huyen",
+    "url": "https://learning.oreilly.com/library/view/ai-engineering/9781098166298/",
+    "status": "in-progress",
+    "categories": ["deep-learning", "llm"]
+  },
+  {
+    "title": "Learn AI-Assisted Python Programming, Second Edition",
+    "authors": "Leo Porter, Daniel Zingaro",
+    "url": "https://learning.oreilly.com/library/view/learn-ai-assisted-python/9781633435995/",
+    "status": "unread",
+    "categories": ["python", "ai"]
+  },
+  {
+    "title": "Hands-On Machine Learning with Scikit-Learn and PyTorch",
+    "authors": "Aurélien Géron",
+    "url": "https://learning.oreilly.com/library/view/hands-on-machine-learning/9798341607972/",
+    "status": "unread",
+    "categories": ["machine-learning", "pytorch", "scikit-learn"]
+  },
+  {
+    "title": "Generative AI with Python and PyTorch - Second Edition",
+    "authors": "Joseph Babcock, Raghav Bali",
+    "url": "https://learning.oreilly.com/library/view/generative-ai-with/9781835884447/",
+    "status": "in-progress",
+    "categories": ["generative-ai", "pytorch"]
+  },
+  {
+    "title": "Designing Machine Learning Systems",
+    "authors": "Chip Huyen",
+    "url": "https://learning.oreilly.com/library/view/designing-machine-learning/9781098107956/",
+    "status": "unread",
+    "categories": ["ml-systems", "mlops"]
+  },
+  {
+    "title": "Build a Large Language Model (From Scratch)",
+    "authors": "Sebastian Raschka",
+    "url": "https://learning.oreilly.com/library/view/build-a-large/9781633437166/",
+    "status": "unread",
+    "categories": ["llm", "python"]
+  },
+  {
+    "title": "Generative AI Design Patterns",
+    "authors": "Valliappa Lakshmanan, Hannes Hapke",
+    "url": "https://learning.oreilly.com/library/view/generative-ai-design/9798341622654/",
+    "status": "unread",
+    "categories": ["generative-ai", "design-patterns"]
+  },
+  {
+    "title": "The LLM Engineer's Handbook",
+    "authors": "Paul Iusztin, Maxime Labonne",
+    "url": "https://learning.oreilly.com/library/view/llm-engineers-handbook/9781836200079/",
+    "status": "unread",
+    "categories": ["llm", "engineering"]
+  },
+  {
+    "title": "Deep Learning with Python",
+    "authors": "François Chollet",
+    "url": "https://learning.oreilly.com/library/view/deep-learning-with/9781617294433/",
+    "status": "unread",
+    "categories": ["deep-learning", "keras", "python"]
+  },
+  {
+    "title": "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, 3rd Edition",
+    "authors": "Aurélien Géron",
+    "url": "https://learning.oreilly.com/library/view/hands-on-machine-learning/9781098125967/",
+    "status": "unread",
+    "categories": ["machine-learning", "scikit-learn", "keras", "tensorflow"]
+  },
+  {
+    "title": "Hands-On Neural Networks with TensorFlow 2.0",
+    "authors": "Paolo Galeone",
+    "url": "https://learning.oreilly.com/library/view/hands-on-neural-networks/9781789615555/",
+    "status": "unread",
+    "categories": ["neural-networks", "tensorflow", "tf2"]
+  }
+]

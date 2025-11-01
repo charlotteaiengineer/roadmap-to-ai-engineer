@@ -203,58 +203,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="books-empty" class="empty-state" style="display:none;">
 No items found.
 </div>
-<script id="books-data" type="application/json">[
-  {
-    "title": "AI Engineering",
-    "authors": "Chip Huyen",
-    "url": "https://learning.oreilly.com/library/view/ai-engineering/9781098166298/",
-    "status": "in-progress",
-    "categories": ["deep-learning","llm"]
-  },
-  {
-    "title": "Learn AI-Assisted Python Programming, Second Edition",
-    "authors": "Leo Porter, Daniel Zingaro",
-    "url": "https://learning.oreilly.com/library/view/learn-ai-assisted-python/9781633435995/",
-    "status": "unread",
-    "categories": ["python","ai"]
-  },
-  {
-    "title": "Hands-On Machine Learning with Scikit-Learn and PyTorch",
-    "authors": "Aurélien Géron",
-    "url": "https://learning.oreilly.com/library/view/hands-on-machine-learning/9798341607972/",
-    "status": "unread",
-    "categories": ["machine-learning","pytorch","scikit-learn"]
-  },
-  {
-    "title": "Generative AI with Python and PyTorch - Second Edition",
-    "authors": "Joseph Babcock, Raghav Bali",
-    "url": "https://learning.oreilly.com/library/view/generative-ai-with/9781835884447/",
-    "status": "in-progress",
-    "categories": ["generative-ai","pytorch"]
-  },
-  {
-    "title": "Designing Machine Learning Systems",
-    "authors": "Chip Huyen",
-    "url": "https://learning.oreilly.com/library/view/designing-machine-learning/9781098107956/",
-    "status": "unread",
-    "categories": ["ml-systems","mlops"]
-  },
-  {
-    "title": "Build a Large Language Model (From Scratch)",
-    "authors": "Sebastian Raschka",
-    "url": "https://learning.oreilly.com/library/view/build-a-large/9781633437166/",
-    "status": "unread",
-    "categories": ["llm","python"]
-  }
-]</script>
+<!-- books data externalized to data/books.json -->
 <script>
 (function(){
   const grid = document.getElementById('books-grid');
-  const dataEl = document.getElementById('books-data');
   // options hardcoded: aspect/cols/reset removed
   const copyEl = document.getElementById('books-copy');
   let items = [];
-  try { items = JSON.parse(dataEl.textContent || '[]'); } catch(e) { items = []; }
   const emptyEl = document.getElementById('books-empty');
   const filtersEl = document.getElementById('books-filters');
   let activeCategory = 'all';
@@ -339,12 +294,18 @@ No items found.
   // options hardcoded: removed listeners for aspect/cols/reset
   if (copyEl) {
     copyEl.addEventListener('click', () => {
-      navigator.clipboard.writeText(dataEl.textContent || '[]');
+      navigator.clipboard.writeText(JSON.stringify(items, null, 2));
     });
   }
 
-  renderFilters();
-  render();
+  function init() {
+    fetch('data/books.json')
+      .then(r => r.json())
+      .then(json => { items = Array.isArray(json) ? json : []; renderFilters(); render(); })
+      .catch(() => { items = []; renderFilters(); render(); });
+  }
+
+  init();
 })();
 </script>
 

@@ -19,7 +19,7 @@ Quick access to frequently used links. Add/edit freely.
 
 ## Python / Data
 
-- 
+-  [Tensorflow examples](https://github.com/tensorflow/tfjs-examples)
 
 ## Model Training
 

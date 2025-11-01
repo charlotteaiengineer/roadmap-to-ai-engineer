@@ -148,5 +148,8 @@
   },
   "blog/posts/2025-11-01-dopamine.qmd": {
     "2025-11-01-dopamine.html": "bd27a936"
+  },
+  "roadmap/machine-learning.ipynb": {
+    "machine-learning.html": "69dce3fe"
   }
 }

@@ -11,6 +11,7 @@
   {
     "listing": "/roadmap/index.html",
     "items": [
+      "/roadmap/machine-learning.html",
       "/roadmap/perceptrons.html",
       "/roadmap/tokenisation.html"
     ]
