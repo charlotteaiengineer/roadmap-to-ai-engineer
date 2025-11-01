@@ -9,6 +9,13 @@
     ]
   },
   {
+    "listing": "/roadmap/index.html",
+    "items": [
+      "/roadmap/perceptrons.html",
+      "/roadmap/tokenisation.html"
+    ]
+  },
+  {
     "listing": "/learning-journey/index.html",
     "items": [
       "/learning-journey/2025-10-29.html",
@@ -58,13 +65,6 @@
       "/projects/2021-09-learning-roadmap.html",
       "/projects/2020-07-social-prototype.html",
       "/projects/2019-11-realtime-rig.html"
-    ]
-  },
-  {
-    "listing": "/roadmap/index.html",
-    "items": [
-      "/roadmap/perceptrons.html",
-      "/roadmap/tokenisation.html"
     ]
   }
 ]

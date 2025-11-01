@@ -49,9 +49,18 @@ format:
 .filter-btn { background:#fff; border:1px solid rgba(0,0,0,0.15); color:#333; padding:6px 12px; border-radius:20px; cursor:pointer; font-size:12px; font-weight:600; }
 .filter-btn.active { background:#111; color:#fff; border-color:#111; }
 .empty-state { text-align:center; color: rgba(0,0,0,0.6); padding: 20px 10px; }
+/* Status legend */
+.status-legend { position: fixed; top: 10px; right: 12px; gap: 20px; align-items: center; font-size: 12px; background: #fff; border: 1px solid rgba(0,0,0,0.1); border-radius: 999px; padding: 4px 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); z-index: 100; height: 30px; }
+.status-legend .status-dot { margin-right: 4px; }
 </style>
 
+<div class="status-legend" aria-label="Progress key">
+  <span class="status-dot status-unread"></span> Not started
+  <span class="status-dot status-inprogress" style="margin-left: 14px;"></span> In progress
+  <span class="status-dot status-read" style="margin-left: 14px;" ></span> Completed
+</div>
 <div id="courses-filters" class="filters"></div>
+
 
 <div id="courses-grid" class="masonry-grid"></div>
 <div id="courses-empty" class="empty-state" style="display:none;">No items found.</div>
