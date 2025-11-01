@@ -142,6 +142,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="../quizzes.html"> 
+<span class="menu-text">Quizzes</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="../books.html"> 
 <span class="menu-text">Bookshelf</span></a>
   </li>  
@@ -231,39 +235,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="intermediate-python---frontend-masters---nina-zakharenko" class="level1">
 <h1><a href="https://frontendmasters.com/courses/intermediate-python/">Intermediate Python - Frontend Masters - Nina Zakharenko</a></h1>
-<div id="eba8ace7" class="cell" data-execution_count="1">
+<div id="88241b25" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="op">=</span> <span class="st">"hello, I am Charlotte, I am learning Python..."</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>my_data.split(<span class="st">","</span>) <span class="co"># creates a list split by ,</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>['hello', ' I am Charlotte', ' I am learning Python...']</code></pre>
 </div>
 </div>
-<div id="2116d721" class="cell" data-execution_count="2">
+<div id="da01e5c1" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">","</span>.join(my_data) <span class="co"># creates a string joined by ,</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>'h,e,l,l,o,,, ,I, ,a,m, ,C,h,a,r,l,o,t,t,e,,, ,I, ,a,m, ,l,e,a,r,n,i,n,g, ,P,y,t,h,o,n,.,.,.'</code></pre>
 </div>
 </div>
-<div id="69c000c9" class="cell" data-execution_count="3">
+<div id="f851b722" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">"💻"</span>.join(my_data) <span class="co"># creates a string joined by 💻</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>'h💻e💻l💻l💻o💻,💻 💻I💻 💻a💻m💻 💻C💻h💻a💻r💻l💻o💻t💻t💻e💻,💻 💻I💻 💻a💻m💻 💻l💻e💻a💻r💻n💻i💻n💻g💻 💻P💻y💻t💻h💻o💻n💻.💻.💻.'</code></pre>
 </div>
 </div>
-<div id="0bbd7b18" class="cell" data-execution_count="4">
+<div id="280da011" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>my_data.split(<span class="st">" "</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">" "</span>.join(my_data) <span class="co"># careful, this will add a space between each character</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>'h e l l o ,   I   a m   C h a r l o t t e ,   I   a m   l e a r n i n g   P y t h o n . . .'</code></pre>
 </div>
 </div>
-<div id="399cb4cb" class="cell" data-execution_count="5">
+<div id="020f8ca2" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">""</span>.join(my_data) <span class="co"># join on empty string</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>'hello, I am Charlotte, I am learning Python...'</code></pre>
 </div>
 </div>
-<div id="c90cc812" class="cell" data-execution_count="6">
+<div id="9bbd0d70" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gym_set <span class="op">=</span> <span class="st">"Deadlifts,Hip Thrusts,Squats"</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>gym_set.split(<span class="st">","</span>) <span class="co"># creates a list split by ,</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>first_excercise, second_excercise, third_excercise <span class="op">=</span> gym_set.split(<span class="st">","</span>)</span>
@@ -274,32 +278,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="type-conversion" class="level3">
 <h3 class="anchored" data-anchor-id="type-conversion">Type Conversion</h3>
-<div id="59fcdf99" class="cell" data-execution_count="7">
+<div id="7fd4c4eb" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">int</span>(<span class="st">"123"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>123</code></pre>
 </div>
 </div>
-<div id="7fedbebb" class="cell" data-execution_count="8">
+<div id="7ebcbc96" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">float</span>(<span class="st">"123"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>123.0</code></pre>
 </div>
 </div>
-<div id="dcb83bba" class="cell" data-execution_count="9">
+<div id="b46ae754" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">str</span>(<span class="dv">123</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>'123'</code></pre>
 </div>
 </div>
-<div id="7b76e5bb" class="cell" data-execution_count="10">
+<div id="65006baa" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> [<span class="st">"Charlotte"</span>, <span class="st">"Alex"</span>, <span class="st">"Anubis"</span>, <span class="st">"Annie"</span>, <span class="st">"Anubis"</span>, <span class="st">"Charlotte"</span>, <span class="st">"Alex"</span>, <span class="st">"Annie"</span>, <span class="st">"Anubis"</span>]</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span>(name) <span class="co"># creates a set of unique names. Sets CANNOT have duplicate values.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>{'Alex', 'Annie', 'Anubis', 'Charlotte'}</code></pre>
 </div>
 </div>
-<div id="a2526180" class="cell" data-execution_count="11">
+<div id="b96c2f4a" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(<span class="bu">set</span>(name)) <span class="co"># creates a list of unique names sorted alphabetically, lists have ORDER. sets do not.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>['Alex', 'Annie', 'Anubis', 'Charlotte']</code></pre>
@@ -308,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="list-comprehensions" class="level3">
 <h3 class="anchored" data-anchor-id="list-comprehensions">List Comprehensions</h3>
-<div id="89b39176" class="cell" data-execution_count="12">
+<div id="bbb49967" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> name: <span class="bu">print</span>(n.upper())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>CHARLOTTE
@@ -322,7 +326,7 @@ ANNIE
 ANUBIS</code></pre>
 </div>
 </div>
-<div id="7019f92a" class="cell" data-execution_count="13">
+<div id="6eec969f" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>lowercase_names <span class="op">=</span> []</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> name: </span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    lowercase_names.append(n.lower())</span>
@@ -331,7 +335,7 @@ ANUBIS</code></pre>
 <pre><code>['charlotte', 'alex', 'anubis', 'annie', 'anubis', 'charlotte', 'alex', 'annie', 'anubis']</code></pre>
 </div>
 </div>
-<div id="32a4c77d" class="cell" data-execution_count="14">
+<div id="21379a4b" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>[n.upper() <span class="cf">for</span> n <span class="kw">in</span> name] <span class="co"># list comprehension</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># action you want to perform on each item in the list is first arg  </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -346,19 +350,19 @@ ANUBIS</code></pre>
  'ANUBIS']</code></pre>
 </div>
 </div>
-<div id="5df437ed" class="cell" data-execution_count="15">
+<div id="174864d2" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>)) <span class="co"># peak inside what range is doing</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
 </div>
 </div>
-<div id="7d2b8b5f" class="cell" data-execution_count="16">
+<div id="f685d25c" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>[1, 2, 3]</code></pre>
 </div>
 </div>
-<div id="b180b5be" class="cell" data-execution_count="17">
+<div id="184ee858" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>): <span class="bu">print</span>(num)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0
@@ -369,13 +373,13 @@ ANUBIS</code></pre>
 5</code></pre>
 </div>
 </div>
-<div id="fb8b6be2" class="cell" data-execution_count="18">
+<div id="5ddc81c9" class="cell" data-execution_count="18">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="op">%</span> <span class="dv">2</span> <span class="co"># modulo operator</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>0</code></pre>
 </div>
 </div>
-<div id="51b96cb9" class="cell" data-execution_count="19">
+<div id="edb0c1d0" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>fizz_buzz <span class="op">=</span> []</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">55</span>, <span class="dv">74</span>):</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> num <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> num <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
@@ -394,66 +398,66 @@ ANUBIS</code></pre>
 </section>
 <section id="list-operations" class="level3">
 <h3 class="anchored" data-anchor-id="list-operations">List Operations</h3>
-<div id="71057b3f" class="cell" data-execution_count="20">
+<div id="793d7485" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> [num <span class="op">*</span> num <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>squares</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
 </div>
 </div>
-<div id="971fcbbe" class="cell" data-execution_count="21">
+<div id="c537039a" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>285</code></pre>
 </div>
 </div>
-<div id="070246be" class="cell" data-execution_count="22">
+<div id="12697f58" class="cell" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>(squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>81</code></pre>
 </div>
 </div>
-<div id="3837c0be" class="cell" data-execution_count="23">
+<div id="f0ae3229" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="bu">min</span>(squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>0</code></pre>
 </div>
 </div>
-<div id="74cbd54a" class="cell" data-execution_count="24">
+<div id="e8db08ed" class="cell" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(squares)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>10</code></pre>
 </div>
 </div>
-<div id="eeed51d6" class="cell" data-execution_count="25">
+<div id="44ca239d" class="cell" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span>(squares, reverse<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>[81, 64, 49, 36, 25, 16, 9, 4, 1, 0]</code></pre>
 </div>
 </div>
-<div id="f118e97c" class="cell" data-execution_count="26">
+<div id="fd826dd0" class="cell" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get largest number in list</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>lottery_numbers <span class="op">=</span> <span class="st">"12, 23, 34, 45, 56, 2"</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="eaae34a8" class="cell" data-execution_count="27">
+<div id="3d355c4e" class="cell" data-execution_count="27">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>lottery_numbers.split(<span class="st">", "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>['12', '23', '34', '45', '56', '2']</code></pre>
 </div>
 </div>
-<div id="ec6ddc64" class="cell" data-execution_count="28">
+<div id="b4919cd4" class="cell" data-execution_count="28">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>[<span class="bu">int</span>(num) <span class="cf">for</span> num <span class="kw">in</span> lottery_numbers.split(<span class="st">", "</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>[12, 23, 34, 45, 56, 2]</code></pre>
 </div>
 </div>
-<div id="62bd298a" class="cell" data-execution_count="29">
+<div id="5f2961b2" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="bu">max</span>([<span class="bu">int</span>(num) <span class="cf">for</span> num <span class="kw">in</span> lottery_numbers.split(<span class="st">", "</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>56</code></pre>
 </div>
 </div>
-<div id="6eba22f3" class="cell" data-execution_count="30">
+<div id="d40ea211" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>[num <span class="op">*</span> num <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)] <span class="co"># ordered list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre>
@@ -462,7 +466,7 @@ ANUBIS</code></pre>
 </section>
 <section id="set-operations" class="level3">
 <h3 class="anchored" data-anchor-id="set-operations">Set Operations</h3>
-<div id="e6ba6787" class="cell" data-execution_count="31">
+<div id="b8a3bd37" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>{num <span class="op">*</span> num <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)} <span class="co"># unordered set</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>{0, 1, 4, 9, 16, 25, 36, 49, 64, 81}</code></pre>
@@ -471,7 +475,7 @@ ANUBIS</code></pre>
 </section>
 <section id="dictionaries" class="level3">
 <h3 class="anchored" data-anchor-id="dictionaries">Dictionaries</h3>
-<div id="18940401" class="cell" data-execution_count="32">
+<div id="ea8df676" class="cell" data-execution_count="32">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>{<span class="ss">f"square of </span><span class="sc">{</span>num<span class="sc">}</span><span class="ss">"</span>: num <span class="op">*</span> num <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)} <span class="co"># unordered set</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>{'square of 0': 0,
@@ -502,28 +506,28 @@ ANUBIS</code></pre>
 <p>Its faking something that is multi-threaded. “hey, let’s come back to this later”.</p>
 <p>Also something in the generator could fail, and the rest of your application is unaffected - as long as the application is expecting the error.</p>
 <p>in <code>range(0,5)</code> each number is <strong>generated</strong> one by one as its looped through.</p>
-<div id="5e1fdeca" class="cell" data-execution_count="33">
+<div id="8d997d3f" class="cell" data-execution_count="33">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>family <span class="op">=</span> [<span class="st">"Annie"</span>, <span class="st">"Anubis"</span>, <span class="st">"Alex"</span>, <span class="st">"Charlotte"</span>]</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>(<span class="bu">len</span>(name) <span class="cf">for</span> name <span class="kw">in</span> family)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
-<pre><code>&lt;generator object &lt;genexpr&gt; at 0x105853eb0&gt;</code></pre>
+<pre><code>&lt;generator object &lt;genexpr&gt; at 0x103642f20&gt;</code></pre>
 </div>
 </div>
 <p>you can pass a generator comprehension into a function that expects an iterable.</p>
-<div id="9363d8db" class="cell" data-execution_count="34">
+<div id="a3a97ea0" class="cell" data-execution_count="34">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span>((<span class="bu">len</span>(name) <span class="cf">for</span> name <span class="kw">in</span> family))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>{4, 5, 6, 9}</code></pre>
 </div>
 </div>
-<div id="e772133d" class="cell" data-execution_count="35">
+<div id="dc0be539" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>((<span class="bu">len</span>(name) <span class="cf">for</span> name <span class="kw">in</span> family))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>24</code></pre>
 </div>
 </div>
 <p>To get items out of a generator you need to iterate over it.</p>
-<div id="9894cda6" class="cell" data-execution_count="36">
+<div id="148518d6" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>my_generator <span class="op">=</span> (num <span class="op">*</span> num <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>))</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> my_generator:</span>
@@ -544,20 +548,20 @@ ANUBIS</code></pre>
 </section>
 <section id="zip-function" class="level3">
 <h3 class="anchored" data-anchor-id="zip-function">zip function</h3>
-<div id="af67aa53" class="cell" data-execution_count="37">
+<div id="19f4868b" class="cell" data-execution_count="37">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>squares <span class="op">=</span> {<span class="ss">f"square of </span><span class="sc">{</span>num<span class="sc">}</span><span class="ss">"</span>: num <span class="op">*</span> num <span class="cf">for</span> num <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)}</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>squares.keys() <span class="co"># get the keys </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>dict_keys(['square of 0', 'square of 1', 'square of 2', 'square of 3', 'square of 4', 'square of 5', 'square of 6', 'square of 7', 'square of 8', 'square of 9'])</code></pre>
 </div>
 </div>
-<div id="2db119f3" class="cell" data-execution_count="38">
+<div id="a577c68b" class="cell" data-execution_count="38">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>squares.values() <span class="co"># get the values </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>dict_values([0, 1, 4, 9, 16, 25, 36, 49, 64, 81])</code></pre>
 </div>
 </div>
-<div id="a27d366c" class="cell" data-execution_count="39">
+<div id="68e2fc64" class="cell" data-execution_count="39">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>squares.items() <span class="co"># get the key values </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>dict_items([('square of 0', 0), ('square of 1', 1), ('square of 2', 4), ('square of 3', 9), ('square of 4', 16), ('square of 5', 25), ('square of 6', 36), ('square of 7', 49), ('square of 8', 64), ('square of 9', 81)])</code></pre>
@@ -567,16 +571,16 @@ ANUBIS</code></pre>
 <section id="zip-function-1" class="level3">
 <h3 class="anchored" data-anchor-id="zip-function-1">zip function</h3>
 <p>Combine values of <strong>lists</strong></p>
-<div id="4b4bd213" class="cell" data-execution_count="40">
+<div id="e16f4481" class="cell" data-execution_count="40">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>dogs <span class="op">=</span> [<span class="st">"Annie"</span>, <span class="st">"Anubis"</span>]</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>ages <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">6</span>]</span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="bu">zip</span>(dogs, ages)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
-<pre><code>&lt;zip at 0x105873740&gt;</code></pre>
+<pre><code>&lt;zip at 0x10357aa40&gt;</code></pre>
 </div>
 </div>
 <p>Cannot do anything with this data structure until we loop over it</p>
-<div id="d433c967" class="cell" data-execution_count="41">
+<div id="9639bca8" class="cell" data-execution_count="41">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dog <span class="kw">in</span> <span class="bu">zip</span>(dogs, ages):</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(dog)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -584,7 +588,7 @@ ANUBIS</code></pre>
 ('Anubis', 6)</code></pre>
 </div>
 </div>
-<div id="3fb4a1c5" class="cell" data-execution_count="42">
+<div id="5da8cbf5" class="cell" data-execution_count="42">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, age <span class="kw">in</span> <span class="bu">zip</span>(dogs, ages):</span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss"> years old"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -592,13 +596,13 @@ ANUBIS</code></pre>
 Anubis is 6 years old</code></pre>
 </div>
 </div>
-<div id="de411a23" class="cell" data-execution_count="43">
+<div id="5455de70" class="cell" data-execution_count="43">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">zip</span>(dogs, ages)) <span class="co"># returns a list of tuples</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>[('Annie', 4), ('Anubis', 6)]</code></pre>
 </div>
 </div>
-<div id="4c521cc5" class="cell" data-execution_count="44">
+<div id="f226dd07" class="cell" data-execution_count="44">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="bu">dict</span>(<span class="bu">zip</span>(dogs, ages))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>{'Annie': 4, 'Anubis': 6}</code></pre>
