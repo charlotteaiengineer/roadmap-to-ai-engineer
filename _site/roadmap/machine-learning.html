@@ -372,9 +372,9 @@ array([0.9027567 , 0.62425065, 0.8201971 , 0.527208  , 0.41396534,
 <p>We define the <code>learning_rate</code>. We want our steps to be quite small to prevent overshooting the <code>Gradient Descent</code> (we want to avoid jumping out of our <code>local minima</code>).</p>
 <p>This will be an iterative method to get us close as we can. - Calculate current loss function - Decide what direction to move - Move in that direction</p>
 <p><code>GradientTape()</code> is a Tensorflow operation where TF keeps track of mathematical operations</p>
-<div id="1830f112" class="cell">
+<div id="1830f112" class="cell" data-execution_count="288">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>steps <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>steps <span class="op">=</span> <span class="dv">400</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>w_true <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>b_true <span class="op">=</span> <span class="fl">0.3</span></span>
@@ -404,9 +404,7 @@ array([0.9027567 , 0.62425065, 0.8201971 , 0.527208  , 0.41396534,
 <span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>        plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span><span class="op">*</span>w_true<span class="op">+</span>b_true, <span class="dv">1</span><span class="op">*</span>w_true<span class="op">+</span>b_true], <span class="st">"g:"</span>)</span>
 <span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>        plt.show()  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(-1.5663323, shape=(), dtype=float32)
-tf.Tensor(-0.15663324, shape=(), dtype=float32)
-step 0 loss 1.841741919517517</code></pre>
+<pre><code>step 0 loss 1.841741919517517</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -416,47 +414,7 @@ step 0 loss 1.841741919517517</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(-1.1303513, shape=(), dtype=float32)
-tf.Tensor(-0.113035135, shape=(), dtype=float32)
-tf.Tensor(-0.81189096, shape=(), dtype=float32)
-tf.Tensor(-0.081189096, shape=(), dtype=float32)
-tf.Tensor(-0.5793143, shape=(), dtype=float32)
-tf.Tensor(-0.05793143, shape=(), dtype=float32)
-tf.Tensor(-0.40950036, shape=(), dtype=float32)
-tf.Tensor(-0.040950038, shape=(), dtype=float32)
-tf.Tensor(-0.2855524, shape=(), dtype=float32)
-tf.Tensor(-0.028555242, shape=(), dtype=float32)
-tf.Tensor(-0.1951221, shape=(), dtype=float32)
-tf.Tensor(-0.01951221, shape=(), dtype=float32)
-tf.Tensor(-0.12918511, shape=(), dtype=float32)
-tf.Tensor(-0.012918511, shape=(), dtype=float32)
-tf.Tensor(-0.0811464, shape=(), dtype=float32)
-tf.Tensor(-0.00811464, shape=(), dtype=float32)
-tf.Tensor(-0.046186343, shape=(), dtype=float32)
-tf.Tensor(-0.0046186345, shape=(), dtype=float32)
-tf.Tensor(-0.020782612, shape=(), dtype=float32)
-tf.Tensor(-0.0020782612, shape=(), dtype=float32)
-tf.Tensor(-0.0023611865, shape=(), dtype=float32)
-tf.Tensor(-0.00023611866, shape=(), dtype=float32)
-tf.Tensor(0.010959111, shape=(), dtype=float32)
-tf.Tensor(0.0010959111, shape=(), dtype=float32)
-tf.Tensor(0.020553108, shape=(), dtype=float32)
-tf.Tensor(0.0020553109, shape=(), dtype=float32)
-tf.Tensor(0.027425393, shape=(), dtype=float32)
-tf.Tensor(0.0027425394, shape=(), dtype=float32)
-tf.Tensor(0.03231015, shape=(), dtype=float32)
-tf.Tensor(0.003231015, shape=(), dtype=float32)
-tf.Tensor(0.03574395, shape=(), dtype=float32)
-tf.Tensor(0.0035743953, shape=(), dtype=float32)
-tf.Tensor(0.03811887, shape=(), dtype=float32)
-tf.Tensor(0.003811887, shape=(), dtype=float32)
-tf.Tensor(0.039721422, shape=(), dtype=float32)
-tf.Tensor(0.0039721425, shape=(), dtype=float32)
-tf.Tensor(0.040761046, shape=(), dtype=float32)
-tf.Tensor(0.0040761046, shape=(), dtype=float32)
-tf.Tensor(0.041390672, shape=(), dtype=float32)
-tf.Tensor(0.004139067, shape=(), dtype=float32)
-step 20 loss 0.012263456359505653</code></pre>
+<pre><code>step 20 loss 0.012263456359505653</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -466,47 +424,7 @@ step 20 loss 0.012263456359505653</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.041722164, shape=(), dtype=float32)
-tf.Tensor(0.0041722166, shape=(), dtype=float32)
-tf.Tensor(0.041837193, shape=(), dtype=float32)
-tf.Tensor(0.0041837194, shape=(), dtype=float32)
-tf.Tensor(0.04179543, shape=(), dtype=float32)
-tf.Tensor(0.004179543, shape=(), dtype=float32)
-tf.Tensor(0.04164048, shape=(), dtype=float32)
-tf.Tensor(0.004164048, shape=(), dtype=float32)
-tf.Tensor(0.041404177, shape=(), dtype=float32)
-tf.Tensor(0.0041404176, shape=(), dtype=float32)
-tf.Tensor(0.041109815, shape=(), dtype=float32)
-tf.Tensor(0.0041109817, shape=(), dtype=float32)
-tf.Tensor(0.040774334, shape=(), dtype=float32)
-tf.Tensor(0.0040774336, shape=(), dtype=float32)
-tf.Tensor(0.040410172, shape=(), dtype=float32)
-tf.Tensor(0.0040410175, shape=(), dtype=float32)
-tf.Tensor(0.04002635, shape=(), dtype=float32)
-tf.Tensor(0.0040026354, shape=(), dtype=float32)
-tf.Tensor(0.039629493, shape=(), dtype=float32)
-tf.Tensor(0.0039629494, shape=(), dtype=float32)
-tf.Tensor(0.03922435, shape=(), dtype=float32)
-tf.Tensor(0.003922435, shape=(), dtype=float32)
-tf.Tensor(0.038814474, shape=(), dtype=float32)
-tf.Tensor(0.0038814475, shape=(), dtype=float32)
-tf.Tensor(0.038402375, shape=(), dtype=float32)
-tf.Tensor(0.0038402376, shape=(), dtype=float32)
-tf.Tensor(0.037989922, shape=(), dtype=float32)
-tf.Tensor(0.0037989921, shape=(), dtype=float32)
-tf.Tensor(0.037578415, shape=(), dtype=float32)
-tf.Tensor(0.0037578417, shape=(), dtype=float32)
-tf.Tensor(0.03716885, shape=(), dtype=float32)
-tf.Tensor(0.0037168849, shape=(), dtype=float32)
-tf.Tensor(0.036761895, shape=(), dtype=float32)
-tf.Tensor(0.0036761896, shape=(), dtype=float32)
-tf.Tensor(0.03635806, shape=(), dtype=float32)
-tf.Tensor(0.0036358058, shape=(), dtype=float32)
-tf.Tensor(0.035957668, shape=(), dtype=float32)
-tf.Tensor(0.0035957668, shape=(), dtype=float32)
-tf.Tensor(0.03556094, shape=(), dtype=float32)
-tf.Tensor(0.003556094, shape=(), dtype=float32)
-step 40 loss 0.0078764408826828</code></pre>
+<pre><code>step 40 loss 0.0078764408826828</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -516,47 +434,7 @@ step 40 loss 0.0078764408826828</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.03516807, shape=(), dtype=float32)
-tf.Tensor(0.003516807, shape=(), dtype=float32)
-tf.Tensor(0.034779176, shape=(), dtype=float32)
-tf.Tensor(0.0034779178, shape=(), dtype=float32)
-tf.Tensor(0.03439427, shape=(), dtype=float32)
-tf.Tensor(0.0034394271, shape=(), dtype=float32)
-tf.Tensor(0.034013428, shape=(), dtype=float32)
-tf.Tensor(0.0034013428, shape=(), dtype=float32)
-tf.Tensor(0.033636667, shape=(), dtype=float32)
-tf.Tensor(0.0033636668, shape=(), dtype=float32)
-tf.Tensor(0.033263955, shape=(), dtype=float32)
-tf.Tensor(0.0033263955, shape=(), dtype=float32)
-tf.Tensor(0.032895304, shape=(), dtype=float32)
-tf.Tensor(0.0032895305, shape=(), dtype=float32)
-tf.Tensor(0.03253068, shape=(), dtype=float32)
-tf.Tensor(0.003253068, shape=(), dtype=float32)
-tf.Tensor(0.032170042, shape=(), dtype=float32)
-tf.Tensor(0.0032170042, shape=(), dtype=float32)
-tf.Tensor(0.031813372, shape=(), dtype=float32)
-tf.Tensor(0.0031813371, shape=(), dtype=float32)
-tf.Tensor(0.031460635, shape=(), dtype=float32)
-tf.Tensor(0.0031460635, shape=(), dtype=float32)
-tf.Tensor(0.031111801, shape=(), dtype=float32)
-tf.Tensor(0.0031111802, shape=(), dtype=float32)
-tf.Tensor(0.03076682, shape=(), dtype=float32)
-tf.Tensor(0.003076682, shape=(), dtype=float32)
-tf.Tensor(0.030425655, shape=(), dtype=float32)
-tf.Tensor(0.0030425654, shape=(), dtype=float32)
-tf.Tensor(0.030088257, shape=(), dtype=float32)
-tf.Tensor(0.0030088257, shape=(), dtype=float32)
-tf.Tensor(0.029754613, shape=(), dtype=float32)
-tf.Tensor(0.0029754613, shape=(), dtype=float32)
-tf.Tensor(0.029424649, shape=(), dtype=float32)
-tf.Tensor(0.002942465, shape=(), dtype=float32)
-tf.Tensor(0.029098341, shape=(), dtype=float32)
-tf.Tensor(0.0029098343, shape=(), dtype=float32)
-tf.Tensor(0.028775657, shape=(), dtype=float32)
-tf.Tensor(0.0028775658, shape=(), dtype=float32)
-tf.Tensor(0.028456554, shape=(), dtype=float32)
-tf.Tensor(0.0028456554, shape=(), dtype=float32)
-step 60 loss 0.00507228123024106</code></pre>
+<pre><code>step 60 loss 0.00507228123024106</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -566,47 +444,7 @@ step 60 loss 0.00507228123024106</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.028140992, shape=(), dtype=float32)
-tf.Tensor(0.0028140992, shape=(), dtype=float32)
-tf.Tensor(0.02782893, shape=(), dtype=float32)
-tf.Tensor(0.0027828931, shape=(), dtype=float32)
-tf.Tensor(0.027520325, shape=(), dtype=float32)
-tf.Tensor(0.0027520326, shape=(), dtype=float32)
-tf.Tensor(0.027215129, shape=(), dtype=float32)
-tf.Tensor(0.002721513, shape=(), dtype=float32)
-tf.Tensor(0.026913319, shape=(), dtype=float32)
-tf.Tensor(0.002691332, shape=(), dtype=float32)
-tf.Tensor(0.02661486, shape=(), dtype=float32)
-tf.Tensor(0.002661486, shape=(), dtype=float32)
-tf.Tensor(0.026319701, shape=(), dtype=float32)
-tf.Tensor(0.0026319702, shape=(), dtype=float32)
-tf.Tensor(0.026027828, shape=(), dtype=float32)
-tf.Tensor(0.0026027828, shape=(), dtype=float32)
-tf.Tensor(0.025739193, shape=(), dtype=float32)
-tf.Tensor(0.0025739192, shape=(), dtype=float32)
-tf.Tensor(0.025453754, shape=(), dtype=float32)
-tf.Tensor(0.0025453754, shape=(), dtype=float32)
-tf.Tensor(0.025171466, shape=(), dtype=float32)
-tf.Tensor(0.0025171468, shape=(), dtype=float32)
-tf.Tensor(0.024892338, shape=(), dtype=float32)
-tf.Tensor(0.0024892339, shape=(), dtype=float32)
-tf.Tensor(0.024616286, shape=(), dtype=float32)
-tf.Tensor(0.0024616288, shape=(), dtype=float32)
-tf.Tensor(0.024343288, shape=(), dtype=float32)
-tf.Tensor(0.002434329, shape=(), dtype=float32)
-tf.Tensor(0.02407331, shape=(), dtype=float32)
-tf.Tensor(0.002407331, shape=(), dtype=float32)
-tf.Tensor(0.023806341, shape=(), dtype=float32)
-tf.Tensor(0.0023806342, shape=(), dtype=float32)
-tf.Tensor(0.02354234, shape=(), dtype=float32)
-tf.Tensor(0.0023542342, shape=(), dtype=float32)
-tf.Tensor(0.023281276, shape=(), dtype=float32)
-tf.Tensor(0.0023281276, shape=(), dtype=float32)
-tf.Tensor(0.023023095, shape=(), dtype=float32)
-tf.Tensor(0.0023023095, shape=(), dtype=float32)
-tf.Tensor(0.022767778, shape=(), dtype=float32)
-tf.Tensor(0.002276778, shape=(), dtype=float32)
-step 80 loss 0.003277217037975788</code></pre>
+<pre><code>step 80 loss 0.003277217037975788</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -616,47 +454,7 @@ step 80 loss 0.003277217037975788</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.022515297, shape=(), dtype=float32)
-tf.Tensor(0.0022515298, shape=(), dtype=float32)
-tf.Tensor(0.022265606, shape=(), dtype=float32)
-tf.Tensor(0.0022265606, shape=(), dtype=float32)
-tf.Tensor(0.022018688, shape=(), dtype=float32)
-tf.Tensor(0.002201869, shape=(), dtype=float32)
-tf.Tensor(0.021774516, shape=(), dtype=float32)
-tf.Tensor(0.0021774515, shape=(), dtype=float32)
-tf.Tensor(0.021533059, shape=(), dtype=float32)
-tf.Tensor(0.002153306, shape=(), dtype=float32)
-tf.Tensor(0.021294266, shape=(), dtype=float32)
-tf.Tensor(0.0021294267, shape=(), dtype=float32)
-tf.Tensor(0.021058112, shape=(), dtype=float32)
-tf.Tensor(0.0021058114, shape=(), dtype=float32)
-tf.Tensor(0.020824596, shape=(), dtype=float32)
-tf.Tensor(0.0020824596, shape=(), dtype=float32)
-tf.Tensor(0.020593641, shape=(), dtype=float32)
-tf.Tensor(0.0020593642, shape=(), dtype=float32)
-tf.Tensor(0.020365264, shape=(), dtype=float32)
-tf.Tensor(0.0020365266, shape=(), dtype=float32)
-tf.Tensor(0.020139437, shape=(), dtype=float32)
-tf.Tensor(0.0020139439, shape=(), dtype=float32)
-tf.Tensor(0.019916093, shape=(), dtype=float32)
-tf.Tensor(0.0019916093, shape=(), dtype=float32)
-tf.Tensor(0.019695243, shape=(), dtype=float32)
-tf.Tensor(0.0019695244, shape=(), dtype=float32)
-tf.Tensor(0.019476837, shape=(), dtype=float32)
-tf.Tensor(0.0019476836, shape=(), dtype=float32)
-tf.Tensor(0.019260846, shape=(), dtype=float32)
-tf.Tensor(0.0019260846, shape=(), dtype=float32)
-tf.Tensor(0.019047234, shape=(), dtype=float32)
-tf.Tensor(0.0019047235, shape=(), dtype=float32)
-tf.Tensor(0.018836, shape=(), dtype=float32)
-tf.Tensor(0.0018835999, shape=(), dtype=float32)
-tf.Tensor(0.01862712, shape=(), dtype=float32)
-tf.Tensor(0.0018627121, shape=(), dtype=float32)
-tf.Tensor(0.018420562, shape=(), dtype=float32)
-tf.Tensor(0.0018420563, shape=(), dtype=float32)
-tf.Tensor(0.01821629, shape=(), dtype=float32)
-tf.Tensor(0.001821629, shape=(), dtype=float32)
-step 100 loss 0.0021281202789396048</code></pre>
+<pre><code>step 100 loss 0.0021281202789396048</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -666,47 +464,7 @@ step 100 loss 0.0021281202789396048</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.018014267, shape=(), dtype=float32)
-tf.Tensor(0.0018014268, shape=(), dtype=float32)
-tf.Tensor(0.017814495, shape=(), dtype=float32)
-tf.Tensor(0.0017814495, shape=(), dtype=float32)
-tf.Tensor(0.017616922, shape=(), dtype=float32)
-tf.Tensor(0.0017616922, shape=(), dtype=float32)
-tf.Tensor(0.017421547, shape=(), dtype=float32)
-tf.Tensor(0.0017421547, shape=(), dtype=float32)
-tf.Tensor(0.01722836, shape=(), dtype=float32)
-tf.Tensor(0.0017228359, shape=(), dtype=float32)
-tf.Tensor(0.0170373, shape=(), dtype=float32)
-tf.Tensor(0.0017037301, shape=(), dtype=float32)
-tf.Tensor(0.016848356, shape=(), dtype=float32)
-tf.Tensor(0.0016848355, shape=(), dtype=float32)
-tf.Tensor(0.016661515, shape=(), dtype=float32)
-tf.Tensor(0.0016661516, shape=(), dtype=float32)
-tf.Tensor(0.016476743, shape=(), dtype=float32)
-tf.Tensor(0.0016476744, shape=(), dtype=float32)
-tf.Tensor(0.016294012, shape=(), dtype=float32)
-tf.Tensor(0.0016294012, shape=(), dtype=float32)
-tf.Tensor(0.016113317, shape=(), dtype=float32)
-tf.Tensor(0.0016113317, shape=(), dtype=float32)
-tf.Tensor(0.015934637, shape=(), dtype=float32)
-tf.Tensor(0.0015934637, shape=(), dtype=float32)
-tf.Tensor(0.01575793, shape=(), dtype=float32)
-tf.Tensor(0.001575793, shape=(), dtype=float32)
-tf.Tensor(0.015583178, shape=(), dtype=float32)
-tf.Tensor(0.0015583178, shape=(), dtype=float32)
-tf.Tensor(0.015410361, shape=(), dtype=float32)
-tf.Tensor(0.0015410361, shape=(), dtype=float32)
-tf.Tensor(0.015239462, shape=(), dtype=float32)
-tf.Tensor(0.0015239463, shape=(), dtype=float32)
-tf.Tensor(0.0150704635, shape=(), dtype=float32)
-tf.Tensor(0.0015070464, shape=(), dtype=float32)
-tf.Tensor(0.014903344, shape=(), dtype=float32)
-tf.Tensor(0.0014903344, shape=(), dtype=float32)
-tf.Tensor(0.014738066, shape=(), dtype=float32)
-tf.Tensor(0.0014738067, shape=(), dtype=float32)
-tf.Tensor(0.014574635, shape=(), dtype=float32)
-tf.Tensor(0.0014574635, shape=(), dtype=float32)
-step 120 loss 0.001392532605677843</code></pre>
+<pre><code>step 120 loss 0.001392532605677843</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -716,47 +474,7 @@ step 120 loss 0.001392532605677843</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.014413001, shape=(), dtype=float32)
-tf.Tensor(0.0014413001, shape=(), dtype=float32)
-tf.Tensor(0.014253177, shape=(), dtype=float32)
-tf.Tensor(0.0014253177, shape=(), dtype=float32)
-tf.Tensor(0.014095127, shape=(), dtype=float32)
-tf.Tensor(0.0014095127, shape=(), dtype=float32)
-tf.Tensor(0.0139387995, shape=(), dtype=float32)
-tf.Tensor(0.00139388, shape=(), dtype=float32)
-tf.Tensor(0.013784226, shape=(), dtype=float32)
-tf.Tensor(0.0013784226, shape=(), dtype=float32)
-tf.Tensor(0.01363137, shape=(), dtype=float32)
-tf.Tensor(0.001363137, shape=(), dtype=float32)
-tf.Tensor(0.013480192, shape=(), dtype=float32)
-tf.Tensor(0.0013480192, shape=(), dtype=float32)
-tf.Tensor(0.013330704, shape=(), dtype=float32)
-tf.Tensor(0.0013330703, shape=(), dtype=float32)
-tf.Tensor(0.0131828645, shape=(), dtype=float32)
-tf.Tensor(0.0013182865, shape=(), dtype=float32)
-tf.Tensor(0.013036677, shape=(), dtype=float32)
-tf.Tensor(0.0013036677, shape=(), dtype=float32)
-tf.Tensor(0.012892103, shape=(), dtype=float32)
-tf.Tensor(0.0012892103, shape=(), dtype=float32)
-tf.Tensor(0.012749145, shape=(), dtype=float32)
-tf.Tensor(0.0012749145, shape=(), dtype=float32)
-tf.Tensor(0.012607761, shape=(), dtype=float32)
-tf.Tensor(0.0012607761, shape=(), dtype=float32)
-tf.Tensor(0.01246795, shape=(), dtype=float32)
-tf.Tensor(0.001246795, shape=(), dtype=float32)
-tf.Tensor(0.0123296855, shape=(), dtype=float32)
-tf.Tensor(0.0012329685, shape=(), dtype=float32)
-tf.Tensor(0.012192948, shape=(), dtype=float32)
-tf.Tensor(0.0012192948, shape=(), dtype=float32)
-tf.Tensor(0.012057733, shape=(), dtype=float32)
-tf.Tensor(0.0012057733, shape=(), dtype=float32)
-tf.Tensor(0.011924018, shape=(), dtype=float32)
-tf.Tensor(0.0011924019, shape=(), dtype=float32)
-tf.Tensor(0.011791784, shape=(), dtype=float32)
-tf.Tensor(0.0011791785, shape=(), dtype=float32)
-tf.Tensor(0.011661023, shape=(), dtype=float32)
-tf.Tensor(0.0011661024, shape=(), dtype=float32)
-step 140 loss 0.0009216518956236541</code></pre>
+<pre><code>step 140 loss 0.0009216518956236541</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -766,47 +484,7 @@ step 140 loss 0.0009216518956236541</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.011531712, shape=(), dtype=float32)
-tf.Tensor(0.0011531712, shape=(), dtype=float32)
-tf.Tensor(0.011403834, shape=(), dtype=float32)
-tf.Tensor(0.0011403834, shape=(), dtype=float32)
-tf.Tensor(0.01127736, shape=(), dtype=float32)
-tf.Tensor(0.0011277361, shape=(), dtype=float32)
-tf.Tensor(0.011152307, shape=(), dtype=float32)
-tf.Tensor(0.0011152307, shape=(), dtype=float32)
-tf.Tensor(0.011028634, shape=(), dtype=float32)
-tf.Tensor(0.0011028635, shape=(), dtype=float32)
-tf.Tensor(0.010906326, shape=(), dtype=float32)
-tf.Tensor(0.0010906326, shape=(), dtype=float32)
-tf.Tensor(0.010785382, shape=(), dtype=float32)
-tf.Tensor(0.0010785382, shape=(), dtype=float32)
-tf.Tensor(0.0106657725, shape=(), dtype=float32)
-tf.Tensor(0.0010665773, shape=(), dtype=float32)
-tf.Tensor(0.0105474945, shape=(), dtype=float32)
-tf.Tensor(0.0010547495, shape=(), dtype=float32)
-tf.Tensor(0.010430526, shape=(), dtype=float32)
-tf.Tensor(0.0010430526, shape=(), dtype=float32)
-tf.Tensor(0.010314845, shape=(), dtype=float32)
-tf.Tensor(0.0010314845, shape=(), dtype=float32)
-tf.Tensor(0.010200448, shape=(), dtype=float32)
-tf.Tensor(0.0010200449, shape=(), dtype=float32)
-tf.Tensor(0.010087331, shape=(), dtype=float32)
-tf.Tensor(0.0010087331, shape=(), dtype=float32)
-tf.Tensor(0.009975474, shape=(), dtype=float32)
-tf.Tensor(0.0009975474, shape=(), dtype=float32)
-tf.Tensor(0.00986485, shape=(), dtype=float32)
-tf.Tensor(0.000986485, shape=(), dtype=float32)
-tf.Tensor(0.009755454, shape=(), dtype=float32)
-tf.Tensor(0.00097554544, shape=(), dtype=float32)
-tf.Tensor(0.009647273, shape=(), dtype=float32)
-tf.Tensor(0.00096472737, shape=(), dtype=float32)
-tf.Tensor(0.00954028, shape=(), dtype=float32)
-tf.Tensor(0.00095402804, shape=(), dtype=float32)
-tf.Tensor(0.009434488, shape=(), dtype=float32)
-tf.Tensor(0.0009434488, shape=(), dtype=float32)
-tf.Tensor(0.009329857, shape=(), dtype=float32)
-tf.Tensor(0.00093298574, shape=(), dtype=float32)
-step 160 loss 0.0006202204385772347</code></pre>
+<pre><code>step 160 loss 0.0006202204385772347</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -816,47 +494,7 @@ step 160 loss 0.0006202204385772347</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.009226389, shape=(), dtype=float32)
-tf.Tensor(0.0009226389, shape=(), dtype=float32)
-tf.Tensor(0.009124077, shape=(), dtype=float32)
-tf.Tensor(0.0009124077, shape=(), dtype=float32)
-tf.Tensor(0.009022885, shape=(), dtype=float32)
-tf.Tensor(0.00090228854, shape=(), dtype=float32)
-tf.Tensor(0.008922811, shape=(), dtype=float32)
-tf.Tensor(0.00089228107, shape=(), dtype=float32)
-tf.Tensor(0.008823881, shape=(), dtype=float32)
-tf.Tensor(0.0008823881, shape=(), dtype=float32)
-tf.Tensor(0.008726042, shape=(), dtype=float32)
-tf.Tensor(0.0008726042, shape=(), dtype=float32)
-tf.Tensor(0.008629285, shape=(), dtype=float32)
-tf.Tensor(0.0008629285, shape=(), dtype=float32)
-tf.Tensor(0.008533576, shape=(), dtype=float32)
-tf.Tensor(0.00085335755, shape=(), dtype=float32)
-tf.Tensor(0.00843894, shape=(), dtype=float32)
-tf.Tensor(0.000843894, shape=(), dtype=float32)
-tf.Tensor(0.008345357, shape=(), dtype=float32)
-tf.Tensor(0.00083453575, shape=(), dtype=float32)
-tf.Tensor(0.008252811, shape=(), dtype=float32)
-tf.Tensor(0.0008252811, shape=(), dtype=float32)
-tf.Tensor(0.0081612915, shape=(), dtype=float32)
-tf.Tensor(0.00081612915, shape=(), dtype=float32)
-tf.Tensor(0.00807078, shape=(), dtype=float32)
-tf.Tensor(0.00080707803, shape=(), dtype=float32)
-tf.Tensor(0.007981269, shape=(), dtype=float32)
-tf.Tensor(0.00079812686, shape=(), dtype=float32)
-tf.Tensor(0.0078927465, shape=(), dtype=float32)
-tf.Tensor(0.00078927464, shape=(), dtype=float32)
-tf.Tensor(0.007805233, shape=(), dtype=float32)
-tf.Tensor(0.0007805233, shape=(), dtype=float32)
-tf.Tensor(0.0077186795, shape=(), dtype=float32)
-tf.Tensor(0.000771868, shape=(), dtype=float32)
-tf.Tensor(0.007633075, shape=(), dtype=float32)
-tf.Tensor(0.0007633075, shape=(), dtype=float32)
-tf.Tensor(0.0075484095, shape=(), dtype=float32)
-tf.Tensor(0.00075484096, shape=(), dtype=float32)
-tf.Tensor(0.0074647157, shape=(), dtype=float32)
-tf.Tensor(0.0007464716, shape=(), dtype=float32)
-step 180 loss 0.00042726114043034613</code></pre>
+<pre><code>step 180 loss 0.00042726114043034613</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
@@ -866,72 +504,132 @@ step 180 loss 0.00042726114043034613</code></pre>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tf.Tensor(0.007381947, shape=(), dtype=float32)
-tf.Tensor(0.0007381947, shape=(), dtype=float32)
-tf.Tensor(0.0073000733, shape=(), dtype=float32)
-tf.Tensor(0.00073000736, shape=(), dtype=float32)
-tf.Tensor(0.007219113, shape=(), dtype=float32)
-tf.Tensor(0.0007219113, shape=(), dtype=float32)
-tf.Tensor(0.0071390555, shape=(), dtype=float32)
-tf.Tensor(0.00071390555, shape=(), dtype=float32)
-tf.Tensor(0.007059889, shape=(), dtype=float32)
-tf.Tensor(0.0007059889, shape=(), dtype=float32)
-tf.Tensor(0.0069815833, shape=(), dtype=float32)
-tf.Tensor(0.00069815834, shape=(), dtype=float32)
-tf.Tensor(0.0069041736, shape=(), dtype=float32)
-tf.Tensor(0.00069041736, shape=(), dtype=float32)
-tf.Tensor(0.006827604, shape=(), dtype=float32)
-tf.Tensor(0.00068276044, shape=(), dtype=float32)
-tf.Tensor(0.006751899, shape=(), dtype=float32)
-tf.Tensor(0.00067518995, shape=(), dtype=float32)
-tf.Tensor(0.006677026, shape=(), dtype=float32)
-tf.Tensor(0.0006677026, shape=(), dtype=float32)
-tf.Tensor(0.0066029783, shape=(), dtype=float32)
-tf.Tensor(0.00066029787, shape=(), dtype=float32)
-tf.Tensor(0.0065297675, shape=(), dtype=float32)
-tf.Tensor(0.00065297674, shape=(), dtype=float32)
-tf.Tensor(0.0064573474, shape=(), dtype=float32)
-tf.Tensor(0.0006457348, shape=(), dtype=float32)
-tf.Tensor(0.00638574, shape=(), dtype=float32)
-tf.Tensor(0.000638574, shape=(), dtype=float32)
-tf.Tensor(0.006314908, shape=(), dtype=float32)
-tf.Tensor(0.00063149084, shape=(), dtype=float32)
-tf.Tensor(0.0062448834, shape=(), dtype=float32)
-tf.Tensor(0.00062448834, shape=(), dtype=float32)
-tf.Tensor(0.0061756144, shape=(), dtype=float32)
-tf.Tensor(0.00061756145, shape=(), dtype=float32)
-tf.Tensor(0.0061071375, shape=(), dtype=float32)
-tf.Tensor(0.0006107138, shape=(), dtype=float32)
-tf.Tensor(0.0060394253, shape=(), dtype=float32)
-tf.Tensor(0.00060394255, shape=(), dtype=float32)</code></pre>
+<pre><code>step 200 loss 0.000303739623632282</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-22.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>step 220 loss 0.0002246685908176005</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-24.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>step 240 loss 0.0001740514999255538</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-26.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>step 260 loss 0.00014164957974571735</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-28.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>step 280 loss 0.00012090738164260983</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-30.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>step 300 loss 0.00010762966849142686</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-32.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>step 320 loss 9.912990208249539e-05</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-34.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>step 340 loss 9.368886821903288e-05</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-36.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>step 360 loss 9.020586730912328e-05</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-38.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>step 380 loss 8.797615737421438e-05</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="machine-learning_files/figure-html/cell-17-output-40.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="aaf299c7" class="cell" data-execution_count="278">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>gradients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>gradients</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="278">
 <pre><code>[&lt;tf.Tensor: shape=(), dtype=float32, numpy=0.006039425265043974&gt;,
  &lt;tf.Tensor: shape=(), dtype=float32, numpy=-0.00365498848259449&gt;]</code></pre>
 </div>
 </div>
 <div id="30ab2425" class="cell" data-execution_count="279">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>w</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>w</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="279">
 <pre><code>&lt;tf.Variable 'Variable:0' shape=() dtype=float32, numpy=0.15535157918930054&gt;</code></pre>
 </div>
 </div>
 <div id="7fa59704" class="cell" data-execution_count="280">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="280">
 <pre><code>&lt;tf.Variable 'Variable:0' shape=() dtype=float32, numpy=0.266182005405426&gt;</code></pre>
 </div>
 </div>
 <div id="58a83d8f" class="cell" data-execution_count="281">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>w_true <span class="op">=</span> <span class="fl">0.1</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>b_true <span class="op">=</span> <span class="fl">0.3</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plt.plot(X, Y, <span class="st">"b."</span>)</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span><span class="op">*</span>w<span class="op">+</span>b, <span class="dv">1</span><span class="op">*</span>w<span class="op">+</span>b], <span class="st">"r:"</span>) </span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span><span class="op">*</span>w_true<span class="op">+</span>b_true, <span class="dv">1</span><span class="op">*</span>w_true<span class="op">+</span>b_true], <span class="st">"g:"</span>)</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>w_true <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>b_true <span class="op">=</span> <span class="fl">0.3</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>plt.plot(X, Y, <span class="st">"b."</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span><span class="op">*</span>w<span class="op">+</span>b, <span class="dv">1</span><span class="op">*</span>w<span class="op">+</span>b], <span class="st">"r:"</span>) </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span><span class="op">*</span>w_true<span class="op">+</span>b_true, <span class="dv">1</span><span class="op">*</span>w_true<span class="op">+</span>b_true], <span class="st">"g:"</span>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
