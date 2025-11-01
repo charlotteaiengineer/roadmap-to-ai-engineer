@@ -75,5 +75,19 @@
     "url": "https://learning.oreilly.com/library/view/hands-on-neural-networks/9781789615555/",
     "status": "unread",
     "categories": ["neural-networks", "tensorflow", "tf2"]
+  },
+  {
+    "title": "Hands-On Convolutional Neural Networks with TensorFlow",
+    "authors": "Iffat Zafar, Giounona Tzanidou, Richard Burton, Nimesh Patel, Leonardo Araujo",
+    "url": "https://learning.oreilly.com/library/view/hands-on-convolutional-neural/9781789130331/",
+    "status": "unread",
+    "categories": ["cnn", "tensorflow"]
+  },
+  {
+    "title": "Advanced Applied Deep Learning: Convolutional Neural Networks and Object Detection",
+    "authors": "Umberto Michelucci",
+    "url": "https://learning.oreilly.com/library/view/advanced-applied-deep/9781484249765/",
+    "status": "unread",
+    "categories": ["deep-learning", "cnn", "object-detection"]
   }
 ]

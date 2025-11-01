@@ -102,5 +102,54 @@
     "url": "https://www.youtube.com/watch?v=NXYrIEP1LRs&list=PLp-0K3kfddPylfHM6O3cBkRGdSW3m6n1C&index=1",
     "status": "in-progress",
     "categories": ["neural-networks", "youtube"]
+  },
+  {
+    "title": "Deep Learning Fundamentals: A Python-Based Course",
+    "authors": "Julián Darío Miranda",
+    "url": "https://learning.oreilly.com/course/deep-learning-fundamentals/0636920928324/",
+    "status": "not-started",
+    "categories": ["deep-learning", "python"]
+  },
+  {
+    "title": "Programming Generative AI",
+    "authors": "Jonathan Dinu",
+    "url": "https://learning.oreilly.com/course/programming-generative-ai/9780135381090/",
+    "status": "not-started",
+    "categories": ["generative-ai"]
+  },
+  {
+    "title": "Deep Learning - Convolutional Neural Networks with TensorFlow",
+    "authors": "Lazy Programmer",
+    "url": "https://learning.oreilly.com/course/deep-learning-/9781801076272/",
+    "status": "not-started",
+    "categories": ["deep-learning", "cnn", "tensorflow"]
+  },
+  {
+    "title": "AI Engineering Masterclass: From Zero to AI Hero",
+    "authors": "Vivian Aranha",
+    "url": "https://learning.oreilly.com/course/ai-engineering-masterclass/9781806105991/",
+    "status": "not-started",
+    "categories": ["ai-engineering"]
+  },
+  {
+    "title": "The Complete Guide to Azure Machine Learning - 2025 Edition",
+    "authors": "Anand Rao Nednur",
+    "url": "https://learning.oreilly.com/course/the-complete-guide/9781806108619/",
+    "status": "not-started",
+    "categories": ["azure-ml", "machine-learning", "mlops"]
+  },
+  {
+    "title": "AI Demystified - A Simple Guide for Newcomers",
+    "authors": "Alexander Oni",
+    "url": "https://learning.oreilly.com/course/ai-demystified-/9781806117574/",
+    "status": "not-started",
+    "categories": ["ai", "beginner"]
+  },
+  {
+    "title": "Natural Language Processing - Deep Learning Models in Python",
+    "authors": "Lazy Programmer",
+    "url": "https://learning.oreilly.com/course/natural-language-processing/9781836208013/",
+    "status": "not-started",
+    "categories": ["nlp", "deep-learning", "python"]
   }
 ]
