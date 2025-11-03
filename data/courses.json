@@ -151,5 +151,12 @@
     "url": "https://www.youtube.com/watch?v=NXYrIEP1LRs&list=PLp-0K3kfddPylfHM6O3cBkRGdSW3m6n1C&index=1",
     "status": "in-progress",
     "categories": ["neural-networks", "youtube"]
+  },
+  {
+    "title": "Program neural networks with TensorFlow",
+    "authors": "Google Developers",
+    "url": "https://developers.google.com/learn/pathways/tensorflow",
+    "status": "not-started",
+    "categories": ["tensorflow", "machine-learning", "google"]
   }
 ]

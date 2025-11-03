@@ -12,8 +12,8 @@ website:
     left:
       - text: Learning Journey
         href: learning-journey/index.qmd
-      - text: Roadmap
-        href: roadmap/index.qmd
+      - text: Topics
+        href: topics/index.qmd
 
       - text: Papers
         href: papers.qmd
@@ -23,6 +23,8 @@ website:
         href: books.qmd
       - text: Courses
         href: courses.qmd
+      - text: Projects
+        href: projects/index.qmd
     right:
       - text: About
         href: about.qmd

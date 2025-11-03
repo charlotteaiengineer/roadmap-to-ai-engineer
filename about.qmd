@@ -105,18 +105,14 @@ Ipswich, UK
 ### Get in touch
 If you’re building ambitious, design‑led products and want to ship fast with quality, let’s talk.
 
-sldsmls
-asdmlsadml
 
-# Selected projects
 
-Below is an inline listing of recent projects. For the full archive, see the [Projects](/projects/) page.
 
 
 
 ---
 listing:
-  contents: projects
+  contents: blog
   type: table
   sort: "date desc"
   fields: [title, description]

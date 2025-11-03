@@ -4,7 +4,7 @@ page-layout: full
 listing:
   sort: "date desc"
   type: table
-  fields: [title, date]
+  fields: [title, date,reading-time]
   categories: true
   page-size: 10
   filter-ui: true

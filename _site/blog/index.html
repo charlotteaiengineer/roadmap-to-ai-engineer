@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      valueNames: ['listing-title','listing-date','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-author"],
     };
@@ -157,8 +157,8 @@ window.Quarto = {
 <span class="menu-text">Learning Journey</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../roadmap/index.html"> 
-<span class="menu-text">Roadmap</span></a>
+    <a class="nav-link" href="../topics/index.html"> 
+<span class="menu-text">Topics</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../papers.html"> 
@@ -267,6 +267,10 @@ window.Quarto = {
 <a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
 </th>
 
+<th>
+Reading Time
+</th>
+
 </tr>
 </thead>
 <tbody class="list">
@@ -278,6 +282,9 @@ window.Quarto = {
 <td>
 <span class="listing-date">Nov 1, 2025</span>
 </td>
+<td>
+<span class="listing-reading-time">3 min</span>
+</td>
 
 </tr>
 
@@ -287,6 +294,9 @@ window.Quarto = {
 </td>
 <td>
 <span class="listing-date">Oct 29, 2025</span>
+</td>
+<td>
+<span class="listing-reading-time">4 min</span>
 </td>
 
 </tr>
@@ -298,6 +308,9 @@ window.Quarto = {
 <td>
 <span class="listing-date">Oct 22, 2025</span>
 </td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
 
 </tr>
 
@@ -308,6 +321,9 @@ window.Quarto = {
 <td>
 <span class="listing-date">Oct 22, 2025</span>
 </td>
+<td>
+<span class="listing-reading-time">2 min</span>
+</td>
 
 </tr>
 
@@ -317,6 +333,9 @@ window.Quarto = {
 </td>
 <td>
 <span class="listing-date">Oct 21, 2025</span>
+</td>
+<td>
+<span class="listing-reading-time">7 min</span>
 </td>
 
 </tr>
@@ -398,7 +417,7 @@ window.Quarto = {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/charlotteaiengineer\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

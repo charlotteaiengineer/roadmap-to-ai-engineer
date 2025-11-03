@@ -157,5 +157,26 @@
   },
   "quizzes.qmd": {
     "quizzes.html": "5919af99"
+  },
+  "roadmap/universal-approximators.ipynb": {
+    "universal-approximators.html": "d6ab2515"
+  },
+  "topics/universal-approximators.ipynb": {
+    "universal-approximators.html": "579ce7a0"
+  },
+  "topics/perceptrons.ipynb": {
+    "perceptrons.html": "d9e56ca5"
+  },
+  "topics/machine-learning.ipynb": {
+    "machine-learning.html": "ab3b1df6"
+  },
+  "topics/index.qmd": {
+    "index.html": "0e7a9216"
+  },
+  "topics/tokenisation.ipynb": {
+    "tokenisation.html": "14c1438b"
+  },
+  "topics/beginner-python.ipynb": {
+    "beginner-python.html": "62ceac14"
   }
 }

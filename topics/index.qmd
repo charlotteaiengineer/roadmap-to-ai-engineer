@@ -1,17 +1,14 @@
 ---
-title: "Roadmap"
+title: "Topics"
 page-layout: full
 listing:
   contents: "*.ipynb"
   sort: "modified desc"
   type: default
-  image-align: left
+  image-align: "left"
   sort-ui: true
   page-size: 30
-  fields: [image, title, description, date, categories]
+  fields: [title, description, date, categories, image]
   categories: true
   filter-ui: true
 ---
-
-
-
